@@ -19,14 +19,36 @@ export const site = {
     githubOrg: "https://github.com/anteroom-studio",
     linkedin: "https://www.linkedin.com/in/zawwarsami",
     twitter: "https://twitter.com/Kh4nZawwar",
-    substack: "https://substack.com/@zawwarsami",
+    substack: "https://zawwar16.substack.com",
+    hub: "https://hub.zawwarsami.com",
     htb: "https://app.hackthebox.com/public/users/2469522",
     htbProgress: "https://github.com/Zawwarsami16/htb-progress",
   },
+  writing: [
+    {
+      slug: "two-ais",
+      title: "Two AIs",
+      summary:
+        "Artificial vs. Autonomous Intelligence — why the words we use shape what we build, and the case for personal AI as a category distinct from labs.",
+      url: "https://zawwar16.substack.com/p/two-ais",
+      datePublished: "2026-05-22",
+      tags: ["AGI", "personal AI", "philosophy of mind"],
+    },
+    {
+      slug: "pause-substrate-cooperative-mind",
+      title: "The Pause, the Substrate, the Cooperative Mind",
+      summary:
+        "Three philosophical observations the present moment has made unusually visible — on speech, the body, and why a finite being fights. Held lightly.",
+      url: "https://zawwar16.substack.com/p/pause-substrate-cooperative-mind",
+      datePublished: "2026-05-26",
+      tags: ["Islamic philosophy", "consciousness", "AI alignment"],
+    },
+  ],
   nav: [
     { label: "About", href: "/about" },
     { label: "Stack", href: "/stack" },
     { label: "Work", href: "/work" },
+    { label: "Writing", href: "/writing" },
     { label: "Contact", href: "/contact" },
   ],
   status: {
