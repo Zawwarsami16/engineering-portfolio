@@ -6,7 +6,7 @@ import { FilmPlayer } from "@/components/film/FilmPlayer";
 
 export const metadata: Metadata = pageMetadata(
   "The Anteroom Film",
-  "A short cinematic POV portfolio film by Zawwar Sami. One continuous take, three chapters, about half a minute.",
+  "A short cinematic POV portfolio film by Zawwar Sami. One continuous take, five chapters, about a minute.",
 );
 
 export default function FilmPage() {
@@ -28,7 +28,7 @@ export default function FilmPage() {
           <h1 className="mt-8 font-serif text-[clamp(40px,6.5vw,88px)] leading-[1.02] tracking-tight font-light text-[var(--color-fg)]">
             One continuous take.<br />
             <span className="font-serif-italic text-[var(--color-accent)]">
-              Half a minute.
+              About a minute.
             </span>
           </h1>
           <p className="mt-10 mx-auto max-w-[60ch] text-balance text-[var(--color-muted)] leading-relaxed">
