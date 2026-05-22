@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import { film } from "@/lib/film";
 import { Reveal } from "@/components/ui/Reveal";
-import { SceneCard } from "@/components/film/SceneCard";
+import { FilmPlayer } from "@/components/film/FilmPlayer";
 
 export const metadata: Metadata = pageMetadata(
   "The Anteroom Film",
-  "A short cinematic POV portfolio piece by Zawwar Sami. Five scenes. Generated frame-by-frame in Runway Gen-3.",
+  "A short cinematic POV portfolio film by Zawwar Sami. One continuous take, five chapters, about fifty seconds.",
 );
 
 export default function FilmPage() {
   return (
     <>
-      <section className="relative isolate overflow-hidden border-b border-[var(--color-line)] pt-32 pb-20 lg:pt-40 lg:pb-28">
+      <section className="relative isolate overflow-hidden border-b border-[var(--color-line)] pt-32 pb-16 lg:pt-40 lg:pb-20">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 -z-10"
@@ -25,8 +25,8 @@ export default function FilmPage() {
           <span className="font-mono text-[10px] tracking-[0.4em] text-[var(--color-muted)] uppercase">
             The Anteroom Film
           </span>
-          <h1 className="mt-8 font-serif text-[clamp(44px,7vw,96px)] leading-[1.02] tracking-tight font-light text-[var(--color-fg)]">
-            Five scenes.<br />
+          <h1 className="mt-8 font-serif text-[clamp(40px,6.5vw,88px)] leading-[1.02] tracking-tight font-light text-[var(--color-fg)]">
+            One continuous take.<br />
             <span className="font-serif-italic text-[var(--color-accent)]">
               About fifty seconds.
             </span>
@@ -37,16 +37,10 @@ export default function FilmPage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[1100px] px-6 py-20 lg:px-12 lg:py-28">
-        <ul className="flex flex-col gap-24">
-          {film.scenes.map((scene, i) => (
-            <Reveal key={scene.slug} delay={i * 0.05} amount={0.05}>
-              <li>
-                <SceneCard scene={scene} />
-              </li>
-            </Reveal>
-          ))}
-        </ul>
+      <section className="mx-auto w-full max-w-[1100px] px-6 pt-12 pb-20 lg:px-12 lg:pt-16 lg:pb-28">
+        <Reveal>
+          <FilmPlayer />
+        </Reveal>
 
         <Reveal delay={0.1}>
           <div className="mt-28 border-t border-[var(--color-line)] pt-16 text-center">
