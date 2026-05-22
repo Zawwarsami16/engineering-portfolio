@@ -16,7 +16,7 @@ export const film = {
   title: "The Anteroom Film",
   tagline: "One continuous take. About a minute. Five chapters.",
   description:
-    "A short cinematic portfolio piece. First-person POV. From the graveyard outside the hut, through the vision, into the room of work, out into the graveyard of knowledge, and back to the world that holds it all. Generated frame-by-frame, scored to silence.",
+    "First-person. Silent. Watch it once.",
   filmUrl: `${RELEASE_BASE}/anteroom-film.mp4`,
   posterUrl: "/film/film-poster.jpg",
   durationSeconds: 56,

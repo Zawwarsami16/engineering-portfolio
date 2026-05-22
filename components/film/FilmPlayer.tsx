@@ -125,30 +125,6 @@ export function FilmPlayer() {
           );
         })}
       </ol>
-
-      <div className="mt-6 grid gap-12 lg:grid-cols-2">
-        {film.chapters.map((c) => (
-          <article
-            key={c.slug}
-            className="border-t border-[var(--color-line)] pt-6"
-          >
-            <header className="flex items-baseline gap-3">
-              <span className="font-mono text-[10px] tracking-[0.4em] text-[var(--color-muted)] uppercase">
-                Ch · {String(c.number).padStart(2, "0")}
-              </span>
-              <h3 className="font-serif text-[22px] leading-tight tracking-tight font-light text-[var(--color-fg)]">
-                {c.title}
-              </h3>
-            </header>
-            <p className="mt-2 font-serif italic text-[14px] text-[var(--color-accent)]">
-              {c.subtitle}
-            </p>
-            <p className="mt-3 text-[14px] text-[var(--color-muted)] leading-relaxed">
-              {c.description}
-            </p>
-          </article>
-        ))}
-      </div>
     </div>
   );
 }
