@@ -89,7 +89,7 @@ export function FilmPlayer() {
         )}
       </div>
 
-      <ol className="grid grid-cols-1 gap-2 sm:grid-cols-4">
+      <ol className="grid grid-cols-1 gap-2 sm:grid-cols-3">
         {film.chapters.map((c, i) => {
           const active = i === activeChapter && (isPlaying || currentTime > 0);
           return (
