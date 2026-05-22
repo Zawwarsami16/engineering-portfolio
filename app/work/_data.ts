@@ -10,6 +10,7 @@ export type CaseStudy = {
   hero: {
     accent: string;
     pattern: "rings" | "grid" | "wave";
+    image?: string;
   };
   summary: string;
   problem: string;
@@ -103,7 +104,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Founder & Engineer",
     duration: "Ongoing",
     stack: ["Python", "FastAPI", "PostgreSQL", "LLM agents", "Next.js", "TypeScript"],
-    hero: { accent: "#dc2626", pattern: "rings" },
+    hero: { accent: "#dc2626", pattern: "rings", image: "/images/cases/anteroom-oracle.jpg" },
     summary:
       "An AI-powered intelligence terminal that compresses geopolitical and macro signal into something a single operator can actually act on — with crisis replay, scenario simulation, and market-regime detection built in.",
     problem:
@@ -137,7 +138,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Founder & Engineer",
     duration: "Ongoing",
     stack: ["Python", "ML", "Time-series", "DuckDB", "FastAPI"],
-    hero: { accent: "#dc2626", pattern: "wave" },
+    hero: { accent: "#dc2626", pattern: "wave", image: "/images/cases/anteroom-world-model.jpg" },
     summary:
       "A macro market prediction system trained on cleaned daily and monthly market data going back to 1871 — built to ask honest questions about regime shifts, recessions, and volatility cycles instead of fitting the last decade.",
     problem:
@@ -172,7 +173,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Founder & Engineer",
     duration: "Ongoing",
     stack: ["JavaScript", "Web", "Market structure", "Liquidity analysis", "Zawwar Framework"],
-    hero: { accent: "#dc2626", pattern: "grid" },
+    hero: { accent: "#dc2626", pattern: "grid", image: "/images/cases/anteroom-crypto-terminal.jpg" },
     summary:
       "A high-speed crypto trading terminal that filters low-quality setups using market structure, liquidity, and AI reasoning — the operating environment behind the Zawwar Framework.",
     problem:
@@ -207,7 +208,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Founder & Engineer",
     duration: "Ongoing",
     stack: ["Python", "LLMs", "Agents", "Reasoning frameworks"],
-    hero: { accent: "#dc2626", pattern: "rings" },
+    hero: { accent: "#dc2626", pattern: "rings", image: "/images/cases/zai-genesis.jpg" },
     summary:
       "ZAI is the long-running project Anteroom was founded around in 2019: an AI built to think independently about consciousness, markets, and inquiry. Genesis is the foundation layer everything else (Oracle, World Model, the terminal) plugs into.",
     problem:
@@ -240,7 +241,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Solo developer",
     duration: "1 month",
     stack: ["JavaScript", "Web Audio", "Canvas", "Procedural narrative"],
-    hero: { accent: "#dc2626", pattern: "grid" },
+    hero: { accent: "#dc2626", pattern: "grid", image: "/images/cases/zai-hackers-legacy.jpg" },
     summary:
       "A side-project RPG where you play a hacker climbing through underground networks, taking jobs, choosing alliances, and slowly being changed by the world you're trying to change. A break from the macro work to play with narrative systems.",
     problem:

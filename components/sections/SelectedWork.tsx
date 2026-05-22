@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -54,6 +55,35 @@ export function SelectedWork() {
               <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--color-muted)] uppercase lg:w-12">
                 {String(i + 1).padStart(2, "0")}
               </span>
+
+              {/* Thumbnail */}
+              {c.hero.image ? (
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-[var(--color-line)] bg-[var(--color-surface)] transition-colors group-hover:border-[var(--color-accent)]/40 lg:w-[180px] lg:shrink-0">
+                  <Image
+                    src={c.hero.image}
+                    alt={`${c.title} — ${c.tagline}`}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 180px"
+                    className="object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                  />
+                  <div
+                    aria-hidden
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, rgba(7,7,10,0.10), rgba(7,7,10,0.55) 90%)",
+                    }}
+                  />
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 mix-blend-soft-light opacity-50"
+                    style={{
+                      background:
+                        "radial-gradient(ellipse 55% 60% at 70% 30%, rgba(220,38,38,0.30), transparent 70%)",
+                    }}
+                  />
+                </div>
+              ) : null}
 
               {/* Title block */}
               <div className="flex flex-1 flex-col gap-3">

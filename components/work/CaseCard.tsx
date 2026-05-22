@@ -23,7 +23,11 @@ export function CaseCard({ study, index }: { study: CaseStudy; index: number }) 
         className="block"
       >
         <div className="relative aspect-[4/3] overflow-hidden rounded-md border border-[var(--color-line)] bg-[var(--color-surface)] transition-colors group-hover:border-[var(--color-accent)]/40">
-          <CaseHeroPattern pattern={study.hero.pattern} />
+          <CaseHeroPattern
+            pattern={study.hero.pattern}
+            image={study.hero.image}
+            alt={`${study.title} — ${study.tagline}`}
+          />
           <div className="absolute inset-0 flex flex-col justify-between p-6">
             <div className="flex items-center justify-between">
               <Tag>{study.category}</Tag>

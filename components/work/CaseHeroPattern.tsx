@@ -1,13 +1,91 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 type Pattern = "rings" | "grid" | "wave";
 
-export function CaseHeroPattern({ pattern }: { pattern: Pattern }) {
+export function CaseHeroPattern({
+  pattern,
+  image,
+  alt,
+}: {
+  pattern: Pattern;
+  image?: string;
+  alt?: string;
+}) {
+  if (image) return <ImageHero src={image} alt={alt || ""} pattern={pattern} />;
   if (pattern === "grid") return <GridPattern />;
   if (pattern === "wave") return <WavePattern />;
   return <RingsPattern />;
+}
+
+function ImageHero({
+  src,
+  alt,
+  pattern,
+}: {
+  src: string;
+  alt: string;
+  pattern: Pattern;
+}) {
+  // Photographic hero with cinematic overlay so existing typography
+  // still reads. The SVG pattern is layered on top at very low alpha
+  // to keep some kinship with the rest of the system.
+  return (
+    <div className="absolute inset-0 overflow-hidden">
+      <motion.div
+        initial={{ scale: 1.06, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute inset-0"
+      >
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(max-width: 1024px) 100vw, 800px"
+          className="object-cover"
+          priority={false}
+        />
+      </motion.div>
+      {/* deep tint to keep text legible regardless of source brightness */}
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(7,7,10,0.10) 0%, rgba(7,7,10,0.55) 78%, rgba(7,7,10,0.92) 100%), radial-gradient(ellipse 80% 60% at 20% 50%, rgba(7,7,10,0.45) 0%, transparent 70%)",
+        }}
+      />
+      {/* subtle accent wash so each card still feels related to the system */}
+      <div
+        aria-hidden
+        className="absolute inset-0 mix-blend-soft-light opacity-60"
+        style={{
+          background:
+            "radial-gradient(ellipse 50% 50% at 70% 30%, rgba(220,38,38,0.30), transparent 65%)",
+        }}
+      />
+      {/* corner accent — same vocabulary as the rest of the site */}
+      <svg
+        aria-hidden
+        viewBox="0 0 22 22"
+        className="absolute bottom-3 right-3 h-3.5 w-3.5 text-[var(--color-accent)] opacity-60"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1"
+      >
+        <path d="M0 8V0h8" />
+        <circle cx="3" cy="3" r="1" fill="currentColor" />
+      </svg>
+      {/* faint motion of the underlying SVG pattern, alpha low */}
+      <div className="absolute inset-0 opacity-[0.12] mix-blend-screen">
+        {pattern === "rings" ? <RingsPattern /> : pattern === "grid" ? <GridPattern /> : <WavePattern />}
+      </div>
+    </div>
+  );
 }
 
 function RingsPattern() {

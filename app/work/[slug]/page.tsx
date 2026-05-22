@@ -43,7 +43,11 @@ export default async function CaseStudyPage({
       {/* Hero */}
       <section className="relative isolate overflow-hidden border-b border-[var(--color-line)] pt-32 pb-16 lg:pt-40 lg:pb-24">
         <div className="pointer-events-none absolute inset-0 -z-10 opacity-80">
-          <CaseHeroPattern pattern={study.hero.pattern} />
+          <CaseHeroPattern
+            pattern={study.hero.pattern}
+            image={study.hero.image}
+            alt={`${study.title} — ${study.tagline}`}
+          />
         </div>
 
         <div className="mx-auto w-full max-w-[1440px] px-6 lg:px-12">

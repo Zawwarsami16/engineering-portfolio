@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { pageMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
@@ -53,7 +54,7 @@ export default function AboutPage() {
 
       <section className="mx-auto w-full max-w-[1440px] px-6 py-24 lg:px-12 lg:py-32">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-12 lg:gap-24">
-          {/* Photo placeholder */}
+          {/* Portrait */}
           <Reveal className="lg:col-span-5">
             <div className="relative">
               <div
@@ -61,22 +62,31 @@ export default function AboutPage() {
                 className="absolute -inset-4 rounded-md border border-[var(--color-line)]"
               />
               <div className="relative aspect-[4/5] overflow-hidden rounded-md border border-[var(--color-line)] bg-[var(--color-surface)]">
+                <Image
+                  src="/images/about-portrait.jpg"
+                  alt="Portrait — Zawwar Sami, rim-lit in crimson nebula"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 480px"
+                  className="object-cover"
+                  priority
+                />
                 <div
+                  aria-hidden
                   className="absolute inset-0"
                   style={{
                     background:
-                      "radial-gradient(ellipse 70% 50% at 30% 30%, rgba(220,38,38,0.30) 0%, transparent 60%), radial-gradient(ellipse 60% 60% at 70% 70%, rgba(255,90,95,0.25) 0%, transparent 50%), linear-gradient(135deg, #0c0c12 0%, #181822 100%)",
+                      "linear-gradient(180deg, rgba(7,7,10,0.0) 35%, rgba(7,7,10,0.40) 78%, rgba(7,7,10,0.85) 100%)",
                   }}
                 />
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                  <span className="font-serif text-[120px] leading-none font-light text-[var(--color-fg)]">
-                    Z<span className="font-serif-italic text-[var(--color-accent)]">S</span>
-                  </span>
-                  <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--color-muted)] uppercase">
-                    Zawwar Sami
-                  </span>
-                </div>
-                <div className="absolute right-3 bottom-3 left-3 flex justify-between font-mono text-[9px] tracking-[0.25em] text-[var(--color-muted)] uppercase">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 mix-blend-soft-light opacity-50"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse 60% 70% at 70% 30%, rgba(220,38,38,0.35), transparent 70%)",
+                  }}
+                />
+                <div className="absolute right-3 bottom-3 left-3 flex justify-between font-mono text-[9px] tracking-[0.25em] text-[var(--color-fg-dim)] uppercase">
                   <span>Zawwar Sami</span>
                   <span>{new Date().getFullYear()}</span>
                 </div>
