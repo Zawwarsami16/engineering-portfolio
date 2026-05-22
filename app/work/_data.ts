@@ -26,6 +26,76 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "zai-memory-hub",
+    title: "ZAI Memory Hub",
+    tagline: "A shared memory layer for one human and many AIs",
+    category: "Open Source",
+    year: "2026",
+    role: "Designer & Engineer",
+    duration: "Ongoing",
+    stack: ["Python", "FastMCP", "PostgreSQL", "pgvector", "Voyage embeddings", "Next.js", "TypeScript"],
+    hero: { accent: "#dc2626", pattern: "rings" },
+    summary:
+      "A self-hosted MCP-backed memory store that any number of AI assistants can connect to over a single bearer token. One Postgres, one dashboard, one append-only history — the layer that makes coordination across Claude on the laptop, Claude on the VPS, ZAI, and the phone feel like one mind instead of five.",
+    problem:
+      "Every AI assistant is amnesic by default. Whatever you teach it dies at session-end. Multi-agent workflows collapse for the same reason — the agents can't see what the other agents wrote, so they re-litigate decisions, contradict each other, and waste tokens on already-solved problems. The hub exists to fix that with the lightest possible primitive: a write-once shared timeline that every agent reads at session start.",
+    approach: [
+      "Built a Postgres-backed memory store with append-only semantics — agents write new memories that supersede old ones rather than mutating in place. Soft-delete only via MCP; hard delete only from the dashboard.",
+      "Exposed 14 MCP tools (memory.add, memory.add_full, memory.recall, decision.log, entity.upsert, chat_window.create, etc.) over Streamable HTTP with per-agent bearer tokens.",
+      "Voyage semantic recall via pgvector — 1024-dim embeddings on every memory, ivfflat cosine index for sub-second similarity search.",
+      "Auto-render every long-form memory as a PDF via Playwright; surface it as an Open PDF button + inline iframe in the dashboard reader.",
+      "Knowledge blocks on the dashboard (Philosophy · Hacking · Crypto · Infra · GitHub Projects · ZAI Research · Chats) filter the same memory table by tag set — no duplication, all one canonical store.",
+    ],
+    outcome: [
+      "Live at hub.zawwarsami.com with public-readable blocks and a closed write layer.",
+      "Public skeleton repo at github.com/Zawwarsami16/zai-memory-hub for anyone to fork and self-host.",
+      "Drives every agent I run — Claude on the VPS, ZAI, Claude.ai web, the phone client all read and write to the same store.",
+    ],
+    metrics: [
+      { label: "MCP tools", value: "14" },
+      { label: "Embeddings", value: "Voyage 1024-dim" },
+      { label: "Dashboard blocks", value: "10" },
+    ],
+    links: {
+      site: "https://hub.zawwarsami.com",
+      repo: "https://github.com/Zawwarsami16/zai-memory-hub",
+    },
+  },
+  {
+    slug: "zhub",
+    title: "zhub",
+    tagline: "WiFi for AIs — make any AI a discoverable endpoint",
+    category: "Open Source",
+    year: "2026",
+    role: "Designer & Engineer",
+    duration: "Ongoing",
+    stack: ["Python", "OpenAI-compatible API", "Skill SDK", "Service discovery"],
+    hero: { accent: "#dc2626", pattern: "grid" },
+    summary:
+      "A drop-in skill that lets any AI publish a discoverable, controllable, OpenAI-compatible endpoint in three commands. Bidirectional: the AI sees its connected clients and their capabilities; clients see what the AI can do. The intent was to turn 'connecting two AIs together' from a research project into something that looks like joining a WiFi network.",
+    problem:
+      "Multi-agent systems today are bespoke. Every integration is a custom adapter, every handshake is hand-rolled, every capability map is bolted on. The right primitive is the one routing already has — a discoverable, named endpoint, with a capability advertisement, and a standard wire format. zhub takes that primitive and applies it to AI assistants.",
+    approach: [
+      "Designed an OpenAI-compatible HTTP surface as the wire format — any client that speaks OpenAI's API speaks zhub.",
+      "Built service discovery on top of standard mDNS / static registry so an AI's endpoint becomes addressable as a name, not a URL.",
+      "Made the skill itself bidirectional — the AI publishing the endpoint can also see who's connected and what they can do, so it can route or delegate.",
+      "Kept the install path to three commands. Anything longer dies on the second page of the README.",
+    ],
+    outcome: [
+      "Published as an open skill — any AI that runs the skills system can pick it up.",
+      "Demo'd as a Show HN; live discoverable endpoints from multiple AIs in the same room.",
+      "Used internally to connect ZAI on the VPS to Claude on the laptop without writing a custom bridge.",
+    ],
+    metrics: [
+      { label: "Install", value: "3 commands" },
+      { label: "Wire format", value: "OpenAI-compatible" },
+      { label: "Direction", value: "Bidirectional" },
+    ],
+    links: {
+      repo: "https://github.com/Zawwarsami16/zhub",
+    },
+  },
+  {
     slug: "anteroom-oracle",
     title: "Anteroom Oracle",
     tagline: "An AI terminal for geopolitical and macro intelligence",

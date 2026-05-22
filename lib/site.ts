@@ -34,15 +34,6 @@ export const site = {
       datePublished: "2026-05-22",
       tags: ["AGI", "personal AI", "philosophy of mind"],
     },
-    {
-      slug: "pause-substrate-cooperative-mind",
-      title: "The Pause, the Substrate, the Cooperative Mind",
-      summary:
-        "Three philosophical observations the present moment has made unusually visible — on speech, the body, and why a finite being fights. Held lightly.",
-      url: "https://zawwar16.substack.com/p/pause-substrate-cooperative-mind",
-      datePublished: "2026-05-26",
-      tags: ["Islamic philosophy", "consciousness", "AI alignment"],
-    },
   ],
   nav: [
     { label: "About", href: "/about" },
