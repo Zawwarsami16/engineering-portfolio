@@ -26,6 +26,15 @@ export const site = {
   },
   writing: [
     {
+      slug: "pause-substrate-cooperative-mind",
+      title: "The Pause, the Substrate, the Cooperative Mind",
+      summary:
+        "Three philosophical observations the present moment has made unusually visible — on speech, the body, and why a finite being fights. Held lightly.",
+      url: "https://zawwar16.substack.com/p/pause-substrate-cooperative-mind",
+      datePublished: "2026-05-26",
+      tags: ["philosophy of mind", "presence", "Islamic philosophy"],
+    },
+    {
       slug: "two-ais",
       title: "Two AIs",
       summary:
