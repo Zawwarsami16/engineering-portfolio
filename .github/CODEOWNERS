@@ -1,0 +1,16 @@
+# Default owner for all paths.
+*                       @Zawwarsami16
+
+# Content surfaces — review tightly for tone + factual claims.
+/app/writing/**         @Zawwarsami16
+/app/work/**            @Zawwarsami16
+/lib/site.ts            @Zawwarsami16
+
+# Schema / SEO surfaces — review changes here against the live SERP plan.
+/app/sitemap.ts         @Zawwarsami16
+/app/robots.ts          @Zawwarsami16
+/lib/seo.ts             @Zawwarsami16
+
+# CI / dependencies.
+/.github/workflows/**   @Zawwarsami16
+/.github/dependabot.yml @Zawwarsami16
