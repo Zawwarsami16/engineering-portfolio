@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Direct contact
+    url: https://zawwar-sami.vercel.app/contact
+    about: For private feedback, collaboration, or anything that doesn't fit a public issue.

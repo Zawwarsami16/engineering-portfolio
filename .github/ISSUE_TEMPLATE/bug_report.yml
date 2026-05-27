@@ -1,0 +1,57 @@
+name: Bug report
+description: Something is broken on the site — broken link, layout glitch, content error, deploy failure.
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What's wrong
+      description: One or two sentences. What did you see vs. what did you expect?
+      placeholder: "The /film page shows a blank video player on Safari iOS 17."
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Page URL
+      description: The page where the issue shows up.
+      placeholder: "https://zawwar-sami.vercel.app/film"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Surface
+      description: Where does this manifest?
+      options:
+        - Content (typo, factual error, broken link)
+        - Layout / styling
+        - Functionality (JS error, broken interaction)
+        - SEO / schema / metadata
+        - Build / deploy
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Numbered list. If a browser-specific issue, include OS + browser + version.
+      placeholder: |
+        1. Open https://zawwar-sami.vercel.app/film on Safari 17 iOS
+        2. Tap the play button
+        3. Player shows a blank frame and never advances
+    validations:
+      required: false
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Screenshots, console errors, network responses, related issues.
+    validations:
+      required: false
