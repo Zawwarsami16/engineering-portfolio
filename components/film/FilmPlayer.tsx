@@ -115,10 +115,11 @@ export function FilmPlayer() {
                   {c.title}
                 </span>
                 <span className="mt-1 block font-mono text-[9px] tracking-[0.2em] text-[var(--color-muted)]">
-                  {Math.floor(c.start).toString().padStart(2, "0")}:
-                  {Math.floor((c.start % 1) * 60)
+                  {Math.floor(c.start / 60)
                     .toString()
                     .padStart(2, "0")}
+                  :
+                  {Math.floor(c.start % 60).toString().padStart(2, "0")}
                 </span>
               </button>
             </li>
