@@ -275,7 +275,10 @@ export function CommandPalette() {
                 </div>
               )}
               {filtered.map((it, i) => {
-                const showGroup = it.group !== lastGroup;
+                // group dividers only make sense while browsing; once a query
+                // is active the list is score-sorted so groups interleave and
+                // the running compare would repeat the same header
+                const showGroup = !query.trim() && it.group !== lastGroup;
                 lastGroup = it.group;
                 const Icon = it.icon;
                 const isActive = i === active;
