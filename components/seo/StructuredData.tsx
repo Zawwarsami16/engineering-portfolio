@@ -63,6 +63,15 @@ export function StructuredData() {
         slogan: site.studio.tagline,
         description:
           "Solo design and engineering studio building AI systems for markets, geopolitics, and macro intelligence.",
+        // Google's Article guidelines require the publisher Organization to
+        // carry a logo as an ImageObject; without it BlogPosting publisher is
+        // flagged in Rich Results.
+        logo: {
+          "@type": "ImageObject",
+          url: `${SITE_URL}/opengraph-image`,
+          width: 1200,
+          height: 630,
+        },
       },
       {
         "@type": "WebSite",
@@ -90,7 +99,7 @@ export function StructuredData() {
         mainEntityOfPage: post.url,
         datePublished: post.datePublished,
         author: { "@id": PERSON_ID },
-        publisher: { "@id": PERSON_ID },
+        publisher: { "@id": ORG_ID },
         keywords: post.tags.join(", "),
         description: post.summary,
       })),
