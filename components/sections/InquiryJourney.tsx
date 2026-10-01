@@ -67,7 +67,7 @@ export function InquiryJourney() {
     <section
       ref={ref}
       id="inquiry"
-      className={`inquiry-journey${reduced ? "journey-reduced" : ""}`}
+      className={["inquiry-journey", reduced && "journey-reduced"].filter(Boolean).join(" ")}
     >
       <div className="journey-sticky shell">
         <div className="journey-top">

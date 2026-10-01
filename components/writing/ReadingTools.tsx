@@ -39,7 +39,9 @@ export function ReadingSurface({ children }: { children: React.ReactNode }) {
   const [large, setLarge] = useState(false);
   return (
     <div
-      className={`reading-surface${light ? "reading-light" : ""}${large ? "reading-large" : ""}`}
+      className={["reading-surface", light && "reading-light", large && "reading-large"]
+        .filter(Boolean)
+        .join(" ")}
     >
       <div className="reading-preferences shell">
         <span className="eyebrow">Reading room</span>
