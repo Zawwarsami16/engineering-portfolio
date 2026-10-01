@@ -1930,3 +1930,54 @@ body:has(.reading-surface) .custom-cursor {
     cursor: auto !important;
   }
 }
+
+/* Keep the native mobile viewport and prevent wide descendants from sizing the page. */
+html,
+body {
+  width: 100%;
+  min-width: 0;
+}
+body {
+  overflow-x: clip;
+}
+#main-content {
+  min-width: 0;
+}
+.video-hero video {
+  max-width: 100%;
+}
+@media (max-width: 1023px) {
+  .site-nav {
+    top: 12px;
+    left: 14px;
+    right: 14px;
+  }
+  .nav-inner {
+    min-height: 62px;
+    padding: 0 14px;
+    gap: 12px;
+  }
+  .desktop-nav,
+  .nav-contact {
+    display: none;
+  }
+  .menu-trigger {
+    display: inline-flex;
+  }
+  .nav-actions {
+    gap: 0;
+  }
+  .video-hero h1 {
+    font-size: clamp(40px, 11vw, 88px);
+  }
+  .video-hero [class*="tracking-"] {
+    overflow-wrap: anywhere;
+  }
+}
+@media (max-width: 600px) {
+  input,
+  textarea,
+  select {
+    font-size: max(16px, 1em);
+  }
+}

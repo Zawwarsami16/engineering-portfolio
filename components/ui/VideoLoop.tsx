@@ -32,25 +32,38 @@ export function VideoLoop({
     const v = ref.current;
     if (!v) return;
 
-    const onLoaded = () => {
-      setReady(true);
-      if (!reduced) {
+    let inView = true;
+    const syncPlayback = () => {
+      if (reduced || document.hidden || !inView) {
+        v.pause();
+      } else {
+        v.muted = true;
         v.play().catch(() => {
-          /* Some browsers reject autoplay even when muted; the poster still shows. */
+          // Keep the poster visible if the device blocks muted autoplay.
         });
       }
     };
-    const onVisibility = () => {
-      if (!v) return;
-      if (document.hidden) v.pause();
-      else if (!reduced) v.play().catch(() => {});
+    const onLoaded = () => {
+      setReady(true);
+      syncPlayback();
     };
-
-    v.addEventListener("loadedmetadata", onLoaded);
-    document.addEventListener("visibilitychange", onVisibility);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inView = entry.isIntersecting;
+        syncPlayback();
+      },
+      { threshold: 0.01 },
+    );
+    observer.observe(v);
+    v.addEventListener("loadeddata", onLoaded);
+    document.addEventListener("visibilitychange", syncPlayback);
+    if (v.readyState >= 2) onLoaded();
+    else if (reduced) v.pause();
     return () => {
-      v.removeEventListener("loadedmetadata", onLoaded);
-      document.removeEventListener("visibilitychange", onVisibility);
+      observer.disconnect();
+      v.removeEventListener("loadeddata", onLoaded);
+      document.removeEventListener("visibilitychange", syncPlayback);
+      v.pause();
     };
   }, [reduced]);
 
@@ -62,7 +75,7 @@ export function VideoLoop({
       muted
       loop
       playsInline
-      autoPlay
+      autoPlay={!reduced}
       preload={preload}
       aria-hidden
       className={cn(
