@@ -32,8 +32,17 @@ const chapters = [
 function Chapter({ index, progress }: { index: number; progress: MotionValue<number> }) {
   const c = chapters[index];
   const a = index / 3;
-  const opacity = useTransform(progress, [a - 0.09, a + 0.03, a + 0.23, a + 0.33], [0, 1, 1, 0]);
-  const y = useTransform(progress, [a - 0.09, a + 0.03, a + 0.23, a + 0.33], [35, 0, 0, -35]);
+  // Keep chapter ranges in JavaScript: the first chapter starts before zero,
+  // which cannot be represented by native ScrollTimeline keyframe offsets.
+  const opacity = useTransform(progress, (value) => {
+    const phase = value - a;
+    return Math.max(0, Math.min(1, (phase + 0.09) / 0.12, (0.33 - phase) / 0.1));
+  });
+  const y = useTransform(progress, (value) => {
+    const phase = value - a;
+    if (phase < 0.03) return 35 * (1 - Math.max(0, (phase + 0.09) / 0.12));
+    return -35 * Math.max(0, Math.min(1, (phase - 0.23) / 0.1));
+  });
   const visibility = useTransform(opacity, (value) => (value > 0.4 ? "visible" : "hidden"));
   return (
     <motion.div className="journey-chapter" style={{ opacity, y, visibility }}>
