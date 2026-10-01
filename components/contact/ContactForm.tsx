@@ -126,6 +126,7 @@ export function ContactForm() {
       <AnimatePresence>
         {message && (
           <motion.div
+            role="status"
             key={message}
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}

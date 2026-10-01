@@ -74,11 +74,20 @@ export const baseMetadata: Metadata = {
   },
 };
 
-export function pageMetadata(title: string, description?: string): Metadata {
+export function pageMetadata(title: string, description?: string, path?: string): Metadata {
+  const paths: Record<string, string> = {
+    About: "/about",
+    Work: "/work",
+    Stack: "/stack",
+    Contact: "/contact",
+    "The Anteroom Film": "/film",
+  };
+  const canonical = path ?? paths[title];
   return {
     title,
     description,
-    openGraph: { title, description },
+    ...(canonical ? { alternates: { canonical } } : {}),
+    openGraph: { title, description, ...(canonical ? { url: canonical } : {}) },
     twitter: { title, description },
   };
 }

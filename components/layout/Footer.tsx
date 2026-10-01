@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { Mail, MapPin, CircleDot, Github, Linkedin, Twitter, Hexagon, Newspaper } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";

@@ -11,7 +11,7 @@ export function Chrome({ children }: { children: React.ReactNode }) {
       <Nav />
       <EdgeRails />
       <ScrollRail />
-      <main className="relative">{children}</main>
+      <main id="main-content" tabIndex={-1} className="relative">{children}</main>
       <Footer />
     </>
   );

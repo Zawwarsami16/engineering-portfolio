@@ -23,7 +23,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const study = getCaseStudy(slug);
   if (!study) return pageMetadata("Case study not found");
-  return pageMetadata(`${study.title} — ${study.tagline}`, study.summary);
+  return pageMetadata(`${study.title} — ${study.tagline}`, study.summary, `/work/${slug}`);
 }
 
 export default async function CaseStudyPage({

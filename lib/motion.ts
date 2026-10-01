@@ -9,13 +9,13 @@ export const fadeUp: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: easeOutExpo },
+    transition: { duration: 0.5, ease: easeOutExpo },
   },
 };
 
 export const fadeIn: Variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.8, ease: easeOutExpo } },
+  visible: { opacity: 1, transition: { duration: 0.5, ease: easeOutExpo } },
 };
 
 export const stagger = (delayChildren = 0.05, staggerChildren = 0.06): Variants => ({

@@ -83,7 +83,7 @@ export function Cursor() {
   return (
     <motion.div
       aria-hidden
-      className="pointer-events-none fixed top-0 left-0 z-[100] h-16 w-16 will-change-transform"
+      className="pointer-events-none fixed top-0 left-0 custom-cursor z-[100] h-16 w-16 will-change-transform"
       style={{ x: tx, y: ty }}
       animate={{ opacity: visible ? 1 : 0 }}
     >

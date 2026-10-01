@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { writings } from "@/lib/writing";
 import { caseStudies } from "./work/_data";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://zawwarsami.com";
@@ -29,5 +30,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...caseRoutes];
+  return [
+    ...staticRoutes,
+    ...caseRoutes,
+    ...writings.map((entry) => ({
+      url: `${SITE_URL}/writing/${entry.slug}`,
+      lastModified: new Date("2026-10-01"),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+  ];
 }

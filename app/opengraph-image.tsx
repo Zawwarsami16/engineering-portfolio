@@ -38,7 +38,6 @@ export default async function OG() {
       >
         {backdropDataUrl ? (
           <>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={backdropDataUrl}
               alt=""

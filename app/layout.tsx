@@ -4,6 +4,7 @@ import { baseMetadata } from "@/lib/seo";
 import { cn } from "@/lib/cn";
 import { Providers } from "./providers";
 import { StructuredData } from "@/components/seo/StructuredData";
+import { Chrome } from "@/components/layout/Chrome";
 import "./globals.css";
 
 export const metadata: Metadata = baseMetadata;
@@ -22,9 +23,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={cn(inter.variable, cormorant.variable, jetbrains.variable)}
       suppressHydrationWarning
     >
-      <body className="min-h-dvh font-sans antialiased grain">
+      <body className="grain min-h-dvh font-sans antialiased">
         <StructuredData />
-        <Providers>{children}</Providers>
+        <Providers>
+          <Chrome>{children}</Chrome>
+        </Providers>
       </body>
     </html>
   );

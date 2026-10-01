@@ -1,74 +1,76 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { pageMetadata } from "@/lib/seo";
-import { PageHero } from "@/components/ui/PageHero";
-import { Reveal } from "@/components/ui/Reveal";
-import { Tag } from "@/components/ui/Pill";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { writings } from "@/lib/writing";
+import { Archive } from "@/components/writing/Archive";
 import { site } from "@/lib/site";
-
-export const metadata: Metadata = pageMetadata(
-  "Writing",
-  "Essays by Zawwar Sami — on autonomous intelligence, Islamic philosophy, and the present moment in AI. Published on Substack.",
-);
-
+export const metadata: Metadata = {
+  title: "Writing & Research",
+  description:
+    "The writing and research archive of Zawwar Sami. Essays on autonomous intelligence, consciousness and Islamic philosophy, with original sources and citations.",
+  alternates: { canonical: "/writing" },
+  openGraph: { title: "Writing & Research · Zawwar Sami", url: "/writing" },
+};
 export default function WritingPage() {
-  const posts = [...site.writing].sort(
-    (a, b) => b.datePublished.localeCompare(a.datePublished),
-  );
-
+  const featured = writings.find((e) => e.slug === "two-ais")!;
   return (
     <>
-      <PageHero
-        tag="Writing"
-        title="Notes from"
-        italic="the anteroom."
-        description="Essays on the shape of the present moment — autonomous intelligence, the substrate beneath function, and the older traditions that prefigured all of it. Published on Substack."
-      />
-
-      <section className="mx-auto w-full max-w-[1100px] px-6 py-20 lg:px-12 lg:py-28">
-        <ul className="flex flex-col">
-          {posts.map((post, i) => (
-            <Reveal key={post.slug} delay={i * 0.05}>
-              <li className="border-t border-[var(--color-line)] last:border-b">
-                <a
-                  href={post.url}
-                  target="_blank"
-                  rel="noopener"
-                  className="group flex flex-col gap-4 py-10 lg:flex-row lg:items-baseline lg:gap-10 lg:py-14"
-                >
-                  <span className="font-mono text-[10px] tracking-[0.3em] text-[var(--color-muted)] uppercase lg:w-28">
-                    {post.datePublished}
-                  </span>
-                  <div className="flex flex-1 flex-col gap-3">
-                    <h2 className="font-serif text-[clamp(28px,3.4vw,44px)] leading-[1.1] tracking-tight font-light text-[var(--color-fg)] group-hover:text-[var(--color-accent)] transition-colors">
-                      {post.title}
-                    </h2>
-                    <p className="max-w-[64ch] text-[var(--color-muted)] leading-relaxed">
-                      {post.summary}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {post.tags.map((t) => (
-                        <Tag key={t}>{t}</Tag>
-                      ))}
-                    </div>
-                  </div>
-                </a>
-              </li>
-            </Reveal>
-          ))}
-        </ul>
-
-        <div className="mt-16 flex items-center gap-3 text-sm text-[var(--color-muted)]">
-          <span className="font-mono text-[10px] tracking-[0.3em] uppercase">
-            Subscribe ·
-          </span>
-          <Link
-            href={site.socials.substack}
-            className="underline underline-offset-4 hover:text-[var(--color-accent)] transition-colors"
-          >
-            zawwar16.substack.com
+      <section className="archive-hero">
+        <div className="archive-hero-art" aria-hidden="true">
+          <Image src="/images/observatory.webp" alt="" fill priority sizes="100vw" />
+        </div>
+        <div className="shell archive-hero-content">
+          <div className="eyebrow">
+            <span className="status-dot" /> The Anteroom / Writing & Research
+          </div>
+          <h1>
+            An archive
+            <br />
+            of <em>inquiry.</em>
+          </h1>
+          <p>
+            Notes from the anteroom. On autonomous intelligence, the nature of consciousness, and
+            the older traditions that ask what it means to be.
+          </p>
+          <a href="#archive" className="text-link">
+            Explore the writing <ArrowDown size={16} />
+          </a>
+          <div className="archive-hero-foot">
+            <span>By Zawwar Sami</span>
+            <span>Independent inquiry · Open reading</span>
+          </div>
+        </div>
+      </section>
+      <section className="featured-writing shell">
+        <div className="featured-art" aria-hidden="true">
+          <div className="binary-orbit">
+            <span />
+            <span />
+            <i />
+          </div>
+          <span>Artificial / Autonomous</span>
+        </div>
+        <div className="featured-copy">
+          <span className="eyebrow">A starting point / Essay</span>
+          <h2>{featured.title}</h2>
+          <p>{featured.summary}</p>
+          <Link href={`/writing/${featured.slug}`} className="text-link">
+            Explore this essay <ArrowUpRight size={17} />
           </Link>
         </div>
+      </section>
+      <Archive entries={writings} />
+      <section className="writing-outro shell">
+        <span className="eyebrow">Keep the conversation open</span>
+        <h2>
+          Some questions
+          <br />
+          <em>deserve more time.</em>
+        </h2>
+        <a className="pill-link" href={site.socials.substack} target="_blank" rel="noreferrer">
+          Follow the writing on Substack <ArrowUpRight size={17} />
+        </a>
       </section>
     </>
   );

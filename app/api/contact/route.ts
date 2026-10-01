@@ -20,15 +20,11 @@ export async function POST(req: Request) {
     const to = process.env.CONTACT_TO_EMAIL ?? "zawwarsami16@gmail.com";
     const from = process.env.CONTACT_FROM_EMAIL ?? "Portfolio <onboarding@resend.dev>";
 
-    // No API key? Treat as dev — log and accept gracefully.
     if (!apiKey) {
-      console.info("[contact] (no RESEND_API_KEY set — would send)", {
-        name,
-        email,
-        subject,
-        message,
-      });
-      return NextResponse.json({ ok: true, dev: true });
+      return NextResponse.json(
+        { error: "The contact form is temporarily unavailable. Please email zawwarsami16@gmail.com directly." },
+        { status: 503 },
+      );
     }
 
     const resend = new Resend(apiKey);

@@ -28,15 +28,16 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     }
 
     const instance = new Lenis({
-      duration: 1.6,
+      duration: 0.9,
       easing: (t: number) => 1 - Math.pow(1 - t, 4),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 0.9,
+      wheelMultiplier: 1,
       touchMultiplier: 1.4,
       syncTouch: false,
       autoRaf: false,
+      anchors: true,
     });
     lenisRef.current = instance;
     setLenis(instance);
@@ -57,6 +58,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
   }, [reduced, isTouch]);
 
   useEffect(() => {
+    if (window.location.hash) return;
     if (lenisRef.current) {
       lenisRef.current.scrollTo(0, { immediate: true });
     } else {

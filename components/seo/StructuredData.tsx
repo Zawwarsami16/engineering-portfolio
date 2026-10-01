@@ -21,7 +21,6 @@ export function StructuredData() {
         jobTitle: "Engineer, Builder",
         description:
           "Independent engineer and builder. Founder of Anteroom Studio. Builds AI systems for markets, geopolitics, and macro intelligence.",
-        nationality: "Canadian",
         address: {
           "@type": "PostalAddress",
           addressCountry: site.location.country,
