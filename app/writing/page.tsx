@@ -49,7 +49,7 @@ export default function WritingPage() {
             <span />
             <i />
           </div>
-          <span>Memory / Continuity / Authority</span>
+          <span>{featured.tags.slice(0, 3).join(" / ")}</span>
         </div>
         <div className="featured-copy">
           <span className="eyebrow">Latest paper / 2026</span>
