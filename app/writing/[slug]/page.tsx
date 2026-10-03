@@ -17,19 +17,19 @@ export async function generateMetadata({
   const entry = writings.find((e) => e.slug === slug);
   if (!entry) return {};
   return {
-    title: entry.title,
+    title: `${entry.title}${entry.subtitle ? ` ${entry.subtitle}` : ""}`,
     description: entry.summary,
     alternates: { canonical: `/writing/${slug}` },
     openGraph: {
       type: "article",
-      title: entry.title,
+      title: `${entry.title}${entry.subtitle ? ` ${entry.subtitle}` : ""}`,
       description: entry.summary,
       url: `/writing/${slug}`,
       authors: ["Zawwar Sami"],
       publishedTime: entry.datePublished,
     },
     other: {
-      citation_title: entry.title,
+      citation_title: `${entry.title}${entry.subtitle ? ` ${entry.subtitle}` : ""}`,
       citation_author: "Zawwar Sami",
       citation_publication_date: entry.datePublished.replaceAll("-", "/"),
       ...(entry.pdf ? { citation_pdf_url: `https://zawwarsami.com${entry.pdf}` } : {}),
@@ -49,7 +49,7 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
     url: `https://zawwarsami.com/writing/${slug}`,
     mainEntity: {
       "@type": entry.kind === "Paper" ? "ScholarlyArticle" : "Article",
-      headline: entry.title,
+      headline: `${entry.title}${entry.subtitle ? ` ${entry.subtitle}` : ""}`,
       author: { "@type": "Person", name: "Zawwar Sami", url: "https://zawwarsami.com" },
       datePublished: entry.datePublished,
       url: entry.url,
@@ -80,6 +80,27 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
             {entry.kind} <span>/</span> {entry.status}
           </div>
           <h1>{entry.title}</h1>
+          {entry.subtitle && <p className="paper-subtitle">{entry.subtitle}</p>}
+          {entry.pdf && (
+            <div className="paper-actions">
+              <a className="pill-link primary" href={entry.pdf} target="_blank" rel="noreferrer">
+                Read PDF <ArrowUpRight size={17} />
+              </a>
+              <a className="small-button" href={entry.pdf} download>
+                <Download size={16} /> Download PDF
+              </a>
+              {entry.substack && (
+                <a className="text-link" href={entry.substack} target="_blank" rel="noreferrer">
+                  Read on Substack <ArrowUpRight size={16} />
+                </a>
+              )}
+              {entry.philpapers && (
+                <a className="text-link" href={entry.philpapers} target="_blank" rel="noreferrer">
+                  PhilPapers <ArrowUpRight size={16} />
+                </a>
+              )}
+            </div>
+          )}
           <div className="reading-byline">
             <span>Zawwar Sami</span>
             <span>·</span>
@@ -95,6 +116,12 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
             <dd>{entry.status}</dd>
             <dt>Edition</dt>
             <dd>{entry.version}</dd>
+            {entry.pages && (
+              <>
+                <dt>Length</dt>
+                <dd>{entry.pages} pages</dd>
+              </>
+            )}
           </dl>
           <div className="topic-tags">
             {entry.tags.map((t) => (
@@ -113,7 +140,7 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
         <div className="reading-main">
           <div className="reading-abstract">
             <span className="eyebrow">{entry.kind === "Paper" ? "Abstract" : "Overview"}</span>
-            <p>{entry.summary}</p>
+            <p>{entry.abstract ?? entry.summary}</p>
           </div>
           {entry.sections ? (
             <div className="article-prose">
@@ -125,6 +152,18 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
                   ))}
                 </section>
               ))}
+            </div>
+          ) : entry.pdf ? (
+            <div className="source-panel">
+              <span className="eyebrow">Full paper</span>
+              <h2>Read the original manuscript.</h2>
+              <p>
+                The complete seven-page paper is available in the author’s original PDF, including
+                references.
+              </p>
+              <a className="text-link" href={entry.pdf} target="_blank" rel="noreferrer">
+                Open PDF <ArrowUpRight size={17} />
+              </a>
             </div>
           ) : (
             <div className="source-panel">
@@ -138,11 +177,6 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
                 Read full essay <ArrowUpRight size={17} />
               </a>
             </div>
-          )}
-          {entry.pdf && (
-            <a className="pill-link" href={entry.pdf} download>
-              <Download size={17} /> Download PDF
-            </a>
           )}
           {entry.doi && (
             <p>
@@ -163,9 +197,18 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
           <div className="edition-note">
             <span className="eyebrow">Publication record</span>
             <p>
-              Original publication: {writingDate(entry.datePublished)}. This archive record
-              preserves the source link and publication details; it does not represent peer review
-              or a new edition of the essay.
+              {entry.pdf ? (
+                <>
+                  Added to this website on {writingDate(entry.datePublished)}. The PDF is preserved
+                  exactly as supplied by the author.
+                </>
+              ) : (
+                <>
+                  Original publication: {writingDate(entry.datePublished)}. This archive record
+                  preserves the source link and publication details; it does not represent peer
+                  review or a new edition of the essay.
+                </>
+              )}
             </p>
           </div>
         </div>

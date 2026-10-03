@@ -1981,3 +1981,22 @@ body {
     font-size: max(16px, 1em);
   }
 }
+
+.paper-subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(26px, 3vw, 40px);
+  line-height: 1.25;
+  color: var(--color-fg-dim);
+  margin-top: 18px;
+  max-width: 780px;
+}
+.paper-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 30px;
+}
+.paper-actions .pill-link {
+  margin: 0;
+}

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: { title: "Writing & Research · Zawwar Sami", url: "/writing" },
 };
 export default function WritingPage() {
-  const featured = writings.find((e) => e.slug === "two-ais")!;
+  const featured = writings.find((e) => e.slug === "when-is-an-ai-personal")!;
   return (
     <>
       <section className="archive-hero">
@@ -49,14 +49,14 @@ export default function WritingPage() {
             <span />
             <i />
           </div>
-          <span>Artificial / Autonomous</span>
+          <span>Memory / Continuity / Authority</span>
         </div>
         <div className="featured-copy">
-          <span className="eyebrow">A starting point / Essay</span>
+          <span className="eyebrow">Latest paper / 2026</span>
           <h2>{featured.title}</h2>
           <p>{featured.summary}</p>
           <Link href={`/writing/${featured.slug}`} className="text-link">
-            Explore this essay <ArrowUpRight size={17} />
+            Read the paper <ArrowUpRight size={17} />
           </Link>
         </div>
       </section>
