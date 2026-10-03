@@ -2000,3 +2000,14 @@ body {
 .paper-actions .pill-link {
   margin: 0;
 }
+.archive-entry-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-top: 22px;
+}
+.archive-entry-links .text-link {
+  font-size: 13px;
+  min-height: 32px;
+}

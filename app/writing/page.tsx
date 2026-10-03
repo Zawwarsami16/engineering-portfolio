@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: { title: "Writing & Research · Zawwar Sami", url: "/writing" },
 };
 export default function WritingPage() {
-  const featured = writings.find((e) => e.slug === "when-is-an-ai-personal")!;
+  const featured = writings.find((e) => e.kind === "Paper")!;
   return (
     <>
       <section className="archive-hero">

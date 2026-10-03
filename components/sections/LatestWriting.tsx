@@ -18,7 +18,7 @@ export function LatestWriting() {
         </Link>
       </div>
       <div className="latest-grid">
-        {writings.map((entry, i) => (
+        {writings.slice(0, 3).map((entry, i) => (
           <Link href={`/writing/${entry.slug}`} key={entry.slug} className="latest-card">
             <div>
               <span className="eyebrow">
@@ -32,7 +32,8 @@ export function LatestWriting() {
             <h3>{entry.title}</h3>
             <p>{entry.summary}</p>
             <span className="text-link">
-              Explore the essay <ArrowUpRight size={14} />
+              {entry.kind === "Paper" ? "Read the paper" : "Explore the essay"}{" "}
+              <ArrowUpRight size={14} />
             </span>
           </Link>
         ))}

@@ -35,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...caseRoutes,
     ...writings.map((entry) => ({
       url: `${SITE_URL}/writing/${entry.slug}`,
-      lastModified: new Date("2026-10-01"),
+      lastModified: new Date(entry.datePublished),
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),

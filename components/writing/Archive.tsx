@@ -97,6 +97,33 @@ export function Archive({ entries }: { entries: WritingEntry[] }) {
                   </button>
                 ))}
               </div>
+              {entry.zenodo && (
+                <nav className="archive-entry-links" aria-label={`Sources for ${entry.title}`}>
+                  {entry.pdf && (
+                    <a className="text-link" href={entry.pdf} target="_blank" rel="noreferrer">
+                      PDF
+                    </a>
+                  )}
+                  <a className="text-link" href={entry.zenodo} target="_blank" rel="noreferrer">
+                    Zenodo
+                  </a>
+                  {entry.philpapers && (
+                    <a
+                      className="text-link"
+                      href={entry.philpapers}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      PhilPapers
+                    </a>
+                  )}
+                  {entry.orcid && (
+                    <a className="text-link" href={entry.orcid} target="_blank" rel="noreferrer">
+                      ORCID
+                    </a>
+                  )}
+                </nav>
+              )}
             </div>
             <Link
               href={`/writing/${entry.slug}`}

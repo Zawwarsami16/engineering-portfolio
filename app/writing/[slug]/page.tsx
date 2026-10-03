@@ -32,6 +32,7 @@ export async function generateMetadata({
       citation_title: `${entry.title}${entry.subtitle ? ` ${entry.subtitle}` : ""}`,
       citation_author: "Zawwar Sami",
       citation_publication_date: entry.datePublished.replaceAll("-", "/"),
+      ...(entry.doi ? { citation_doi: entry.doi } : {}),
       ...(entry.pdf ? { citation_pdf_url: `https://zawwarsami.com${entry.pdf}` } : {}),
     },
   };
@@ -50,10 +51,19 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
     mainEntity: {
       "@type": entry.kind === "Paper" ? "ScholarlyArticle" : "Article",
       headline: `${entry.title}${entry.subtitle ? ` ${entry.subtitle}` : ""}`,
-      author: { "@type": "Person", name: "Zawwar Sami", url: "https://zawwarsami.com" },
+      author: {
+        "@type": "Person",
+        name: "Zawwar Sami",
+        url: "https://zawwarsami.com",
+        ...(entry.orcid ? { sameAs: entry.orcid } : {}),
+      },
       datePublished: entry.datePublished,
       url: entry.url,
       keywords: entry.tags.join(", "),
+      ...(entry.doi
+        ? { identifier: { "@type": "PropertyValue", propertyID: "DOI", value: entry.doi } }
+        : {}),
+      ...(entry.zenodo ? { sameAs: [entry.zenodo, entry.philpapers].filter(Boolean) } : {}),
       ...(entry.pdf
         ? {
             encoding: {
@@ -89,6 +99,11 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
               <a className="small-button" href={entry.pdf} download>
                 <Download size={16} /> Download PDF
               </a>
+              {entry.zenodo && (
+                <a className="text-link" href={entry.zenodo} target="_blank" rel="noreferrer">
+                  Zenodo <ArrowUpRight size={16} />
+                </a>
+              )}
               {entry.substack && (
                 <a className="text-link" href={entry.substack} target="_blank" rel="noreferrer">
                   Read on Substack <ArrowUpRight size={16} />
@@ -97,6 +112,11 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
               {entry.philpapers && (
                 <a className="text-link" href={entry.philpapers} target="_blank" rel="noreferrer">
                   PhilPapers <ArrowUpRight size={16} />
+                </a>
+              )}
+              {entry.orcid && (
+                <a className="text-link" href={entry.orcid} target="_blank" rel="noreferrer">
+                  ORCID <ArrowUpRight size={16} />
                 </a>
               )}
             </div>
@@ -158,8 +178,8 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
               <span className="eyebrow">Full paper</span>
               <h2>Read the original manuscript.</h2>
               <p>
-                The complete seven-page paper is available in the author’s original PDF, including
-                references.
+                The complete{entry.pages ? ` ${entry.pages}-page` : ""} paper is available in the
+                author’s original PDF, including references.
               </p>
               <a className="text-link" href={entry.pdf} target="_blank" rel="noreferrer">
                 Open PDF <ArrowUpRight size={17} />
