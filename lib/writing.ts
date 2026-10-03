@@ -25,6 +25,36 @@ export type WritingEntry = {
 // Only already-public entries belong here. Unreleased manuscripts stay private.
 export const writings: WritingEntry[] = [
   {
+    slug: "the-person-before-the-split",
+    title: "The Person Before the Split",
+    subtitle: "Soul-Body Unity and Living Identity",
+    summary:
+      "A philosophical-theological account of living identity that begins with the embodied person before separating soul, body, persistence, and moral integrity into distinct problems.",
+    abstract:
+      "Most philosophical discussions about what it means to be human start after we’ve already divided mind and body. We set up the problem by separating soul from matter, and then spend all our time wondering how the two could possibly connect. But honestly, that misses something important at the very start. Instead of immediately breaking a person into parts, we should stop and ask what sort of unity even makes those aspects belong together in one living being. In this paper, I develop an account—grounded in philosophy and Islamic theology—of what I call “living identity.” Here, soul and body aren’t duking it out for the right to be called the person. They’re distinguishable, sure, but we don’t have to pick sides. I’m not trying to infer the existence of an immaterial soul just from watching how our bodies behave. I’m also not offering a clean solution to the old puzzle of how mind and matter interact. Instead, I try to untangle three questions we usually mush together: What makes us an embodied unity? What keeps us the “same” individual through time? And what holds our moral life and commitments together? Borrowing insights from Descartes, phenomenology, recent work on embodiment, and the Islamic philosophical tradition about self-awareness, I argue that the best starting point is to see the living person as an embodied subject—whose inner and outer life are inseparable parts of a single ongoing existence. In Islamic theology, that unity comes from God, and our responsibility shows up through what we do with our bodies. So, the real question isn’t “soul versus body”—it’s what it means for a person to be one at all.",
+    url: "https://zawwarsami.com/writing/the-person-before-the-split",
+    datePublished: "2026-10-03",
+    tags: [
+      "personal identity",
+      "embodiment",
+      "Islamic philosophy",
+      "soul",
+      "body",
+      "philosophical theology",
+      "selfhood",
+      "moral integrity",
+    ],
+    kind: "Paper",
+    status: "Preprint",
+    version: "Zenodo preprint",
+    pages: 6,
+    pdf: "/api/zenodo-pdf/23127396",
+    doi: "10.5281/zenodo.23127396",
+    zenodo: "https://zenodo.org/records/23127396",
+    philpapers: "https://philpapers.org/rec/SAMTPB",
+    orcid: "https://orcid.org/0009-0004-5819-3017",
+  },
+  {
     slug: "what-survives-a-model-change",
     title: "What Survives a Model Change?",
     subtitle: "Memory, Identity, and Succession in Personal AI",
