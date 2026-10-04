@@ -46,7 +46,7 @@ export const writings: WritingEntry[] = [
     ],
     kind: "Paper",
     status: "Preprint",
-    version: "Version 1.1",
+    version: "Version 1.2",
     pages: 9,
     doi: "10.5281/zenodo.23142834",
     zenodo: "https://zenodo.org/records/23142834",
