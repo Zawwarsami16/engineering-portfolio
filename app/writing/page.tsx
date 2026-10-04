@@ -5,15 +5,39 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { writings } from "@/lib/writing";
 import { Archive } from "@/components/writing/Archive";
 import { site } from "@/lib/site";
+const description =
+  "Papers and essays by Zawwar Sami on personal AI, memory, identity, consciousness and Islamic philosophy. Read the manuscripts, abstracts and citations.";
 export const metadata: Metadata = {
   title: "Writing & Research",
-  description:
-    "The writing and research archive of Zawwar Sami. Essays on autonomous intelligence, consciousness and Islamic philosophy, with original sources and citations.",
+  description,
+  keywords: [
+    "Zawwar Sami",
+    "personal AI",
+    "philosophy of AI",
+    "memory",
+    "identity",
+    "consciousness",
+    "Islamic philosophy",
+  ],
   alternates: { canonical: "/writing" },
-  openGraph: { title: "Writing & Research · Zawwar Sami", url: "/writing" },
+  openGraph: {
+    type: "website",
+    title: "Writing & Research · Zawwar Sami",
+    description,
+    url: "/writing",
+    images: [{ url: "/images/observatory.webp", alt: "Writing and research by Zawwar Sami" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Writing & Research · Zawwar Sami",
+    description,
+    images: ["/images/observatory.webp"],
+  },
 };
 export default function WritingPage() {
-  const featured = writings.find((e) => e.slug === "the-person-before-the-split") ?? writings.find((e) => e.kind === "Paper")!;
+  const featured =
+    writings.find((e) => e.slug === "the-person-before-the-split") ??
+    writings.find((e) => e.kind === "Paper")!;
   return (
     <>
       <section className="archive-hero">

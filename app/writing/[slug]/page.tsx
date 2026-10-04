@@ -19,6 +19,7 @@ export async function generateMetadata({
   return {
     title: `${entry.title}${entry.subtitle ? ` ${entry.subtitle}` : ""}`,
     description: entry.summary,
+    keywords: ["Zawwar Sami", ...entry.tags],
     alternates: { canonical: `/writing/${slug}` },
     openGraph: {
       type: "article",
@@ -27,11 +28,19 @@ export async function generateMetadata({
       url: `/writing/${slug}`,
       authors: ["Zawwar Sami"],
       publishedTime: entry.datePublished,
+      images: [{ url: "/images/observatory.webp", alt: entry.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${entry.title}${entry.subtitle ? ` ${entry.subtitle}` : ""}`,
+      description: entry.summary,
+      images: ["/images/observatory.webp"],
     },
     other: {
       citation_title: `${entry.title}${entry.subtitle ? ` ${entry.subtitle}` : ""}`,
       citation_author: "Zawwar Sami",
       citation_publication_date: entry.datePublished.replaceAll("-", "/"),
+      citation_abstract_html_url: `https://zawwarsami.com/writing/${slug}`,
       ...(entry.doi ? { citation_doi: entry.doi } : {}),
       ...(entry.pdf ? { citation_pdf_url: `https://zawwarsami.com${entry.pdf}` } : {}),
     },
@@ -58,6 +67,9 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
         ...(entry.orcid ? { sameAs: entry.orcid } : {}),
       },
       datePublished: entry.datePublished,
+      description: entry.abstract ?? entry.summary,
+      inLanguage: "en",
+      mainEntityOfPage: `https://zawwarsami.com/writing/${slug}`,
       url: entry.url,
       keywords: entry.tags.join(", "),
       ...(entry.doi
