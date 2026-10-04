@@ -103,15 +103,23 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
           </div>
           <h1>{entry.title}</h1>
           {entry.subtitle && <p className="paper-subtitle">{entry.subtitle}</p>}
-          {entry.pdf && (
+          {(entry.pdf || entry.zenodo || entry.philpapers || entry.orcid) && (
             <div className="paper-actions">
-              <a className="pill-link primary" href={entry.pdf} target="_blank" rel="noreferrer">
-                Read PDF <ArrowUpRight size={17} />
-              </a>
-              <a className="small-button" href={entry.pdf} download>
-                <Download size={16} /> Download PDF
-              </a>
-              {entry.zenodo && (
+              {entry.pdf ? (
+                <>
+                  <a className="pill-link primary" href={entry.pdf} target="_blank" rel="noreferrer">
+                    Read PDF <ArrowUpRight size={17} />
+                  </a>
+                  <a className="small-button" href={entry.pdf} download>
+                    <Download size={16} /> Download PDF
+                  </a>
+                </>
+              ) : entry.zenodo ? (
+                <a className="pill-link primary" href={entry.zenodo} target="_blank" rel="noreferrer">
+                  Read on Zenodo <ArrowUpRight size={17} />
+                </a>
+              ) : null}
+              {entry.zenodo && entry.pdf && (
                 <a className="text-link" href={entry.zenodo} target="_blank" rel="noreferrer">
                   Zenodo <ArrowUpRight size={16} />
                 </a>
@@ -195,6 +203,23 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
               </p>
               <a className="text-link" href={entry.pdf} target="_blank" rel="noreferrer">
                 Open PDF <ArrowUpRight size={17} />
+              </a>
+            </div>
+          ) : entry.kind === "Paper" ? (
+            <div className="source-panel">
+              <span className="eyebrow">Full paper</span>
+              <h2>Read the public manuscript.</h2>
+              <p>
+                The complete paper and publication record are available through the scholarly
+                sources linked with this entry.
+              </p>
+              <a
+                className="text-link"
+                href={entry.zenodo ?? entry.philpapers ?? entry.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open paper record <ArrowUpRight size={17} />
               </a>
             </div>
           ) : (
