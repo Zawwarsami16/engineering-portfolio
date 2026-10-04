@@ -25,6 +25,35 @@ export type WritingEntry = {
 // Only already-public entries belong here. Unreleased manuscripts stay private.
 export const writings: WritingEntry[] = [
   {
+    slug: "continuity-oriented-architecture-for-personal-ai",
+    title: "A Continuity-Oriented Architecture for Personal AI",
+    subtitle: "Persistent State, Self-Monitoring, and Replaceable Models",
+    summary:
+      "An architecture for practical continuity in personal AI: durable state, context reconstruction, self-monitoring, replaceable reasoning, verified outcomes, and revision across changing sessions and models.",
+    abstract:
+      "What happens when the chat window disappears, but the work is not done? A personal AI may move between sessions, devices, clients, and models while the person still expects the same project to continue. Long-term memory helps, but memory by itself does not tell a system what is current, what was rejected, who is allowed to act, or whether an action actually succeeded. This paper argues that practical continuity should be treated as an architectural problem rather than something we expect the language model to carry inside itself. I propose a loop built around persistent state, context reconstruction, orientation and self-monitoring, replaceable reasoning, action, verified outcomes, and state revision. The point is not to preserve an abstract AI self. It is to preserve the active state of work in a way that another session or model can understand, trace, and revise. I use ZAI and the ZAI Memory Hub as an implementation case, while separating current verified components from historical runtime evidence, in-build designs, and philosophical interpretation. I then set out failure cases and tests for revision propagation, model replacement, concurrent agents, false completion, recovery, and authority boundaries. The claim stays limited: this architecture can support practical continuity of assistance. It does not prove continuity of consciousness or numerical identity.",
+    url: "https://zawwarsami.com/writing/continuity-oriented-architecture-for-personal-ai",
+    datePublished: "2026-10-04",
+    tags: [
+      "personal AI",
+      "AI agents",
+      "long-term memory",
+      "continuity",
+      "self-monitoring",
+      "model replacement",
+      "persistent state",
+      "agent architecture",
+    ],
+    kind: "Paper",
+    status: "Preprint",
+    version: "Version 1.1",
+    pages: 9,
+    doi: "10.5281/zenodo.23142834",
+    zenodo: "https://zenodo.org/records/23142834",
+    philpapers: "https://philpapers.org/rec/SAMACA-10",
+    orcid: "https://orcid.org/0009-0004-5819-3017",
+  },
+  {
     slug: "the-person-before-the-split",
     title: "The Person Before the Split",
     subtitle: "Soul-Body Unity and Living Identity",
