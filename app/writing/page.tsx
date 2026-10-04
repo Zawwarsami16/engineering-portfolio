@@ -35,9 +35,7 @@ export const metadata: Metadata = {
   },
 };
 export default function WritingPage() {
-  const featured =
-    writings.find((e) => e.slug === "the-person-before-the-split") ??
-    writings.find((e) => e.kind === "Paper")!;
+  const featured = writings.find((e) => e.kind === "Paper")!;
   return (
     <>
       <section className="archive-hero">
