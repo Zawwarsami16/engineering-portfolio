@@ -80,7 +80,7 @@ export function Archive({ entries }: { entries: WritingEntry[] }) {
         {filtered.map((entry, i) => (
           <article className="archive-entry" key={entry.slug}>
             <div className="archive-entry-meta">
-              <span className="index-number">{String(i + 1).padStart(2, "0")}</span>
+              <span className="index-number">{entry.seriesCode ?? String(i + 1).padStart(2, "0")}</span>
               <span className="eyebrow">{entry.kind}</span>
               <time dateTime={entry.datePublished}>{writingDate(entry.datePublished)}</time>
             </div>
