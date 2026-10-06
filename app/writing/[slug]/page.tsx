@@ -99,7 +99,7 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
             <ArrowLeft size={16} /> All writing
           </Link>
           <div className="eyebrow reading-kicker">
-            {entry.kind} <span>/</span> {entry.status}
+            {entry.seriesCode && <><strong>{entry.seriesCode}</strong> <span>/</span> </>}{entry.kind} <span>/</span> {entry.status}
           </div>
           <h1>{entry.title}</h1>
           {entry.subtitle && <p className="paper-subtitle">{entry.subtitle}</p>}
