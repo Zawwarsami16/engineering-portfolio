@@ -3,6 +3,7 @@ export type WritingKind = "Paper" | "Essay" | "Research note";
 export type WritingEntry = {
   slug: string;
   title: string;
+  seriesCode?: string;
   summary: string;
   subtitle?: string;
   abstract?: string;
@@ -27,6 +28,7 @@ export const writings: WritingEntry[] = [
   {
     slug: "continuity-oriented-architecture-for-personal-ai",
     title: "A Continuity-Oriented Architecture for Personal AI",
+    seriesCode: "A3",
     subtitle: "Persistent State, Self-Monitoring, and Replaceable Models",
     summary:
       "An architecture for practical continuity in personal AI: durable state, context reconstruction, self-monitoring, replaceable reasoning, verified outcomes, and revision across changing sessions and models.",
@@ -86,6 +88,7 @@ export const writings: WritingEntry[] = [
   {
     slug: "what-survives-a-model-change",
     title: "What Survives a Model Change?",
+    seriesCode: "A2",
     subtitle: "Memory, Identity, and Succession in Personal AI",
     summary:
       "A philosophical account of model replacement in personal AI: why inherited memory does not settle identity, authority, or the limits of delegated work.",
@@ -116,6 +119,7 @@ export const writings: WritingEntry[] = [
   {
     slug: "when-is-an-ai-personal",
     title: "When Is an AI Personal?",
+    seriesCode: "A1",
     subtitle: "Memory, Continuity, and the Authority to Revise",
     summary:
       "A philosophical account of personal AI: why memory and continuity must remain answerable to the person, with effective correction, traceability, and usable transfer.",
