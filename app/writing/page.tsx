@@ -74,7 +74,7 @@ export default function WritingPage() {
           <span>{featured.tags.slice(0, 3).join(" / ")}</span>
         </div>
         <div className="featured-copy">
-          <span className="eyebrow">Latest paper / 2026</span>
+          <span className="eyebrow">Latest paper{featured.seriesCode ? ` / ${featured.seriesCode}` : ""} / 2026</span>
           <h2>{featured.title}</h2>
           <p>{featured.summary}</p>
           <Link href={`/writing/${featured.slug}`} className="text-link">
