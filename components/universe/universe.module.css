@@ -94,7 +94,7 @@
 .viewTabs button[aria-pressed=true] { color:#fff0db; }
 .viewTabs button[aria-pressed=true]::after { content:''; position:absolute; height:2px; width:50%; left:25%; bottom:-1px; background:#ff4853; box-shadow:0 0 10px #ff243a; }
 .viewTabs button:hover { color:#ffb2a0; }
-.footer { margin-top:auto; padding-top:165px; display:flex; align-items:center; justify-content:space-between; font-size:9px; text-transform:uppercase; letter-spacing:.15em; color:#c1afa3; }
+.footer { background:transparent; margin-top:auto; padding-top:165px; display:flex; align-items:center; justify-content:space-between; font-size:9px; text-transform:uppercase; letter-spacing:.15em; color:#c1afa3; }
 .footer a { display:flex; align-items:center; gap:12px; min-height:40px; }
 .footer a:hover { color:#ffe9d7; }
 .mapHint { text-align:center; color:#d0bfb0; font-size:12px; margin-top:15px; }
