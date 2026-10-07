@@ -65,6 +65,20 @@ function Milestone({ item, full = false }: { item: SynthesisMilestone; full?: bo
   </div>;
 }
 
+function FutureHorizon({ letter }: { letter: string }) {
+  return <aside className={s.futureHorizon} aria-label={`Future expansion for World ${letter}`}>
+    <div className={s.futureCore} aria-hidden="true"><span /><i /><i /><i /></div>
+    <p className={s.kicker}>Future cycles</p>
+    <h3>Open horizon</h3>
+    <p className={s.futureCopy}>New branches light up only when real work is released.</p>
+    <div className={s.futureTrail}><span />Toward {letter}∞</div>
+    <div className={s.futureCycleCards} aria-hidden="true">
+      <div className={s.futureCycleCard}><strong>Next cycle</strong><small>Opens with the next body of work.</small></div>
+      <div className={s.futureCycleCard}><strong>Beyond</strong><small>Long-term expansion.</small></div>
+    </div>
+  </aside>;
+}
+
 function Cycle({ cycle, onOpen }: { cycle: ResearchCycle; onOpen: (work: PublicWork) => void }) {
   const field = useRef<HTMLDivElement>(null);
   return <section className={s.cycle} aria-label={cycle.label}>
@@ -172,7 +186,10 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
               </div>
             </div>
             <div className={s.worldBody}>
-              {view === "overview" && (world.cycles.length ? world.cycles.map((cycle) => <Cycle key={cycle.id} cycle={cycle} onOpen={openPaper} />) : <div className={s.emptyWorld}><Current /><span className={s.emptyOrb}>{world.letter}</span><h3>An open field of inquiry.</h3><p>Public work will appear here as it is released.</p></div>)}
+              {view === "overview" && (world.cycles.length ? <div className={s.overviewStage}>
+                <div className={s.cyclesColumn}>{world.cycles.map((cycle) => <Cycle key={cycle.id} cycle={cycle} onOpen={openPaper} />)}</div>
+                <FutureHorizon letter={world.letter} />
+              </div> : <div className={s.emptyWorld}><Current /><span className={s.emptyOrb}>{world.letter}</span><h3>An open field of inquiry.</h3><p>Public work will appear here as it is released.</p></div>)}
               {view === "papers" && <div className={s.paperList}><h3>Published work</h3><p className={s.listNote}>Public papers and author manuscripts. Publication status is shown on each record.</p>{works.map((item) => <button key={item.slug} onClick={() => openPaper(item)}><span className={s.listCode}>{item.seriesCode ?? <FileText size={22} />}</span><span><strong>{item.title}</strong><small>{item.status} · {item.datePublished}</small></span><ArrowUpRight size={18} aria-hidden="true" /></button>)}</div>}
               {view === "synthesis" && <div className={s.synthesisView}>{syntheses.map((item) => <Milestone key={item.id} item={item} full />)}</div>}
             </div>
