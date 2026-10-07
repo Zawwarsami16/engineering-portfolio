@@ -26,6 +26,35 @@ export type WritingEntry = {
 // Only already-public entries belong here. Unreleased manuscripts stay private.
 export const writings: WritingEntry[] = [
   {
+    slug: "the-model-is-not-the-agent",
+    title: "The Model Is Not the Agent",
+    seriesCode: "A4",
+    subtitle: "Boundaries of Capability, Execution, and Authority",
+    summary:
+      "A method for separating model capability from the wider arrangement that enables action, controls execution, and governs delegated authority in AI agents.",
+    abstract:
+      "An AI system can retain the same model while its ability to act, its ongoing commitments, and its permissions change. Conversely, a service can replace its model while preserving parts of an ongoing task. These possibilities expose a problem of attribution: which properties belong to the model, and which belong to the arrangement in which it operates? Existing agent research already treats agency architecturally. I build on that position by distinguishing three boundaries: the resources supporting capability, the processes controlling execution, and the mechanisms governing delegated authority. These boundaries can overlap without coinciding. I propose a task-relative boundary audit that combines intervention, control tracing, and explicit treatment of outside dependencies. Four counterexamples show why neither model identity, shared memory, conversational resemblance, nor technical access is sufficient to identify an enduring delegated agent. A worked hypothetical case illustrates the audit; ZAI Memory Hub and zhub provide documented design examples, not experimental validation. Finally, I specify a crossed model-and-architecture evaluation protocol with separate measures for task success, constraint preservation, and unsupported completion. The contribution is a method for making agent-level claims more precise, rather than a new definition of consciousness, a demonstration of general intelligence, or a claim that model capability is unimportant.",
+    url: "https://zawwarsami.com/writing/the-model-is-not-the-agent",
+    datePublished: "2026-10-06",
+    tags: [
+      "artificial agency",
+      "language agents",
+      "cognitive architecture",
+      "system boundaries",
+      "delegated authority",
+      "agent evaluation",
+      "model replacement",
+    ],
+    kind: "Paper",
+    status: "Preprint",
+    version: "Version 1.0",
+    pages: 10,
+    doi: "10.5281/zenodo.23195617",
+    zenodo: "https://zenodo.org/records/23195617",
+    philpapers: "https://philpapers.org/rec/SAMTMI",
+    orcid: "https://orcid.org/0009-0004-5819-3017",
+  },
+  {
     slug: "continuity-oriented-architecture-for-personal-ai",
     title: "A Continuity-Oriented Architecture for Personal AI",
     seriesCode: "A3",
