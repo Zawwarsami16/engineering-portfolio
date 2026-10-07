@@ -24,6 +24,7 @@ export type ResearchWorld = {
   title: string;
   keywords: string;
   description: string;
+  shortDescription?: string;
   cycles: ResearchCycle[];
 };
 
@@ -38,7 +39,7 @@ function publicWorks(slugs: string[]): PublicWork[] {
 
 export const researchWorlds: ResearchWorld[] = [
   {
-    letter: "A", title: "Artificial Agency", keywords: "Intelligence · Agency · Co-creation",
+    letter: "A", title: "Artificial Agency", shortDescription: "Intelligence, agency, and alignment in artificial minds.", keywords: "Intelligence · Agency · Co-creation",
     description: "Exploring artificial agency, human–AI collaboration, and the evolving architecture of intelligent systems.",
     cycles: [{
       id: "a-cycle-1", label: "Cycle 1",

@@ -109,10 +109,12 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
       if (worlds.some((w) => w.letter === requested)) { setLetter(requested); setMap(false); setView("overview"); }
       else setMap(true);
     }
+    const openMap = () => { setMap(true); setView("overview"); };
     readHash();
+    window.addEventListener("universe:overview", openMap);
     window.addEventListener("hashchange", readHash);
     window.addEventListener("popstate", readHash);
-    return () => { window.removeEventListener("hashchange", readHash); window.removeEventListener("popstate", readHash); };
+    return () => { window.removeEventListener("universe:overview", openMap); window.removeEventListener("hashchange", readHash); window.removeEventListener("popstate", readHash); };
   }, [worlds]);
 
   function selectWorld(value: string) {
@@ -126,8 +128,8 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
   }
 
   return <div className={s.universe} data-reduced-motion={reduceMotion ? "true" : "false"} data-view={map ? "map" : "world"}>
-    <div className={s.backdrop} aria-hidden="true"><Image src="/images/universe/cosmos.webp" alt="" fill priority sizes="100vw" quality={90} /></div>
-    <div className={s.landscape} aria-hidden="true"><Image src="/images/universe/landscape-hd.webp" alt="" fill sizes="100vw" quality={95} unoptimized /></div>
+    <div className={s.backdrop} aria-hidden="true"><Image src="/images/universe/cosmos.webp" alt="" fill priority sizes="100vw" quality={90} unoptimized /></div>
+    <div className={s.landscape} aria-hidden="true"><Image src="/images/universe/landscape-hd.webp" alt="" fill sizes="100vw" quality={95} priority unoptimized /></div>
     <div className={s.atmosphere} aria-hidden="true" />
     <div className={s.content}>
       <header className={s.hero}>
@@ -162,7 +164,7 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
               <div><p className={s.kicker}>World {world.letter} <i className={s.tinySpark} /></p>
                 <h2><span>{world.letter} — </span>{world.title}</h2>
                 <p className={s.keywords}>{world.keywords}</p>
-                <p className={s.description}>{world.description}</p>
+                <p className={s.description}><span className={s.desktopDescription}>{world.description}</span><span className={s.mobileDescription}>{world.shortDescription ?? world.description}</span></p>
                 <div className={s.stats}>
                   <div><strong>{works.length || "—"}</strong><span>{works.length === 1 ? "Paper" : "Papers"}<small>{works.length ? "Public work" : "Open inquiry"}</small></span></div>
                   {syntheses.length > 0 && <div><strong>{syntheses.length}</strong><span>Synthesis book<small>{syntheses.some((b) => b.status === "future") ? "Future milestone" : "Published"}</small></span></div>}

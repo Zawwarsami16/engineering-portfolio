@@ -122,9 +122,10 @@ export function PaperConnections({ field, count }: { field: RefObject<HTMLDivEle
   const end = { x: layout.width + 45, y: last.y };
   return <svg className={s.paperConnections} viewBox={`0 0 ${layout.width} ${layout.height}`} fill="none" aria-hidden="true">
     <defs><filter id={id} x="-50%" y="-100%" width="200%" height="300%"><feGaussianBlur stdDeviation="2.7" /></filter></defs>
-    {Array.from({ length: 17 }, (_, i) => {
-      const offset = (i - 8) / 8 * amplitude;
-      const d = `M${start.x} ${start.y} C${first.x - 60} ${first.y},${first.x - 63} ${first.y + offset},${first.x} ${first.y + offset} S${last.x + 40} ${last.y + offset},${end.x} ${end.y}`;
+    {Array.from({ length: 23 }, (_, i) => {
+      const offset = (i % 2 ? -1 : 1) * amplitude * (.15 + ((i * 37) % 80) / 100);
+      const fork = first.x + (last.x - first.x) * (.08 + ((i * 29) % 76) / 100);
+      const d = `M${start.x} ${start.y} C${first.x - 62} ${first.y},${first.x - 55} ${first.y + offset},${fork} ${first.y + offset} S${last.x + 40} ${last.y - offset * .4},${end.x} ${end.y}`;
       return <g key={i}>
         {i % 4 === 0 && <path d={d} stroke="#ff243f" strokeWidth="4" opacity=".5" filter={`url(#${id})`} />}
         <path d={d} stroke={i % 3 === 0 ? "#ffaf91" : "#e53248"} strokeWidth={i % 3 === 0 ? .85 : .55} opacity={i % 3 === 0 ? .65 : .5} />

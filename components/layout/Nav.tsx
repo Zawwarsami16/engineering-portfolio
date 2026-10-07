@@ -32,6 +32,7 @@ export function Nav() {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={() => { if (item.href === "/research") window.dispatchEvent(new Event("universe:overview")); }}
                 aria-current={
                   pathname === item.href || pathname.startsWith(item.href + "/")
                     ? "page"
@@ -82,7 +83,7 @@ export function Nav() {
             <Link
               key={item.href}
               href={item.href}
-              onClick={() => dialogRef.current?.close()}
+              onClick={() => { dialogRef.current?.close(); if (item.href === "/research") window.dispatchEvent(new Event("universe:overview")); }}
               aria-current={pathname.startsWith(item.href) ? "page" : undefined}
             >
               <span>0{i + 1}</span>
