@@ -243,3 +243,271 @@
   .mobileDescription { display:inline; }
   .nodeField .paperConnections { opacity:.24; overflow:hidden; }
 }
+
+
+/* Canonical long-term reference composition — 2026-10-07 */
+/*
+  Visual direction follows the approved three long-term mockups while the
+  catalogue remains truth-driven: only real public works become paper nodes.
+*/
+.universe {
+  --panel: #080305b8;
+  --panel-strong: #0b0407e6;
+  --hairline-red: #a94b4659;
+}
+.content { max-width: 1600px; padding-inline: 4.2%; }
+.hero h1 { text-shadow: 0 0 36px #a40f2512; }
+.topology { margin-top: 2px; }
+.alphabet { margin-top: 38px; }
+.worldMap { min-height: 355px; }
+.worldBranch { padding-top: 225px; padding-bottom: 20px; }
+.worldName { font-size: clamp(22px,1.75vw,29px); line-height: 1.06; }
+.worldCount { min-width: 135px; letter-spacing: .19em; }
+.mapHint { margin-top: 2px; }
+
+.worldDetail {
+  grid-template-columns: minmax(315px,31%) minmax(0,69%);
+  min-height: 390px;
+  gap: 10px;
+  align-items: stretch;
+}
+.worldIntro {
+  padding: 22px 38px 0 34px;
+  align-self: start;
+}
+.worldIntro h2 { font-size: clamp(38px,3.35vw,58px); }
+.description { max-width: 410px; font-size: 20px; line-height: 1.5; }
+.stats { margin-top: 30px; gap: 18px; }
+.stats > div { min-width: 112px; }
+.stats strong { font-size: 36px; }
+.worldBody { min-height: 360px; }
+
+.overviewStage {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 176px;
+  gap: 24px;
+  min-height: 350px;
+  align-items: stretch;
+}
+.cyclesColumn { min-width: 0; }
+.overviewStage .cycle {
+  position: relative;
+  min-height: 330px;
+  padding: 4px 168px 0 0;
+}
+.overviewStage .cycleHeading { padding-left: 0; }
+.overviewStage .cycleHeading h3 { font-size: clamp(23px,2vw,31px); color:#f0b2a5; }
+.overviewStage .cycleHeading p { font-size: 8px; letter-spacing: .17em; }
+.overviewStage .nodeField {
+  height: 222px;
+  padding: 0 0 0 0;
+  margin-top: 0;
+  overflow: visible;
+}
+.overviewStage .paperNodes {
+  width: 100%;
+  justify-content: space-evenly;
+  gap: 14px;
+  padding: 0 4%;
+}
+.overviewStage .paperNode {
+  width: 64px; height: 64px; flex-basis: 64px;
+  border-color: #dc776d;
+  box-shadow: 0 0 15px #ff28392d, inset 0 0 18px #ff3b3c2b;
+}
+.overviewStage .paperConnections { opacity: .95; }
+.overviewStage .synthesisBranch {
+  position: absolute;
+  right: 0;
+  top: 105px;
+  width: 158px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 3;
+}
+.overviewStage .dottedBranch {
+  width: 138px; height: 80px;
+  right: 105px; top: 12px;
+  opacity: .72;
+}
+.overviewStage .milestone {
+  width: 150px;
+  max-width: 150px;
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
+}
+.overviewStage .bookOrbit {
+  width: 92px; height: 92px; flex-basis: 92px;
+  color: #f0a692;
+  box-shadow: 0 0 36px #ff23302f, inset 0 0 24px #ff283026;
+}
+.overviewStage .milestone .kicker { font-size: 7px; line-height: 1.45; max-width: 145px; }
+.overviewStage .milestone h3 { font-size: 24px; line-height: 1.08; margin-top: 0; }
+
+.futureHorizon {
+  position: relative;
+  min-height: 330px;
+  border-left: 1px solid var(--hairline-red);
+  padding: 30px 0 20px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #d8c7ba;
+}
+.futureHorizon::before {
+  content:'';
+  position:absolute; left:-2px; top:48%; width:4px; height:4px;
+  border-radius:50%; background:#ffe7c9; box-shadow:0 0 8px 3px #ff2642;
+}
+.futureCore {
+  width: 82px; height: 82px; border: 1px dashed #caa89987; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  margin-bottom: 24px; position: relative;
+}
+.futureCore::after {
+  content:''; position:absolute; left:100%; top:50%; width:78px;
+  border-top:1px dashed #bca38f66;
+}
+.futureCore span { width:4px; height:4px; border-radius:50%; background:#8f7771; }
+.futureCore i { width:3px; height:3px; border-radius:50%; background:#9e7f78; }
+.futureHorizon .kicker { font-size: 8px; color:#e0b1a2; margin-bottom:7px; }
+.futureHorizon h3 { font-size: 27px; line-height: 1; font-weight: 400; }
+.futureCopy { font-size: 16px; line-height: 1.35; color:#af9e94; margin-top: 10px; }
+.futureTrail {
+  font-family: var(--font-inter),sans-serif; text-transform: uppercase;
+  font-size: 8px; letter-spacing: .18em; margin-top: 24px; color:#c9a99e;
+  display:flex; align-items:center; gap:9px;
+}
+.futureTrail span { width:28px; height:1px; background:#be4b4f; box-shadow:0 0 7px #ff334a; }
+.futureCycleCards { display:none; }
+
+.viewTabs {
+  margin-top: 16px;
+  width: min(850px,75%);
+  background: linear-gradient(90deg,transparent,#14070a45,transparent);
+}
+.footer { padding-top: 220px; }
+
+@media (min-width: 1450px) {
+  .worldMap { min-height: 400px; }
+  .worldBranch { padding-top: 260px; }
+  .worldDetail { grid-template-columns: minmax(360px,32%) minmax(0,68%); }
+  .overviewStage { grid-template-columns:minmax(0,1fr) 205px; gap:30px; }
+  .overviewStage .cycle { padding-right:185px; }
+  .overviewStage .synthesisBranch { width:175px; }
+  .futureHorizon { padding-left:30px; }
+}
+
+@media (max-width: 1180px) and (min-width: 701px) {
+  .worldDetail { grid-template-columns: 35% minmax(0,65%); }
+  .worldIntro { padding-left: 12px; padding-right: 22px; }
+  .overviewStage { grid-template-columns:minmax(0,1fr) 145px; gap:14px; }
+  .overviewStage .cycle { padding-right:132px; }
+  .overviewStage .synthesisBranch { width:126px; right:-2px; }
+  .overviewStage .bookOrbit { width:74px; height:74px; flex-basis:74px; }
+  .overviewStage .milestone { max-width:124px; width:124px; }
+  .overviewStage .milestone h3 { font-size:19px; }
+  .futureHorizon { padding-left:17px; }
+  .futureCore { width:66px; height:66px; }
+}
+
+@media (max-width: 700px) {
+  .content { padding-inline: 4.4%; }
+  .hero { padding-top: 3px; }
+  .hero h1 { margin-top: 10px; }
+  .topology { margin-top: 4px; }
+  .worldMap { min-height: 0; }
+  .worldBranch { padding-top: 130px; }
+  .universe[data-view=map] .worldBranch { padding-top: 158px; }
+  .worldDetail {
+    display: block;
+    min-height: 0;
+    padding: 21px 14px 15px;
+    border-color:#b4514d7d;
+    background:linear-gradient(140deg,#13060bcb,#040204dc 62%,#17070d9e);
+    box-shadow: inset 0 0 30px #901b2d12, 0 14px 45px #0007;
+  }
+  .worldIntro {
+    padding: 0 0 20px;
+    gap: 18px;
+    border-bottom:1px solid #a54b4550;
+  }
+  .worldMedallion { flex-basis: 88px; height: 101px; font-size: 84px; }
+  .worldIntro h2 { font-size: clamp(29px,7.2vw,39px); }
+  .description { font-size: 16px; max-width:none; }
+
+  .overviewStage { display:block; min-height:0; }
+  .overviewStage .cycle {
+    min-height: 0;
+    padding: 16px 12px 14px;
+    margin-top: 16px;
+    border:1px solid #a94f4d76;
+    border-radius: 9px;
+    background:linear-gradient(135deg,#090305e8,#040204d9);
+    box-shadow: inset 0 0 24px #9e223113;
+  }
+  .overviewStage .cycleHeading { padding:0; }
+  .overviewStage .cycleHeading h3 { font-size:22px; }
+  .overviewStage .cycleDescription { margin-left:33px; }
+  .overviewStage .nodeField {
+    height:auto; min-height: 112px; padding: 0 0 0 33px; margin-top: 13px;
+  }
+  .overviewStage .paperNodes {
+    display:grid;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 10px 9px;
+    padding: 0;
+  }
+  .overviewStage .paperNode {
+    width:100%; height:65px; min-width:0; max-width:none; flex-basis:auto;
+    border-radius:34px; font-size:19px;
+  }
+  .overviewStage .synthesisBranch {
+    position: relative; inset:auto;
+    width:auto; margin: 18px -12px -14px; padding:17px 12px 15px;
+    border-top:1px solid #a34a465f;
+    justify-content:flex-start;
+  }
+  .overviewStage .milestone {
+    width:100%; max-width:none; flex-direction:row; text-align:left; gap:18px;
+  }
+  .overviewStage .bookOrbit { width:58px; height:58px; flex:0 0 58px; margin-left:4px; }
+  .overviewStage .milestone .kicker { max-width:none; font-size:7px; }
+  .overviewStage .milestone h3 { font-size:24px; }
+  .overviewStage .dottedBranch { display:none; }
+
+  .futureHorizon {
+    min-height:0; border-left:0; border-top:1px solid #a34a4655;
+    padding: 16px 0 2px; margin-top: 14px; display:block;
+  }
+  .futureHorizon::before, .futureCore, .futureCopy, .futureTrail { display:none; }
+  .futureHorizon .kicker { margin:0 0 10px 3px; }
+  .futureHorizon h3 { display:none; }
+  .futureCycleCards { display:grid; gap:9px; }
+  .futureCycleCard {
+    position:relative; min-height:72px; border:1px solid #6f3f414e; border-radius:8px;
+    padding:12px 42px 11px 58px; background:#070304a8; color:#d1c0b3;
+  }
+  .futureCycleCard::before {
+    content:''; position:absolute; left:23px; top:50%; width:17px; height:17px; margin-top:-9px;
+    border:1px solid #73575a; border-radius:50%; box-shadow:0 0 10px #ff33431e;
+  }
+  .futureCycleCard::after {
+    content:'⌄'; position:absolute; right:15px; top:50%; transform:translateY(-54%);
+    font-size:18px; color:#ac8b84;
+  }
+  .futureCycleCard strong { display:block; font-size:21px; font-weight:400; line-height:1.1; }
+  .futureCycleCard small {
+    display:block; margin-top:4px; font: 12px/1.2 var(--font-cormorant),Georgia,serif;
+    color:#aa9b92;
+  }
+  .viewTabs { margin-top: 20px; width:100%; }
+  .footer { padding-top: 220px; }
+}
+
+@media (max-width: 390px) {
+  .overviewStage .paperNodes { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .worldIntro { gap:13px; }
+}
