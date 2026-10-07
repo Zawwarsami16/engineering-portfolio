@@ -2011,3 +2011,23 @@ body {
   font-size: 13px;
   min-height: 32px;
 }
+
+/* Research Universe keeps the site's navigation, with its own cinematic wordmark. */
+.universe-nav .nav-inner {
+  max-width: 1460px; border-color: transparent; background: linear-gradient(#060204a6,#06020416);
+  box-shadow: none; backdrop-filter: blur(8px); border-radius: 0; padding-inline: 8px;
+}
+.universe-wordmark { display: flex; align-items: center; gap: 15px; color: #f1e5d3; }
+.universe-wordmark > span:last-child { font-family: var(--font-cormorant),Georgia,serif; font-size: 30px; line-height: 1; white-space: nowrap; }
+.universe-wordmark small { display: block; font: 7px/2.5 var(--font-inter),sans-serif; letter-spacing: .23em; text-transform: uppercase; }
+.universe-star { font-size: 29px; color: #ffe3d5; text-shadow: 0 0 8px #ff243e,0 0 22px #ff243e; position: relative; }
+.universe-star::before,.universe-star::after { content:''; position:absolute; background:#ee6d5d7a; }
+.universe-star::before { width:42px;height:1px;left:-7px;top:50%; }
+.universe-star::after { width:1px;height:42px;left:50%;top:0; }
+.universe-nav .desktop-nav { gap: clamp(14px,1.7vw,26px); }
+.universe-nav .desktop-nav a { color:#c8b5a7; font-size:11px; }
+.universe-nav .desktop-nav a[aria-current=page] { color:#fa5266; }
+.universe-nav .desktop-nav a[aria-current=page]::before { background:#ff344d;box-shadow:0 0 8px #ff244d; }
+.universe-nav .nav-contact { border-color:#ad5b5155; }
+@media(max-width:1100px) { .universe-nav .desktop-nav { gap:12px; } .universe-nav .nav-contact { display:none; } }
+@media(max-width:700px) { .universe-nav { top:18px; } .universe-nav .nav-inner { padding:0 10px; } .universe-wordmark { gap:13px; } .universe-wordmark > span:last-child { font-size:27px; } .universe-wordmark small { font-size:6px; letter-spacing:.18em; } .universe-nav .nav-actions > button:first-child { display:none; } .universe-nav .menu-trigger { border:1px solid #b6555660; border-radius:50%; } }
