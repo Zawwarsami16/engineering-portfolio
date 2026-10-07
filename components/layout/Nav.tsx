@@ -7,6 +7,7 @@ import { Logo } from "@/components/ui/Logo";
 import { site } from "@/lib/site";
 export function Nav() {
   const pathname = usePathname();
+  const universe = pathname === "/research";
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   useEffect(() => {
@@ -18,9 +19,14 @@ export function Nav() {
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
-      <header className="site-nav">
+      <header className={`site-nav${universe ? " universe-nav" : ""}`}>
         <div className="nav-inner">
-          <Logo />
+          {universe ? (
+            <Link href="/" className="universe-wordmark" aria-label="Zawwar Sami — home">
+              <span className="universe-star" aria-hidden="true">✦</span>
+              <span>Zawwar Sami<small>Research · Systems · Ideas · Humanity</small></span>
+            </Link>
+          ) : <Logo />}
           <nav aria-label="Main navigation" className="desktop-nav">
             {site.nav.map((item) => (
               <Link

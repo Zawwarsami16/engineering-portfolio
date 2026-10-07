@@ -49,6 +49,7 @@ export const site = {
     { label: "Stack", href: "/stack" },
     { label: "Work", href: "/work" },
     { label: "Writing", href: "/writing" },
+    { label: "Universe", href: "/research" },
     { label: "Film", href: "/film" },
     { label: "Contact", href: "/contact" },
   ],
