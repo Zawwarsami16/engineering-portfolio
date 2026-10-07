@@ -97,7 +97,7 @@ export function Archive({ entries }: { entries: WritingEntry[] }) {
                   </button>
                 ))}
               </div>
-              {entry.pdf && (
+              {(entry.pdf || entry.zenodo || entry.philpapers || entry.orcid) && (
                 <nav className="archive-entry-links" aria-label={`Sources for ${entry.title}`}>
                   {entry.pdf && (
                     <a className="text-link" href={entry.pdf} target="_blank" rel="noreferrer">
