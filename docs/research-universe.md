@@ -12,7 +12,7 @@ A and P contain current public papers. C and S are active inquiry worlds without
 
 ## Visual reference
 
-The two approved initial mockups govern the first release. Preserve the crimson/black nebula, cream serif typography, A–Z spine, organic roots, atmospheric landscape and glowing circular nodes. The earlier three mockups express long-term expansion, not public content to expose.
+The three canonical long-term mockups now govern the live visual composition: desktop all-world overview, desktop focused-world/cycle view, and the stacked mobile world/cycle/book treatment. Preserve the crimson/black nebula, cream serif typography, A–Z spine, organic roots, atmospheric landscape, glowing circular nodes, synthesis-book orbit and future-horizon rail. This is a visual/infrastructure direction only: the public catalogue remains truth-driven, so unpublished paper IDs, private totals and release schedules are never exposed merely because a concept mockup shows them.
 
 The only raster artwork is `public/images/universe/cosmos.webp`, generated with the built-in image-generation tool from the supplied desktop reference. Production prompt: text-free 16:9 dark crimson/black nebula sky; shadowy planets at edges; black alien mountains and reflective red river in the bottom 22%; small crimson horizon light; broad dark central negative space. No text, logos, nodes, roots or UI. SVG and HTML draw interface elements. Original generated PNG was converted to WebP quality 88 using Sharp.
 
