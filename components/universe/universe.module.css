@@ -168,3 +168,68 @@
 @media (max-width:370px) { .worldIntro { gap:12px; } .worldMedallion { flex-basis:65px; font-size:72px; } .worldMedallion::before { width:73px; height:73px; } .worldIntro h2 { font-size:26px; } .cycleDescription { margin-left:20px; } .nodeField { padding-left:20px; } .cycleHeading { gap:7px; } .cycleHeading p { font-size:15px; } .viewTabs button { padding:0 8px; } }
 @media (prefers-reduced-motion:reduce) { .universe *, .universe *::before, .universe *::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; } .traveler { display:none; } }
 .universe[data-reduced-motion=true] .traveler { display:none; }
+
+/* Detail pass: the sky and landscape keep their own aspect ratios. */
+.backdrop { bottom:auto; height:850px; mask-image:linear-gradient(#000 50%,transparent 100%); }
+.backdrop img { object-position:center top; }
+.landscape { position:absolute; z-index:-2; bottom:0; left:0; width:100%; height:clamp(330px,36vw,650px); pointer-events:none; mask-image:linear-gradient(transparent,#000 25%); }
+.landscape img { object-fit:cover; object-position:center bottom; }
+.atmosphere { z-index:-1; background:radial-gradient(ellipse at 50% 40%,#0000 30%,#0002 80%); }
+.content { min-height:100svh; padding-top:120px; }
+.topology { position:relative; isolation:isolate; }
+.connections { position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none; z-index:0; }
+.alphabet { margin-left:0; margin-right:0; z-index:2; }
+.activeLetter::before { box-shadow:0 0 6px #ffada070,0 0 25px #ff243359,inset 0 0 16px #ff303536; }
+.selectedLetter::after { top:auto; bottom:2px; }
+.worldMap { position:relative; z-index:1; grid-template-columns:repeat(26,minmax(0,1fr)); }
+.worldBranch { min-width:0; padding:235px 0 25px; }
+.worldBranch:nth-child(1) { grid-column:1 / 5; }
+.worldBranch:nth-child(2) { grid-column:5 / 10; }
+.worldBranch:nth-child(3) { grid-column:14 / 20; }
+.worldBranch:nth-child(4) { grid-column:20 / 27; }
+.worldLetter { display:none; }
+.worldName { margin:0; padding:0 6px; font-size:25px; background:radial-gradient(ellipse,#030203aa,transparent 75%); }
+.worldCount { margin-top:14px; padding-top:10px; }
+.worldBranch:hover .worldName { text-shadow:0 0 16px #ff334f88; }
+.worldIntro { z-index:1; }
+.worldDetail { margin-top:5px; }
+.paperConnections { position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none; }
+.paperNodes { z-index:1; }
+.paperNode::before { content:''; position:absolute; inset:-7px; border:1px solid #b8494630; border-radius:inherit; pointer-events:none; }
+.paperNode:hover, .paperNode:focus-visible { transform:none; border-color:#ffdbc0; }
+.bookOrbit { box-shadow:0 0 28px #ff233038,inset 0 0 20px #ff283022; }
+.bookOrbit::before { box-shadow:0 0 0 5px #bc66530c; }
+.mapHint { margin-top:12px; font-size:10px; text-transform:uppercase; letter-spacing:.19em; }
+.footer { padding-top:260px; position:relative; z-index:1; }
+.universe[data-view=map] .footer { padding-top:235px; }
+@media(min-width:1600px) { .worldBranch { padding-top:280px; } .footer { padding-top:310px; } }
+@media(max-width:1023px) and (min-width:701px) {
+  .worldName { font-size:21px; }
+  .worldBranch { padding-top:195px; }
+  .worldIntro { padding-left:35px; }
+}
+@media(max-width:700px) {
+  .content { padding-top:112px; }
+  .backdrop { height:620px; opacity:.85; }
+  .landscape { height:290px; mask-image:linear-gradient(transparent,#000 20%); }
+  .landscape img { object-fit:cover; }
+  .atmosphere { background:linear-gradient(#0000,#03010370 50%,#0000 85%); }
+  .alphabet { margin:26px 0 0; grid-template-columns:minmax(31px,1.8fr) minmax(0,1fr) minmax(31px,1.8fr) repeat(12,minmax(0,1fr)) minmax(31px,1.8fr) repeat(2,minmax(0,1fr)) minmax(31px,1.8fr) repeat(7,minmax(0,1fr)); }
+  .selectedLetter::after { bottom:5px; top:auto; }
+  .worldMap, .mapExpanded { grid-template-columns:repeat(4,minmax(0,1fr)); margin:0; gap:0; }
+  .worldBranch, .mapExpanded .worldBranch { grid-column:auto; padding:128px 0 18px; }
+  .worldName, .mapExpanded .worldName { font-size:clamp(13px,3.5vw,20px); line-height:1.15; padding:0 3px; min-height:48px; }
+  .worldCount, .mapExpanded .worldCount { display:none; }
+  .universe[data-view=map] .worldBranch { padding-top:175px; }
+  .universe[data-view=map] .worldName { min-height:65px; font-size:clamp(14px,3.7vw,21px); }
+  .worldDetail { background:linear-gradient(135deg,#16070d88,#040104aa); box-shadow:inset 0 0 28px #77172412; }
+  .worldIntro { padding-left:0; gap:17px; }
+  .worldMedallion::before { box-shadow:0 0 0 9px #ba403418,0 0 0 17px #ba403409,0 0 30px #e8374314; }
+  .nodeField .paperConnections { opacity:.55; }
+  .paperNode { flex:1 0 18%; }
+  .paperNode::before { inset:-4px; }
+  .cycle { padding:15px 12px 14px; }
+  .footer { padding-top:240px; }
+  .universe[data-view=map] .footer { padding-top:260px; }
+  .mapHint { max-width:240px; margin:20px auto 0; font-size:8px; line-height:1.8; }
+}

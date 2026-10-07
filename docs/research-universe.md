@@ -22,4 +22,10 @@ GitHub: source/version control. Vercel: existing Git deployment integration. Fig
 
 ## Checks
 
-Run `npx tsc --noEmit`, `npm run lint`, and `npm run build`. Verify worlds A/C/P/S, dormant letters, all-world map, paper modal and source links, all views, keyboard/Escape/focus, reduced motion, mobile wrapping, and existing homepage and Writing routes. Keep any temporary responsive preview harness off the production branch.
+Run `npx tsc --noEmit`, `npm run lint`, and `npm run build`. Verify worlds A/C/P/S, dormant letters, all-world map, paper modal and source links, all views, keyboard/Escape/focus, reduced motion, mobile wrapping, and existing homepage and Writing routes. Remove the temporary responsive preview harness after browser QA.
+
+## Visual detail pass
+
+The default entry is All Worlds; world fragments select details and browser Back restores the map. `UniverseConnections.tsx` measures HTML anchors with ResizeObserver and font readiness, keeping SVG roots attached to alphabet rings and labels at each breakpoint. Paper connections likewise use real button centers.
+
+The landscape is a separate native 2172 × 724 image, served directly at high WebP quality, so long mobile pages do not magnify a single full-page raster. The sky retains the original nebula asset. New asset: `public/images/universe/landscape-hd.webp`; generated with the built-in image tool. Prompt: text-free panoramic black obsidian mountain valley with sharp rock detail, winding reflective river, central crimson horizon beacon and delicate celestial rings, matching the supplied reference. Output requested at maximum resolution; actual native output is 2172 × 724.
