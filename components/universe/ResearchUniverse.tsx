@@ -109,7 +109,7 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
       if (worlds.some((w) => w.letter === requested)) { setLetter(requested); setMap(false); setView("overview"); }
       else setMap(true);
     }
-    const openMap = () => { setMap(true); setView("overview"); };
+    const openMap = () => { setMap(true); setView("overview"); window.history.replaceState(null, "", window.location.pathname + window.location.search); };
     readHash();
     window.addEventListener("universe:overview", openMap);
     window.addEventListener("hashchange", readHash);
