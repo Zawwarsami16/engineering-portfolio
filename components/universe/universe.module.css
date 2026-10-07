@@ -217,7 +217,7 @@
   .alphabet { margin:26px 0 0; grid-template-columns:minmax(31px,1.8fr) minmax(0,1fr) minmax(31px,1.8fr) repeat(12,minmax(0,1fr)) minmax(31px,1.8fr) repeat(2,minmax(0,1fr)) minmax(31px,1.8fr) repeat(7,minmax(0,1fr)); }
   .selectedLetter::after { bottom:5px; top:auto; }
   .worldMap, .mapExpanded { grid-template-columns:repeat(4,minmax(0,1fr)); margin:0; gap:0; }
-  .worldBranch, .mapExpanded .worldBranch { grid-column:auto; padding:128px 0 18px; }
+  .worldBranch:nth-child(n), .mapExpanded .worldBranch { grid-column:auto; padding:128px 0 18px; }
   .worldName, .mapExpanded .worldName { font-size:clamp(13px,3.5vw,20px); line-height:1.15; padding:0 3px; min-height:48px; }
   .worldCount, .mapExpanded .worldCount { display:none; }
   .universe[data-view=map] .worldBranch { padding-top:175px; }
