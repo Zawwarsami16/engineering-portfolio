@@ -8,7 +8,7 @@ import { caseStudies } from "./_data";
 
 export const metadata: Metadata = pageMetadata(
   "Work",
-  "Selected work by Zawwar Sami — products, AI tooling, internal platforms, and open source.",
+  "Selected engineering and research projects by Zawwar Sami, including AI infrastructure, open-source systems, security-related work, and experimental software.",
 );
 
 export default function WorkPage() {
@@ -18,7 +18,7 @@ export default function WorkPage() {
         tag="Work"
         title="Things I've"
         italic="shipped lately."
-        description="A selection of recent work across product, AI, internal tooling, and open source. Each project earned its place by being shipped and used by real people."
+        description="A selection of open-source tools, working systems, experiments, and continuing research. Each entry distinguishes what was built from what is still being tested."
       />
 
       <section className="mx-auto w-full max-w-[1440px] px-6 py-20 lg:px-12 lg:py-28">
