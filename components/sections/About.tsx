@@ -40,7 +40,7 @@ export function About() {
           className="space-y-6 text-base leading-relaxed text-[var(--color-fg-dim)] lg:col-span-5"
         >
           <motion.p variants={fadeUp}>
-            I work independently across philosophy of mind, artificial
+            I work independently across philosophy, artificial
             intelligence, and cybersecurity. Some questions become papers;
             others become systems I can actually test.
           </motion.p>
