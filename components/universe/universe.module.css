@@ -664,7 +664,7 @@
  .footer,.universe[data-view=map] .footer { padding-top:95px; }
 }
 @media(max-width:700px) {
- .universe[data-view=map] .topology { height:365px; margin-top:20px; }
+ .universe[data-view=map] .topology { height:400px; margin-top:20px; }
  .universe[data-view=map] .alphabet { top:137px; }
  .universe[data-view=map] .worldBranch:nth-child(n) { width:42%; min-height:74px; padding:0 4px; }
  .universe[data-view=map] .worldBranch:nth-child(1) { top:286px; left:0; }
