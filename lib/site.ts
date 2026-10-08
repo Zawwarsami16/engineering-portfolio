@@ -1,7 +1,7 @@
 export const site = {
   name: "Zawwar Sami",
   shortName: "ZS",
-  role: "Engineer · Builder of ZAI",
+  role: "Independent Researcher & Engineer",
   email: "zawwarsami16@gmail.com",
   location: {
     country: "Canada",
@@ -22,6 +22,7 @@ export const site = {
     substack: "https://zawwar16.substack.com",
     hub: "https://hub.zawwarsami.com",
     htb: "https://app.hackthebox.com/public/users/2469522",
+    orcid: "https://orcid.org/0009-0004-5819-3017",
     htbProgress: "https://github.com/Zawwarsami16/htb-progress",
   },
   writing: [
@@ -49,12 +50,12 @@ export const site = {
     { label: "Stack", href: "/stack" },
     { label: "Work", href: "/work" },
     { label: "Writing", href: "/writing" },
-    { label: "Universe", href: "/research" },
+    { label: "Long-Term Vision", href: "/research" },
     { label: "Film", href: "/film" },
     { label: "Contact", href: "/contact" },
   ],
   status: {
     available: true,
-    label: "Available for new opportunities",
+    label: "Open to research & collaboration",
   },
 } as const;
