@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Search, ArrowUpRight, X } from "lucide-react";
 import { caseStudies } from "@/app/work/_data";
+import { writings } from "@/lib/writing";
 import { site } from "@/lib/site";
 const searchItems = [
   { title: "Home", hint: "The anteroom", href: "/" },
@@ -11,9 +12,9 @@ const searchItems = [
     hint: "Page",
     href: item.href,
   })),
-  ...site.writing.map((item) => ({
+  ...writings.map((item) => ({
     title: item.title,
-    hint: `Writing · ${item.tags.join(" · ")}`,
+    hint: `${item.kind} · ${item.tags.join(" · ")}`,
     href: `/writing/${item.slug}`,
   })),
   { title: "GitHub", hint: "Elsewhere · Zawwarsami16", href: site.socials.github },
