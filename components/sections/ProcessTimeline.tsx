@@ -7,29 +7,11 @@ import { SectionTag } from "@/components/ui/Pill";
 import { fadeUp, stagger } from "@/lib/motion";
 
 const steps = [
-  {
-    n: "01",
-    title: "Research",
-    body: "I understand the problem, users, and constraints. Define what success actually looks like.",
-  },
-  {
-    n: "02",
-    title: "Design",
-    body: "Map the system, data, and experiences. Keep it simple and intentional.",
-  },
-  {
-    n: "03",
-    title: "Build",
-    body: "Write clean, testable code. Build in layers. Ship in small, valuable increments.",
-  },
-  {
-    n: "04",
-    title: "Refine",
-    body: "Measure, learn, and improve. Iterate until it feels effortless.",
-  },
-];
-
-export function ProcessTimeline() {
+  { n: "01", title: "Question", body: "Start with the premise. What is being asked, and what would count as an answer?" },
+  { n: "02", title: "Research", body: "Read the literature, inspect evidence, and separate what is known from what is proposed." },
+  { n: "03", title: "Build & Test", body: "Write, prototype, or investigate in a controlled setting. Find the limits of the idea." },
+  { n: "04", title: "Publish & Revise", body: "Document results, show the sources and limitations, then improve when the evidence changes." },
+]; {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
