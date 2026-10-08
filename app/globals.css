@@ -2062,3 +2062,13 @@ body {
 .reading-surface:not(.reading-light) .source-panel,.reading-surface:not(.reading-light) .citation-box { background:#10060b; border-color:#ff2d4e33; }
 .reading-surface:not(.reading-light) .reading-kicker strong { color:#ff5571; }
 @media(prefers-reduced-motion:reduce) { .writing-page .binary-orbit i { animation:none; } }
+
+/* Let the phone masthead scroll away instead of covering the page title. */
+@media(max-width:700px) {
+ .universe-nav { position:absolute; top:18px; }
+ .universe-nav .nav-inner { min-height:60px; gap:12px; }
+ .universe-wordmark { min-width:0; gap:10px; }
+ .universe-wordmark > span:last-child { font-size:clamp(22px,6.6vw,27px); }
+ .universe-wordmark small { font-size:5px; letter-spacing:.14em; }
+ .universe-nav .nav-actions { flex-shrink:0; }
+}

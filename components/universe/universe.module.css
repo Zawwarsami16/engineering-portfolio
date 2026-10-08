@@ -676,3 +676,25 @@
  .universe[data-view=map] .footer { padding-top:110px; }
  .backdrop img,.landscape img { filter:none; }
 }
+
+/* Phone-only detail view: one world at a time, clear masthead and controls. */
+@media (max-width:700px) {
+ .content { padding-top:122px; }
+ .hero h1 { font-size:clamp(30px,8.8vw,48px); white-space:normal; line-height:1.12; }
+ .hero .kicker { font-size:8px; line-height:1.8; flex-wrap:wrap; }
+ .subtitle { line-height:1.8; }
+ .universe[data-view=world] .worldMap { display:none; }
+ .universe[data-view=world] .connections { display:none; }
+ .universe[data-view=world] .viewControls { position:relative; inset:auto; display:flex; justify-content:space-between; gap:12px; margin:14px 0 12px; opacity:1; }
+ .universe[data-view=world] .viewControls > span { order:0; display:block; }
+ .universe[data-view=world] .viewControls button { order:1; margin-left:auto; min-height:44px; padding:8px 12px; border:1px solid #b6555666; border-radius:22px; background:#19060dd9; color:#f2e9d9; white-space:nowrap; }
+ .worldIntro { display:grid; grid-template-columns:68px minmax(0,1fr); gap:16px; }
+ .worldIntro > div { min-width:0; }
+ .worldMedallion { width:68px; height:82px; font-size:64px; }
+ .worldMedallion::before { width:68px; height:68px; }
+ .worldIntro h2 { font-size:clamp(25px,6.5vw,34px); line-height:1.12; overflow-wrap:break-word; }
+ .description { line-height:1.5; }
+ .emptyWorld { text-align:center; padding-inline:12px; }
+ .emptyWorld h3 { font-size:27px; line-height:1.15; }
+ .emptyWorld p { font-size:16px; line-height:1.5; }
+}
