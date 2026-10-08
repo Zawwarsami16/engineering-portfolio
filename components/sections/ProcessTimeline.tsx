@@ -11,7 +11,9 @@ const steps = [
   { n: "02", title: "Research", body: "Read the literature, inspect evidence, and separate what is known from what is proposed." },
   { n: "03", title: "Build & Test", body: "Write, prototype, or investigate in a controlled setting. Find the limits of the idea." },
   { n: "04", title: "Publish & Revise", body: "Document results, show the sources and limitations, then improve when the evidence changes." },
-]; {
+];
+
+export function ProcessTimeline() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
