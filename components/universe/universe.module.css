@@ -524,10 +524,10 @@
 .viewControls { position:absolute; right:0; top:77px; margin:0; z-index:3; font-size:8px; opacity:.7; }
 .worldDetail { grid-template-columns:43% minmax(0,57%); min-height:0; gap:0; margin-top:30px; }
 .worldIntro { padding:0 35px 0 clamp(70px,9vw,145px); }
-.worldIntro h2 { font-size:clamp(32px,3.1vw,49px); white-space:nowrap; }
+.worldIntro h2 { font-size:clamp(32px,3.1vw,49px); white-space:normal; }
 .worldIntro .kicker { margin-bottom:8px; }
 .keywords { margin:16px 0 20px; font-size:8px; letter-spacing:.21em; }
-.description { font-size:18px; line-height:1.45; max-width:375px; }
+.description { font-size:18px; line-height:1.45; max-width:340px; }
 .stats { margin-top:26px; gap:24px; }
 .stats > div { min-width:0; }
 .stats strong { font-size:31px; }
@@ -538,14 +538,14 @@
 .overviewStage .cycleHeading { width:calc(100% + 139px); gap:12px; }
 .overviewStage .cycleHeading h3 { font-size:25px; }
 .overviewStage .cycleHeading p { font-size:7px; letter-spacing:.14em; }
-.overviewStage .nodeField { height:235px; padding:0; margin-top:14px; border-top:1px solid #a6403830; border-bottom:1px solid #a6403830; border-radius:44px; }
+.overviewStage .nodeField { height:210px; padding:0; margin-top:14px; border-top:1px solid #a6403830; border-bottom:1px solid #a6403830; border-radius:44px; }
 .overviewStage .paperNodes { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px 18px; padding:25px 14%; align-content:center; height:100%; }
 .overviewStage .paperNode { width:46px; height:46px; flex-basis:46px; min-width:0; margin:auto; font-size:21px; }
 .overviewStage .paperNode::before { inset:-5px; border-color:#ac443d25; }
 .overviewStage .paperNode::after { box-shadow:0 0 7px 2px #ff1c37; }
 .overviewStage .nodeTooltip { display:none; }
 .overviewStage .continuation { display:none; }
-.overviewStage .synthesisBranch { position:absolute; top:87px; right:0; width:120px; margin:0; padding:0; border:0; }
+.overviewStage .synthesisBranch { position:absolute; top:106px; right:0; width:120px; margin:0; padding:0; border:0; }
 .overviewStage .milestone { flex-direction:column; text-align:center; width:120px; max-width:120px; gap:17px; }
 .overviewStage .bookOrbit { width:94px; height:94px; flex-basis:94px; margin:0; border-color:#d76252; box-shadow:0 0 26px #ff233047,inset 0 0 24px #ff283033; }
 .overviewStage .bookOrbit::before { inset:-12px; border-color:#ad453c55; box-shadow:0 0 0 7px #ba4c3412; }
@@ -553,7 +553,7 @@
 .overviewStage .milestone .kicker { font-size:7px; line-height:1.4; justify-content:center; }
 .overviewStage .milestone h3 { font-size:23px; margin-top:5px; }
 .overviewStage .dottedBranch { display:none; }
-.futureHorizon { min-height:270px; border:0; padding:46px 0 0; justify-content:flex-start; }
+.futureHorizon { min-height:270px; border:0; padding:65px 0 0; justify-content:flex-start; }
 .futureHorizon::before { display:none; }
 .futureCore { width:78px; height:78px; margin:30px auto 24px; order:1; }
 .futureCore::after { width:42px; }
@@ -562,7 +562,7 @@
 .futureHorizon h3 { display:none; }
 .futureCopy { order:3; font-size:15px; line-height:1.4; padding-left:15px; border-left:1px solid #b24d4755; margin-top:14px; }
 .futureTrail { order:2; font-size:7px; margin-top:0; white-space:nowrap; }
-.viewTabs { margin-top:26px; width:66%; background:linear-gradient(90deg,transparent,#08030588,transparent); }
+.viewTabs { margin-top:15px; width:66%; background:linear-gradient(90deg,transparent,#08030588,transparent); }
 .viewTabs button { min-height:38px; padding:0 25px; font-size:8px; }
 .footer,.universe[data-view=map] .footer { padding-top:160px; font-size:7px; }
 .landscape { height:clamp(260px,28vw,450px); }

@@ -116,7 +116,7 @@ export function PaperConnections({ field, count }: { field: RefObject<HTMLDivEle
   }, [field, count]);
   if (!layout || !layout.nodes.length) return null;
   const centerY = layout.height / 2;
-  const start = { x: -65, y: centerY };
+  const start = { x: -35, y: centerY };
   const end = { x: layout.width + 45, y: centerY };
   return <svg className={s.paperConnections} viewBox={`0 0 ${layout.width} ${layout.height}`} fill="none" aria-hidden="true">
     <defs><filter id={id} x="-50%" y="-100%" width="200%" height="300%"><feGaussianBlur stdDeviation="2.2" /></filter></defs>

@@ -2034,7 +2034,7 @@ body {
 
 /* Universe uses the light, unobstructed masthead in its visual reference. */
 .universe-nav { background:transparent; border:0; box-shadow:none; backdrop-filter:none; }
-.universe-nav .nav-inner { background:transparent; box-shadow:none; border:0; }
+.universe-nav .nav-inner { background:transparent; box-shadow:none; border:0; backdrop-filter:none; }
 .universe-nav .desktop-nav { margin-left:auto; margin-right:34px; gap:30px; }
 .universe-nav .desktop-nav a { font-family:var(--font-cormorant),Georgia,serif; font-size:16px; }
 .universe-nav .nav-contact { border:1px solid #ad5b5180; border-radius:24px; padding:8px 17px; font-family:var(--font-cormorant),Georgia,serif; font-size:15px; }
