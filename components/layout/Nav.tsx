@@ -28,7 +28,7 @@ export function Nav() {
             </Link>
           ) : <Logo />}
           <nav aria-label="Main navigation" className="desktop-nav">
-            {(universe ? [{ href: "/", label: "Home" }, { href: "/research", label: "Research" }, { href: "/writing", label: "Writing" }, { href: "/about", label: "About" }] : site.nav).map((item) => (
+            {(universe ? [{ href: "/", label: "Home" }, { href: "/research", label: "Long-Term Vision" }, { href: "/writing", label: "Writing" }, { href: "/about", label: "About" }] : site.nav).map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
