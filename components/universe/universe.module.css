@@ -684,7 +684,7 @@
  .hero .kicker { font-size:8px; line-height:1.8; flex-wrap:wrap; }
  .subtitle { line-height:1.8; }
  .universe[data-view=world] .worldMap { display:none; }
- .universe[data-view=world] .connections { display:none; }
+ .universe[data-view=world] .connections { display:block; }
  .universe[data-view=world] .viewControls { position:relative; inset:auto; display:flex; justify-content:space-between; gap:12px; margin:14px 0 12px; opacity:1; }
  .universe[data-view=world] .viewControls > span { order:0; display:block; }
  .universe[data-view=world] .viewControls button { order:1; margin-left:auto; min-height:44px; padding:8px 12px; border:1px solid #b6555666; border-radius:22px; background:#19060dd9; color:#f2e9d9; white-space:nowrap; }
