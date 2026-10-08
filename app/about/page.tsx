@@ -61,21 +61,20 @@ export default function AboutPage() {
                 aria-hidden
                 className="absolute -inset-4 rounded-md border border-[var(--color-line)]"
               />
-              <div className="relative aspect-[4/5] overflow-hidden rounded-md border border-[var(--color-line)] bg-[var(--color-surface)]">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-md border border-[var(--color-line)] bg-[var(--color-bg)]">
                 <Image
-                  src="/images/about-portrait.jpg"
-                  alt="Portrait — Zawwar Sami, rim-lit in crimson nebula"
+                  src="/images/zawwar-portrait.avif"
+                  alt="Portrait of Zawwar Sami"
                   fill
                   sizes="(max-width: 1024px) 100vw, 480px"
-                  className="object-cover"
-                  priority
+                  className="object-contain object-bottom brightness-[0.88] contrast-[1.05] saturate-[0.90]"
                 />
                 <div
                   aria-hidden
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(180deg, rgba(7,7,10,0.0) 35%, rgba(7,7,10,0.40) 78%, rgba(7,7,10,0.85) 100%)",
+                      "linear-gradient(180deg, rgba(7,7,10,0) 50%, rgba(7,7,10,0.15) 76%, rgba(7,7,10,0.72) 100%)",
                   }}
                 />
                 <div
@@ -83,7 +82,7 @@ export default function AboutPage() {
                   className="pointer-events-none absolute inset-0 mix-blend-soft-light opacity-50"
                   style={{
                     background:
-                      "radial-gradient(ellipse 60% 70% at 70% 30%, rgba(220,38,38,0.35), transparent 70%)",
+                      "radial-gradient(ellipse 60% 70% at 70% 30%, rgba(133,29,43,0.16), transparent 70%)",
                   }}
                 />
                 <div className="absolute right-3 bottom-3 left-3 flex justify-between font-mono text-[9px] tracking-[0.25em] text-[var(--color-fg-dim)] uppercase">
