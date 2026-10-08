@@ -17,10 +17,10 @@ export function StructuredData() {
         givenName: "Zawwar",
         familyName: "Sami",
         url: SITE_URL,
-        image: `${SITE_URL}/opengraph-image`,
-        jobTitle: "Engineer, Builder",
+        image: `${SITE_URL}/images/zawwar-portrait.avif`,
+        jobTitle: "Independent Researcher & Engineer",
         description:
-          "Independent engineer and builder. Founder of Anteroom Studio. Builds AI systems for markets, geopolitics, and macro intelligence.",
+          "Independent research and engineering across philosophy, artificial intelligence, and cybersecurity. Author of preprints and builder of ZAI and ZAI Memory Hub.",
         address: {
           "@type": "PostalAddress",
           addressCountry: site.location.country,
@@ -36,19 +36,13 @@ export function StructuredData() {
           site.socials.hub,
           site.socials.htb,
           site.socials.htbProgress,
+          site.socials.orcid,
         ],
         knowsAbout: [
-          "Artificial Intelligence",
-          "Autonomous Intelligence",
-          "Multi-agent systems",
-          "Macro markets",
-          "Geopolitical analysis",
-          "Full-stack engineering",
-          "Islamic philosophy",
-          "Philosophy of mind",
-          "Next.js",
-          "TypeScript",
-          "Python",
+          "Philosophy", "Artificial Intelligence", "Cybersecurity",
+          "AI agents", "Personal AI", "Autonomous systems", "Philosophy of mind",
+          "Metaphysics", "Islamic philosophy", "Consciousness", "AI memory and continuity",
+          "Defensive security research", "Security labs and CTFs", "Full-stack engineering",
         ],
       },
       {
@@ -61,7 +55,7 @@ export function StructuredData() {
         founder: { "@id": PERSON_ID },
         slogan: site.studio.tagline,
         description:
-          "Solo design and engineering studio building AI systems for markets, geopolitics, and macro intelligence.",
+          "Independent research and engineering studio hosting ZAI, open-source systems, security practice, and experimental projects.",
         // Google's Article guidelines require the publisher Organization to
         // carry a logo as an ImageObject; without it BlogPosting publisher is
         // flagged in Rich Results.
@@ -78,15 +72,15 @@ export function StructuredData() {
         url: SITE_URL,
         name: "Zawwar Sami",
         description:
-          "Engineer and builder. Founder of Anteroom Studio. Based in Canada.",
+          "Research and engineering across philosophy, artificial intelligence, and cybersecurity.",
         inLanguage: "en",
         publisher: { "@id": PERSON_ID },
       },
       {
         "@type": "ProfilePage",
-        "@id": `${SITE_URL}/#profile`,
-        url: SITE_URL,
-        name: "Zawwar Sami — Engineer, Builder",
+        "@id": `${SITE_URL}/about#profile`,
+        url: `${SITE_URL}/about`,
+        name: "Zawwar Sami — Independent Researcher & Engineer",
         about: { "@id": PERSON_ID },
         mainEntity: { "@id": PERSON_ID },
       },
