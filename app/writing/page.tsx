@@ -6,18 +6,22 @@ import { writings } from "@/lib/writing";
 import { Archive } from "@/components/writing/Archive";
 import { site } from "@/lib/site";
 const description =
-  "Papers and essays by Zawwar Sami on personal AI, memory, identity, consciousness and Islamic philosophy. Read the manuscripts, abstracts and citations.";
+  "Independent research by Zawwar Sami in philosophy and artificial intelligence. Explore preprints, abstracts, PDFs and links to Zenodo, PhilPapers and ORCID.";
 export const metadata: Metadata = {
   title: "Writing & Research",
   description,
   keywords: [
     "Zawwar Sami",
-    "personal AI",
-    "philosophy of AI",
-    "memory",
-    "identity",
+    "independent research",
+    "philosophy",
+    "artificial intelligence",
+    "AI agents",
+    "personhood",
     "consciousness",
-    "Islamic philosophy",
+    "persistent memory",
+    "Zenodo preprints",
+    "PhilPapers",
+    "ORCID",
   ],
   alternates: { canonical: "/writing" },
   openGraph: {
@@ -36,8 +40,30 @@ export const metadata: Metadata = {
 };
 export default function WritingPage() {
   const featured = writings.find((e) => e.kind === "Paper")!;
+  const graph = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://zawwarsami.com/writing#archive",
+    name: "Writing & Research — Zawwar Sami",
+    url: "https://zawwarsami.com/writing",
+    description,
+    author: { "@id": "https://zawwarsami.com/#person" },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: writings.map((entry, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: entry.title,
+        url: "https://zawwarsami.com/writing/" + entry.slug,
+      })),
+    },
+  };
   return (
     <div className="writing-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(graph).replace(/</g, "\\u003c") }}
+      />
       <section className="archive-hero">
         <div className="archive-hero-art" aria-hidden="true">
           <Image src="/images/universe/cosmos.webp" alt="" fill priority sizes="100vw" />
