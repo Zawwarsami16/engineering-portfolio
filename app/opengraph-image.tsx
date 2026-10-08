@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Zawwar Sami — Engineer · Builder of ZAI";
+export const alt = "Zawwar Sami — Independent Researcher & Engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -86,7 +86,7 @@ export default async function OG() {
               textShadow: "0 0 40px rgba(7,7,10,0.85)",
             }}
           >
-            Building thoughtful
+            Researching what matters.
           </div>
           <div
             style={{
@@ -99,7 +99,7 @@ export default async function OG() {
               textShadow: "0 0 40px rgba(7,7,10,0.7)",
             }}
           >
-            digital systems.
+            Building what works.
           </div>
         </div>
 
@@ -115,7 +115,7 @@ export default async function OG() {
             textShadow: "0 0 20px rgba(7,7,10,0.7)",
           }}
         >
-          <span>Engineer · Builder of ZAI</span>
+          <span>Philosophy · AI · Cybersecurity</span>
           <span>Canada</span>
         </div>
       </div>
