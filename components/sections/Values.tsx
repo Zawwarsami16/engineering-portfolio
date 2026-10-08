@@ -7,31 +7,25 @@ import { fadeUp, stagger } from "@/lib/motion";
 const values = [
   {
     icon: Sparkles,
-    title: "Clarity First",
-    body:
-      "I simplify complexity and design systems that are easy to understand and maintain.",
+    title: "Independent Inquiry",
+    body: "I follow questions across philosophy, AI, and technology without forcing them into one discipline.",
   },
   {
     icon: Zap,
-    title: "Performance",
-    body:
-      "Fast, efficient, and reliable software that respects users and resources.",
+    title: "Evidence Matters",
+    body: "An argument needs sources; a technical claim needs tests. I try to keep both open to scrutiny.",
   },
   {
     icon: Gem,
-    title: "Craft & Detail",
-    body:
-      "Clean code, thoughtful UI, and the small details that create lasting value.",
+    title: "Security & Trust",
+    body: "Understanding systems means understanding where they fail, what they expose, and where their boundaries sit.",
   },
   {
     icon: Box,
-    title: "Useful Systems",
-    body:
-      "I build things that solve real problems and stay useful over time.",
+    title: "Build & Revisit",
+    body: "I publish, build, test, and revise. A good idea should survive contact with reality.",
   },
-];
-
-export function Values() {
+]; {
   return (
     <section className="relative mx-auto w-full max-w-[1440px] px-6 py-12 lg:px-12 lg:pb-24">
       <motion.div
