@@ -32,10 +32,10 @@ export function Footer() {
             </FooterColumn>
             <FooterColumn icon={<CircleDot className="h-3.5 w-3.5" />} label="Availability">
               <p className="font-serif text-2xl text-[var(--color-fg)]">
-                Open for new opportunities
+                Research & collaboration
               </p>
               <p className="mt-1 font-mono text-[10px] tracking-[0.2em] text-[var(--color-accent)]">
-                Online · responding within 24h
+                Philosophy · AI · Security
               </p>
             </FooterColumn>
           </div>
