@@ -117,9 +117,9 @@ export function PaperConnections({ field, count }: { field: RefObject<HTMLDivEle
   if (!layout || !layout.nodes.length) return null;
   const first = layout.nodes[0];
   const last = layout.nodes[layout.nodes.length - 1];
-  const amplitude = Math.min(layout.height * .43, 83);
+  const amplitude = Math.min(layout.height * .16, 28);
   const start = { x: -35, y: first.y };
-  const end = { x: layout.width + 45, y: last.y };
+  const end = { x: layout.width + 12, y: last.y };
   return <svg className={s.paperConnections} viewBox={`0 0 ${layout.width} ${layout.height}`} fill="none" aria-hidden="true">
     <defs><filter id={id} x="-50%" y="-100%" width="200%" height="300%"><feGaussianBlur stdDeviation="2.7" /></filter></defs>
     {Array.from({ length: 23 }, (_, i) => {

@@ -603,3 +603,6 @@
  .footer,.universe[data-view=map] .footer { padding-top:120px; }
  .landscape { height:230px; }
 }
+
+/* Keep the current above paper titles and tabs readable over the horizon. */
+.viewTabs { background:linear-gradient(90deg,#080305a8,#080305de,#080305a8); }

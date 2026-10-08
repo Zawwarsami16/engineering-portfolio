@@ -26,7 +26,7 @@ Run `npx tsc --noEmit`, `npm run lint`, and `npm run build`. Verify worlds A/C/P
 
 ## Visual detail pass
 
-The default entry is All Worlds; world fragments select details and browser Back restores the map. `UniverseConnections.tsx` measures HTML anchors with ResizeObserver and font readiness, keeping SVG roots attached to alphabet rings and labels at each breakpoint. Paper connections likewise use real button centers.
+The default entry is World A; #map opens All Worlds, world fragments select details, and browser history restores the requested view. `UniverseConnections.tsx` measures HTML anchors with ResizeObserver and font readiness, keeping SVG roots attached to alphabet rings and labels at each breakpoint. Paper connections likewise use real button centers.
 
 The landscape is a separate native 2172 × 724 image, served directly at high WebP quality, so long mobile pages do not magnify a single full-page raster. The sky retains the original nebula asset. New asset: `public/images/universe/landscape-hd.webp`; generated with the built-in image tool. Prompt: text-free panoramic black obsidian mountain valley with sharp rock detail, winding reflective river, central crimson horizon beacon and delicate celestial rings, matching the supplied reference. Output requested at maximum resolution; actual native output is 2172 × 724.
 
