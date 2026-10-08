@@ -20,7 +20,7 @@ export const stack: StackCategory[] = [
     id: "ai-models",
     title: "AI & models",
     blurb:
-      "The substrate of ZAI. Python for everything serious, with a strong bias toward systems that hold context across decades.",
+      "Python, data, and persistent systems are the working tools behind ZAI, research experiments, and infrastructure.",
     size: "wide",
     items: [
       {
@@ -32,7 +32,7 @@ export const stack: StackCategory[] = [
       {
         name: "PostgreSQL",
         icon: "postgres",
-        rationale: "Time-series, regimes, and replays — Postgres handles all three honestly.",
+        rationale: "Persistent state and structured records for AI infrastructure, research tools, and time-series projects.",
         level: "daily",
       },
       {
@@ -53,7 +53,7 @@ export const stack: StackCategory[] = [
     id: "frontend",
     title: "Frontend",
     blurb:
-      "Where craft meets perception. Calm, dense interfaces — the kind of UI that respects an operator's attention.",
+      "Interfaces for research and real use: legible records, clear controls, and responsive reading experiences.",
     size: "tall",
     items: [
       {
@@ -108,7 +108,7 @@ export const philosophy = [
   {
     title: "Long memory beats hot takes",
     body:
-      "Markets, geopolitics, and AI all reward systems that hold context across decades. Anteroom's tools are designed around 1871 → today, not the last 24 hours.",
+      "Long-lived research and AI systems need context they can trace and correct, not a stream of unexamined claims.",
   },
   {
     title: "Pick boring tools",
@@ -118,6 +118,6 @@ export const philosophy = [
   {
     title: "Reproducibility from day one",
     body:
-      "Every prediction in the World Model rebuilds from raw inputs. Every Oracle claim links to its source. Without this you don't have a model — you have a story.",
+      "Treat source trails, repeatable tests, and explicit limitations as part of the system, not documentation added at the end.",
   },
 ];
