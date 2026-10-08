@@ -71,7 +71,7 @@ function FutureHorizon({ letter }: { letter: string }) {
     <p className={s.kicker}>Future cycles</p>
     <h3>Open horizon</h3>
     <p className={s.futureCopy}>New branches light up only when real work is released.</p>
-    <div className={s.futureTrail}><span />Toward {letter}∞</div>
+    <div className={s.futureTrail}><span />A broader horizon</div>
     <div className={s.futureCycleCards} aria-hidden="true">
       <div className={s.futureCycleCard}><strong>Next cycle</strong><small>Opens with the next body of work.</small></div>
       <div className={s.futureCycleCard}><strong>Beyond</strong><small>Long-term expansion.</small></div>
@@ -107,7 +107,7 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
   const [letter, setLetter] = useState("A");
   const [map, setMap] = useState(false);
   const stage = useRef<HTMLDivElement>(null);
-  const [view, setView] = useState<"overview" | "papers" | "synthesis">("overview");
+  const [view, setView] = useState<"overview" | "papers" | "synthesis" | "future">("overview");
   const [paper, setPaper] = useState<PublicWork | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
@@ -173,6 +173,7 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
         <div className={s.viewControls}><button onClick={() => { setMap(true); window.history.pushState(null, "", "#map"); }}><Grid2X2 size={13} aria-hidden="true" /> All worlds</button><span>World {world.letter}</span></div>
 
           <motion.section key={world.letter} className={s.worldDetail} aria-label={`World ${world.letter}: ${world.title}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: reduceMotion ? 0 : .18 }}>
+            <div className={s.edgePlanet} aria-hidden="true" />
             <div className={s.worldIntro} data-world-intro>
               <span className={s.worldMedallion} aria-hidden="true">{world.letter}</span>
               <div><p className={s.kicker}>World {world.letter} <i className={s.tinySpark} /></p>
@@ -191,6 +192,7 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
                 <FutureHorizon letter={world.letter} />
               </div> : <div className={s.emptyWorld}><Current /><span className={s.emptyOrb}>{world.letter}</span><h3>An open field of inquiry.</h3><p>Public work will appear here as it is released.</p></div>)}
               {view === "papers" && <div className={s.paperList}><h3>Published work</h3><p className={s.listNote}>Public papers and author manuscripts. Publication status is shown on each record.</p>{works.map((item) => <button key={item.slug} onClick={() => openPaper(item)}><span className={s.listCode}>{item.seriesCode ?? <FileText size={22} />}</span><span><strong>{item.title}</strong><small>{item.status} · {item.datePublished}</small></span><ArrowUpRight size={18} aria-hidden="true" /></button>)}</div>}
+              {view === "future" && <FutureHorizon letter={world.letter} />}
               {view === "synthesis" && <div className={s.synthesisView}>{syntheses.map((item) => <Milestone key={item.id} item={item} full />)}</div>}
             </div>
           </motion.section>
@@ -199,6 +201,7 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
           <button aria-pressed={view === "overview"} onClick={() => setView("overview")}>Overview</button>
           <button aria-pressed={view === "papers"} onClick={() => setView("papers")}>Papers <span>({works.length})</span></button>
           {syntheses.length > 0 && <button aria-pressed={view === "synthesis"} onClick={() => setView("synthesis")}>Synthesis book</button>}
+          <button aria-pressed={view === "future"} onClick={() => setView("future")}>Future cycles</button>
         </nav>}
       </>}
       </div>

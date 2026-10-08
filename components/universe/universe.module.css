@@ -512,97 +512,110 @@
   .worldIntro { gap:13px; }
 }
 
-/* Papers-first composition: readable public work, compact horizon. */
+/* Focused-world composition follows the supplied desktop reference. */
 .universe { min-height:100svh; }
-.content { padding-top:104px; padding-bottom:14px; }
-.hero h1 { font-size:clamp(48px,4.7vw,76px); margin:6px 0 8px; }
-.alphabet { margin-top:24px; }
-.viewControls { margin:0 0 8px; }
-.worldDetail { grid-template-columns:minmax(270px,31%) minmax(0,1fr); min-height:0; gap:24px; }
-.worldIntro { padding:12px 22px 0 34px; }
-.worldIntro h2 { font-size:clamp(34px,3vw,48px); }
-.keywords { margin:15px 0; }
-.description { font-size:18px; line-height:1.45; }
-.stats { margin-top:22px; }
+.content { max-width:1700px; min-height:100svh; padding:106px 4.6% 16px; }
+.hero h1 { font-size:clamp(54px,5.2vw,82px); margin:4px 0 9px; }
+.alphabet { margin-top:23px; }
+.universe[data-view=world] .activeLetter:not(.selectedLetter)::before { width:7px; height:7px; border-color:#96796b; box-shadow:none; background:#100507; }
+.universe[data-view=world] .activeLetter:not(.selectedLetter) { font-size:13px; align-items:flex-start; padding-top:1px; color:#baaa9b; }
+.universe[data-view=world] .activeLetter:not(.selectedLetter)::before { top:calc(50% - 3px); }
+.universe[data-view=world] .activeLetter:not(.selectedLetter)::after { display:none; }
+.viewControls { position:absolute; right:0; top:77px; margin:0; z-index:3; font-size:8px; opacity:.7; }
+.worldDetail { grid-template-columns:43% minmax(0,57%); min-height:0; gap:0; margin-top:30px; }
+.worldIntro { padding:0 35px 0 clamp(70px,9vw,145px); }
+.worldIntro h2 { font-size:clamp(32px,3.1vw,49px); white-space:nowrap; }
+.worldIntro .kicker { margin-bottom:8px; }
+.keywords { margin:16px 0 20px; font-size:8px; letter-spacing:.21em; }
+.description { font-size:18px; line-height:1.45; max-width:375px; }
+.stats { margin-top:26px; gap:24px; }
+.stats > div { min-width:0; }
+.stats strong { font-size:31px; }
+.edgePlanet { position:absolute; left:calc(-4.6vw - 246px); top:-9px; width:360px; height:360px; border-radius:50%; background:radial-gradient(circle at 74% 33%,#ff907830,transparent 38%),url('/images/universe/cosmos.webp') 17% 40% / 870px auto; box-shadow:inset -13px 3px 20px #ff665b99,inset -25px 0 35px #ad192960,inset 90px 0 70px #000,9px 0 24px #f4263733; border-right:2px solid #fa6a64; z-index:-1; }
 .worldBody { min-height:0; }
-.overviewStage { grid-template-columns:minmax(0,1fr) 135px; min-height:0; gap:24px; }
-.overviewStage .cycle { min-height:0; padding:6px 0 0; }
-.overviewStage .cycleHeading { gap:12px; }
+.overviewStage { grid-template-columns:minmax(0,1fr) 125px; gap:25px; min-height:0; }
+.overviewStage .cycle { padding:0 139px 0 0; min-height:270px; }
+.overviewStage .cycleHeading { width:calc(100% + 139px); gap:12px; }
 .overviewStage .cycleHeading h3 { font-size:25px; }
-.overviewStage .cycleHeading p { font-size:7px; letter-spacing:.1em; }
-.overviewStage .nodeField { height:220px; margin-top:0; padding:0; align-items:flex-start; }
-.overviewStage .paperNodes { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); align-items:start; gap:12px; padding:54px 0 0; }
-.overviewStage .paperNode { width:58px; height:58px; min-width:0; margin:auto; font-size:24px; }
-.overviewStage .nodeTooltip { opacity:1; visibility:visible; background:transparent; border:0; border-radius:0; padding:0; width:clamp(85px,8.4vw,128px); top:calc(100% + 19px); font-size:17px; line-height:1.18; color:#ded0bf; pointer-events:none; }
-.overviewStage .paperNode:hover .nodeTooltip { color:#fff1de; }
+.overviewStage .cycleHeading p { font-size:7px; letter-spacing:.14em; }
+.overviewStage .nodeField { height:235px; padding:0; margin-top:14px; border-top:1px solid #a6403830; border-bottom:1px solid #a6403830; border-radius:44px; }
+.overviewStage .paperNodes { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px 18px; padding:25px 14%; align-content:center; height:100%; }
+.overviewStage .paperNode { width:46px; height:46px; flex-basis:46px; min-width:0; margin:auto; font-size:21px; }
+.overviewStage .paperNode::before { inset:-5px; border-color:#ac443d25; }
+.overviewStage .paperNode::after { box-shadow:0 0 7px 2px #ff1c37; }
+.overviewStage .nodeTooltip { display:none; }
 .overviewStage .continuation { display:none; }
-.overviewStage .synthesisBranch { position:relative; inset:auto; width:100%; margin:0; padding:17px 0 0; border-top:1px solid #a34a464d; justify-content:flex-start; }
+.overviewStage .synthesisBranch { position:absolute; top:87px; right:0; width:120px; margin:0; padding:0; border:0; }
+.overviewStage .milestone { flex-direction:column; text-align:center; width:120px; max-width:120px; gap:17px; }
+.overviewStage .bookOrbit { width:94px; height:94px; flex-basis:94px; margin:0; border-color:#d76252; box-shadow:0 0 26px #ff233047,inset 0 0 24px #ff283033; }
+.overviewStage .bookOrbit::before { inset:-12px; border-color:#ad453c55; box-shadow:0 0 0 7px #ba4c3412; }
+.overviewStage .bookOrbit svg { width:40px; height:40px; filter:drop-shadow(0 0 5px #ff3c3c); }
+.overviewStage .milestone .kicker { font-size:7px; line-height:1.4; justify-content:center; }
+.overviewStage .milestone h3 { font-size:23px; margin-top:5px; }
 .overviewStage .dottedBranch { display:none; }
-.overviewStage .milestone { width:100%; max-width:none; flex-direction:row; text-align:left; gap:20px; }
-.overviewStage .bookOrbit { width:55px; height:55px; flex:0 0 55px; margin:0 8px; }
-.overviewStage .milestone .kicker { max-width:none; }
-.overviewStage .milestone h3 { font-size:25px; margin-top:4px; }
-.futureHorizon { min-height:0; padding:18px 0 18px 18px; }
-.futureCore { width:64px; height:64px; margin-bottom:20px; }
-.futureCore::after { width:35px; }
-.futureHorizon h3 { font-size:25px; }
-.futureCopy { font-size:15px; }
-.futureTrail { margin-top:18px; font-size:7px; }
-.viewTabs { margin-top:24px; }
-.footer, .universe[data-view=map] .footer { padding-top:100px; }
-.landscape { height:clamp(250px,25vw,430px); }
+.futureHorizon { min-height:270px; border:0; padding:46px 0 0; justify-content:flex-start; }
+.futureHorizon::before { display:none; }
+.futureCore { width:78px; height:78px; margin:30px auto 24px; order:1; }
+.futureCore::after { width:42px; }
+.futureCore::before { content:''; position:absolute; right:100%; top:50%; width:45px; border-top:1px dotted #ba9d8790; }
+.futureHorizon .kicker { order:0; font-size:9px; letter-spacing:.2em; justify-content:center; }
+.futureHorizon h3 { display:none; }
+.futureCopy { order:3; font-size:15px; line-height:1.4; padding-left:15px; border-left:1px solid #b24d4755; margin-top:14px; }
+.futureTrail { order:2; font-size:7px; margin-top:0; white-space:nowrap; }
+.viewTabs { margin-top:26px; width:66%; background:linear-gradient(90deg,transparent,#08030588,transparent); }
+.viewTabs button { min-height:38px; padding:0 25px; font-size:8px; }
+.footer,.universe[data-view=map] .footer { padding-top:160px; font-size:7px; }
+.landscape { height:clamp(260px,28vw,450px); }
 .worldMap { min-height:0; }
-.worldBranch { padding-top:180px; }
-@media(min-width:1600px) { .content { padding-top:110px; } .worldBranch { padding-top:210px; } }
+.worldBranch { padding-top:190px; }
+@media(min-width:1450px) { .overviewStage { grid-template-columns:minmax(0,1fr) 145px; gap:28px; } .overviewStage .cycle { padding-right:155px; } .overviewStage .cycleHeading { width:calc(100% + 155px); } .overviewStage .synthesisBranch { width:135px; } }
 @media(min-width:701px) and (max-width:1100px) {
- .worldDetail { grid-template-columns:30% minmax(0,1fr); gap:22px; }
- .worldIntro { padding:8px 6px 0 18px; }
- .worldIntro h2 { font-size:33px; }
- .description { font-size:17px; }
- .stats { gap:12px; }
- .stats > div { min-width:0; padding-right:12px; }
- .overviewStage { grid-template-columns:minmax(0,1fr); gap:18px; }
- .futureHorizon { border-left:0; border-top:1px solid #a94b4659; padding:12px 0 0; display:grid; grid-template-columns:auto 1fr; gap:4px 18px; }
- .futureCore,.futureCopy,.futureTrail { display:none; }
- .futureHorizon .kicker { margin:0; align-self:center; }
- .futureHorizon h3 { font-size:22px; }
- .overviewStage .nodeTooltip { width:100px; font-size:16px; }
+ .worldDetail { grid-template-columns:40% minmax(0,60%); }
+ .worldIntro { padding-left:55px; padding-right:20px; }
+ .worldIntro h2 { font-size:32px; white-space:normal; }
+ .overviewStage { grid-template-columns:minmax(0,1fr) 95px; gap:15px; }
+ .overviewStage .cycle { padding-right:100px; }
+ .overviewStage .cycleHeading { width:calc(100% + 100px); }
+ .overviewStage .cycleHeading h3 { font-size:21px; }
+ .overviewStage .synthesisBranch,.overviewStage .milestone { width:86px; }
+ .overviewStage .bookOrbit { width:68px; height:68px; flex-basis:68px; }
+ .overviewStage .milestone h3 { font-size:20px; }
+ .overviewStage .paperNodes { padding:25px 5%; gap:25px 10px; }
+ .overviewStage .paperNode { width:40px; height:40px; font-size:19px; }
+ .futureCore { width:62px; height:62px; }
+ .viewTabs { width:85%; }
 }
 @media(max-width:700px) {
- .content { padding-top:108px; }
+ .content { padding:108px 4.4% 15px; }
  .hero h1 { font-size:clamp(39px,9vw,62px); }
  .alphabet { margin-top:23px; }
- .worldBranch:nth-child(n), .mapExpanded .worldBranch { padding-top:94px; padding-bottom:12px; }
- .universe[data-view=map] .worldBranch { padding-top:130px; }
- .worldIntro { padding:0 0 18px; gap:15px; }
- .worldIntro h2 { font-size:clamp(27px,6.8vw,38px); }
- .description { font-size:16px; line-height:1.32; }
- .viewControls { margin:8px 0; }
- .worldDetail { padding:19px 13px 14px; }
+ .universe[data-view=world] .activeLetter:not(.selectedLetter) { font-size:22px; align-items:center; padding-top:0; color:#fff2da; }
+ .universe[data-view=world] .activeLetter:not(.selectedLetter)::before { top:auto; width:31px; height:31px; border-color:#d35357; background:#190508; box-shadow:0 0 18px #ff243353; }
+ .worldBranch:nth-child(n),.mapExpanded .worldBranch { padding:104px 0 14px; }
+ .viewControls { position:static; margin:8px 0; }
+ .worldDetail { margin-top:0; padding:20px 14px; }
+ .edgePlanet { display:none; }
+ .worldIntro { padding:0 0 20px; }
+ .worldIntro h2 { white-space:normal; font-size:clamp(27px,6.8vw,38px); }
+ .description { font-size:16px; }
  .overviewStage { display:block; }
- .overviewStage .cycle { padding:15px 12px 14px; }
- .overviewStage .cycleHeading h3 { font-size:22px; }
+ .overviewStage .cycle { padding:15px 12px 14px; min-height:0; }
+ .overviewStage .cycleHeading { width:100%; }
  .overviewStage .cycleHeading p { font-size:16px; }
- .overviewStage .cycleDescription { margin-left:0; }
- .overviewStage .nodeField { height:auto; min-height:0; margin-top:18px; padding:0; }
- .overviewStage .paperNodes { grid-template-columns:repeat(2,minmax(0,1fr)); padding:0; gap:12px; }
- .overviewStage .paperNode { width:100%; height:auto; min-height:132px; padding:13px 8px; border-radius:12px; margin:0; font-size:22px; gap:5px; justify-content:flex-start; }
- .overviewStage .nodeTooltip { position:static; transform:none; opacity:1; visibility:visible; width:100%; font-size:15px; line-height:1.15; }
- .overviewStage .paperIcon { height:18px; }
- .overviewStage .mobileCycleRoot, .overviewStage .paperConnections { display:none; }
- .overviewStage .synthesisBranch { margin:18px -12px -14px; width:auto; padding:17px 12px 15px; }
- .overviewStage .milestone { gap:15px; }
- .overviewStage .bookOrbit { width:46px; height:46px; flex-basis:46px; margin:0 3px; }
- .overviewStage .milestone h3 { font-size:23px; }
- .futureHorizon { padding:14px 0 0; }
- .futureCycleCards { grid-template-columns:1fr 1fr; gap:8px; }
- .futureCycleCard { min-height:0; padding:12px 9px; }
- .futureCycleCard::before,.futureCycleCard::after { display:none; }
- .futureCycleCard strong { font-size:19px; }
- .futureCycleCard small { font-size:13px; }
- .footer,.universe[data-view=map] .footer { padding-top:120px; }
- .landscape { height:230px; }
+ .overviewStage .nodeField { height:auto; border:0; border-radius:0; margin-top:16px; min-height:70px; padding-left:28px; }
+ .overviewStage .paperNodes { grid-template-columns:repeat(4,minmax(0,1fr)); gap:9px; padding:0; }
+ .overviewStage .paperNode { width:100%; height:57px; margin:0; font-size:19px; border-radius:28px; }
+ .overviewStage .synthesisBranch { position:relative; inset:auto; width:auto; margin:18px -12px -14px; padding:18px 12px; border-top:1px solid #a34a4655; }
+ .overviewStage .milestone { width:100%; max-width:none; flex-direction:row; text-align:left; gap:17px; }
+ .overviewStage .bookOrbit { width:54px; height:54px; flex:0 0 54px; margin-left:6px; }
+ .overviewStage .bookOrbit svg { width:28px; height:28px; }
+ .overviewStage .milestone .kicker { justify-content:flex-start; }
+ .overviewStage .milestone h3 { font-size:24px; }
+ .futureHorizon { min-height:0; padding:15px 0 0; }
+ .futureHorizon .kicker { justify-content:flex-start; }
+ .futureCore,.futureCopy,.futureTrail { display:none; }
+ .viewTabs { width:100%; margin-top:18px; }
+ .viewTabs button { padding:0 7px; font-size:7px; }
+ .footer,.universe[data-view=map] .footer { padding-top:150px; }
+ .landscape { height:260px; }
 }
-
-/* Keep the current above paper titles and tabs readable over the horizon. */
-.viewTabs { background:linear-gradient(90deg,#080305a8,#080305de,#080305a8); }

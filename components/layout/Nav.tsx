@@ -28,7 +28,7 @@ export function Nav() {
             </Link>
           ) : <Logo />}
           <nav aria-label="Main navigation" className="desktop-nav">
-            {site.nav.map((item) => (
+            {(universe ? [{ href: "/", label: "Home" }, { href: "/research", label: "Research" }, { href: "/writing", label: "Writing" }, { href: "/about", label: "About" }] : site.nav).map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -39,16 +39,16 @@ export function Nav() {
                     : undefined
                 }
               >
-                {item.label === "Writing" ? "Research" : item.label}
+                {!universe && item.label === "Writing" ? "Research" : item.label}
               </Link>
             ))}
           </nav>
           <div className="nav-actions">
-            <button className="nav-icon" onClick={openSearch} aria-label="Search the website">
+            {!universe && <button className="nav-icon" onClick={openSearch} aria-label="Search the website">
               <Search size={18} />
-            </button>
-            <Link href="/contact" className="nav-contact">
-              Let’s talk <ArrowUpRight size={15} />
+            </button>}
+            <Link href={universe ? "/" : "/contact"} className="nav-contact">
+              {universe ? "zawwarsami.com" : "Let’s talk"} {universe ? <span aria-hidden="true">•</span> : <ArrowUpRight size={15} />}
             </Link>
             <button
               ref={triggerRef}

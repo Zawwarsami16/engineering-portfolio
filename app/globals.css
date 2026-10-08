@@ -2031,3 +2031,12 @@ body {
 .universe-nav .nav-contact { border-color:#ad5b5155; }
 @media(max-width:1100px) { .universe-nav .desktop-nav { gap:12px; } .universe-nav .nav-contact { display:none; } }
 @media(max-width:700px) { .universe-nav { top:18px; } .universe-nav .nav-inner { padding:0 10px; } .universe-wordmark { gap:13px; } .universe-wordmark > span:last-child { font-size:27px; } .universe-wordmark small { font-size:6px; letter-spacing:.18em; } .universe-nav .nav-actions > button:first-child { display:none; } .universe-nav .menu-trigger { border:1px solid #b6555660; border-radius:50%; } }
+
+/* Universe uses the light, unobstructed masthead in its visual reference. */
+.universe-nav { background:transparent; border:0; box-shadow:none; backdrop-filter:none; }
+.universe-nav .nav-inner { background:transparent; box-shadow:none; border:0; }
+.universe-nav .desktop-nav { margin-left:auto; margin-right:34px; gap:30px; }
+.universe-nav .desktop-nav a { font-family:var(--font-cormorant),Georgia,serif; font-size:16px; }
+.universe-nav .nav-contact { border:1px solid #ad5b5180; border-radius:24px; padding:8px 17px; font-family:var(--font-cormorant),Georgia,serif; font-size:15px; }
+.universe-nav .nav-contact span { color:#ff4853; text-shadow:0 0 9px #ff2139; }
+@media(max-width:700px) { .universe-nav .nav-actions > .menu-trigger { display:flex; } }

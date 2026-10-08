@@ -37,7 +37,7 @@ export function UniverseConnections({ stage, selected, map }: {
           const intro = host.querySelector<HTMLElement>("[data-world-intro]");
           if (intro) {
             const end = intro.getBoundingClientRect();
-            branches.push({ letter, start, end: { x: Math.max(6, end.left - box.left + 7), y: end.bottom - box.top - 22 }, spread: 61, detail: true });
+            branches.push({ letter, start, end: { x: end.left - box.left - 35, y: end.bottom - box.top - 22 }, spread: 90, detail: true });
           }
         }
       });
@@ -115,27 +115,26 @@ export function PaperConnections({ field, count }: { field: RefObject<HTMLDivEle
     return () => { observer.disconnect(); cancelAnimationFrame(frame); };
   }, [field, count]);
   if (!layout || !layout.nodes.length) return null;
-  const first = layout.nodes[0];
-  const last = layout.nodes[layout.nodes.length - 1];
-  const amplitude = Math.min(layout.height * .16, 28);
-  const start = { x: -35, y: first.y };
-  const end = { x: layout.width + 12, y: last.y };
+  const centerY = layout.height / 2;
+  const start = { x: -65, y: centerY };
+  const end = { x: layout.width + 45, y: centerY };
   return <svg className={s.paperConnections} viewBox={`0 0 ${layout.width} ${layout.height}`} fill="none" aria-hidden="true">
-    <defs><filter id={id} x="-50%" y="-100%" width="200%" height="300%"><feGaussianBlur stdDeviation="2.7" /></filter></defs>
-    {Array.from({ length: 23 }, (_, i) => {
-      const offset = (i % 2 ? -1 : 1) * amplitude * (.15 + ((i * 37) % 80) / 100);
-      const fork = first.x + (last.x - first.x) * (.08 + ((i * 29) % 76) / 100);
-      const d = `M${start.x} ${start.y} C${first.x - 62} ${first.y},${first.x - 55} ${first.y + offset},${fork} ${first.y + offset} S${last.x + 40} ${last.y - offset * .4},${end.x} ${end.y}`;
-      return <g key={i}>
-        {i % 4 === 0 && <path d={d} stroke="#ff243f" strokeWidth="4" opacity=".5" filter={`url(#${id})`} />}
-        <path d={d} stroke={i % 3 === 0 ? "#ffaf91" : "#e53248"} strokeWidth={i % 3 === 0 ? .85 : .55} opacity={i % 3 === 0 ? .65 : .5} />
-        {i % 3 === 0 && <circle className={s.traveler} r="1.4" fill="#ffdeb7"><animateMotion dur={`${10 + i}s`} repeatCount="indefinite" path={d} /></circle>}
-      </g>;
-    })}
+    <defs><filter id={id} x="-50%" y="-100%" width="200%" height="300%"><feGaussianBlur stdDeviation="2.2" /></filter></defs>
     {layout.nodes.map((n, i) => <g key={i}>
-      <path d={`M${start.x} ${start.y} C${n.x - 52} ${start.y - amplitude},${n.x} ${n.y - amplitude},${n.x} ${n.y} S${n.x + 55} ${end.y + amplitude},${end.x} ${end.y}`} stroke="#f44c56" strokeWidth=".65" opacity=".7" />
-      {i > 0 && <path d={`M${layout.nodes[i - 1].x} ${layout.nodes[i - 1].y} L${n.x} ${n.y}`} stroke="#ff816e" strokeWidth=".9" />}
+      <path d={`M${n.x} 12 V${layout.height - 12}`} stroke="#b64046" strokeWidth=".5" opacity=".22" />
+      {[12, layout.height - 12].map(y => <circle key={y} cx={n.x} cy={y} r="1.2" fill="#f78a74" />)}
+      {Array.from({ length: 5 }, (_, j) => {
+        const offset = (j - 2) * (8 + i * 2);
+        const d = `M${start.x} ${start.y} C${start.x + 70} ${start.y},${n.x - 80} ${n.y + offset},${n.x} ${n.y} C${n.x + 75} ${n.y - offset},${end.x - 55} ${end.y},${end.x} ${end.y}`;
+        return <g key={j}>
+          {j === 2 && <path d={d} stroke="#ff243f" strokeWidth="3" opacity=".55" filter={`url(#${id})`} />}
+          <path d={d} stroke={j === 2 ? "#ff987d" : "#d12d40"} strokeWidth={j === 2 ? .85 : .55} opacity={j === 2 ? .85 : .5} />
+          {j === 2 && <circle className={s.traveler} r="1.5" fill="#ffe4ca"><animateMotion dur={`${9 + i * 2}s`} repeatCount="indefinite" path={d} /></circle>}
+        </g>;
+      })}
       <circle cx={n.x} cy={n.y} r="3" fill="#ffd9bc" />
     </g>)}
+    <circle cx={start.x} cy={start.y} r="3" fill="#ffad96" filter={`url(#${id})`} />
+    <circle cx={end.x} cy={end.y} r="3" fill="#ffad96" filter={`url(#${id})`} />
   </svg>;
 }

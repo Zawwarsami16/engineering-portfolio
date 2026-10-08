@@ -35,3 +35,7 @@ Validation: production build, TypeScript and ESLint pass. Live desktop map and A
 ## Papers-first entry — October 8, 2026
 
 The default entry and Universe navigation now open World A with its public paper nodes and readable titles already visible. The explicit All worlds control retains the map at #map; world deep links and history continue to work. Compact desktop spacing places synthesis beneath the papers and retains a narrow future-horizon rail. Mobile uses two-column paper cards with titles; unpublished counts remain private.
+
+## Reference correction
+
+The focused desktop view follows the supplied horizontal reference: cropped left planet, inset world introduction, circular paper grid, synthesis orbit beside the grid, and a future horizon. Persistent paper titles are removed from the overview; full titles remain in accessible button names, paper dialogs and the Papers view. Only current public works populate the grid. The Research route uses a compact Home/Research/Writing/About masthead.
