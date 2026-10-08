@@ -619,3 +619,25 @@
  .footer,.universe[data-view=map] .footer { padding-top:150px; }
  .landscape { height:260px; }
 }
+
+/* Public A1–A18 roadmap: released records alone enable interaction. */
+.overviewStage .cycle[data-slots] .paperNodes { grid-template-columns:repeat(6,minmax(0,1fr)); gap:20px 9px; padding:20px 3%; }
+.overviewStage .cycle[data-slots] .paperNode { width:38px; height:38px; font-size:18px; }
+.overviewStage .paperNode.lockedNode { color:#aa8c85; border-color:#77453e; background:#0b0406; box-shadow:0 0 9px #a329301c; cursor:default; }
+.overviewStage .lockedNode::after { display:none; }
+.overviewStage .lockedNode::before { border-color:#5d323233; }
+.lockIcon { position:absolute; bottom:-5px; right:-2px; padding:1px; width:12px; height:12px; color:#ac7b70; background:#0a0305; }
+.unlockNote { font:8px/1.6 var(--font-inter),sans-serif; letter-spacing:.07em; color:#b39b90; margin-top:10px; }
+@media(min-width:701px) and (max-width:1100px) {
+ .overviewStage .cycle[data-slots] .paperNodes { gap:20px 4px; padding-inline:0; }
+ .overviewStage .cycle[data-slots] .paperNode { width:28px; height:28px; font-size:14px; }
+}
+@media(max-width:700px) {
+ .overviewStage .cycle[data-slots] .nodeField { padding-left:0; }
+ .overviewStage .cycle[data-slots] .paperNodes { grid-template-columns:repeat(6,minmax(0,1fr)); gap:9px 5px; padding:0; }
+ .overviewStage .cycle[data-slots] .paperNode { width:100%; height:44px; font-size:16px; }
+ .overviewStage .cycle[data-slots] .paperIcon { display:none; }
+ .unlockNote { font-size:8px; margin-top:13px; }
+ .paperConnections { display:none; }
+ .connections { contain:layout style; }
+}

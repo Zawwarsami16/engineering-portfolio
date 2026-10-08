@@ -1,18 +1,40 @@
 "use client";
 
-import { useEffect, useId, useRef, useState, type RefObject } from "react";
+import { memo, useEffect, useId, useRef, useState, type RefObject } from "react";
 import s from "./universe.module.css";
 
 type Point = { x: number; y: number };
 type Branch = { letter: string; start: Point; end: Point; spread: number; detail: boolean };
 type Layout = { width: number; height: number; branches: Branch[] };
 
+/** Stop SVG timelines when offscreen, hidden, or reduced motion is requested. */
+function useSvgPlayback(ref: RefObject<SVGSVGElement | null>, ready: boolean) {
+  useEffect(() => {
+    const svg = ref.current;
+    if (!svg || !ready) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let visible = false;
+    const update = () => {
+      if (!visible || document.hidden || reduced.matches) svg.pauseAnimations();
+      else svg.unpauseAnimations();
+    };
+    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; update(); });
+    observer.observe(svg);
+    reduced.addEventListener("change", update);
+    document.addEventListener("visibilitychange", update);
+    update();
+    return () => { observer.disconnect(); reduced.removeEventListener("change", update); document.removeEventListener("visibilitychange", update); };
+  }, [ref, ready]);
+}
+
 /** Measure the HTML anchors, so every beam stays attached at every breakpoint. */
-export function UniverseConnections({ stage, selected, map }: {
+export const UniverseConnections = memo(function UniverseConnections({ stage, selected, map }: {
   stage: RefObject<HTMLDivElement | null>; selected: string; map: boolean;
 }) {
   const [layout, setLayout] = useState<Layout | null>(null);
   const signature = useRef("");
+  const svg = useRef<SVGSVGElement>(null);
+  useSvgPlayback(svg, layout !== null);
   const id = useId().replace(/:/g, "");
   useEffect(() => {
     const host = stage.current;
@@ -55,7 +77,7 @@ export function UniverseConnections({ stage, selected, map }: {
     return () => { disposed = true; cancelAnimationFrame(frame); observer.disconnect(); window.removeEventListener("resize", schedule); };
   }, [stage, selected, map]);
   if (!layout) return null;
-  return <svg className={s.connections} viewBox={`0 0 ${layout.width} ${layout.height}`} aria-hidden="true" fill="none">
+  return <svg ref={svg} className={s.connections} viewBox={`0 0 ${layout.width} ${layout.height}`} aria-hidden="true" fill="none">
     <defs>
       <filter id={`${id}-bloom`} x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3" /></filter>
       <filter id={`${id}-soft`} x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="1.15" /></filter>
@@ -91,12 +113,15 @@ export function UniverseConnections({ stage, selected, map }: {
       </g>;
     })}
   </svg>;
-}
+});
 
 /** The paper connections use the button centers, including wrapped mobile rows. */
-export function PaperConnections({ field, count }: { field: RefObject<HTMLDivElement | null>; count: number }) {
+export const PaperConnections = memo(function PaperConnections({ field, count }: { field: RefObject<HTMLDivElement | null>; count: number }) {
   const [layout, setLayout] = useState<{ width: number; height: number; nodes: Point[] } | null>(null);
   const id = useId().replace(/:/g, "");
+  const signature = useRef("");
+  const svg = useRef<SVGSVGElement>(null);
+  useSvgPlayback(svg, layout !== null);
   useEffect(() => {
     const host = field.current;
     if (!host) return;
@@ -107,7 +132,9 @@ export function PaperConnections({ field, count }: { field: RefObject<HTMLDivEle
         const rect = el.getBoundingClientRect();
         return { x: rect.left + rect.width / 2 - bounds.left, y: rect.top + rect.height / 2 - bounds.top };
       });
-      setLayout({ width: bounds.width, height: bounds.height, nodes });
+      const next = { width: bounds.width, height: bounds.height, nodes };
+      const key = JSON.stringify(next);
+      if (signature.current !== key) { signature.current = key; setLayout(next); }
     };
     const observer = new ResizeObserver(() => { cancelAnimationFrame(frame); frame = requestAnimationFrame(update); });
     observer.observe(host);
@@ -116,25 +143,27 @@ export function PaperConnections({ field, count }: { field: RefObject<HTMLDivEle
   }, [field, count]);
   if (!layout || !layout.nodes.length) return null;
   const centerY = layout.height / 2;
-  const start = { x: -35, y: centerY };
-  const end = { x: layout.width + 45, y: centerY };
-  return <svg className={s.paperConnections} viewBox={`0 0 ${layout.width} ${layout.height}`} fill="none" aria-hidden="true">
-    <defs><filter id={id} x="-50%" y="-100%" width="200%" height="300%"><feGaussianBlur stdDeviation="2.2" /></filter></defs>
-    {layout.nodes.map((n, i) => <g key={i}>
-      <path d={`M${n.x} 12 V${layout.height - 12}`} stroke="#b64046" strokeWidth=".5" opacity=".22" />
-      {[12, layout.height - 12].map(y => <circle key={y} cx={n.x} cy={y} r="1.2" fill="#f78a74" />)}
-      {Array.from({ length: 5 }, (_, j) => {
-        const offset = (j - 2) * (8 + i * 2);
-        const d = `M${start.x} ${start.y} C${start.x + 70} ${start.y},${n.x - 80} ${n.y + offset},${n.x} ${n.y} C${n.x + 75} ${n.y - offset},${end.x - 55} ${end.y},${end.x} ${end.y}`;
-        return <g key={j}>
-          {j === 2 && <path d={d} stroke="#ff243f" strokeWidth="3" opacity=".55" filter={`url(#${id})`} />}
-          <path d={d} stroke={j === 2 ? "#ff987d" : "#d12d40"} strokeWidth={j === 2 ? .85 : .55} opacity={j === 2 ? .85 : .5} />
-          {j === 2 && <circle className={s.traveler} r="1.5" fill="#ffe4ca"><animateMotion dur={`${9 + i * 2}s`} repeatCount="indefinite" path={d} /></circle>}
-        </g>;
-      })}
-      <circle cx={n.x} cy={n.y} r="3" fill="#ffd9bc" />
+  const rows = layout.nodes.reduce<Point[][]>((rows, node) => {
+    const row = rows.find(row => Math.abs(row[0].y - node.y) < 2);
+    if (row) row.push(node); else rows.push([node]);
+    return rows;
+  }, []);
+  return <svg ref={svg} className={s.paperConnections} viewBox={`0 0 ${layout.width} ${layout.height}`} fill="none" aria-hidden="true">
+    <defs><filter id={id} x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="2" /></filter></defs>
+    {rows[0].map((n, i) => <g key={i}>
+      <path d={`M${n.x} 8 V${layout.height - 8}`} stroke="#b64046" strokeWidth=".5" opacity=".25" />
+      <circle cx={n.x} cy="8" r="1" fill="#f78a74" />
+      <circle cx={n.x} cy={layout.height - 8} r="1" fill="#f78a74" />
     </g>)}
-    <circle cx={start.x} cy={start.y} r="3" fill="#ffad96" filter={`url(#${id})`} />
-    <circle cx={end.x} cy={end.y} r="3" fill="#ffad96" filter={`url(#${id})`} />
+    {rows.map((row, i) => {
+      const first = row[0], last = row[row.length - 1];
+      const d = `M-35 ${centerY} C0 ${centerY},${first.x - 40} ${first.y},${first.x} ${first.y} L${last.x} ${last.y} C${last.x + 40} ${last.y},${layout.width + 10} ${centerY},${layout.width + 45} ${centerY}`;
+      return <g key={i}>
+        <path d={d} stroke="#ff243f" strokeWidth="3" opacity=".5" filter={`url(#${id})`} />
+        <path d={d} stroke="#ff8e78" strokeWidth=".9" opacity=".85" />
+        {[-9, 9].map(offset => <path key={offset} d={`M-35 ${centerY} C10 ${centerY + offset},${first.x - 45} ${first.y + offset},${first.x} ${first.y} S${last.x} ${last.y + offset},${last.x} ${last.y} C${last.x + 45} ${last.y + offset},${layout.width + 10} ${centerY},${layout.width + 45} ${centerY}`} stroke="#d82d43" strokeWidth=".55" opacity=".55" />)}
+        <circle className={s.traveler} r="1.5" fill="#ffe4ca"><animateMotion dur={`${12 + i * 3}s`} repeatCount="indefinite" path={d} /></circle>
+      </g>;
+    })}
   </svg>;
-}
+});

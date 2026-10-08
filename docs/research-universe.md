@@ -39,3 +39,7 @@ The default entry and Universe navigation now open World A with its public paper
 ## Reference correction
 
 The focused desktop view follows the supplied horizontal reference: cropped left planet, inset world introduction, circular paper grid, synthesis orbit beside the grid, and a future horizon. Persistent paper titles are removed from the overview; full titles remain in accessible button names, paper dialogs and the Papers view. Only current public works populate the grid. The Research route uses a compact Home/Research/Writing/About masthead.
+
+## Approved A1–A18 roadmap and rendering pass
+
+At the author’s request, Cycle 1 displays eighteen numbered slots on desktop and mobile. Public non-draft Writing entries with series codes A1–A18 automatically populate and unlock those slots; locked entries have disabled controls and no invented titles or publication links. Public counts remain actual released counts. SVG components are memoized, redundant geometry state updates are skipped, and paper paths share three row connections instead of five paths per node. SVG playback pauses offscreen, in hidden tabs, and for reduced motion. Mobile omits the hidden paper-connection layer visually. No device-specific frame-rate guarantee is implied.

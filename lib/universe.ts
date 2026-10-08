@@ -1,6 +1,6 @@
 import { writings, type WritingEntry } from "./writing";
 
-/** Public catalogue only. Never put unpublished paper IDs or private plans here. */
+/** Public records plus explicitly approved numbered roadmap slots. */
 export type PublicWork = Pick<WritingEntry,
   "slug" | "title" | "seriesCode" | "summary" | "kind" | "status" | "datePublished" |
   "pdf" | "doi" | "zenodo" | "philpapers" | "version"
@@ -17,6 +17,7 @@ export type ResearchCycle = {
   label: string;
   description: string;
   works: PublicWork[];
+  slots?: { prefix: string; count: number };
   synthesis?: SynthesisMilestone;
 };
 export type ResearchWorld = {
@@ -44,10 +45,8 @@ export const researchWorlds: ResearchWorld[] = [
     cycles: [{
       id: "a-cycle-1", label: "Cycle 1",
       description: "A growing body of papers on memory, continuity, authority, and the architecture of artificial agency.",
-      works: publicWorks([
-        "when-is-an-ai-personal", "what-survives-a-model-change",
-        "continuity-oriented-architecture-for-personal-ai", "the-model-is-not-the-agent",
-      ]),
+      slots: { prefix: "A", count: 18 },
+      works: publicWorks(writings.filter(item => item.status !== "Draft" && /^A([1-9]|1[0-8])$/.test(item.seriesCode ?? "")).sort((a, b) => Number(a.seriesCode!.slice(1)) - Number(b.seriesCode!.slice(1))).map(item => item.slug)),
       synthesis: {
         id: "book-a", title: "Synthesis Book", status: "future",
         description: "A future synthesis of the ideas developed across this body of work.",

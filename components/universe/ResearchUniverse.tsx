@@ -4,7 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, BookOpen, FileText, Grid2X2, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, FileText, Grid2X2, LockKeyhole, X } from "lucide-react";
 import type { PublicWork, ResearchCycle, ResearchWorld, SynthesisMilestone } from "@/lib/universe";
 import s from "./universe.module.css";
 import { UniverseConnections, PaperConnections } from "./UniverseConnections";
@@ -81,21 +81,28 @@ function FutureHorizon({ letter }: { letter: string }) {
 
 function Cycle({ cycle, onOpen }: { cycle: ResearchCycle; onOpen: (work: PublicWork) => void }) {
   const field = useRef<HTMLDivElement>(null);
-  return <section className={s.cycle} aria-label={cycle.label}>
-    <div className={s.cycleHeading}><h3>{cycle.label}</h3><span className={s.hairline} /><p>Published work <span>· {cycle.works.length} {cycle.works.length === 1 ? "paper" : "papers"}</span><i className={s.spark} /></p></div>
+  const slots = cycle.slots ? Array.from({ length: cycle.slots.count }, (_, i) => {
+    const code = `${cycle.slots!.prefix}${i + 1}`;
+    return { code, work: cycle.works.find(work => work.seriesCode === code) };
+  }) : cycle.works.map(work => ({ code: work.seriesCode ?? "Paper", work }));
+  return <section className={s.cycle} aria-label={cycle.label} data-slots={cycle.slots?.count}>
+    <div className={s.cycleHeading}><h3>{cycle.label}</h3><span className={s.hairline} /><p>{cycle.slots ? `${cycle.slots.prefix}1–${cycle.slots.prefix}${cycle.slots.count}` : "Published work"} <span>· {cycle.works.length} {cycle.slots ? "unlocked" : cycle.works.length === 1 ? "paper" : "papers"}</span><i className={s.spark} /></p></div>
     <p className={s.cycleDescription}>{cycle.description}</p>
     <div className={s.nodeField} ref={field}>
-      <PaperConnections field={field} count={cycle.works.length} />
+      <PaperConnections field={field} count={slots.length} />
       <Roots className={s.mobileCycleRoot} />
       <div className={s.paperNodes}>
-        {cycle.works.map((work) => <button key={work.slug} className={s.paperNode} data-paper-node onClick={() => onOpen(work)} aria-label={`Read ${work.seriesCode ? `${work.seriesCode}: ` : ""}${work.title}`}>
+        {slots.map(({ code, work }) => work ? <button key={code} className={s.paperNode} data-paper-node onClick={() => onOpen(work)} aria-label={`Read ${code}: ${work.title}`}>
           <FileText className={s.paperIcon} size={21} strokeWidth={1} aria-hidden="true" />
-          <span>{work.seriesCode ?? "Paper"}</span>
+          <span>{code}</span>
           <span className={s.nodeTooltip}>{work.title}</span>
+        </button> : <button key={code} className={`${s.paperNode} ${s.lockedNode}`} data-paper-node disabled aria-label={`${code}: Locked — not yet released`} title="Unlocks when published">
+          <span>{code}</span><LockKeyhole size={9} className={s.lockIcon} aria-hidden="true" />
         </button>)}
       </div>
       <span className={s.continuation} aria-hidden="true"><i /><i /><i /></span>
     </div>
+    {cycle.slots && <p className={s.unlockNote}>Glowing nodes are available · Locked nodes unlock as papers are released.</p>}
     {cycle.synthesis && <div className={s.synthesisBranch}>
       <svg viewBox="0 0 300 100" className={s.dottedBranch} aria-hidden="true"><path d="M0 0 C100 50 140 -30 160 40 S220 90 300 85" stroke="currentColor" strokeDasharray="1 5" strokeLinecap="round" fill="none" /></svg>
       <Milestone item={cycle.synthesis} />
