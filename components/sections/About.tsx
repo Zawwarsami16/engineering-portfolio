@@ -40,13 +40,14 @@ export function About() {
           className="space-y-6 text-base leading-relaxed text-[var(--color-fg-dim)] lg:col-span-5"
         >
           <motion.p variants={fadeUp}>
-            I'm an engineer working at the intersection of AI and markets. I
-            build reasoning systems and tools that compress decades of macro
-            and geopolitical signal into something a single operator can act on.
+            I work independently across philosophy of mind, artificial
+            intelligence, and cybersecurity. Some questions become papers;
+            others become systems I can actually test.
           </motion.p>
           <motion.p variants={fadeUp}>
-            Anteroom Studio (founded 2019) is the home for that work — and
-            ZAI is the long-running project I'm building inside it.
+            ZAI and ZAI Memory Hub are part of that work. Anteroom Studio
+            gives my research and engineering projects a home, from personal
+            AI and open-source infrastructure to security and market tools.
           </motion.p>
         </motion.div>
       </div>
