@@ -9,7 +9,7 @@ import { Tag } from "@/components/ui/Pill";
 
 export const metadata: Metadata = pageMetadata(
   "About",
-  "About Zawwar Sami — independent researcher and engineer working across philosophy of mind, artificial intelligence, and cybersecurity. Builder of ZAI and ZAI Memory Hub.",
+  "About Zawwar Sami — independent researcher and engineer working across philosophy, artificial intelligence, and cybersecurity. Builder of ZAI and ZAI Memory Hub.",
 );
 
 const facts: { label: string; value: string }[] = [
@@ -49,7 +49,7 @@ export default function AboutPage() {
         tag="About"
         title="Researcher."
         italic="Engineer. Writer."
-        description="I'm Zawwar Sami, an independent researcher and engineer in Canada. My work crosses philosophy of mind, personal AI, and cybersecurity. I publish research, build the systems behind ZAI, and test ideas beyond the page."
+        description="I'm Zawwar Sami, an independent researcher and engineer in Canada. My work crosses philosophy, artificial intelligence, and cybersecurity. I publish research, build the systems behind ZAI, and test ideas beyond the page."
       />
 
       <section className="mx-auto w-full max-w-[1440px] px-6 py-24 lg:px-12 lg:py-32">
