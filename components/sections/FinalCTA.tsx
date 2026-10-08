@@ -53,26 +53,26 @@ export function FinalCTA() {
       </motion.div>
 
       <Reveal>
-        <SectionTag label="Let's create together" />
+        <SectionTag label="Research · Engineering · Conversation" />
       </Reveal>
       <Reveal delay={0.1}>
         <h2 className="mt-8 max-w-4xl text-balance text-center font-serif text-[clamp(48px,7vw,112px)] leading-[1] tracking-tight font-light text-[var(--color-fg)]">
-          Let's build something{" "}
+          A question worth{" "}
           <span className="block font-serif-italic text-[var(--color-accent)]">
-            extraordinary.
+            exploring.
           </span>
         </h2>
       </Reveal>
       <Reveal delay={0.2}>
         <p className="mt-8 max-w-xl text-center text-base leading-relaxed text-[var(--color-fg-dim)]">
-          Open to product-minded teams and collaborators. Let's connect and make
-          something great.
+          Open to thoughtful correspondence, research exchange, authorized security work,
+          and engineering collaborations where the problem is worth investigating.
         </p>
       </Reveal>
       <Reveal delay={0.3}>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Button href="/contact" variant="primary" icon={<ArrowRight className="h-3.5 w-3.5" strokeWidth={1.5} />}>
-            Start a conversation
+            Get in touch
           </Button>
           <Button href={`mailto:${site.email}`} variant="outline" icon={<Mail className="h-3.5 w-3.5" strokeWidth={1.5} />} external>
             {site.email}
