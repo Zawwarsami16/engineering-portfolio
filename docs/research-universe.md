@@ -31,3 +31,7 @@ The default entry is All Worlds; world fragments select details and browser Back
 The landscape is a separate native 2172 × 724 image, served directly at high WebP quality, so long mobile pages do not magnify a single full-page raster. The sky retains the original nebula asset. New asset: `public/images/universe/landscape-hd.webp`; generated with the built-in image tool. Prompt: text-free panoramic black obsidian mountain valley with sharp rock detail, winding reflective river, central crimson horizon beacon and delicate celestial rings, matching the supplied reference. Output requested at maximum resolution; actual native output is 2172 × 724.
 
 Validation: production build, TypeScript and ESLint pass. Live desktop map and A detail inspected. Phone layouts at 360px and 390px inspected using a temporary same-origin iframe. At 360px, all four SVG root origins match letter-ring anchors with zero coordinate offset; no horizontal overflow. A4 modal and Escape dismissal verified. The QA harness was removed after testing.
+
+## Papers-first entry — October 8, 2026
+
+The default entry and Universe navigation now open World A with its public paper nodes and readable titles already visible. The explicit All worlds control retains the map at #map; world deep links and history continue to work. Compact desktop spacing places synthesis beneath the papers and retains a narrow future-horizon rail. Mobile uses two-column paper cards with titles; unpublished counts remain private.

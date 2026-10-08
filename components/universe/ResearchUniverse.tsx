@@ -105,7 +105,7 @@ function Cycle({ cycle, onOpen }: { cycle: ResearchCycle; onOpen: (work: PublicW
 
 export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
   const [letter, setLetter] = useState("A");
-  const [map, setMap] = useState(true);
+  const [map, setMap] = useState(false);
   const stage = useRef<HTMLDivElement>(null);
   const [view, setView] = useState<"overview" | "papers" | "synthesis">("overview");
   const [paper, setPaper] = useState<PublicWork | null>(null);
@@ -121,9 +121,9 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
     function readHash() {
       const requested = window.location.hash.slice(1).toUpperCase();
       if (worlds.some((w) => w.letter === requested)) { setLetter(requested); setMap(false); setView("overview"); }
-      else setMap(true);
+      else { setLetter("A"); setMap(requested === "MAP"); setView("overview"); }
     }
-    const openMap = () => { setMap(true); setView("overview"); window.history.replaceState(null, "", window.location.pathname + window.location.search); };
+    const openMap = () => { setLetter("A"); setMap(false); setView("overview"); window.history.replaceState(null, "", window.location.pathname + window.location.search); };
     readHash();
     window.addEventListener("universe:overview", openMap);
     window.addEventListener("hashchange", readHash);

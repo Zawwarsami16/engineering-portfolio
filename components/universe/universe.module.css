@@ -511,3 +511,95 @@
   .overviewStage .paperNodes { grid-template-columns:repeat(3,minmax(0,1fr)); }
   .worldIntro { gap:13px; }
 }
+
+/* Papers-first composition: readable public work, compact horizon. */
+.universe { min-height:100svh; }
+.content { padding-top:104px; padding-bottom:14px; }
+.hero h1 { font-size:clamp(48px,4.7vw,76px); margin:6px 0 8px; }
+.alphabet { margin-top:24px; }
+.viewControls { margin:0 0 8px; }
+.worldDetail { grid-template-columns:minmax(270px,31%) minmax(0,1fr); min-height:0; gap:24px; }
+.worldIntro { padding:12px 22px 0 34px; }
+.worldIntro h2 { font-size:clamp(34px,3vw,48px); }
+.keywords { margin:15px 0; }
+.description { font-size:18px; line-height:1.45; }
+.stats { margin-top:22px; }
+.worldBody { min-height:0; }
+.overviewStage { grid-template-columns:minmax(0,1fr) 135px; min-height:0; gap:24px; }
+.overviewStage .cycle { min-height:0; padding:6px 0 0; }
+.overviewStage .cycleHeading { gap:12px; }
+.overviewStage .cycleHeading h3 { font-size:25px; }
+.overviewStage .cycleHeading p { font-size:7px; letter-spacing:.1em; }
+.overviewStage .nodeField { height:220px; margin-top:0; padding:0; align-items:flex-start; }
+.overviewStage .paperNodes { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); align-items:start; gap:12px; padding:54px 0 0; }
+.overviewStage .paperNode { width:58px; height:58px; min-width:0; margin:auto; font-size:24px; }
+.overviewStage .nodeTooltip { opacity:1; visibility:visible; background:transparent; border:0; border-radius:0; padding:0; width:clamp(85px,8.4vw,128px); top:calc(100% + 19px); font-size:17px; line-height:1.18; color:#ded0bf; pointer-events:none; }
+.overviewStage .paperNode:hover .nodeTooltip { color:#fff1de; }
+.overviewStage .continuation { display:none; }
+.overviewStage .synthesisBranch { position:relative; inset:auto; width:100%; margin:0; padding:17px 0 0; border-top:1px solid #a34a464d; justify-content:flex-start; }
+.overviewStage .dottedBranch { display:none; }
+.overviewStage .milestone { width:100%; max-width:none; flex-direction:row; text-align:left; gap:20px; }
+.overviewStage .bookOrbit { width:55px; height:55px; flex:0 0 55px; margin:0 8px; }
+.overviewStage .milestone .kicker { max-width:none; }
+.overviewStage .milestone h3 { font-size:25px; margin-top:4px; }
+.futureHorizon { min-height:0; padding:18px 0 18px 18px; }
+.futureCore { width:64px; height:64px; margin-bottom:20px; }
+.futureCore::after { width:35px; }
+.futureHorizon h3 { font-size:25px; }
+.futureCopy { font-size:15px; }
+.futureTrail { margin-top:18px; font-size:7px; }
+.viewTabs { margin-top:24px; }
+.footer, .universe[data-view=map] .footer { padding-top:100px; }
+.landscape { height:clamp(250px,25vw,430px); }
+.worldMap { min-height:0; }
+.worldBranch { padding-top:180px; }
+@media(min-width:1600px) { .content { padding-top:110px; } .worldBranch { padding-top:210px; } }
+@media(min-width:701px) and (max-width:1100px) {
+ .worldDetail { grid-template-columns:30% minmax(0,1fr); gap:22px; }
+ .worldIntro { padding:8px 6px 0 18px; }
+ .worldIntro h2 { font-size:33px; }
+ .description { font-size:17px; }
+ .stats { gap:12px; }
+ .stats > div { min-width:0; padding-right:12px; }
+ .overviewStage { grid-template-columns:minmax(0,1fr); gap:18px; }
+ .futureHorizon { border-left:0; border-top:1px solid #a94b4659; padding:12px 0 0; display:grid; grid-template-columns:auto 1fr; gap:4px 18px; }
+ .futureCore,.futureCopy,.futureTrail { display:none; }
+ .futureHorizon .kicker { margin:0; align-self:center; }
+ .futureHorizon h3 { font-size:22px; }
+ .overviewStage .nodeTooltip { width:100px; font-size:16px; }
+}
+@media(max-width:700px) {
+ .content { padding-top:108px; }
+ .hero h1 { font-size:clamp(39px,9vw,62px); }
+ .alphabet { margin-top:23px; }
+ .worldBranch:nth-child(n), .mapExpanded .worldBranch { padding-top:94px; padding-bottom:12px; }
+ .universe[data-view=map] .worldBranch { padding-top:130px; }
+ .worldIntro { padding:0 0 18px; gap:15px; }
+ .worldIntro h2 { font-size:clamp(27px,6.8vw,38px); }
+ .description { font-size:16px; line-height:1.32; }
+ .viewControls { margin:8px 0; }
+ .worldDetail { padding:19px 13px 14px; }
+ .overviewStage { display:block; }
+ .overviewStage .cycle { padding:15px 12px 14px; }
+ .overviewStage .cycleHeading h3 { font-size:22px; }
+ .overviewStage .cycleHeading p { font-size:16px; }
+ .overviewStage .cycleDescription { margin-left:0; }
+ .overviewStage .nodeField { height:auto; min-height:0; margin-top:18px; padding:0; }
+ .overviewStage .paperNodes { grid-template-columns:repeat(2,minmax(0,1fr)); padding:0; gap:12px; }
+ .overviewStage .paperNode { width:100%; height:auto; min-height:132px; padding:13px 8px; border-radius:12px; margin:0; font-size:22px; gap:5px; justify-content:flex-start; }
+ .overviewStage .nodeTooltip { position:static; transform:none; opacity:1; visibility:visible; width:100%; font-size:15px; line-height:1.15; }
+ .overviewStage .paperIcon { height:18px; }
+ .overviewStage .mobileCycleRoot, .overviewStage .paperConnections { display:none; }
+ .overviewStage .synthesisBranch { margin:18px -12px -14px; width:auto; padding:17px 12px 15px; }
+ .overviewStage .milestone { gap:15px; }
+ .overviewStage .bookOrbit { width:46px; height:46px; flex-basis:46px; margin:0 3px; }
+ .overviewStage .milestone h3 { font-size:23px; }
+ .futureHorizon { padding:14px 0 0; }
+ .futureCycleCards { grid-template-columns:1fr 1fr; gap:8px; }
+ .futureCycleCard { min-height:0; padding:12px 9px; }
+ .futureCycleCard::before,.futureCycleCard::after { display:none; }
+ .futureCycleCard strong { font-size:19px; }
+ .futureCycleCard small { font-size:13px; }
+ .footer,.universe[data-view=map] .footer { padding-top:120px; }
+ .landscape { height:230px; }
+}
