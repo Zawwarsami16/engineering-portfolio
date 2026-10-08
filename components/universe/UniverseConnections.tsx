@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useEffect, useId, useRef, useState, type RefObject } from "react";
+import { memo, useEffect, useLayoutEffect, useId, useRef, useState, type RefObject } from "react";
 import s from "./universe.module.css";
 
 type Point = { x: number; y: number };
@@ -36,7 +36,7 @@ export const UniverseConnections = memo(function UniverseConnections({ stage, se
   const svg = useRef<SVGSVGElement>(null);
   useSvgPlayback(svg, layout !== null);
   const id = useId().replace(/:/g, "");
-  useEffect(() => {
+  useLayoutEffect(() => {
     const host = stage.current;
     if (!host) return;
     let frame = 0;
@@ -54,7 +54,10 @@ export const UniverseConnections = memo(function UniverseConnections({ stage, se
         const start = { x: src.left + src.width / 2 - box.left, y: src.top + src.height / 2 + radius - box.top };
         if (target && target.getClientRects().length) {
           const end = target.getBoundingClientRect();
-          branches.push({ letter, start, end: { x: end.left + end.width / 2 - box.left, y: end.top - box.top - 15 }, spread: Math.min(end.width * .58, compact ? 48 : 125), detail: false });
+          const above = end.bottom < src.top;
+          const labelBlock = target.closest("button")!.getBoundingClientRect();
+          if (above) start.y = src.top + src.height / 2 - radius - box.top;
+          branches.push({ letter, start, end: { x: end.left + end.width / 2 - box.left, y: above ? labelBlock.bottom - box.top + 12 : end.top - box.top - 15 }, spread: Math.min(end.width * .58, compact ? 48 : 125), detail: false });
         } else if (!map && letter === selected) {
           const intro = host.querySelector<HTMLElement>("[data-world-intro]");
           if (intro) {
@@ -73,40 +76,41 @@ export const UniverseConnections = memo(function UniverseConnections({ stage, se
     host.querySelectorAll("[data-world-source], [data-world-label], [data-world-intro]").forEach(el => observer.observe(el));
     document.fonts.ready.then(schedule);
     window.addEventListener("resize", schedule);
-    schedule();
+    measure();
     return () => { disposed = true; cancelAnimationFrame(frame); observer.disconnect(); window.removeEventListener("resize", schedule); };
   }, [stage, selected, map]);
   if (!layout) return null;
   return <svg ref={svg} className={s.connections} viewBox={`0 0 ${layout.width} ${layout.height}`} aria-hidden="true" fill="none">
     <defs>
-      <filter id={`${id}-bloom`} x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="3" /></filter>
-      <filter id={`${id}-soft`} x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="1.15" /></filter>
+      <filter id={`${id}-bloom`} x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="3" /></filter>
+      <filter id={`${id}-soft`} x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="1.15" /></filter>
     </defs>
     {layout.branches.map(({ letter, start: a, end: b, spread, detail }) => {
       const length = b.y - a.y;
+      const direction = Math.sign(length) || 1;
       const seed = letter.charCodeAt(0);
-      const paths = Array.from({ length: detail ? 23 : 31 }, (_, i) => {
+      const paths = Array.from({ length: detail ? 19 : 19 }, (_, i) => {
         const side = i % 2 ? -1 : 1;
         const reach = (0.19 + ((i * 37 + seed) % 80) / 100) * spread;
         const end = { x: b.x + side * reach, y: a.y + length * (.42 + ((i * 19 + seed) % 55) / 100) };
         const forkY = a.y + length * (.13 + (i % 5) * .037);
         const forkX = a.x + (b.x - a.x) * .25 + side * 3;
-        const d = `M${a.x} ${a.y} C${a.x} ${a.y + 20},${forkX} ${forkY},${forkX} ${forkY + 8} C${forkX + side * reach * .1} ${forkY + length * .22},${end.x - side * reach * .18} ${end.y - length * .3},${end.x} ${end.y}`;
+        const d = `M${a.x} ${a.y} C${a.x} ${a.y + 20 * direction},${forkX} ${forkY},${forkX} ${forkY + 8 * direction} C${forkX + side * reach * .1} ${forkY + length * .22},${end.x - side * reach * .18} ${end.y - length * .3},${end.x} ${end.y}`;
         return { d, end, side };
       });
       const trunk = `M${a.x} ${a.y} C${a.x} ${a.y + length * .36},${b.x - 9} ${b.y - length * .35},${b.x} ${b.y}`;
       return <g key={letter} data-connection={letter}>
-        {paths.filter((_, i) => i % 4 === 0).map((p, i) => <path key={`b${i}`} d={p.d} stroke="#ff193c" strokeWidth="4" opacity=".6" filter={`url(#${id}-bloom)`} />)}
+        <path d={paths.filter((_, i) => i % 4 === 0).map(p => p.d).join(" ")} stroke="#ff193c" strokeWidth="3" opacity=".5" filter={`url(#${id}-bloom)`} />
         {paths.map((p, i) => <g key={i}>
           <path d={p.d} stroke={i % 4 === 0 ? "#ff977f" : "#e92c43"} strokeWidth={i % 4 === 0 ? .9 : .55} opacity={.45 + (i % 4) * .13} />
-          {i % 3 === 0 && <path d={`M${p.end.x} ${p.end.y} q${p.side * 9} 7 ${p.side * 11} 20`} stroke="#c73649" strokeWidth=".5" opacity=".65" />}
+          {i % 3 === 0 && <path d={`M${p.end.x} ${p.end.y} q${p.side * 9} ${7 * direction} ${p.side * 11} ${20 * direction}`} stroke="#c73649" strokeWidth=".5" opacity=".65" />}
           {i % 4 === 0 && <g>
-            <circle cx={p.end.x} cy={p.end.y} r="5.5" fill="#ff243b" opacity=".48" filter={`url(#${id}-bloom)`} />
+            <circle cx={p.end.x} cy={p.end.y} r="4.5" fill="#ff243b" opacity=".22" />
             <circle cx={p.end.x} cy={p.end.y} r="1.35" fill="#ffddbf" />
             {i % 8 === 0 && <circle cx={p.end.x} cy={p.end.y} r="6" stroke="#f47467" strokeWidth=".55" opacity=".6" />}
           </g>}
         </g>)}
-        <path d={trunk} stroke="#ff5763" strokeWidth="2.5" opacity=".65" filter={`url(#${id}-soft)`} />
+        <path d={trunk} stroke="#ff5763" strokeWidth="2.5" opacity=".3" />
         <path d={trunk} stroke="#ffb194" strokeWidth=".8" opacity=".85" />
         <circle cx={a.x} cy={a.y} r="3" fill="#fff0cc" filter={`url(#${id}-soft)`} />
         <circle className={s.traveler} r="1.6" fill="#ffe8ca"><animateMotion dur={`${9 + seed % 5}s`} repeatCount="indefinite" path={trunk} /></circle>
@@ -122,7 +126,7 @@ export const PaperConnections = memo(function PaperConnections({ field, count }:
   const signature = useRef("");
   const svg = useRef<SVGSVGElement>(null);
   useSvgPlayback(svg, layout !== null);
-  useEffect(() => {
+  useLayoutEffect(() => {
     const host = field.current;
     if (!host) return;
     let frame = 0;
@@ -139,6 +143,7 @@ export const PaperConnections = memo(function PaperConnections({ field, count }:
     const observer = new ResizeObserver(() => { cancelAnimationFrame(frame); frame = requestAnimationFrame(update); });
     observer.observe(host);
     host.querySelectorAll("[data-paper-node]").forEach(el => observer.observe(el));
+    update();
     return () => { observer.disconnect(); cancelAnimationFrame(frame); };
   }, [field, count]);
   if (!layout || !layout.nodes.length) return null;

@@ -641,3 +641,38 @@
  .paperConnections { display:none; }
  .connections { contain:layout style; }
 }
+
+/* Content sets page height, including tall phone "Desktop site" viewports. */
+.universe,.content { min-height:0; }
+.footer { margin-top:0; }
+.backdrop { opacity:1; }
+.backdrop img,.landscape img { filter:saturate(1.08) contrast(1.035); }
+.universe[data-view=map] .topology { height:440px; margin-top:24px; }
+.universe[data-view=map] .alphabet { position:absolute; top:172px; left:0; width:100%; margin:0; }
+.universe[data-view=map] .worldMap { position:absolute; inset:0; display:block; margin:0; }
+.universe[data-view=map] .worldBranch:nth-child(n) { position:absolute; width:22%; min-height:82px; padding:0; grid-column:auto; justify-content:center; }
+.universe[data-view=map] .worldBranch:nth-child(1) { top:345px; left:0; }
+.universe[data-view=map] .worldBranch:nth-child(2) { top:18px; left:12%; }
+.universe[data-view=map] .worldBranch:nth-child(3) { top:345px; left:49%; }
+.universe[data-view=map] .worldBranch:nth-child(4) { top:18px; left:70%; }
+.universe[data-view=map] .worldName { color:#f4e5d5; min-height:0; font-size:clamp(21px,2vw,29px); }
+.universe[data-view=map] .worldCount { color:#d1b8ab; }
+.universe[data-view=map] .mapHint { margin-top:0; }
+.universe[data-view=map] .footer { padding-top:105px; }
+@media(min-width:701px) and (max-aspect-ratio:3/4) {
+ .content { padding-top:100px; }
+ .footer,.universe[data-view=map] .footer { padding-top:95px; }
+}
+@media(max-width:700px) {
+ .universe[data-view=map] .topology { height:365px; margin-top:20px; }
+ .universe[data-view=map] .alphabet { top:137px; }
+ .universe[data-view=map] .worldBranch:nth-child(n) { width:42%; min-height:74px; padding:0 4px; }
+ .universe[data-view=map] .worldBranch:nth-child(1) { top:286px; left:0; }
+ .universe[data-view=map] .worldBranch:nth-child(2) { top:0; left:4%; }
+ .universe[data-view=map] .worldBranch:nth-child(3) { top:286px; left:52%; }
+ .universe[data-view=map] .worldBranch:nth-child(4) { top:0; left:54%; }
+ .universe[data-view=map] .worldName { font-size:21px; line-height:1.1; }
+ .universe[data-view=map] .worldCount { display:block; font-size:7px; margin-top:9px; padding-top:7px; }
+ .universe[data-view=map] .footer { padding-top:110px; }
+ .backdrop img,.landscape img { filter:none; }
+}

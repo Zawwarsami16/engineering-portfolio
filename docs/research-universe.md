@@ -43,3 +43,7 @@ The focused desktop view follows the supplied horizontal reference: cropped left
 ## Approved A1–A18 roadmap and rendering pass
 
 At the author’s request, Cycle 1 displays eighteen numbered slots on desktop and mobile. Public non-draft Writing entries with series codes A1–A18 automatically populate and unlock those slots; locked entries have disabled controls and no invented titles or publication links. Public counts remain actual released counts. SVG components are memoized, redundant geometry state updates are skipped, and paper paths share three row connections instead of five paths per node. SVG playback pauses offscreen, in hidden tabs, and for reduced motion. Mobile omits the hidden paper-connection layer visually. No device-specific frame-rate guarantee is implied.
+
+## World-map entry and tall-viewport correction
+
+Default entry returns to All Worlds. Cosmology and Security labels sit above the alphabet, Artificial Agency and Personhood below. Root anchors support either direction. Page height follows content instead of a viewport-height minimum, preventing the huge empty area on phones requesting desktop mode. World detail no longer starts invisible for a hydration fade. Root glows are batched per branch and geometry is measured before client paint. Native-resolution artwork is retained with a restrained desktop colour adjustment.

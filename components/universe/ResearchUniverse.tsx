@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, BookOpen, FileText, Grid2X2, LockKeyhole, X } from "lucide-react";
 import type { PublicWork, ResearchCycle, ResearchWorld, SynthesisMilestone } from "@/lib/universe";
 import s from "./universe.module.css";
@@ -112,7 +112,7 @@ function Cycle({ cycle, onOpen }: { cycle: ResearchCycle; onOpen: (work: PublicW
 
 export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
   const [letter, setLetter] = useState("A");
-  const [map, setMap] = useState(false);
+  const [map, setMap] = useState(true);
   const stage = useRef<HTMLDivElement>(null);
   const [view, setView] = useState<"overview" | "papers" | "synthesis" | "future">("overview");
   const [paper, setPaper] = useState<PublicWork | null>(null);
@@ -128,9 +128,9 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
     function readHash() {
       const requested = window.location.hash.slice(1).toUpperCase();
       if (worlds.some((w) => w.letter === requested)) { setLetter(requested); setMap(false); setView("overview"); }
-      else { setLetter("A"); setMap(requested === "MAP"); setView("overview"); }
+      else { setLetter("A"); setMap(true); setView("overview"); }
     }
-    const openMap = () => { setLetter("A"); setMap(false); setView("overview"); window.history.replaceState(null, "", window.location.pathname + window.location.search); };
+    const openMap = () => { setLetter("A"); setMap(true); setView("overview"); window.history.replaceState(null, "", window.location.pathname + window.location.search); };
     readHash();
     window.addEventListener("universe:overview", openMap);
     window.addEventListener("hashchange", readHash);
@@ -179,7 +179,7 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
       {!map && <>
         <div className={s.viewControls}><button onClick={() => { setMap(true); window.history.pushState(null, "", "#map"); }}><Grid2X2 size={13} aria-hidden="true" /> All worlds</button><span>World {world.letter}</span></div>
 
-          <motion.section key={world.letter} className={s.worldDetail} aria-label={`World ${world.letter}: ${world.title}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: reduceMotion ? 0 : .18 }}>
+          <section key={world.letter} className={s.worldDetail} aria-label={`World ${world.letter}: ${world.title}`}>
             <div className={s.edgePlanet} aria-hidden="true" />
             <div className={s.worldIntro} data-world-intro>
               <span className={s.worldMedallion} aria-hidden="true">{world.letter}</span>
@@ -202,7 +202,7 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
               {view === "future" && <FutureHorizon letter={world.letter} />}
               {view === "synthesis" && <div className={s.synthesisView}>{syntheses.map((item) => <Milestone key={item.id} item={item} full />)}</div>}
             </div>
-          </motion.section>
+          </section>
 
         {world.cycles.length > 0 && <nav className={s.viewTabs} aria-label="World views">
           <button aria-pressed={view === "overview"} onClick={() => setView("overview")}>Overview</button>
