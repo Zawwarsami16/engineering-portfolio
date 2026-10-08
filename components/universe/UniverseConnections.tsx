@@ -85,7 +85,7 @@ export const UniverseConnections = memo(function UniverseConnections({ stage, se
       <filter id={`${id}-bloom`} x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="3" /></filter>
       <filter id={`${id}-soft`} x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="1.15" /></filter>
     </defs>
-    {layout.branches.map(({ letter, start: a, end: b, spread, detail }) => {
+    {layout.branches.map(({ letter, start: a, end: b, spread }) => {
       const length = b.y - a.y;
       const direction = Math.sign(length) || 1;
       const seed = letter.charCodeAt(0);

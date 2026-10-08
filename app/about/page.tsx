@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
@@ -109,12 +110,12 @@ export default function AboutPage() {
                   I'm interested in consciousness, personhood, soul-body unity,
                   and what survives when an AI's model or context changes. I've
                   begun making that research public through{" "}
-                  <a
+                  <Link
                     href="/writing"
                     className="underline decoration-[var(--color-line)] underline-offset-4 transition-colors hover:text-[var(--color-fg)] hover:decoration-[var(--color-accent)]"
                   >
                     preprints and research papers
-                  </a>{" "}
+                  </Link>{" "}
                   recorded on Zenodo and PhilPapers. They're arguments I'm willing
                   to put under scrutiny, not final answers.
                 </p>
