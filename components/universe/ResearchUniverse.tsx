@@ -1,16 +1,16 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { memo, useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { ArrowRight, ArrowUpRight, BookOpen, FileText, Grid2X2, LockKeyhole, X } from "lucide-react";
 import type { PublicWork, ResearchCycle, ResearchWorld, SynthesisMilestone } from "@/lib/universe";
 import s from "./universe.module.css";
 import { UniverseConnections, PaperConnections } from "./UniverseConnections";
 
 /** Deterministic root geometry: stable SSR, scalable SVG, no canvas render loop. */
-function Roots({ variant = 0, className = "" }: { variant?: number; className?: string }) {
+const Roots = memo(function Roots({ variant = 0, className = "" }: { variant?: number; className?: string }) {
   const id = useId().replace(/:/g, "");
   const paths = Array.from({ length: 27 }, (_, i) => {
     const side = i % 2 ? -1 : 1;
@@ -25,11 +25,11 @@ function Roots({ variant = 0, className = "" }: { variant?: number; className?: 
       <linearGradient id={`${id}-red`} x1="150" y1="0" x2="150" y2="300" gradientUnits="userSpaceOnUse">
         <stop stopColor="#ffb6a6" /><stop offset=".22" stopColor="#ff3148" /><stop offset="1" stopColor="#841829" stopOpacity=".2" />
       </linearGradient>
-      <filter id={`${id}-glow`} x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="2.5" /></filter>
+      <filter id={`${id}-glow`} x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.5" /></filter>
     </defs>
     <g stroke={`url(#${id}-red)`}>
       {paths.map((p, i) => <path key={i} d={p.d} strokeWidth={i % 4 === 0 ? 1.5 : .65} opacity={.35 + (i % 4) * .2} />)}
-      {paths.filter((_, i) => i % 3 === 0).map((p, i) => <path key={i} d={p.d} strokeWidth="3" opacity=".45" filter={`url(#${id}-glow)`} />)}
+      <path d={paths.filter((_, i) => i % 3 === 0).map(p => p.d).join(" ")} strokeWidth="3" opacity=".45" filter={`url(#${id}-glow)`} />
       {paths.filter((_, i) => i % 4 === 0).map((p, i) => <g key={i}>
         <circle cx={p.x} cy={p.y} r="8" stroke="#bd3040" strokeWidth=".5" />
         <circle cx={p.x} cy={p.y} r="4" fill="#ff2d4e" filter={`url(#${id}-glow)`} />
@@ -37,7 +37,7 @@ function Roots({ variant = 0, className = "" }: { variant?: number; className?: 
       </g>)}
     </g>
   </svg>;
-}
+});
 
 function Current({ className = "" }: { className?: string }) {
   const id = useId().replace(/:/g, "");
@@ -149,8 +149,8 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
   }
 
   return <div className={s.universe} data-reduced-motion={reduceMotion ? "true" : "false"} data-view={map ? "map" : "world"}>
-    <div className={s.backdrop} aria-hidden="true"><Image src="/images/universe/cosmos.webp" alt="" fill priority sizes="100vw" quality={90} unoptimized /></div>
-    <div className={s.landscape} aria-hidden="true"><Image src="/images/universe/landscape-hd.webp" alt="" fill sizes="100vw" quality={95} priority unoptimized /></div>
+    <div className={s.backdrop} aria-hidden="true"><Image src="/images/universe/cosmos.webp" alt="" fill priority sizes="100vw" quality={85} /></div>
+    <div className={s.landscape} aria-hidden="true"><Image src="/images/universe/landscape-hd.webp" alt="" fill sizes="100vw" quality={90} priority /></div>
     <div className={s.atmosphere} aria-hidden="true" />
     <div className={s.content}>
       <header className={s.hero}>

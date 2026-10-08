@@ -16,7 +16,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (reduced || isTouch) {
+    if (reduced || isTouch || pathname === "/research") {
       lenisRef.current?.destroy();
       lenisRef.current = null;
       setLenis(null);
@@ -55,7 +55,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       lenisRef.current = null;
       setLenis(null);
     };
-  }, [reduced, isTouch]);
+  }, [reduced, isTouch, pathname]);
 
   useEffect(() => {
     if (window.location.hash) return;

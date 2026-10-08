@@ -28,6 +28,7 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  images: { qualities: [75, 85, 90, 95] },
   reactStrictMode: true,
   transpilePackages: ["three"],
   experimental: {
