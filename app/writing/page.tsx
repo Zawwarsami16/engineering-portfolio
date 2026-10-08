@@ -25,22 +25,22 @@ export const metadata: Metadata = {
     title: "Writing & Research · Zawwar Sami",
     description,
     url: "/writing",
-    images: [{ url: "/images/observatory.webp", alt: "Writing and research by Zawwar Sami" }],
+    images: [{ url: "/images/universe/cosmos.webp", alt: "Writing and research by Zawwar Sami" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Writing & Research · Zawwar Sami",
     description,
-    images: ["/images/observatory.webp"],
+    images: ["/images/universe/cosmos.webp"],
   },
 };
 export default function WritingPage() {
   const featured = writings.find((e) => e.kind === "Paper")!;
   return (
-    <>
+    <div className="writing-page">
       <section className="archive-hero">
         <div className="archive-hero-art" aria-hidden="true">
-          <Image src="/images/observatory.webp" alt="" fill priority sizes="100vw" />
+          <Image src="/images/universe/cosmos.webp" alt="" fill priority sizes="100vw" />
         </div>
         <div className="shell archive-hero-content">
           <div className="eyebrow">
@@ -94,6 +94,6 @@ export default function WritingPage() {
           Follow the writing on Substack <ArrowUpRight size={17} />
         </a>
       </section>
-    </>
+    </div>
   );
 }

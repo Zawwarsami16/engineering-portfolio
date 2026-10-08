@@ -25,6 +25,32 @@ export type WritingEntry = {
 };
 // Only already-public entries belong here. Unreleased manuscripts stay private.
 export const writings: WritingEntry[] = [
+{
+  "slug": "persistent-state-and-becoming",
+  "title": "Persistent State and Becoming",
+  "seriesCode": "A5",
+  "subtitle": "When Memory Becomes Operational History",
+  "summary": "When do retained records become a usable past? A distinction between archive, context, persistent state, operational history, and becoming, with tests for how prior events change later behavior.",
+  "abstract": "An AI system can keep records for months and still have no usable past. It may retrieve the right sentences yet fail to know what was revoked, what failed, what was later verified, or why the present state differs from an earlier one. I ask where that boundary lies. I distinguish five layers: archive, context, persistent state, operational history, and becoming. My claim is narrow: records become operational history when relations among events—including order, supersession, verified outcome, and provenance—change what the deployed system should do now. I turn that claim into a representation-adequacy test and a counterfactual pre/post-state test for a limited form of system-level becoming. The latter requires a durable, attributable change in later behavior; it does not require model-weight updates and does not imply consciousness or numerical identity. I place the account within recent work on long-term agent memory, use a publication workflow to show how identical surviving records can encode different practical pasts, and specify a controlled M1–M4 evaluation with relational ablations. I do not report a benchmark result. What I am trying to sharpen is the difference between record survival, continuity of work, and adaptation caused by retained experience.",
+  "url": "https://zawwarsami.com/writing/persistent-state-and-becoming",
+  "datePublished": "2026-10-08",
+  "tags": [
+    "artificial agents",
+    "persistent state",
+    "long-term memory",
+    "operational history",
+    "temporal reasoning",
+    "provenance"
+  ],
+  "kind": "Paper",
+  "status": "Preprint",
+  "version": "Version 1.5",
+  "pages": 11,
+  "pdf": "/writing/persistent-state-and-becoming/paper.pdf",
+  "zenodo": "https://zenodo.org/records/23221085",
+  "philpapers": "https://philpapers.org/rec/SAMPSA-2",
+  "orcid": "https://orcid.org/0009-0004-5819-3017"
+},
   {
     slug: "the-model-is-not-the-agent",
     title: "The Model Is Not the Agent",

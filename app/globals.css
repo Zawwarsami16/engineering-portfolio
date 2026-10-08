@@ -2040,3 +2040,25 @@ body {
 .universe-nav .nav-contact { border:1px solid #ad5b5180; border-radius:24px; padding:8px 17px; font-family:var(--font-cormorant),Georgia,serif; font-size:15px; }
 .universe-nav .nav-contact span { color:#ff4853; text-shadow:0 0 9px #ff2139; }
 @media(max-width:700px) { .universe-nav .nav-actions > .menu-trigger { display:flex; } }
+
+/* Writing shares the site's crimson atmosphere, with quiet reading surfaces. */
+.writing-page { background:radial-gradient(ellipse at 100% 35%,#630b201a,transparent 45%),#030306; --color-line:#ff2d4e29; }
+.writing-page .archive-hero { background:#030306; }
+.writing-page .archive-hero-art img { opacity:.85; object-position:65% 35%; }
+.writing-page .archive-hero::after { background:linear-gradient(90deg,#030306ed,#0303068c 48%,#03030622),linear-gradient(0deg,#030306,transparent 65%); }
+.writing-page .archive-hero h1 em,.writing-page .writing-outro h2 em { color:#ff3657; }
+.writing-page .featured-art { border-color:#ff2d4e38; background:radial-gradient(ellipse at center,#9b102a55,#15050b 55%,#030306 85%); box-shadow:0 0 65px #b5002114; }
+.writing-page .binary-orbit span { background:radial-gradient(circle at 25% 30%,#ffd4cf,#ac1839 24%,#16030a 68%); box-shadow:0 0 35px #ff2d4e30; }
+.writing-page .binary-orbit span:nth-child(2) { background:radial-gradient(circle at 70% 30%,#ffbcc6,#87122c 25%,#100207 68%); }
+.writing-page .binary-orbit i { border-color:#ff365799; }
+.writing-page .featured-art > span { color:#dc9da9; padding-inline:16px; text-align:center; }
+.writing-page .archive-tabs button[aria-pressed="true"] { color:#fff0f2; border-color:#ff2d4e; background:#ff2d4e15; }
+.writing-page .archive-entry { transition:background .2s; }
+.writing-page .archive-entry:hover { background:linear-gradient(90deg,#ff2d4e08,transparent); }
+.writing-page .index-number,.writing-page .entry-title:hover,.writing-page .text-link:hover { color:#ff5571; }
+.writing-page .topic-tags button[aria-pressed="true"] { background:#79132a; color:#fff; border-color:#ff3657; }
+.writing-page .writing-outro { background:radial-gradient(ellipse at center,#930b2524,transparent 70%); }
+.reading-surface:not(.reading-light) { background:radial-gradient(ellipse at 90% 0,#7b102932,transparent 42%),#030306; --color-line:#ff2d4e29; }
+.reading-surface:not(.reading-light) .source-panel,.reading-surface:not(.reading-light) .citation-box { background:#10060b; border-color:#ff2d4e33; }
+.reading-surface:not(.reading-light) .reading-kicker strong { color:#ff5571; }
+@media(prefers-reduced-motion:reduce) { .writing-page .binary-orbit i { animation:none; } }
