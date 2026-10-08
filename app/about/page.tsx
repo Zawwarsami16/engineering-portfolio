@@ -9,36 +9,36 @@ import { Tag } from "@/components/ui/Pill";
 
 export const metadata: Metadata = pageMetadata(
   "About",
-  "About Zawwar Sami — engineer and builder of ZAI. Founder of Anteroom Studio.",
+  "About Zawwar Sami — independent researcher and engineer working across philosophy of mind, artificial intelligence, and cybersecurity. Builder of ZAI and ZAI Memory Hub.",
 );
 
 const facts: { label: string; value: string }[] = [
+  { label: "Research", value: "Philosophy & AI" },
+  { label: "Systems", value: "ZAI" },
+  { label: "Security", value: "HTB · Guru" },
   { label: "Based in", value: "Canada" },
-  { label: "Studio", value: "Anteroom · founded 2019" },
-  { label: "Building", value: "ZAI" },
-  { label: "Open to", value: "AI, markets, contract" },
 ];
 
 const beliefs = [
   {
-    title: "Independent thinking over received wisdom",
+    title: "Question the premise",
     body:
-      "Most macro and AI work is consensus dressed up as analysis. I'd rather model a thing from first principles, even when the answer is uncomfortable. Especially when.",
+      "Before I build something or write about it, I want to know which assumption is doing the work. Sometimes that's the whole problem.",
   },
   {
-    title: "Long memory beats hot takes",
+    title: "Show the trail",
     body:
-      "Markets, geopolitics, and AI all reward people who can hold context across decades. Anteroom's tools are designed around that — 1871 to today, not the last 24 hours.",
+      "A paper should say what it argues. A system should show what it does. I keep sources, revisions, and technical notes so those two things don't get blurred.",
   },
   {
-    title: "Ship in small increments",
+    title: "Respect the boundaries",
     body:
-      "Big launches are usually a smell. I'd rather ship a 3-line change every day than a 3,000-line PR every quarter. Reasoning systems work the same way.",
+      "A model is not automatically an agent. A result in a lab is not a finding about the real world. I try to be precise about what the evidence can support.",
   },
   {
-    title: "Build for the long term",
+    title: "Keep testing",
     body:
-      "I write the kind of code I would want to inherit. Less cleverness, more honesty. Future-me thanks present-me.",
+      "Questions change when you put them in front of code, data, or an adversarial test. I'd rather revise an idea than defend a version that no longer holds.",
   },
 ];
 
@@ -47,9 +47,9 @@ export default function AboutPage() {
     <>
       <PageHero
         tag="About"
-        title="Engineer.  Builder"
-        italic="of ZAI."
-        description="I'm Zawwar Sami — engineer, founder of Anteroom Studio (2019), and builder of ZAI. I work on AI systems for macro markets, geopolitics, and the kinds of slow, structural questions that don't fit on a dashboard."
+        title="Researcher."
+        italic="Engineer. Writer."
+        description="I'm Zawwar Sami, an independent researcher and engineer in Canada. My work crosses philosophy of mind, personal AI, and cybersecurity. I publish research, build the systems behind ZAI, and test ideas beyond the page."
       />
 
       <section className="mx-auto w-full max-w-[1440px] px-6 py-24 lg:px-12 lg:py-32">
@@ -97,32 +97,60 @@ export default function AboutPage() {
           <div className="space-y-12 lg:col-span-7">
             <Reveal>
               <h2 className="text-balance font-serif text-[clamp(28px,3vw,40px)] leading-[1.2] font-light tracking-tight text-[var(--color-fg)]">
-                Anteroom Studio is the room before the room — the quiet space
-                where I build the tools, models, and reasoning systems that
-                make up ZAI.
+                My work crosses philosophy and engineering. I don't see a
+                good reason to keep the two separate.
               </h2>
             </Reveal>
 
             <Reveal delay={0.1}>
               <div className="space-y-5 text-base leading-relaxed text-[var(--color-fg-dim)]">
                 <p>
-                  My work sits at the intersection of AI and markets. I build
-                  reasoning systems that compress decades of macro and
-                  geopolitical signal into something a single operator can
-                  actually act on — a terminal, a model, a framework.
+                  I work independently across philosophy, AI, and computing.
+                  I'm interested in consciousness, personhood, soul-body unity,
+                  and what survives when an AI's model or context changes. I've
+                  begun making that research public through preprints on Zenodo
+                  and PhilPapers. They're arguments I'm willing to put under
+                  scrutiny, not final answers.
                 </p>
                 <p>
-                  Anteroom Studio is where that work lives. Founded in 2019,
-                  the studio is the home for ZAI — a long-running project
-                  to build an AI that thinks independently about consciousness,
-                  markets, and inquiry rather than just answering questions.
+                  I've spent years building alongside the writing. ZAI is my
+                  long-running personal AI project, and{" "}
+                  <a
+                    href="https://github.com/Zawwarsami16/zai-memory-hub"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-[var(--color-line)] underline-offset-4 transition-colors hover:text-[var(--color-fg)] hover:decoration-[var(--color-accent)]"
+                  >
+                    ZAI Memory Hub
+                  </a>{" "}
+                  carries structured memory across assistants and sessions.
+                  I've also worked on open-source tools such as zhub and Pocket,
+                  and built systems for market and geopolitical research.
+                  Different problems, but the same habit: build enough to
+                  discover where an idea holds and where it breaks.
                 </p>
                 <p>
-                  Day to day I'm shipping small, useful pieces of that vision:
-                  the World Model on 150+ years of data, the Oracle terminal,
-                  the Crypto Terminal, and the reasoning frameworks underneath
-                  them. Outside the studio I read about cycles, write about
-                  consciousness, and occasionally build games for the fun of it.
+                  Security is part of that practice too. I've reached Guru rank
+                  on{" "}
+                  <a
+                    href="https://app.hackthebox.com/public/users/2469522"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-[var(--color-line)] underline-offset-4 transition-colors hover:text-[var(--color-fg)] hover:decoration-[var(--color-accent)]"
+                  >
+                    Hack The Box
+                  </a>{" "}
+                  and keep public CTF writeups and methodology in my{" "}
+                  <a
+                    href="https://github.com/Zawwarsami16/htb-progress"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline decoration-[var(--color-line)] underline-offset-4 transition-colors hover:text-[var(--color-fg)] hover:decoration-[var(--color-accent)]"
+                  >
+                    security notebook
+                  </a>.
+                  Anteroom Studio is where the projects live. The writing,
+                  experiments, and shipped tools each stand on their own work.
                 </p>
               </div>
             </Reveal>
