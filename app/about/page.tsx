@@ -108,9 +108,15 @@ export default function AboutPage() {
                   I work independently across philosophy, AI, and computing.
                   I'm interested in consciousness, personhood, soul-body unity,
                   and what survives when an AI's model or context changes. I've
-                  begun making that research public through preprints on Zenodo
-                  and PhilPapers. They're arguments I'm willing to put under
-                  scrutiny, not final answers.
+                  begun making that research public through{" "}
+                  <a
+                    href="/writing"
+                    className="underline decoration-[var(--color-line)] underline-offset-4 transition-colors hover:text-[var(--color-fg)] hover:decoration-[var(--color-accent)]"
+                  >
+                    preprints and research papers
+                  </a>{" "}
+                  recorded on Zenodo and PhilPapers. They're arguments I'm willing
+                  to put under scrutiny, not final answers.
                 </p>
                 <p>
                   I've spent years building alongside the writing. ZAI is my
