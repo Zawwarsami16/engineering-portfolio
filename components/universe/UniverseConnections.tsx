@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useEffect, useLayoutEffect, useId, useRef, useState, type RefObject } from "react";
+import { memo, useEffect, useId, useRef, useState, type RefObject } from "react";
 import s from "./universe.module.css";
 
 type Point = { x: number; y: number };
@@ -36,7 +36,7 @@ export const UniverseConnections = memo(function UniverseConnections({ stage, se
   const svg = useRef<SVGSVGElement>(null);
   useSvgPlayback(svg, layout !== null);
   const id = useId().replace(/:/g, "");
-  useLayoutEffect(() => {
+  useEffect(() => {
     const host = stage.current;
     if (!host) return;
     let frame = 0;
@@ -89,7 +89,7 @@ export const UniverseConnections = memo(function UniverseConnections({ stage, se
       const length = b.y - a.y;
       const direction = Math.sign(length) || 1;
       const seed = letter.charCodeAt(0);
-      const paths = Array.from({ length: detail ? 19 : 19 }, (_, i) => {
+      const paths = Array.from({ length: 19 }, (_, i) => {
         const side = i % 2 ? -1 : 1;
         const reach = (0.19 + ((i * 37 + seed) % 80) / 100) * spread;
         const end = { x: b.x + side * reach, y: a.y + length * (.42 + ((i * 19 + seed) % 55) / 100) };
@@ -126,7 +126,7 @@ export const PaperConnections = memo(function PaperConnections({ field, count }:
   const signature = useRef("");
   const svg = useRef<SVGSVGElement>(null);
   useSvgPlayback(svg, layout !== null);
-  useLayoutEffect(() => {
+  useEffect(() => {
     const host = field.current;
     if (!host) return;
     let frame = 0;
