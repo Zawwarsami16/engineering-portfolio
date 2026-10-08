@@ -25,7 +25,9 @@ const values = [
     title: "Build & Revisit",
     body: "I publish, build, test, and revise. A good idea should survive contact with reality.",
   },
-]; {
+];
+
+export function Values() {
   return (
     <section className="relative mx-auto w-full max-w-[1440px] px-6 py-12 lg:px-12 lg:pb-24">
       <motion.div
