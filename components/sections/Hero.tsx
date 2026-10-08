@@ -85,10 +85,10 @@ export function Hero() {
         </motion.div>
 
         <h1 className="font-serif text-[clamp(40px,11vw,140px)] leading-[0.96] font-light tracking-tight text-balance text-[var(--color-fg)] sm:text-[clamp(56px,9vw,140px)]">
-          <span className="block">Building</span>
-          <span className="block">thoughtful</span>
+          <span className="block">Researching</span>
+          <span className="block">what matters.</span>
           <span className="font-serif-italic block text-[var(--color-accent)]">
-            digital systems.
+            Building what works.
           </span>
         </h1>
 
@@ -99,8 +99,9 @@ export function Hero() {
             transition={{ delay: 0.1, duration: 0.4 }}
             className="max-w-md text-base leading-relaxed text-pretty text-[var(--color-fg-dim)] lg:col-span-5"
           >
-            Engineer and builder of ZAI. Founder of Anteroom Studio, where I build AI tools for
-            markets, geopolitics, and the macro forces that shape the world.
+            I'm Zawwar Sami — an independent researcher and engineer working across philosophy,
+            artificial intelligence, and cybersecurity. I publish research, build systems,
+            and test ideas beyond the page.
           </motion.p>
 
           <motion.div
@@ -110,11 +111,11 @@ export function Hero() {
             className="flex flex-wrap items-center gap-4 lg:col-span-7 lg:items-end"
           >
             <Button
-              href="/contact"
+              href="/writing"
               variant="primary"
               icon={<ArrowRight className="h-3.5 w-3.5" strokeWidth={1.5} />}
             >
-              Let's Connect
+              Explore Research
             </Button>
             <Button
               href="/work"
