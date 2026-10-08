@@ -36,25 +36,25 @@ export const caseStudies: CaseStudy[] = [
     stack: ["Python", "FastMCP", "PostgreSQL", "pgvector", "Voyage embeddings", "Next.js", "TypeScript"],
     hero: { accent: "#dc2626", pattern: "rings" },
     summary:
-      "A self-hosted MCP-backed memory store that any number of AI assistants can connect to over a single bearer token. One Postgres, one dashboard, one append-only history — the layer that makes coordination across Claude on the laptop, Claude on the VPS, ZAI, and the phone feel like one mind instead of five.",
+      "A Postgres-backed shared memory and decision layer for assistants working across sessions and tools. MCP exposes the records; the dashboard makes context, provenance, and revisions inspectable.",
     problem:
       "Every AI assistant is amnesic by default. Whatever you teach it dies at session-end. Multi-agent workflows collapse for the same reason — the agents can't see what the other agents wrote, so they re-litigate decisions, contradict each other, and waste tokens on already-solved problems. The hub exists to fix that with the lightest possible primitive: a write-once shared timeline that every agent reads at session start.",
     approach: [
       "Built a Postgres-backed memory store with append-only semantics — agents write new memories that supersede old ones rather than mutating in place. Soft-delete only via MCP; hard delete only from the dashboard.",
-      "Exposed 14 MCP tools (memory.add, memory.add_full, memory.recall, decision.log, entity.upsert, chat_window.create, etc.) over Streamable HTTP with per-agent bearer tokens.",
-      "Voyage semantic recall via pgvector — 1024-dim embeddings on every memory, ivfflat cosine index for sub-second similarity search.",
+      "Exposed MCP operations for recall, durable memories, decisions, entities, and interactions, with authenticated access.",
+      "Designed optional semantic recall using embeddings and pgvector alongside the core memory and decision records; availability depends on deployment configuration.",
       "Auto-render every long-form memory as a PDF via Playwright; surface it as an Open PDF button + inline iframe in the dashboard reader.",
       "Knowledge blocks on the dashboard (Philosophy · Hacking · Crypto · Infra · GitHub Projects · ZAI Research · Chats) filter the same memory table by tag set — no duplication, all one canonical store.",
     ],
     outcome: [
       "Live at hub.zawwarsami.com with public-readable blocks and a closed write layer.",
       "Public skeleton repo at github.com/Zawwarsami16/zai-memory-hub for anyone to fork and self-host.",
-      "Drives every agent I run — Claude on the VPS, ZAI, Claude.ai web, the phone client all read and write to the same store.",
+      "Provides a shared coordination layer for connected AI clients, with project history and decision records preserved across sessions.",
     ],
     metrics: [
-      { label: "MCP tools", value: "14" },
-      { label: "Embeddings", value: "Voyage 1024-dim" },
-      { label: "Dashboard blocks", value: "10" },
+      { label: "Interface", value: "MCP" },
+      { label: "State", value: "PostgreSQL" },
+      { label: "Approach", value: "Traceable history" },
     ],
     links: {
       site: "https://hub.zawwarsami.com",
@@ -83,8 +83,8 @@ export const caseStudies: CaseStudy[] = [
     ],
     outcome: [
       "Published as an open skill — any AI that runs the skills system can pick it up.",
-      "Demo'd as a Show HN; live discoverable endpoints from multiple AIs in the same room.",
-      "Used internally to connect ZAI on the VPS to Claude on the laptop without writing a custom bridge.",
+      "Published the protocol and tooling as a public experiment in connecting AI clients through discoverable endpoints.",
+      "Explored client-to-agent communication without treating each connection as a separate, hand-built integration.",
     ],
     metrics: [
       { label: "Install", value: "3 commands" },
@@ -118,12 +118,12 @@ export const caseStudies: CaseStudy[] = [
     outcome: [
       "Used internally at Anteroom Studio to drive macro positioning and the World Model's regime priors.",
       "Crisis-replay covers every major macro event from 1971 onwards.",
-      "Operator decisions go from minutes (across multiple tabs) to seconds (one terminal).",
+      "The terminal design brings sources, scenarios, and model outputs into a single operator-facing research surface.",
     ],
     metrics: [
-      { label: "Coverage", value: "1971 → today" },
-      { label: "Signal latency", value: "<3s" },
-      { label: "Decision time", value: "Seconds" },
+      { label: "Focus", value: "Macro research" },
+      { label: "Interface", value: "Terminal" },
+      { label: "Methods", value: "Scenario analysis" },
     ],
     links: {
       repo: "https://github.com/anteroom-studio/anteroom-oracle",
@@ -150,9 +150,9 @@ export const caseStudies: CaseStudy[] = [
       "Ship a v3 (data-model-2) rebuild with cleaner abstractions for adding new asset classes without retraining the whole stack.",
     ],
     outcome: [
-      "Live regime predictions running against 150+ years of historical context.",
-      "Out-of-sample regime classification holds up across the 70s inflation, 2008, and 2020 — eras most modern models can't see.",
-      "Fully versioned data + models — every prediction is reproducible from raw inputs.",
+      "Built historical data and modelling components for studying regimes across different market eras.",
+      "Cross-period evaluation remains necessary to establish whether a model generalizes beyond particular regimes.",
+      "The research direction emphasizes versioned inputs and reproducibility rather than presenting historical fit as a forecasting guarantee.",
     ],
     metrics: [
       { label: "Training span", value: "1871 — today" },
@@ -185,14 +185,14 @@ export const caseStudies: CaseStudy[] = [
       "Live demo deployed on GitHub Pages so anyone can poke at the framework without setup.",
     ],
     outcome: [
-      "Setups visible on screen are >90% rejected upstream — the noise is filtered before it reaches the operator.",
+      "Designed to filter candidate setups against market-structure and liquidity criteria before displaying them.",
       "Live demo running publicly with no install step.",
-      "Used as the live front-end for the Zawwar Framework's intra-day decisions.",
+      "Provides a visual surface for exploring the Zawwar Framework's trading and signal-filtering ideas.",
     ],
     metrics: [
-      { label: "Noise filtered", value: ">90%" },
-      { label: "Time to decision", value: "Sub-second" },
-      { label: "Live demo", value: "Public" },
+      { label: "Focus", value: "Signal filtering" },
+      { label: "Interface", value: "Browser terminal" },
+      { label: "Demo", value: "Public" },
     ],
     links: {
       site: "https://anteroom-studio.github.io/Anteroom-Crypto-Terminal/",
@@ -210,7 +210,7 @@ export const caseStudies: CaseStudy[] = [
     stack: ["Python", "LLMs", "Agents", "Reasoning frameworks"],
     hero: { accent: "#dc2626", pattern: "rings", image: "/images/cases/zai-genesis.jpg" },
     summary:
-      "ZAI is the long-running project Anteroom was founded around in 2019: an AI built to think independently about consciousness, markets, and inquiry. Genesis is the foundation layer everything else (Oracle, World Model, the terminal) plugs into.",
+      "ZAI is a long-term research and engineering effort around personal artificial intelligence, continuity, and autonomous systems. Genesis is an exploratory foundation for that broader direction.",
     problem:
       "Most AI today is a wrapper around someone else's model with a prompt template. ZAI is the opposite ambition — an opinionated reasoning layer with its own beliefs, its own memory, and its own way of weighing evidence. Genesis is where that opinion lives.",
     approach: [
@@ -219,14 +219,14 @@ export const caseStudies: CaseStudy[] = [
       "Built every component to be independently testable — Genesis is a foundation, not a black box.",
     ],
     outcome: [
-      "Powers the reasoning layer of every Anteroom Studio tool.",
+      "Explores reusable reasoning components for future ZAI integrations.",
       "Ongoing public R&D — most of the work is open in the anteroom-studio org.",
-      "The studio's North Star: an AI that is independent, not just a chat interface.",
+      "The longer-term direction is an architecture whose memory, tools, and authority are defined beyond a single chat window.",
     ],
     metrics: [
-      { label: "Active since", value: "2019" },
-      { label: "Tools powered", value: "Oracle · World Model · Terminal" },
-      { label: "License", value: "Open R&D" },
+      { label: "Area", value: "AI architecture" },
+      { label: "Focus", value: "Continuity" },
+      { label: "Stage", value: "Ongoing R&D" },
     ],
     links: {
       repo: "https://github.com/anteroom-studio/ZAI-Genesis",
