@@ -10,7 +10,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata(
   "Contact",
-  "Get in touch with Zawwar Sami — open to product-minded teams and collaborators.",
+  "Contact Zawwar Sami about philosophy, AI research, authorized security work, open source, or engineering collaboration.",
 );
 
 export default function ContactPage() {
@@ -20,7 +20,7 @@ export default function ContactPage() {
         tag="Contact"
         title="Let's start a"
         italic="conversation."
-        description="The fastest way to reach me. I read every message and reply within 24 hours."
+        description="Questions, thoughtful criticism, research connections, or a technical problem worth working on — you're welcome to get in touch."
       />
 
       <section className="mx-auto w-full max-w-[1440px] px-6 py-20 lg:px-12 lg:py-28">
@@ -100,11 +100,11 @@ export default function ContactPage() {
                     <span className="absolute inset-0 animate-ping rounded-full bg-[var(--color-accent)] opacity-60" />
                     <span className="relative inline-block h-2 w-2 rounded-full bg-[var(--color-accent)]" />
                   </span>
-                  Available · Responding
+                  Correspondence · Open
                 </div>
                 <p className="mt-4 text-sm leading-relaxed text-[var(--color-fg-dim)]">
-                  Currently open to product-minded teams, contract engagements,
-                  and collaborators on interesting problems.
+                  Open to research dialogue, engineering projects, and authorized
+                  security work. Please include enough context to make the conversation useful.
                 </p>
               </div>
             </div>
