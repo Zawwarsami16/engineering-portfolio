@@ -82,7 +82,7 @@ export default async function CaseStudyPage({
             <Meta label="Role" value={study.role} />
             <Meta label="Year" value={study.year} />
             <Meta label="Duration" value={study.duration} />
-            <Meta label="Status" value="Shipped" />
+            <Meta label="Status" value={study.duration === "Ongoing" ? "Ongoing R&D" : "Built"} />
           </ul>
         </div>
       </section>
