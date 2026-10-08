@@ -9,7 +9,7 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = pageMetadata(
   "Stack",
-  "The technologies, languages, and tools Zawwar Sami reaches for when building product-grade software.",
+  "The tools and technologies Zawwar Sami uses for AI research, software engineering, and open-source systems.",
 );
 
 const levelLabel: Record<"daily" | "comfortable" | "shipping", string> = {
@@ -25,7 +25,7 @@ export default function StackPage() {
         tag="Stack"
         title="Tools I reach"
         italic="for, in order."
-        description="An honest list — not aspirational. Each tool earned its place by helping ship something I'm still proud of."
+        description="Tools I use to research, build, test, and maintain systems. The point is what they make possible, not how long the list is."
       />
 
       <section className="mx-auto w-full max-w-[1440px] px-6 py-24 lg:px-12 lg:py-32">
