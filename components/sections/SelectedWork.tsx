@@ -21,7 +21,7 @@ export function SelectedWork() {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="mt-6 text-balance font-serif text-[clamp(36px,5vw,72px)] leading-[1.05] tracking-tight font-light text-[var(--color-fg)]">
-              Things I've <span className="font-serif-italic text-[var(--color-accent)]">shipped</span>
+              Systems I've <span className="font-serif-italic text-[var(--color-accent)]">built</span>
             </h2>
           </Reveal>
         </div>
