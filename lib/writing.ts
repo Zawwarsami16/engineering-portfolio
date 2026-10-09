@@ -25,6 +25,35 @@ export type WritingEntry = {
 };
 // Only already-public entries belong here. Unreleased manuscripts stay private.
 export const writings: WritingEntry[] = [
+  {
+    slug: "the-identity-kernel",
+    title: "The Identity Kernel",
+    seriesCode: "A6",
+    subtitle: "Infrastructure, Inner Orientation, and Continuity Across Model Change",
+    summary:
+      "What survives a model change: the answers an agent remembers, or the questions it has learned to ask before acting? An identity-kernel proposal for decision-time orientation, governed revision, and interrogative continuity.",
+    abstract:
+      "What survives a model change: the answers an agent remembers, or the questions it has learned to ask before acting? I approach this as an infrastructure problem. A deployed agent can retain records, decision rationales, user-authorized commitments, and ways of attending to uncertainty even when its reasoning model is replaced. I call the decision-guiding subset of that infrastructure an identity kernel. My narrower proposal is an interrogative step: before proposing an action, the system selects task-relevant questions that its history and active commitments make necessary, including questions the latest request does not explicitly ask. This is not a new name for memory or for an identity contract. Existing evaluations already distinguish recall, composition, enactment, and decision-time co-instantiation. The proposed contribution is to make relevance selection before a decision an independently inspectable and falsifiable target: does a governed, versioned orienting step recover consequential, unstated questions across model changes, and does it change what the agent actually does? I specify a limited architecture and matched intervention tests, including delayed and irrelevant-question controls. I report no experimental results. An operationally continuing agent need not preserve the same model or verbal personality, but a plausible continuity claim must include legitimate lineage, authorized revision, and evidence that its inherited orientation still affects decisions. None of this establishes numerical identity or subjective experience.",
+    url: "https://zawwarsami.com/writing/the-identity-kernel",
+    datePublished: "2026-10-09",
+    tags: [
+      "artificial agency",
+      "identity kernel",
+      "interrogative continuity",
+      "model replacement",
+      "decision-time orientation",
+      "agent identity evaluation",
+      "authorized revision",
+      "I-Entity",
+    ],
+    kind: "Paper",
+    status: "Preprint",
+    version: "Version 1.6",
+    pages: 9,
+    zenodo: "https://zenodo.org/records/23267921",
+    philpapers: "https://philpapers.org/rec/SAMTIK",
+    orcid: "https://orcid.org/0009-0004-5819-3017",
+  },
 {
   "slug": "persistent-state-and-becoming",
   "title": "Persistent State and Becoming",
