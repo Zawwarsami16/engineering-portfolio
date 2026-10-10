@@ -214,7 +214,7 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
       {!map && <>
         <div className={s.viewControls}><button onClick={() => { setVolume(null); setMap(true); window.history.pushState(null, "", "#map"); }}><Grid2X2 size={13} aria-hidden="true" /> All worlds</button><span>World {world.letter}{volume ? ` · Volume ${volume}` : ""}</span>{wVolume && <button onClick={backToW}>Back to W overview</button>}</div>
 
-          <section key={world.letter} className={s.worldDetail} aria-label={`World ${world.letter}: ${world.title}`}>
+          <section key={world.letter} className={s.worldDetail} data-world={world.letter} data-volume={volume ?? ""} aria-label={`World ${world.letter}: ${world.title}`}>
             <div className={s.edgePlanet} aria-hidden="true" />
             <div className={s.worldIntro} data-world-intro>
               <span className={s.worldMedallion} aria-hidden="true">{world.letter}</span>
