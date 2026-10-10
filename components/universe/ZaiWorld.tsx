@@ -3,8 +3,11 @@ import { writings } from "@/lib/writing";
 import z from "./zai-world.module.css";
 
 // The featured ZAI paper uses the same public record as the Writing archive.
-const manuscript = writings.find((entry) => entry.slug === "who-is-zai");
-if (!manuscript) throw new Error("Missing Who Is ZAI publication record");
+const manuscript = (() => {
+  const entry = writings.find((work) => work.slug === "who-is-zai");
+  if (!entry) throw new Error("Missing Who Is ZAI publication record");
+  return entry;
+})();
 
 export function ZaiWorld() {
   const pdf = manuscript.pdf;
