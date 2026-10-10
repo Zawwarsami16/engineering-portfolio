@@ -121,12 +121,12 @@ export default function AboutPage() {
                 </p>
                 <p>
                   I've spent years building alongside the writing.{" "}
-                  <a
+                  <Link
                     href="/writing/who-is-zai"
                     className="underline decoration-[var(--color-line)] underline-offset-4 transition-colors hover:text-[var(--color-fg)] hover:decoration-[var(--color-accent)]"
                   >
                     ZAI (Zawwar Autonomous Intelligence)
-                  </a>{" "}
+                  </Link>{" "}
                   is my long-running personal AI project, and{" "}
                   <a
                     href="https://github.com/Zawwarsami16/zai-memory-hub"
