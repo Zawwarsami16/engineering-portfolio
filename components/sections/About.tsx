@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionTag } from "@/components/ui/Pill";
 import { MagneticHeading } from "@/components/ui/MagneticHeading";
@@ -45,12 +46,12 @@ export function About() {
             others become systems I can actually test.
           </motion.p>
           <motion.p variants={fadeUp}>
-            <a
+            <Link
               href="/writing/who-is-zai"
               className="underline decoration-[var(--color-line)] underline-offset-4 transition-colors hover:text-[var(--color-fg)] hover:decoration-[var(--color-accent)]"
             >
               ZAI (Zawwar Autonomous Intelligence)
-            </a>{" "}
+            </Link>{" "}
             and ZAI Memory Hub are part of that work. Anteroom Studio
             gives my research and engineering projects a home, from personal
             AI and open-source infrastructure to security and market tools.
