@@ -819,3 +819,13 @@
   .wCardText strong { font-size:19px; }
   .wCardText small { font-size:7px; }
 }
+
+/* W-only phone hero: the dedicated W orb replaces the compact detail medallion. */
+@media(max-width:700px) {
+  .worldDetail[data-world="W"][data-volume=""] .worldIntro { display:block; text-align:center; padding-bottom:10px; }
+  .worldDetail[data-world="W"][data-volume=""] .worldIntro .kicker { justify-content:center; }
+  .worldDetail[data-world="W"][data-volume=""] .worldMedallion { display:none; }
+  .worldDetail[data-world="W"][data-volume=""] .worldIntro h2 { font-size:clamp(27px,6.8vw,35px); }
+  .worldDetail[data-world="W"][data-volume=""] .description { margin-inline:auto; }
+  .worldDetail[data-world="W"][data-volume=""] .worldBody { margin-top:6px; }
+}
