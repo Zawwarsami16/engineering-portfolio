@@ -134,3 +134,19 @@
 @media (prefers-reduced-motion: reduce) {
   .read,.download { transition:none; }
 }
+
+/* Source identity stays understated beneath the featured ZAI paper. */
+.sourceLinks {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 13px;
+  margin-top: 13px;
+  font: 9px/1.45 var(--font-inter), Arial, sans-serif;
+  letter-spacing: .08em;
+}
+.sourceLinks a { display: inline-flex; align-items: center; gap:3px; color:#cbaa98; padding: 3px 0; }
+.sourceLinks a:hover,.sourceLinks a:focus-visible { color:#fff0dc; }
+@media (max-width:700px) {
+  .sourceLinks { font-size: 8px; gap: 6px 10px; margin-top: 9px; }
+}

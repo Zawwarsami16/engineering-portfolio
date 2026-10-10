@@ -148,7 +148,12 @@ export const researchWorlds: ResearchWorld[] = [
     title: "ZAI",
     shortDescription: "Personal autonomous intelligence — research, philosophy, and technical systems.",
     keywords: "Personal AI · Research · Philosophy · Systems",
-    description: "A long-term inquiry into personal autonomous intelligence, its development, and its wider questions. The first manuscript will be linked when the approved PDF is released.",
-    cycles: [],
+    description: "ZAI — Zawwar Autonomous Intelligence — began as an attempt to build a personal intelligence that could retain its history and learn from corrections. The introductory research preprint documents the project across AI research, cybersecurity, philosophy and reported quantum-computing work, including its limitations and unresolved evidence.",
+    cycles: [{
+      id: "zai-introduction",
+      label: "Origins & Development",
+      description: "The documented origin, development, recorded work, mistakes, and open questions of ZAI.",
+      works: publicWorks(["who-is-zai"]),
+    }],
   },
 ];

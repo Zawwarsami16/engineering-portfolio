@@ -1,20 +1,18 @@
-import { BookOpen, Download, FileText } from "lucide-react";
+import { ArrowUpRight, BookOpen, Download, FileText } from "lucide-react";
+import { writings } from "@/lib/writing";
 import z from "./zai-world.module.css";
 
-/**
- * The first ZAI paper is intentionally not linked until its approved PDF is
- * supplied. Keep the ZAI research world visible without inventing a release.
- */
-const manuscript = {
-  code: "Z1",
-  title: "The Development of a Personal Autonomous Intelligence",
-  subtitle: "Who Is ZAI?",
-  author: "Zawwar Sami",
-  pdf: null as string | null,
-};
+// The featured ZAI paper uses the same public record as the Writing archive.
+const manuscript = (() => {
+  const entry = writings.find((work) => work.slug === "who-is-zai");
+  if (!entry) throw new Error("Missing Who Is ZAI publication record");
+  return entry;
+})();
 
 export function ZaiWorld() {
   const pdf = manuscript.pdf;
+  const zenodo = manuscript.zenodo;
+  const philpapers = manuscript.philpapers;
 
   return (
     <section className={z.world} aria-labelledby="zai-world-title">
@@ -34,7 +32,7 @@ export function ZaiWorld() {
         </p>
         <div className={z.counter}>
           <strong>01</strong>
-          <span>Featured manuscript <small>PDF forthcoming</small></span>
+          <span>Research introduction <small>Preprint · version 1.1</small></span>
         </div>
       </div>
 
@@ -67,32 +65,39 @@ export function ZaiWorld() {
         <div className={z.cover} aria-hidden="true">
           <span className={z.coverMark}>ZAI</span>
           <div className={z.coverBody}>
-            <strong>The Development of a Personal Autonomous Intelligence</strong>
-            <em>Who Is ZAI?</em>
+            <strong>{manuscript.subtitle}</strong>
+            <em>{manuscript.title}</em>
           </div>
           <span className={z.coverOrbit}/>
           <span className={z.coverAuthor}>Zawwar Sami</span>
         </div>
         <div className={z.paperBody}>
-          <p className={z.paperKicker}>Introductory research preprint <span>·</span> {manuscript.code}</p>
-          <h3>{manuscript.title}</h3>
-          <p className={z.paperSubtitle}>{manuscript.subtitle}</p>
+          <p className={z.paperKicker}>Introductory research preprint <span>·</span> {manuscript.seriesCode}</p>
+          <h3>{manuscript.subtitle}</h3>
+          <p className={z.paperSubtitle}>{manuscript.title}</p>
           <div className={z.paperRule} aria-hidden="true">✦</div>
-          <p className={z.author}>{manuscript.author}</p>
+          <p className={z.author}>Zawwar Sami</p>
           <div className={z.paperActions}>
             {pdf ? (
               <>
                 <a className={z.read} href={pdf} target="_blank" rel="noopener noreferrer"><BookOpen size={18} strokeWidth={1.5} /> Read PDF</a>
                 <a className={z.download} href={pdf} download><Download size={17} strokeWidth={1.5} /> Download PDF</a>
               </>
-            ) : (
+            ) : zenodo ? (
               <>
-                <button className={z.read} type="button" disabled title="The manuscript PDF has not been uploaded"><BookOpen size={18} strokeWidth={1.5} /> Read PDF</button>
-                <button className={z.download} type="button" disabled title="The manuscript PDF has not been uploaded"><Download size={17} strokeWidth={1.5} /> Download PDF</button>
+                <a className={z.read} href={zenodo} target="_blank" rel="noopener noreferrer"><BookOpen size={18} strokeWidth={1.5} /> Read on Zenodo</a>
+                {philpapers && <a className={z.download} href={philpapers} target="_blank" rel="noopener noreferrer"><ArrowUpRight size={17} strokeWidth={1.5} /> PhilPapers</a>}
               </>
+            ) : (
+              <button className={z.read} type="button" disabled><BookOpen size={18} strokeWidth={1.5} /> Manuscript unavailable</button>
             )}
           </div>
-          <div className={z.note}><FileText size={13} strokeWidth={1.5} /> A documented account of ZAI&apos;s development. PDF forthcoming.</div>
+          <div className={z.note}><FileText size={13} strokeWidth={1.5} /> Version 1.1 · 12 pages · Independent research preprint.</div>
+          <div className={z.sourceLinks} aria-label="Publication records">
+            {zenodo && <a href={zenodo} target="_blank" rel="noopener noreferrer">Zenodo <ArrowUpRight size={12} /></a>}
+            {philpapers && <a href={philpapers} target="_blank" rel="noopener noreferrer">PhilPapers <ArrowUpRight size={12} /></a>}
+            {manuscript.orcid && <a href={manuscript.orcid} target="_blank" rel="noopener noreferrer">ORCID <ArrowUpRight size={12} /></a>}
+          </div>
         </div>
       </article>
     </section>

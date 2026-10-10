@@ -208,7 +208,7 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
       <div className={`${s.worldMap} ${map ? s.mapExpanded : s.mapCompact}`} aria-label="Active worlds">
         {worlds.map((item) => <button key={item.letter} className={s.worldBranch} data-world-key={item.letter} aria-pressed={!map && letter === item.letter} onClick={() => selectWorld(item.letter)}>
           <span className={s.worldLetter}>{item.letter}</span><span className={s.worldName} data-world-label={item.letter}>{item.title}</span>
-          <span className={s.worldCount}>{item.letter === "W" ? "36 planned papers · 3 books" : item.letter === "Z" ? "1 manuscript · PDF forthcoming" : item.cycles.reduce((n, c) => n + c.works.length, 0) ? `${item.cycles.reduce((n, c) => n + c.works.length, 0)} public ${item.cycles.reduce((n, c) => n + c.works.length, 0) === 1 ? "paper" : "papers"}` : "Open inquiry"}</span>
+          <span className={s.worldCount}>{item.letter === "W" ? "36 planned papers · 3 books" : item.letter === "Z" ? "1 public preprint" : item.cycles.reduce((n, c) => n + c.works.length, 0) ? `${item.cycles.reduce((n, c) => n + c.works.length, 0)} public ${item.cycles.reduce((n, c) => n + c.works.length, 0) === 1 ? "paper" : "papers"}` : "Open inquiry"}</span>
         </button>)}
       </div>
 
@@ -265,7 +265,7 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
             {[1, 2, 3].map((n) => <button key={n} aria-pressed={volume === n} onClick={() => selectWVolume(n)}>W{n}</button>)}
             <button onClick={backToW}>All W volumes <ArrowRight size={14} aria-hidden="true" /></button>
           </nav>
-        </> : world.cycles.length > 0 && <nav className={s.viewTabs} aria-label="World views">
+        </> : world.letter !== "Z" && world.cycles.length > 0 && <nav className={s.viewTabs} aria-label="World views">
           <button aria-pressed={view === "overview"} onClick={() => setView("overview")}>Overview</button>
           <button aria-pressed={view === "papers"} onClick={() => setView("papers")}>Papers <span>({works.length})</span></button>
           {syntheses.length > 0 && <button aria-pressed={view === "synthesis"} onClick={() => setView("synthesis")}>Synthesis book</button>}
