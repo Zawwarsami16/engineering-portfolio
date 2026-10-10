@@ -116,6 +116,8 @@ export const writings: WritingEntry[] = [
     version: "Version 1.8",
     pages: 10,
     pdf: "/papers/Zawwar-Sami-A7-Operational-Will-v1.8.pdf",
+    zenodo: "https://zenodo.org/records/23287842",
+    philpapers: "https://philpapers.org/rec/SAMOWC",
     orcid: "https://orcid.org/0009-0004-5819-3017",
   },
   {
