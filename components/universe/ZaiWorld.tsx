@@ -24,8 +24,13 @@ export function ZaiWorld() {
         <p className={z.subheading}>Personal Autonomous Intelligence</p>
         <div className={z.starRule} aria-hidden="true"><span>✦</span></div>
         <p className={z.description}>
-          A long-term inquiry into personal autonomous intelligence — exploring
-          its possibilities through research, philosophy and technical systems.
+          I did not want another chatbot. I wanted an intelligence that could
+          remember what came before, return to unfinished questions, and learn
+          from its mistakes. ZAI grew from that ambition into a personal AI
+          project exploring research, cybersecurity, philosophy, and quantum
+          computing. The more interesting story is not what ZAI claimed it
+          could do. It is what actually happened, what went wrong, and what
+          its surviving records can tell us.
         </p>
         <div className={z.counter}>
           <strong>01</strong>
@@ -69,7 +74,7 @@ export function ZaiWorld() {
           <span className={z.coverAuthor}>Zawwar Sami</span>
         </div>
         <div className={z.paperBody}>
-          <p className={z.paperKicker}>Featured manuscript <span>·</span> {manuscript.code}</p>
+          <p className={z.paperKicker}>Introductory research preprint <span>·</span> {manuscript.code}</p>
           <h3>{manuscript.title}</h3>
           <p className={z.paperSubtitle}>{manuscript.subtitle}</p>
           <div className={z.paperRule} aria-hidden="true">✦</div>
@@ -87,7 +92,7 @@ export function ZaiWorld() {
               </>
             )}
           </div>
-          <div className={z.note}><FileText size={13} strokeWidth={1.5} /> PDF will be available following publication.</div>
+          <div className={z.note}><FileText size={13} strokeWidth={1.5} /> A documented account of ZAI&apos;s development. PDF forthcoming.</div>
         </div>
       </article>
     </section>
