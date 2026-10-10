@@ -26,6 +26,34 @@ export type WritingEntry = {
 // Only already-public entries belong here. Unreleased manuscripts stay private.
 export const writings: WritingEntry[] = [
   {
+    slug: "operational-will",
+    title: "Operational Will",
+    seriesCode: "A7",
+    subtitle: "Commitment, Initiative, and the Question of What an Agent Does Next",
+    summary:
+      "An agent can remember a commitment and still never return to it. Operational will asks how a long-running artificial agent can recover unfinished obligations, reconsider competing priorities, initiate within its authority, and justify when it should wait.",
+    abstract:
+      "An agent can remember an obligation and still never return to it. A daily schedule can keep it busy while important work slips away. I call the missing capacity operational will: not a private feeling or a claim of personhood, but a system-level ability to carry legitimate commitments across pauses, initiate within their scope, reconsider attention, and explain both action and deliberate non-action. I propose a bounded architecture: persistent commitments, time and event signals, an active decision model, and an I-Entity, a read-only reviewer that asks questions but cannot command tools. Earlier work on intention and BDI agents already covers much of this territory; the contribution here is a separable, auditable cross-commitment review interface and a falsifiable way to test whether it improves decisions. Dated ZAI records supply difficult design cases: a blocked proposal queue, restraint after permission, and a scheduler that reported success without acting. A proposed seven-condition test asks whether broader attention actually improves decisions over ordinary checklists and critics; the evaluation has not yet been run.",
+    url: "https://zawwarsami.com/writing/operational-will",
+    datePublished: "2026-10-10",
+    tags: [
+      "artificial agency",
+      "operational will",
+      "intention reconsideration",
+      "persistent commitments",
+      "I-Entity",
+      "cross-task attention",
+      "agent autonomy",
+      "authorization",
+      "non-action",
+    ],
+    kind: "Paper",
+    status: "Preprint",
+    version: "Version 1.8",
+    pages: 10,
+    orcid: "https://orcid.org/0009-0004-5819-3017",
+  },
+  {
     slug: "the-identity-kernel",
     title: "The Identity Kernel",
     seriesCode: "A6",
