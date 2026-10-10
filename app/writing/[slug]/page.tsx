@@ -21,7 +21,7 @@ export async function generateMetadata({
     ? "Who Is ZAI? — Zawwar Autonomous Intelligence"
     : `${entry.title}${entry.subtitle ? ` ${entry.subtitle}` : ""}`;
   const searchDescription = slug === "who-is-zai"
-    ? "ZAI (Zawwar Autonomous Intelligence) is Zawwar Sami's personal AI project. Explore its history, memory, philosophy, cybersecurity and research."
+    ? "I developed ZAI (Zawwar Autonomous Intelligence) through cybersecurity, philosophy and questions about memory, agency, and what an AI can actually do."
     : entry.summary;
   return {
     title: searchTitle,
@@ -120,9 +120,12 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
           {entry.subtitle && <p className="paper-subtitle">{entry.subtitle}</p>}
           {slug === "who-is-zai" && (
             <p className="text-pretty mt-5 max-w-3xl text-base leading-relaxed text-[var(--color-fg-dim)]">
-              ZAI stands for Zawwar Autonomous Intelligence. It is my long-term personal AI project,
-              built around existing models, persistent records, research, tools, and human oversight.
-              This introduction examines what its history documents and what remains unverified.
+              Before ZAI, I was used to studying systems by testing their limits.
+              That habit followed me from cybersecurity into philosophy and artificial intelligence.
+              ZAI — Zawwar Autonomous Intelligence — grew out of a question I could not leave alone:
+              could I build a personal intelligence that remembers its history, learns from correction,
+              and returns to unfinished work? This paper is my account of what I tried, what actually
+              happened, and what I still cannot prove.
             </p>
           )}
           {(entry.pdf || entry.zenodo || entry.philpapers || entry.orcid) && (
