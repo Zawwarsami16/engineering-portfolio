@@ -93,6 +93,11 @@ export function ZaiWorld() {
             )}
           </div>
           <div className={z.note}><FileText size={13} strokeWidth={1.5} /> Version 1.1 · 12 pages · Independent research preprint.</div>
+          <div className={z.sourceLinks} aria-label="Publication records">
+            {zenodo && <a href={zenodo} target="_blank" rel="noopener noreferrer">Zenodo <ArrowUpRight size={12} /></a>}
+            {philpapers && <a href={philpapers} target="_blank" rel="noopener noreferrer">PhilPapers <ArrowUpRight size={12} /></a>}
+            {manuscript.orcid && <a href={manuscript.orcid} target="_blank" rel="noopener noreferrer">ORCID <ArrowUpRight size={12} /></a>}
+          </div>
         </div>
       </article>
     </section>
