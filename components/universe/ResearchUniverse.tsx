@@ -206,7 +206,7 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
       </nav>
 
       <div className={`${s.worldMap} ${map ? s.mapExpanded : s.mapCompact}`} aria-label="Active worlds">
-        {worlds.map((item) => <button key={item.letter} className={s.worldBranch} aria-pressed={!map && letter === item.letter} onClick={() => selectWorld(item.letter)}>
+        {worlds.map((item) => <button key={item.letter} className={s.worldBranch} data-world-key={item.letter} aria-pressed={!map && letter === item.letter} onClick={() => selectWorld(item.letter)}>
           <span className={s.worldLetter}>{item.letter}</span><span className={s.worldName} data-world-label={item.letter}>{item.title}</span>
           <span className={s.worldCount}>{item.letter === "W" ? "36 planned papers · 3 books" : item.letter === "Z" ? "1 manuscript · PDF forthcoming" : item.cycles.reduce((n, c) => n + c.works.length, 0) ? `${item.cycles.reduce((n, c) => n + c.works.length, 0)} public ${item.cycles.reduce((n, c) => n + c.works.length, 0) === 1 ? "paper" : "papers"}` : "Open inquiry"}</span>
         </button>)}
