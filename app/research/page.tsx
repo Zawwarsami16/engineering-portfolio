@@ -4,11 +4,11 @@ import { researchWorlds } from "@/lib/universe";
 
 export const metadata: Metadata = {
   title: "Long-Term Vision",
-  description: "Zawwar Sami’s long-term research vision: an evolving map of published work and future inquiry across AI, philosophy, cosmology, cybersecurity, and the study of warfare and defence.",
+  description: "Zawwar Sami's long-term research in philosophy, AI, ZAI (Zawwar Autonomous Intelligence), cosmology, cybersecurity, warfare and defence.",
   alternates: { canonical: "/research" },
   openGraph: {
     title: "Long-Term Vision · Zawwar Sami",
-    description: "A long-term pathway for independent research, grounded in published work and room for new questions.",
+    description: "An A–Z research pathway across philosophy, AI, security and ZAI, with published preprints and future projects clearly distinguished.",
     url: "/research", type: "website",
   },
 };
