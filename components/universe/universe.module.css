@@ -698,3 +698,124 @@
  .emptyWorld h3 { font-size:27px; line-height:1.15; }
  .emptyWorld p { font-size:16px; line-height:1.5; }
 }
+
+/* W world: five-node map placement, preserving the four existing anchor positions. */
+.universe[data-view=map] .worldBranch:nth-child(5) {
+  top:345px;
+  left:77%;
+  width:23%;
+}
+.universe[data-view=map] .worldBranch:nth-child(5) .worldName {
+  font-size:clamp(19px,1.65vw,26px);
+}
+
+/* W overview reuses the existing cosmic surface, typography, roots and orbits. */
+.wOverview { padding:2px 10px 15px; }
+.wOverviewLead {
+  position:relative; display:flex; align-items:center; gap:22px;
+  padding:2px 2px 24px;
+}
+.wOverviewLead > div:last-child { min-width:0; }
+.wOverviewLead .kicker { font-size:8px; letter-spacing:.18em; color:#f3ae99; margin-bottom:7px; }
+.wOverviewLead p:not(.kicker) { color:#dfc7b8; font-size:16px; line-height:1.5; }
+.wOverviewOrb {
+  position:relative; display:grid; place-items:center; flex:0 0 86px; width:86px; height:86px;
+  border:1px solid #ef7769; border-radius:50%;
+  background:radial-gradient(circle at 50% 50%,#38070fff,#100307 65%,#040203 100%);
+  box-shadow:0 0 32px #ff304c66, inset 0 0 19px #f62d4240, 0 0 0 9px #ac41300a;
+}
+.wOverviewOrb > span { position:relative; z-index:1; color:#ffedde; font-size:54px; line-height:1; }
+.wOverviewRoots { position:absolute; width:195px; height:185px; max-width:none; left:-55px; top:-50px; opacity:.54; pointer-events:none; }
+.wVolumeCards { display:grid; gap:12px; }
+.wVolumeCard {
+  width:100%; min-width:0; min-height:112px; display:grid; grid-template-columns:68px minmax(0,1fr) 28px;
+  align-items:center; gap:18px; padding:17px 17px;
+  text-align:left; color:#f7e8d7; border:1px solid #a24b4f8c; border-radius:12px;
+  background:linear-gradient(110deg,#2b070eae,#090304ef 42%,#170609a3);
+  box-shadow:inset 0 0 28px #db19350c,0 10px 32px #0004;
+  transition:background .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.wVolumeCard:hover,.wVolumeCard:focus-visible {
+  border-color:#fa8a7b; background:linear-gradient(110deg,#400b15,#110407 55%,#23090d);
+  box-shadow:inset 0 0 25px #ec243217,0 0 25px #ed26371c;
+}
+.wCardOrb {
+  width:66px; height:66px; display:grid; place-items:center;
+  border:1px solid #e85b55; border-radius:50%;
+  background:radial-gradient(circle,#30050b 30%,#8c182c55 60%,#070205 90%);
+  color:#ffe9d6; font-size:33px; line-height:1; box-shadow:0 0 19px #f72d3c38,inset 0 0 18px #c42c3d38;
+}
+.wCardText { min-width:0; display:grid; gap:12px; }
+.wCardText strong { font-size:clamp(20px,2vw,28px); line-height:1.12; font-weight:400; overflow-wrap:anywhere; }
+.wCardText small {
+  color:#c9b9b0; font:9px/1.6 var(--font-inter),sans-serif; letter-spacing:.12em; text-transform:uppercase;
+}
+.wCardArrow { justify-self:end; color:#e9b09a; }
+.wSummary {
+  margin:22px 0 0; text-align:center; color:#cbb1a2;
+  font:9px/1.8 var(--font-inter),sans-serif; text-transform:uppercase; letter-spacing:.16em;
+}
+.wSummary span { margin:0 8px; color:#f45466; }
+.wSequenceNav {
+  width:100%; display:flex; align-items:center; justify-content:flex-end; gap:7px;
+  margin:16px auto 0; font:10px/1.5 var(--font-inter),sans-serif; text-transform:uppercase; letter-spacing:.12em;
+}
+.wSequenceNav button {
+  display:inline-flex; gap:7px; align-items:center; justify-content:center; min-width:43px; min-height:38px; padding:7px 12px;
+  border:1px solid #9e494b76; border-radius:24px; color:#d9c1b3; background:#100508a6;
+}
+.wSequenceNav button[aria-pressed=true] { border-color:#e36b66; color:#ffe8dc; box-shadow:0 0 15px #ed2b4133; }
+.wPlannedRow {
+  display:flex; align-items:center; gap:15px; padding:14px 8px;
+  border-bottom:1px solid #9146425a; color:#f2dfd0;
+}
+.wPlannedRow > span:last-child { display:grid; gap:5px; min-width:0; }
+.wPlannedRow strong { font-weight:400; font-size:20px; line-height:1.25; }
+.wPlannedRow small { font:9px/1.5 var(--font-inter),sans-serif; color:#bba499; text-transform:uppercase; letter-spacing:.1em; }
+@media(min-width:701px) and (max-width:1050px) {
+  .wVolumeCard { grid-template-columns:55px minmax(0,1fr) 18px; gap:12px; padding:13px; }
+  .wCardOrb { width:54px; height:54px; font-size:25px; }
+  .wCardText strong { font-size:21px; }
+  .wCardText small { font-size:8px; letter-spacing:.06em; }
+  .wOverviewLead { gap:13px; }
+  .wOverviewOrb { width:64px; height:64px; flex-basis:64px; }
+  .wOverviewOrb > span { font-size:42px; }
+}
+@media(max-width:700px) {
+  .universe[data-view=map] .topology { height:535px; }
+  .universe[data-view=map] .worldBranch:nth-child(5) {
+    top:417px; left:53%; width:44%; min-height:84px; padding:0 4px;
+  }
+  .universe[data-view=map] .worldBranch:nth-child(5) .worldName { font-size:20px; line-height:1.1; }
+  .universe[data-view=map] .worldBranch:nth-child(5) .worldCount { font-size:7px; }
+  .wOverview { padding:0; }
+  .wOverviewLead { flex-direction:column; text-align:center; gap:17px; padding:8px 6px 20px; }
+  .wOverviewLead .kicker { justify-content:center; line-height:1.5; }
+  .wOverviewLead p:not(.kicker) { font-size:15px; line-height:1.45; }
+  .wOverviewOrb { width:82px; height:82px; flex-basis:82px; }
+  .wOverviewOrb > span { font-size:50px; }
+  .wOverviewRoots { width:175px; height:165px; top:-42px; left:-47px; }
+  .wVolumeCards { gap:10px; }
+  .wVolumeCard {
+    grid-template-columns:52px minmax(0,1fr) 16px; gap:11px; min-height:104px;
+    padding:13px 12px; border-radius:11px;
+  }
+  .wCardOrb { width:51px; height:51px; font-size:25px; }
+  .wCardText { gap:8px; }
+  .wCardText strong { font-size:clamp(19px,5.3vw,25px); line-height:1.12; }
+  .wCardText small { font-size:8px; line-height:1.6; letter-spacing:.05em; }
+  .wCardArrow { width:17px; }
+  .wSummary { font-size:8px; line-height:1.8; margin-top:17px; letter-spacing:.08em; }
+  .wSummary span { margin:0 4px; }
+  .wSequenceNav { justify-content:center; flex-wrap:wrap; gap:7px; }
+  .wSequenceNav button { min-height:44px; }
+  .wPlannedRow { padding:13px 4px; gap:12px; }
+  .wPlannedRow strong { font-size:19px; }
+  .universe[data-view=world] .viewControls:has(button:nth-of-type(2)) { flex-wrap:wrap; }
+}
+@media(max-width:370px) {
+  .wVolumeCard { grid-template-columns:45px minmax(0,1fr) 14px; gap:9px; padding:12px 8px; }
+  .wCardOrb { width:45px; height:45px; font-size:23px; }
+  .wCardText strong { font-size:19px; }
+  .wCardText small { font-size:7px; }
+}
