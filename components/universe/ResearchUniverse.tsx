@@ -82,11 +82,11 @@ function FutureHorizon({ letter }: { letter: string }) {
 function Cycle({ cycle, onOpen }: { cycle: ResearchCycle; onOpen: (work: PublicWork) => void }) {
   const field = useRef<HTMLDivElement>(null);
   const slots = cycle.slots ? Array.from({ length: cycle.slots.count }, (_, i) => {
-    const code = `${cycle.slots!.prefix}${i + 1}`;
+    const code = `${cycle.slots!.prefix}${(cycle.slots!.start ?? 1) + i}`;
     return { code, work: cycle.works.find(work => work.seriesCode === code) };
   }) : cycle.works.map(work => ({ code: work.seriesCode ?? "Paper", work }));
   return <section className={s.cycle} aria-label={cycle.label} data-slots={cycle.slots?.count}>
-    <div className={s.cycleHeading}><h3>{cycle.label}</h3><span className={s.hairline} /><p>{cycle.slots ? `${cycle.slots.prefix}1–${cycle.slots.prefix}${cycle.slots.count}` : "Published work"} <span>· {cycle.works.length} {cycle.slots ? "unlocked" : cycle.works.length === 1 ? "paper" : "papers"}</span><i className={s.spark} /></p></div>
+    <div className={s.cycleHeading}><h3>{cycle.label}</h3><span className={s.hairline} /><p>{cycle.slots ? `${cycle.slots.prefix}${cycle.slots.start ?? 1}–${cycle.slots.prefix}${(cycle.slots.start ?? 1) + cycle.slots.count - 1}` : "Published work"} <span>· {cycle.plannedTitles ? "Planned · not released" : `${cycle.works.length} ${cycle.slots ? "unlocked" : cycle.works.length === 1 ? "paper" : "papers"}`}</span><i className={s.spark} /></p></div>
     <p className={s.cycleDescription}>{cycle.description}</p>
     <div className={s.nodeField} ref={field}>
       <PaperConnections field={field} count={slots.length} />
@@ -96,7 +96,7 @@ function Cycle({ cycle, onOpen }: { cycle: ResearchCycle; onOpen: (work: PublicW
           <FileText className={s.paperIcon} size={21} strokeWidth={1} aria-hidden="true" />
           <span>{code}</span>
           <span className={s.nodeTooltip}>{work.title}</span>
-        </button> : <button key={code} className={`${s.paperNode} ${s.lockedNode}`} data-paper-node disabled aria-label={`${code}: Locked — not yet released`} title="Unlocks when published">
+        </button> : <button key={code} className={`${s.paperNode} ${s.lockedNode}`} data-paper-node disabled aria-label={`${code}: ${cycle.plannedTitles?.[cycle.slots ? Number(code.slice(cycle.slots.prefix.length)) - (cycle.slots.start ?? 1) : -1] ?? "Locked"} — planned, not released`} title={cycle.plannedTitles?.[cycle.slots ? Number(code.slice(cycle.slots.prefix.length)) - (cycle.slots.start ?? 1) : -1] ?? "Unlocks when published"}>
           <span>{code}</span><LockKeyhole size={9} className={s.lockIcon} aria-hidden="true" />
         </button>)}
       </div>
@@ -110,8 +110,32 @@ function Cycle({ cycle, onOpen }: { cycle: ResearchCycle; onOpen: (work: PublicW
   </section>;
 }
 
+function WVolumeOverview({ world, onSelect }: { world: ResearchWorld; onSelect: (volume: number) => void }) {
+  return <section className={s.wOverview} aria-label="W research volumes">
+    <div className={s.wOverviewLead}>
+      <div className={s.wOverviewOrb} aria-hidden="true"><Roots className={s.wOverviewRoots} variant={3} /><span>W</span></div>
+      <div><p className={s.kicker}>Three volumes · One research world</p><p>Technology. Strategy. Humanity.<br />An inquiry into the science, systems, and consequences of warfare and defence.</p></div>
+    </div>
+    <div className={s.wVolumeCards}>
+      {world.cycles.map((cycle, index) => {
+        const number = index + 1;
+        const start = cycle.slots?.start ?? 1;
+        const end = start + (cycle.slots?.count ?? 12) - 1;
+        return <button key={cycle.id} type="button" className={s.wVolumeCard} onClick={() => onSelect(number)}
+          aria-label={`Explore W${number}, ${cycle.label}: twelve planned papers and a future book`}>
+          <span className={s.wCardOrb} aria-hidden="true">W{number}</span>
+          <span className={s.wCardText}><strong>{cycle.label}</strong><small>W{start}–W{end} · 12 planned papers · Book {["I", "II", "III"][index]} after W{end}</small></span>
+          <ArrowRight className={s.wCardArrow} size={22} strokeWidth={1} aria-hidden="true" />
+        </button>;
+      })}
+    </div>
+    <p className={s.wSummary}>36 planned papers <span>·</span> 3 standalone books <span>·</span> No W publications yet</p>
+  </section>;
+}
+
 export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
   const [letter, setLetter] = useState("A");
+  const [volume, setVolume] = useState<number | null>(null);
   const [map, setMap] = useState(true);
   const stage = useRef<HTMLDivElement>(null);
   const [view, setView] = useState<"overview" | "papers" | "synthesis" | "future">("overview");
@@ -122,15 +146,18 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
   const world = worlds.find((item) => item.letter === letter) ?? worlds[0];
   const works = world.cycles.flatMap((cycle) => cycle.works);
   const syntheses = world.cycles.flatMap((cycle) => cycle.synthesis ? [cycle.synthesis] : []);
+  const wVolume = world.letter === "W" && volume !== null ? world.cycles[volume - 1] : null;
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
   useEffect(() => {
     function readHash() {
       const requested = window.location.hash.slice(1).toUpperCase();
-      if (worlds.some((w) => w.letter === requested)) { setLetter(requested); setMap(false); setView("overview"); }
-      else { setLetter("A"); setMap(true); setView("overview"); }
+      const wMatch = /^W([123])$/.exec(requested);
+      if (wMatch && worlds.some((w) => w.letter === "W")) { setLetter("W"); setVolume(Number(wMatch[1])); setMap(false); setView("overview"); }
+      else if (worlds.some((w) => w.letter === requested)) { setLetter(requested); setVolume(null); setMap(false); setView("overview"); }
+      else { setLetter("A"); setVolume(null); setMap(true); setView("overview"); }
     }
-    const openMap = () => { setLetter("A"); setMap(true); setView("overview"); window.history.replaceState(null, "", window.location.pathname + window.location.search); };
+    const openMap = () => { setLetter("A"); setVolume(null); setMap(true); setView("overview"); window.history.replaceState(null, "", window.location.pathname + window.location.search); };
     readHash();
     window.addEventListener("universe:overview", openMap);
     window.addEventListener("hashchange", readHash);
@@ -139,8 +166,16 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
   }, [worlds]);
 
   function selectWorld(value: string) {
-    setLetter(value); setMap(false); setView("overview");
+    setLetter(value); setVolume(null); setMap(false); setView("overview");
     window.history.pushState(null, "", `#${value}`);
+  }
+  function selectWVolume(value: number) {
+    setLetter("W"); setMap(false); setVolume(value); setView("overview");
+    window.history.pushState(null, "", `#W${value}`);
+  }
+  function backToW() {
+    setLetter("W"); setMap(false); setVolume(null); setView("overview");
+    window.history.pushState(null, "", "#W");
   }
   function openPaper(work: PublicWork) {
     previousFocus.current = document.activeElement as HTMLElement;
