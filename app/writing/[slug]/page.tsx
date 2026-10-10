@@ -205,6 +205,15 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
                 Open PDF <ArrowUpRight size={17} />
               </a>
             </div>
+          ) : entry.kind === "Paper" && !entry.zenodo && !entry.philpapers ? (
+            <div className="source-panel">
+              <span className="eyebrow">Manuscript access</span>
+              <h2>Research preprint.</h2>
+              <p>
+                The abstract and bibliographic details are available here. A public
+                PDF link will appear when the manuscript file has been hosted.
+              </p>
+            </div>
           ) : entry.kind === "Paper" ? (
             <div className="source-panel">
               <span className="eyebrow">Full paper</span>
