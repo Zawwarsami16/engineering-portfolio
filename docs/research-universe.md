@@ -47,3 +47,11 @@ At the author’s request, Cycle 1 displays eighteen numbered slots on desktop a
 ## World-map entry and tall-viewport correction
 
 Default entry returns to All Worlds. Cosmology and Security labels sit above the alphabet, Artificial Agency and Personhood below. Root anchors support either direction. Page height follows content instead of a viewport-height minimum, preventing the huge empty area on phones requesting desktop mode. World detail no longer starts invisible for a hydration fade. Root glows are batched per branch and geometry is measured before client paint. Native-resolution artwork is retained with a restrained desktop colour adjustment.
+
+## W world addition — October 10, 2026
+
+The author approved an exception to the historical public-catalogue rule for roadmap **labels only**: W exposes the explicitly approved 36-paper plan and its three future standalone books, never unpublished manuscript contents or false public status. W is distinct from digital cybersecurity world S. The plans are represented in `lib/universe.ts` as three twelve-slot cycles with offsets 1, 13 and 25, with working titles as metadata. All W paper links remain locked until genuinely released and separately added to public Writing records.
+
+Click `W` on the A–Z map to enter the W overview with three volume cards. W1/W2/W3 navigate through `#W1`/`#W2`/`#W3`, using the same shared paper-grid and future-book components used in A; back navigation returns to `#W` or `#map`. The map uses a fifth SVG-linked label without altering the four established placements. Desktop keeps W near the right end of the alphabet; phone deliberately extends the world-map section to avoid squeezing all five labels into the existing four positions. Dedicated mobile card/typography styles are scoped to W.
+
+Always distinguish **planned** from **published**, and do not surface W books as published or claim expert review. Test deep links, popstate, 360px/390px readability, A/C/P/S regression, and production builds before considering the design complete.
