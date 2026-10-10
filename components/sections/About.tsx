@@ -45,7 +45,13 @@ export function About() {
             others become systems I can actually test.
           </motion.p>
           <motion.p variants={fadeUp}>
-            ZAI and ZAI Memory Hub are part of that work. Anteroom Studio
+            <a
+              href="/writing/who-is-zai"
+              className="underline decoration-[var(--color-line)] underline-offset-4 transition-colors hover:text-[var(--color-fg)] hover:decoration-[var(--color-accent)]"
+            >
+              ZAI (Zawwar Autonomous Intelligence)
+            </a>{" "}
+            and ZAI Memory Hub are part of that work. Anteroom Studio
             gives my research and engineering projects a home, from personal
             AI and open-source infrastructure to security and market tools.
           </motion.p>
