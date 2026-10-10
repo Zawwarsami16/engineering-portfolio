@@ -81,6 +81,7 @@ export const writings: WritingEntry[] = [
     status: "Preprint",
     version: "Version 1.8",
     pages: 10,
+    pdf: "/papers/Zawwar-Sami-A7-Operational-Will-v1.8.pdf",
     orcid: "https://orcid.org/0009-0004-5819-3017",
   },
   {
