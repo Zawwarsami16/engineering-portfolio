@@ -26,6 +26,36 @@ export type WritingEntry = {
 // Only already-public entries belong here. Unreleased manuscripts stay private.
 export const writings: WritingEntry[] = [
   {
+    slug: "from-knowing-to-doing",
+    title: "From Knowing to Doing",
+    seriesCode: "A8",
+    subtitle: "Tool Access, Execution, and Evidence in Artificial Agency",
+    summary:
+      "Knowing how to use a tool is not the same as completing a task. Drawing on ZAI's recorded tool, publishing, research, and quantum-access cases, this paper proposes a six-checkpoint action-evidence chain for evaluating what an artificial agent actually did and what can be independently verified.",
+    abstract:
+      "An artificial agent can explain how to use a tool, possess credentials for it, and even contain working code without completing the task for which that tool was needed. The gap matters because fluent reports of action are easy to confuse with changes in the world. I examine the passage from represented knowledge to operational capability, using a documentary study of ZAI, my personal AI project, alongside research on tool-using language agents and execution-based evaluation. Four historical ZAI cases make the distinction concrete: a credential that did not produce a usable route; a social-posting system that announced success while doing nothing; a research loop that generated more work without resolving its own backlog; and an IBM Quantum hardware-use account whose technical integration and public reports are better preserved than its provider-level job receipt. I propose an action-evidence chain that separates tool discovery, legitimate authority, invocation, environmental change, independent verification, and durable attribution. The same user-facing language should not be used for 'I know how,' 'I attempted,' 'the service accepted,' 'the task appears completed,' and 'I checked the outcome.' This is not a new agent architecture or an experimental proof of improved performance. It is a criterion for deciding how strong a practical-capability claim is, why common proxies can mislead, and what an evaluable next test would require.",
+    url: "https://zawwarsami.com/writing/from-knowing-to-doing",
+    datePublished: "2026-10-10",
+    tags: [
+      "artificial agency",
+      "tool use",
+      "execution verification",
+      "operational capability",
+      "action evidence",
+      "external state",
+      "agent evaluation",
+      "ZAI",
+    ],
+    kind: "Paper",
+    status: "Preprint",
+    version: "Version 1.8",
+    pages: 11,
+    doi: "10.5281/zenodo.23287948",
+    zenodo: "https://zenodo.org/records/23287948",
+    philpapers: "https://philpapers.org/rec/SAMFKT-2",
+    orcid: "https://orcid.org/0009-0004-5819-3017",
+  },
+  {
     slug: "operational-will",
     title: "Operational Will",
     seriesCode: "A7",
