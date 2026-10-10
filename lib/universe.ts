@@ -143,4 +143,12 @@ export const researchWorlds: ResearchWorld[] = [
       },
     ],
   },
+  {
+    letter: "Z",
+    title: "ZAI",
+    shortDescription: "Personal autonomous intelligence — research, philosophy, and technical systems.",
+    keywords: "Personal AI · Research · Philosophy · Systems",
+    description: "A long-term inquiry into personal autonomous intelligence, its development, and its wider questions. The first manuscript will be linked when the approved PDF is released.",
+    cycles: [],
+  },
 ];
