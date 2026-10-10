@@ -283,7 +283,7 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
         <h2 id="universe-paper-title">{paper.title}</h2>
         <p className={s.paperMeta}>{paper.datePublished} · {paper.version}</p><p>{paper.summary}</p>
         <div className={s.paperLinks}>
-          <Link href={`/writing/${paper.slug}`} onClick={() => dialog.current?.close()} className={s.primaryLink}>Read the paper <ArrowUpRight size={17} /></Link>
+          <Link href={`/writing/${paper.slug}`} onClick={() => dialog.current?.close()} className={s.primaryLink}>{paper.pdf || paper.zenodo || paper.philpapers ? "Read the paper" : "View paper record"} <ArrowUpRight size={17} /></Link>
           {paper.pdf && <a href={paper.pdf} target="_blank" rel="noopener noreferrer">PDF <ArrowUpRight size={15} /></a>}
           {paper.zenodo && <a href={paper.zenodo} target="_blank" rel="noopener noreferrer">Zenodo <ArrowUpRight size={15} /></a>}
           {paper.philpapers && <a href={paper.philpapers} target="_blank" rel="noopener noreferrer">PhilPapers <ArrowUpRight size={15} /></a>}
