@@ -6,7 +6,7 @@ const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://zawwarsami.com").
 
 // Update this only when main site copy or navigation changes materially.
 // Avoid reporting every unchanged route as freshly modified on every build.
-const SITE_REFRESH = new Date("2026-10-08T00:00:00Z");
+const SITE_REFRESH = new Date("2026-10-10T00:00:00Z");
 
 // Keep this route static, cacheable, and reliable for Googlebot.
 export const dynamic = "force-static";
