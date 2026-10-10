@@ -5,7 +5,7 @@ import s from "./universe.module.css";
 
 type Point = { x: number; y: number };
 type Branch = { letter: string; start: Point; end: Point; spread: number; detail: boolean };
-type Layout = { width: number; height: number; branches: Branch[] };
+type Layout = { width: number; height: number; branches: Branch[]; compact: boolean };
 
 /** Stop SVG timelines when offscreen, hidden, or reduced motion is requested. */
 function useSvgPlayback(ref: RefObject<SVGSVGElement | null>, ready: boolean) {
@@ -57,7 +57,7 @@ export const UniverseConnections = memo(function UniverseConnections({ stage, se
           const above = end.bottom < src.top;
           const labelBlock = target.closest("button")!.getBoundingClientRect();
           if (above) start.y = src.top + src.height / 2 - radius - box.top;
-          branches.push({ letter, start, end: { x: end.left + end.width / 2 - box.left, y: above ? labelBlock.bottom - box.top + 12 : end.top - box.top - 15 }, spread: Math.min(end.width * .58, compact ? 48 : 125), detail: false });
+          branches.push({ letter, start, end: { x: end.left + end.width / 2 - box.left, y: above ? labelBlock.bottom - box.top + 12 : end.top - box.top - 15 }, spread: Math.min(end.width * .58, map ? (compact ? 22 : 68) : (compact ? 48 : 125)), detail: false });
         } else if (!map && letter === selected) {
           const intro = host.querySelector<HTMLElement>("[data-world-intro]");
           if (intro) {
@@ -66,7 +66,7 @@ export const UniverseConnections = memo(function UniverseConnections({ stage, se
           }
         }
       });
-      const next = { width: box.width, height: box.height, branches };
+      const next = { width: box.width, height: box.height, branches, compact };
       const serialized = JSON.stringify(next);
       if (serialized !== signature.current) { signature.current = serialized; setLayout(next); }
     };
@@ -89,7 +89,9 @@ export const UniverseConnections = memo(function UniverseConnections({ stage, se
       const length = b.y - a.y;
       const direction = Math.sign(length) || 1;
       const seed = letter.charCodeAt(0);
-      const paths = Array.from({ length: 19 }, (_, i) => {
+      // The index map needs compact, local roots; focused worlds retain full geometry.
+      const roots = map ? (layout.compact ? 7 : 12) : 19;
+      const paths = Array.from({ length: roots }, (_, i) => {
         const side = i % 2 ? -1 : 1;
         const reach = (0.19 + ((i * 37 + seed) % 80) / 100) * spread;
         const end = { x: b.x + side * reach, y: a.y + length * (.42 + ((i * 19 + seed) % 55) / 100) };
