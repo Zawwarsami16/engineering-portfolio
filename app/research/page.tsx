@@ -4,7 +4,7 @@ import { researchWorlds } from "@/lib/universe";
 
 export const metadata: Metadata = {
   title: "Long-Term Vision",
-  description: "Zawwar Sami’s long-term research vision: an evolving map of published work and future inquiry across AI, philosophy, cosmology, and security.",
+  description: "Zawwar Sami’s long-term research vision: an evolving map of published work and future inquiry across AI, philosophy, cosmology, cybersecurity, and the study of warfare and defence.",
   alternates: { canonical: "/research" },
   openGraph: {
     title: "Long-Term Vision · Zawwar Sami",
