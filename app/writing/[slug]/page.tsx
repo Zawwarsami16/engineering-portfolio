@@ -124,7 +124,7 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
               built around existing models, persistent records, research, tools, and human oversight.
               This introduction examines what its history documents and what remains unverified.
             </p>
-          )
+          )}
           {(entry.pdf || entry.zenodo || entry.philpapers || entry.orcid) && (
             <div className="paper-actions">
               {entry.pdf ? (
