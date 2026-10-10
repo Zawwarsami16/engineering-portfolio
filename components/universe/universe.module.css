@@ -829,3 +829,26 @@
   .worldDetail[data-world="W"][data-volume=""] .description { margin-inline:auto; }
   .worldDetail[data-world="W"][data-volume=""] .worldBody { margin-top:6px; }
 }
+
+/* Sixth world: ZAI. Keep existing five world anchors untouched. */
+.universe[data-view=map] .worldBranch:nth-child(6) {
+  top:345px;
+  left:25%;
+  width:21%;
+}
+.universe[data-view=map] .worldBranch:nth-child(6) .worldName {
+  color:#ffe8d8;
+}
+@media(max-width:700px) {
+  .universe[data-view=map] .worldBranch:nth-child(6) {
+    top:417px;
+    left:3%;
+    width:44%;
+    min-height:84px;
+    padding:0 4px;
+  }
+  .universe[data-view=map] .worldBranch:nth-child(6) .worldName {
+    font-size:22px;
+    line-height:1.1;
+  }
+}

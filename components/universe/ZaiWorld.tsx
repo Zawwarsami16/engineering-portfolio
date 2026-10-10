@@ -1,0 +1,95 @@
+import { BookOpen, Download, FileText } from "lucide-react";
+import z from "./zai-world.module.css";
+
+/**
+ * The first ZAI paper is intentionally not linked until its approved PDF is
+ * supplied. Keep the ZAI research world visible without inventing a release.
+ */
+const manuscript = {
+  code: "Z1",
+  title: "The Development of a Personal Autonomous Intelligence",
+  subtitle: "Who Is ZAI?",
+  author: "Zawwar Sami",
+  pdf: null as string | null,
+};
+
+export function ZaiWorld() {
+  const pdf = manuscript.pdf;
+
+  return (
+    <section className={z.world} aria-labelledby="zai-world-title">
+      <div className={z.intro} data-world-intro>
+        <p className={z.eyebrow}>World Z</p>
+        <h2 id="zai-world-title"><span>Z</span> <i aria-hidden="true">—</i> ZAI</h2>
+        <p className={z.subheading}>Personal Autonomous Intelligence</p>
+        <div className={z.starRule} aria-hidden="true"><span>✦</span></div>
+        <p className={z.description}>
+          A long-term inquiry into personal autonomous intelligence — exploring
+          its possibilities through research, philosophy and technical systems.
+        </p>
+        <div className={z.counter}>
+          <strong>01</strong>
+          <span>Featured manuscript <small>PDF forthcoming</small></span>
+        </div>
+      </div>
+
+      <div className={z.center} aria-label="ZAI research core">
+        <svg className={z.roots} viewBox="0 0 540 470" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="zai-root-light" x1="270" y1="135" x2="270" y2="470" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#ffbd9b" stopOpacity=".95" />
+              <stop offset=".38" stopColor="#fa2b50" stopOpacity=".78" />
+              <stop offset="1" stopColor="#ab142f" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <g stroke="url(#zai-root-light)" strokeLinecap="round">
+            <path d="M270 145 C269 230 195 235 175 290 S65 348 16 460" strokeWidth="1.2"/>
+            <path d="M270 145 C263 210 221 243 230 299 S167 370 119 466" strokeWidth=".9"/>
+            <path d="M270 145 C267 228 280 259 260 305 S238 405 203 468" strokeWidth=".8"/>
+            <path d="M270 145 C290 225 312 251 311 310 S356 398 366 468" strokeWidth="1.1"/>
+            <path d="M270 145 C298 219 343 233 369 300 S444 394 520 462" strokeWidth=".9"/>
+            <path d="M270 145 C304 223 340 261 342 332 S421 398 459 467" strokeWidth=".5"/>
+            <path d="M270 145 C252 245 195 263 165 327 S79 402 71 468" strokeWidth=".5"/>
+            <path d="M270 145 C285 218 272 258 291 336 S294 428 304 470" strokeWidth=".6"/>
+            <path d="M175 290 C140 296 120 312 90 345 M230 299 C197 323 195 345 186 384 M311 310 C344 337 347 366 382 397 M369 300 C398 313 408 346 427 370 M342 332 C349 377 370 402 400 427" strokeWidth=".55"/>
+          </g>
+        </svg>
+        <div className={z.orb} aria-hidden="true"><span>ZAI</span></div>
+        <span className={z.orbCaption}>Origin · inquiry · evolution</span>
+      </div>
+
+      <article className={z.paper} aria-label="ZAI featured manuscript">
+        <div className={z.cover} aria-hidden="true">
+          <span className={z.coverMark}>ZAI</span>
+          <div className={z.coverBody}>
+            <strong>The Development of a Personal Autonomous Intelligence</strong>
+            <em>Who Is ZAI?</em>
+          </div>
+          <span className={z.coverOrbit}/>
+          <span className={z.coverAuthor}>Zawwar Sami</span>
+        </div>
+        <div className={z.paperBody}>
+          <p className={z.paperKicker}>Featured manuscript <span>·</span> {manuscript.code}</p>
+          <h3>{manuscript.title}</h3>
+          <p className={z.paperSubtitle}>{manuscript.subtitle}</p>
+          <div className={z.paperRule} aria-hidden="true">✦</div>
+          <p className={z.author}>{manuscript.author}</p>
+          <div className={z.paperActions}>
+            {pdf ? (
+              <>
+                <a className={z.read} href={pdf} target="_blank" rel="noopener noreferrer"><BookOpen size={18} strokeWidth={1.5} /> Read PDF</a>
+                <a className={z.download} href={pdf} download><Download size={17} strokeWidth={1.5} /> Download PDF</a>
+              </>
+            ) : (
+              <>
+                <button className={z.read} type="button" disabled title="The manuscript PDF has not been uploaded"><BookOpen size={18} strokeWidth={1.5} /> Read PDF</button>
+                <button className={z.download} type="button" disabled title="The manuscript PDF has not been uploaded"><Download size={17} strokeWidth={1.5} /> Download PDF</button>
+              </>
+            )}
+          </div>
+          <div className={z.note}><FileText size={13} strokeWidth={1.5} /> PDF will be available following publication.</div>
+        </div>
+      </article>
+    </section>
+  );
+}

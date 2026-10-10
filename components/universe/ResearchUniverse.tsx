@@ -8,6 +8,7 @@ import { ArrowRight, ArrowUpRight, BookOpen, FileText, Grid2X2, LockKeyhole, X }
 import type { PublicWork, ResearchCycle, ResearchWorld, SynthesisMilestone } from "@/lib/universe";
 import s from "./universe.module.css";
 import { UniverseConnections, PaperConnections } from "./UniverseConnections";
+import { ZaiWorld } from "./ZaiWorld";
 
 /** Deterministic root geometry: stable SSR, scalable SVG, no canvas render loop. */
 const Roots = memo(function Roots({ variant = 0, className = "" }: { variant?: number; className?: string }) {
@@ -207,14 +208,14 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
       <div className={`${s.worldMap} ${map ? s.mapExpanded : s.mapCompact}`} aria-label="Active worlds">
         {worlds.map((item) => <button key={item.letter} className={s.worldBranch} aria-pressed={!map && letter === item.letter} onClick={() => selectWorld(item.letter)}>
           <span className={s.worldLetter}>{item.letter}</span><span className={s.worldName} data-world-label={item.letter}>{item.title}</span>
-          <span className={s.worldCount}>{item.letter === "W" ? "36 planned papers · 3 books" : item.cycles.reduce((n, c) => n + c.works.length, 0) ? `${item.cycles.reduce((n, c) => n + c.works.length, 0)} public ${item.cycles.reduce((n, c) => n + c.works.length, 0) === 1 ? "paper" : "papers"}` : "Open inquiry"}</span>
+          <span className={s.worldCount}>{item.letter === "W" ? "36 planned papers · 3 books" : item.letter === "Z" ? "1 manuscript · PDF forthcoming" : item.cycles.reduce((n, c) => n + c.works.length, 0) ? `${item.cycles.reduce((n, c) => n + c.works.length, 0)} public ${item.cycles.reduce((n, c) => n + c.works.length, 0) === 1 ? "paper" : "papers"}` : "Open inquiry"}</span>
         </button>)}
       </div>
 
       {!map && <>
         <div className={s.viewControls}><button onClick={() => { setVolume(null); setMap(true); window.history.pushState(null, "", "#map"); }}><Grid2X2 size={13} aria-hidden="true" /> All worlds</button><span>World {world.letter}{volume ? ` · Volume ${volume}` : ""}</span>{wVolume && <button onClick={backToW}>Back to W overview</button>}</div>
 
-          <section key={world.letter} className={s.worldDetail} data-world={world.letter} data-volume={volume ?? ""} aria-label={`World ${world.letter}: ${world.title}`}>
+          {world.letter === "Z" ? <ZaiWorld /> : <section key={world.letter} className={s.worldDetail} data-world={world.letter} data-volume={volume ?? ""} aria-label={`World ${world.letter}: ${world.title}`}>
             <div className={s.edgePlanet} aria-hidden="true" />
             <div className={s.worldIntro} data-world-intro>
               <span className={s.worldMedallion} aria-hidden="true">{world.letter}</span>
@@ -252,7 +253,7 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
               {view === "future" && <FutureHorizon letter={world.letter} />}
               {view === "synthesis" && <div className={s.synthesisView}>{(wVolume && wVolume.synthesis ? [wVolume.synthesis] : syntheses).map((item) => <Milestone key={item.id} item={item} full />)}</div>}
             </div>
-          </section>
+          </section>}
 
         {world.letter === "W" ? wVolume && <>
           <nav className={s.viewTabs} aria-label="Volume views">
