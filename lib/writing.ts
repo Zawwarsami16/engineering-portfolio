@@ -54,6 +54,7 @@ export const writings: WritingEntry[] = [
     status: "Preprint",
     version: "Version 1.1",
     pages: 12,
+    pdf: "/api/zenodo-pdf/23288028",
     zenodo: "https://zenodo.org/records/23288028",
     philpapers: "https://philpapers.org/rec/SAMWIZ",
     orcid: "https://orcid.org/0009-0004-5819-3017",
