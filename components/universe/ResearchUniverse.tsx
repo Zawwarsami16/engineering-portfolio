@@ -82,11 +82,11 @@ function FutureHorizon({ letter }: { letter: string }) {
 function Cycle({ cycle, onOpen }: { cycle: ResearchCycle; onOpen: (work: PublicWork) => void }) {
   const field = useRef<HTMLDivElement>(null);
   const slots = cycle.slots ? Array.from({ length: cycle.slots.count }, (_, i) => {
-    const code = `${cycle.slots!.prefix}${i + 1}`;
+    const code = `${cycle.slots!.prefix}${(cycle.slots!.start ?? 1) + i}`;
     return { code, work: cycle.works.find(work => work.seriesCode === code) };
   }) : cycle.works.map(work => ({ code: work.seriesCode ?? "Paper", work }));
   return <section className={s.cycle} aria-label={cycle.label} data-slots={cycle.slots?.count}>
-    <div className={s.cycleHeading}><h3>{cycle.label}</h3><span className={s.hairline} /><p>{cycle.slots ? `${cycle.slots.prefix}1–${cycle.slots.prefix}${cycle.slots.count}` : "Published work"} <span>· {cycle.works.length} {cycle.slots ? "unlocked" : cycle.works.length === 1 ? "paper" : "papers"}</span><i className={s.spark} /></p></div>
+    <div className={s.cycleHeading}><h3>{cycle.label}</h3><span className={s.hairline} /><p>{cycle.slots ? `${cycle.slots.prefix}${cycle.slots.start ?? 1}–${cycle.slots.prefix}${(cycle.slots.start ?? 1) + cycle.slots.count - 1}` : "Published work"} <span>· {cycle.plannedTitles ? "Planned · not released" : `${cycle.works.length} ${cycle.slots ? "unlocked" : cycle.works.length === 1 ? "paper" : "papers"}`}</span><i className={s.spark} /></p></div>
     <p className={s.cycleDescription}>{cycle.description}</p>
     <div className={s.nodeField} ref={field}>
       <PaperConnections field={field} count={slots.length} />
@@ -96,7 +96,7 @@ function Cycle({ cycle, onOpen }: { cycle: ResearchCycle; onOpen: (work: PublicW
           <FileText className={s.paperIcon} size={21} strokeWidth={1} aria-hidden="true" />
           <span>{code}</span>
           <span className={s.nodeTooltip}>{work.title}</span>
-        </button> : <button key={code} className={`${s.paperNode} ${s.lockedNode}`} data-paper-node disabled aria-label={`${code}: Locked — not yet released`} title="Unlocks when published">
+        </button> : <button key={code} className={`${s.paperNode} ${s.lockedNode}`} data-paper-node disabled aria-label={`${code}: ${cycle.plannedTitles?.[cycle.slots ? Number(code.slice(cycle.slots.prefix.length)) - (cycle.slots.start ?? 1) : -1] ?? "Locked"} — planned, not released`} title={cycle.plannedTitles?.[cycle.slots ? Number(code.slice(cycle.slots.prefix.length)) - (cycle.slots.start ?? 1) : -1] ?? "Unlocks when published"}>
           <span>{code}</span><LockKeyhole size={9} className={s.lockIcon} aria-hidden="true" />
         </button>)}
       </div>
@@ -110,8 +110,32 @@ function Cycle({ cycle, onOpen }: { cycle: ResearchCycle; onOpen: (work: PublicW
   </section>;
 }
 
+function WVolumeOverview({ world, onSelect }: { world: ResearchWorld; onSelect: (volume: number) => void }) {
+  return <section className={s.wOverview} aria-label="W research volumes">
+    <div className={s.wOverviewLead}>
+      <div className={s.wOverviewOrb} aria-hidden="true"><Roots className={s.wOverviewRoots} variant={3} /><span>W</span></div>
+      <div><p className={s.kicker}>Three volumes · One research world</p><p>Technology. Strategy. Humanity.<br />An inquiry into the science, systems, and consequences of warfare and defence.</p></div>
+    </div>
+    <div className={s.wVolumeCards}>
+      {world.cycles.map((cycle, index) => {
+        const number = index + 1;
+        const start = cycle.slots?.start ?? 1;
+        const end = start + (cycle.slots?.count ?? 12) - 1;
+        return <button key={cycle.id} type="button" className={s.wVolumeCard} onClick={() => onSelect(number)}
+          aria-label={`Explore W${number}, ${cycle.label}: twelve planned papers and a future book`}>
+          <span className={s.wCardOrb} aria-hidden="true">W{number}</span>
+          <span className={s.wCardText}><strong>{cycle.label}</strong><small>W{start}–W{end} · 12 planned papers · Book {["I", "II", "III"][index]} after W{end}</small></span>
+          <ArrowRight className={s.wCardArrow} size={22} strokeWidth={1} aria-hidden="true" />
+        </button>;
+      })}
+    </div>
+    <p className={s.wSummary}>36 planned papers <span>·</span> 3 standalone books <span>·</span> No W publications yet</p>
+  </section>;
+}
+
 export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
   const [letter, setLetter] = useState("A");
+  const [volume, setVolume] = useState<number | null>(null);
   const [map, setMap] = useState(true);
   const stage = useRef<HTMLDivElement>(null);
   const [view, setView] = useState<"overview" | "papers" | "synthesis" | "future">("overview");
@@ -122,15 +146,18 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
   const world = worlds.find((item) => item.letter === letter) ?? worlds[0];
   const works = world.cycles.flatMap((cycle) => cycle.works);
   const syntheses = world.cycles.flatMap((cycle) => cycle.synthesis ? [cycle.synthesis] : []);
+  const wVolume = world.letter === "W" && volume !== null ? world.cycles[volume - 1] : null;
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
   useEffect(() => {
     function readHash() {
       const requested = window.location.hash.slice(1).toUpperCase();
-      if (worlds.some((w) => w.letter === requested)) { setLetter(requested); setMap(false); setView("overview"); }
-      else { setLetter("A"); setMap(true); setView("overview"); }
+      const wMatch = /^W([123])$/.exec(requested);
+      if (wMatch && worlds.some((w) => w.letter === "W")) { setLetter("W"); setVolume(Number(wMatch[1])); setMap(false); setView("overview"); }
+      else if (worlds.some((w) => w.letter === requested)) { setLetter(requested); setVolume(null); setMap(false); setView("overview"); }
+      else { setLetter("A"); setVolume(null); setMap(true); setView("overview"); }
     }
-    const openMap = () => { setLetter("A"); setMap(true); setView("overview"); window.history.replaceState(null, "", window.location.pathname + window.location.search); };
+    const openMap = () => { setLetter("A"); setVolume(null); setMap(true); setView("overview"); window.history.replaceState(null, "", window.location.pathname + window.location.search); };
     readHash();
     window.addEventListener("universe:overview", openMap);
     window.addEventListener("hashchange", readHash);
@@ -139,8 +166,16 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
   }, [worlds]);
 
   function selectWorld(value: string) {
-    setLetter(value); setMap(false); setView("overview");
+    setLetter(value); setVolume(null); setMap(false); setView("overview");
     window.history.pushState(null, "", `#${value}`);
+  }
+  function selectWVolume(value: number) {
+    setLetter("W"); setMap(false); setVolume(value); setView("overview");
+    window.history.pushState(null, "", `#W${value}`);
+  }
+  function backToW() {
+    setLetter("W"); setMap(false); setVolume(null); setView("overview");
+    window.history.pushState(null, "", "#W");
   }
   function openPaper(work: PublicWork) {
     previousFocus.current = document.activeElement as HTMLElement;
@@ -172,39 +207,64 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
       <div className={`${s.worldMap} ${map ? s.mapExpanded : s.mapCompact}`} aria-label="Active worlds">
         {worlds.map((item) => <button key={item.letter} className={s.worldBranch} aria-pressed={!map && letter === item.letter} onClick={() => selectWorld(item.letter)}>
           <span className={s.worldLetter}>{item.letter}</span><span className={s.worldName} data-world-label={item.letter}>{item.title}</span>
-          <span className={s.worldCount}>{item.cycles.reduce((n, c) => n + c.works.length, 0) ? `${item.cycles.reduce((n, c) => n + c.works.length, 0)} public ${item.cycles.reduce((n, c) => n + c.works.length, 0) === 1 ? "paper" : "papers"}` : "Open inquiry"}</span>
+          <span className={s.worldCount}>{item.letter === "W" ? "36 planned papers · 3 books" : item.cycles.reduce((n, c) => n + c.works.length, 0) ? `${item.cycles.reduce((n, c) => n + c.works.length, 0)} public ${item.cycles.reduce((n, c) => n + c.works.length, 0) === 1 ? "paper" : "papers"}` : "Open inquiry"}</span>
         </button>)}
       </div>
 
       {!map && <>
-        <div className={s.viewControls}><button onClick={() => { setMap(true); window.history.pushState(null, "", "#map"); }}><Grid2X2 size={13} aria-hidden="true" /> All worlds</button><span>World {world.letter}</span></div>
+        <div className={s.viewControls}><button onClick={() => { setVolume(null); setMap(true); window.history.pushState(null, "", "#map"); }}><Grid2X2 size={13} aria-hidden="true" /> All worlds</button><span>World {world.letter}{volume ? ` · Volume ${volume}` : ""}</span>{wVolume && <button onClick={backToW}>Back to W overview</button>}</div>
 
-          <section key={world.letter} className={s.worldDetail} aria-label={`World ${world.letter}: ${world.title}`}>
+          <section key={world.letter} className={s.worldDetail} data-world={world.letter} data-volume={volume ?? ""} aria-label={`World ${world.letter}: ${world.title}`}>
             <div className={s.edgePlanet} aria-hidden="true" />
             <div className={s.worldIntro} data-world-intro>
               <span className={s.worldMedallion} aria-hidden="true">{world.letter}</span>
               <div><p className={s.kicker}>World {world.letter} <i className={s.tinySpark} /></p>
-                <h2><span>{world.letter} — </span>{world.title}</h2>
-                <p className={s.keywords}>{world.keywords}</p>
-                <p className={s.description}><span className={s.desktopDescription}>{world.description}</span><span className={s.mobileDescription}>{world.shortDescription ?? world.description}</span></p>
+                <h2><span>{wVolume ? `W${volume} — ` : `${world.letter} — `}</span>{wVolume ? wVolume.label : world.title}</h2>
+                <p className={s.keywords}>{wVolume ? "12 planned papers · one future book" : world.keywords}</p>
+                <p className={s.description}><span className={s.desktopDescription}>{wVolume?.description ?? world.description}</span><span className={s.mobileDescription}>{wVolume?.description ?? world.shortDescription ?? world.description}</span></p>
                 <div className={s.stats}>
-                  <div><strong>{works.length || "—"}</strong><span>{works.length === 1 ? "Paper" : "Papers"}<small>{works.length ? "Public work" : "Open inquiry"}</small></span></div>
-                  {syntheses.length > 0 && <div><strong>{syntheses.length}</strong><span>Synthesis book<small>{syntheses.some((b) => b.status === "future") ? "Future milestone" : "Published"}</small></span></div>}
+                  {world.letter === "W" ? <>
+                    <div><strong>{wVolume ? 12 : 36}</strong><span>Planned papers<small>None published</small></span></div>
+                    <div><strong>{wVolume ? 1 : 3}</strong><span>{wVolume ? "Future book" : "Future books"}<small>After paper publication</small></span></div>
+                  </> : <>
+                    <div><strong>{works.length || "—"}</strong><span>{works.length === 1 ? "Paper" : "Papers"}<small>{works.length ? "Public work" : "Open inquiry"}</small></span></div>
+                    {syntheses.length > 0 && <div><strong>{syntheses.length}</strong><span>Synthesis book<small>{syntheses.some((b) => b.status === "future") ? "Future milestone" : "Published"}</small></span></div>}
+                  </>}
                 </div>
               </div>
             </div>
             <div className={s.worldBody}>
-              {view === "overview" && (world.cycles.length ? <div className={s.overviewStage}>
-                <div className={s.cyclesColumn}>{world.cycles.map((cycle) => <Cycle key={cycle.id} cycle={cycle} onOpen={openPaper} />)}</div>
-                <FutureHorizon letter={world.letter} />
-              </div> : <div className={s.emptyWorld}><Current /><span className={s.emptyOrb}>{world.letter}</span><h3>An open field of inquiry.</h3><p>Public work will appear here as it is released.</p></div>)}
-              {view === "papers" && <div className={s.paperList}><h3>Published work</h3><p className={s.listNote}>Public papers and author manuscripts. Publication status is shown on each record.</p>{works.map((item) => <button key={item.slug} onClick={() => openPaper(item)}><span className={s.listCode}>{item.seriesCode ?? <FileText size={22} />}</span><span><strong>{item.title}</strong><small>{item.status} · {item.datePublished}</small></span><ArrowUpRight size={18} aria-hidden="true" /></button>)}</div>}
+              {view === "overview" && (world.letter === "W" && !wVolume
+                ? <WVolumeOverview world={world} onSelect={selectWVolume} />
+                : world.cycles.length ? <div className={s.overviewStage}>
+                  <div className={s.cyclesColumn}>{(wVolume ? [wVolume] : world.cycles).map((cycle) => <Cycle key={cycle.id} cycle={cycle} onOpen={openPaper} />)}</div>
+                  <FutureHorizon letter={world.letter} />
+                </div> : <div className={s.emptyWorld}><Current /><span className={s.emptyOrb}>{world.letter}</span><h3>An open field of inquiry.</h3><p>Public work will appear here as it is released.</p></div>)}
+              {view === "papers" && wVolume && <div className={s.paperList}>
+                <h3>{wVolume.label} · Planned studies</h3>
+                <p className={s.listNote}>Working titles, not published papers. Each study requires source review and author approval.</p>
+                {wVolume.plannedTitles?.map((title, index) => <div className={s.wPlannedRow} key={title}>
+                  <span className={s.listCode}>W{(wVolume.slots?.start ?? 1) + index}</span>
+                  <span><strong>{title}</strong><small>Planned · not yet released</small></span>
+                </div>)}
+              </div>}
+              {view === "papers" && !wVolume && <div className={s.paperList}><h3>Published work</h3><p className={s.listNote}>Public papers and author manuscripts. Publication status is shown on each record.</p>{works.map((item) => <button key={item.slug} onClick={() => openPaper(item)}><span className={s.listCode}>{item.seriesCode ?? <FileText size={22} />}</span><span><strong>{item.title}</strong><small>{item.status} · {item.datePublished}</small></span><ArrowUpRight size={18} aria-hidden="true" /></button>)}</div>}
               {view === "future" && <FutureHorizon letter={world.letter} />}
-              {view === "synthesis" && <div className={s.synthesisView}>{syntheses.map((item) => <Milestone key={item.id} item={item} full />)}</div>}
+              {view === "synthesis" && <div className={s.synthesisView}>{(wVolume && wVolume.synthesis ? [wVolume.synthesis] : syntheses).map((item) => <Milestone key={item.id} item={item} full />)}</div>}
             </div>
           </section>
 
-        {world.cycles.length > 0 && <nav className={s.viewTabs} aria-label="World views">
+        {world.letter === "W" ? wVolume && <>
+          <nav className={s.viewTabs} aria-label="Volume views">
+            <button aria-pressed={view === "overview"} onClick={() => setView("overview")}>Overview</button>
+            <button aria-pressed={view === "papers"} onClick={() => setView("papers")}>Planned papers (12)</button>
+            <button aria-pressed={view === "synthesis"} onClick={() => setView("synthesis")}>Future book</button>
+          </nav>
+          <nav className={s.wSequenceNav} aria-label="Switch W volume">
+            {[1, 2, 3].map((n) => <button key={n} aria-pressed={volume === n} onClick={() => selectWVolume(n)}>W{n}</button>)}
+            <button onClick={backToW}>All W volumes <ArrowRight size={14} aria-hidden="true" /></button>
+          </nav>
+        </> : world.cycles.length > 0 && <nav className={s.viewTabs} aria-label="World views">
           <button aria-pressed={view === "overview"} onClick={() => setView("overview")}>Overview</button>
           <button aria-pressed={view === "papers"} onClick={() => setView("papers")}>Papers <span>({works.length})</span></button>
           {syntheses.length > 0 && <button aria-pressed={view === "synthesis"} onClick={() => setView("synthesis")}>Synthesis book</button>}
