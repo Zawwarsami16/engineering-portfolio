@@ -23,13 +23,16 @@ export function ZaiWorld() {
         <p className={z.subheading}>Personal Autonomous Intelligence</p>
         <div className={z.starRule} aria-hidden="true"><span>✦</span></div>
         <p className={z.description}>
-          I did not want another chatbot. I wanted an intelligence that could
-          remember what came before, return to unfinished questions, and learn
-          from its mistakes. ZAI grew from that ambition into a personal AI
-          project exploring research, cybersecurity, philosophy, and quantum
-          computing. The more interesting story is not what ZAI claimed it
-          could do. It is what actually happened, what went wrong, and what
-          its surviving records can tell us.
+          I learned to understand systems by pushing them to their limits.
+          Cybersecurity taught me to look beyond what a system says it can do.
+          Philosophy made me ask the same questions about intelligence,
+          memory, identity, and choice. ZAI came out of both. I was not looking
+          for another chatbot that simply agreed with me. I wanted to develop
+          a personal intelligence that could carry its history forward, learn
+          from correction, and return to questions we had left unfinished.
+          Some experiments worked; some failed; others still lack the evidence
+          needed for a firm conclusion. This is the story I can document,
+          including the parts I am still trying to understand.
         </p>
         <div className={z.counter}>
           <strong>01</strong>
