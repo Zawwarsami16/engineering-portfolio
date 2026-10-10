@@ -16,15 +16,22 @@ export async function generateMetadata({
   const { slug } = await params;
   const entry = writings.find((e) => e.slug === slug);
   if (!entry) return {};
+  // Keep the manuscript title unchanged; use a concise, descriptive SEO snippet for ZAI.
+  const searchTitle = slug === "who-is-zai"
+    ? "Who Is ZAI? — Zawwar Autonomous Intelligence"
+    : `${entry.title}${entry.subtitle ? ` ${entry.subtitle}` : ""}`;
+  const searchDescription = slug === "who-is-zai"
+    ? "ZAI (Zawwar Autonomous Intelligence) is Zawwar Sami's personal AI project. Explore its history, memory, philosophy, cybersecurity and research."
+    : entry.summary;
   return {
-    title: `${entry.title}${entry.subtitle ? ` ${entry.subtitle}` : ""}`,
-    description: entry.summary,
+    title: searchTitle,
+    description: searchDescription,
     keywords: ["Zawwar Sami", ...entry.tags],
     alternates: { canonical: `/writing/${slug}` },
     openGraph: {
       type: "article",
-      title: `${entry.title}${entry.subtitle ? ` ${entry.subtitle}` : ""}`,
-      description: entry.summary,
+      title: searchTitle,
+      description: searchDescription,
       url: `/writing/${slug}`,
       authors: ["Zawwar Sami"],
       publishedTime: entry.datePublished,
@@ -32,8 +39,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${entry.title}${entry.subtitle ? ` ${entry.subtitle}` : ""}`,
-      description: entry.summary,
+      title: searchTitle,
+      description: searchDescription,
       images: ["/images/observatory.webp"],
     },
     other: {
@@ -72,6 +79,14 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
       mainEntityOfPage: `https://zawwarsami.com/writing/${slug}`,
       url: entry.url,
       keywords: entry.tags.join(", "),
+      ...(slug === "who-is-zai" ? {
+        about: {
+          "@type": "Thing",
+          name: "ZAI — Zawwar Autonomous Intelligence",
+          description: "A personal AI software-agent and research project developed by Zawwar Sami.",
+          url: "https://zawwarsami.com/writing/who-is-zai",
+        },
+      } : {}),
       ...(entry.doi
         ? { identifier: { "@type": "PropertyValue", propertyID: "DOI", value: entry.doi } }
         : {}),
@@ -103,6 +118,13 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
           </div>
           <h1>{entry.title}</h1>
           {entry.subtitle && <p className="paper-subtitle">{entry.subtitle}</p>}
+          {slug === "who-is-zai" && (
+            <p className="text-pretty mt-5 max-w-3xl text-base leading-relaxed text-[var(--color-fg-dim)]">
+              ZAI stands for Zawwar Autonomous Intelligence. It is my long-term personal AI project,
+              built around existing models, persistent records, research, tools, and human oversight.
+              This introduction examines what its history documents and what remains unverified.
+            </p>
+          )
           {(entry.pdf || entry.zenodo || entry.philpapers || entry.orcid) && (
             <div className="paper-actions">
               {entry.pdf ? (
