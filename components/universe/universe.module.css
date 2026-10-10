@@ -829,26 +829,99 @@
   .worldDetail[data-world="W"][data-volume=""] .description { margin-inline:auto; }
   .worldDetail[data-world="W"][data-volume=""] .worldBody { margin-top:6px; }
 }
-
-/* Sixth world: ZAI. Keep existing five world anchors untouched. */
-.universe[data-view=map] .worldBranch:nth-child(6) {
-  top:345px;
-  left:25%;
-  width:21%;
+/*
+ * Research Universe overview topology.
+ * Six local label anchors mirror the alphabet positions without making long
+ * diagonal crossings. The buttons carry stable world letters, so future
+ * catalog changes do not rely on nth-child ordering.
+ * Focused research-world views are deliberately unaffected.
+ */
+.universe[data-view=map] .worldBranch[data-world-key="A"] {
+  top:345px; left:0%; width:23%;
 }
-.universe[data-view=map] .worldBranch:nth-child(6) .worldName {
+.universe[data-view=map] .worldBranch[data-world-key="C"] {
+  top:18px; left:12%; width:24%;
+}
+.universe[data-view=map] .worldBranch[data-world-key="P"] {
+  top:345px; left:38%; width:23%;
+}
+.universe[data-view=map] .worldBranch[data-world-key="S"] {
+  top:18px; left:47%; width:26%;
+}
+.universe[data-view=map] .worldBranch[data-world-key="W"] {
+  top:345px; left:73%; width:25%;
+}
+.universe[data-view=map] .worldBranch[data-world-key="Z"] {
+  top:18px; left:79%; width:21%;
+}
+.universe[data-view=map] .worldBranch[data-world-key="Z"] .worldName {
   color:#ffe8d8;
 }
-@media(max-width:700px) {
-  .universe[data-view=map] .worldBranch:nth-child(6) {
-    top:417px;
-    left:3%;
-    width:44%;
-    min-height:84px;
-    padding:0 4px;
+/* Allow each map title to wrap naturally inside its own fixed anchor. */
+.universe[data-view=map] .worldBranch {
+  min-width:0;
+}
+.universe[data-view=map] .worldName {
+  overflow-wrap:normal;
+  text-wrap:balance;
+}
+.universe[data-view=map] .worldCount {
+  line-height:1.55;
+  text-wrap:balance;
+}
+@media (max-width:700px) {
+  /* Deliberately separate two rows of three; never scale desktop coordinates. */
+  .universe[data-view=map] .topology { height:490px; }
+  .universe[data-view=map] .worldBranch[data-world-key="C"] {
+    top:1px; left:0%; width:31%; min-height:72px;
   }
-  .universe[data-view=map] .worldBranch:nth-child(6) .worldName {
-    font-size:22px;
-    line-height:1.1;
+  .universe[data-view=map] .worldBranch[data-world-key="S"] {
+    top:1px; left:34%; width:41%; min-height:72px;
+  }
+  .universe[data-view=map] .worldBranch[data-world-key="Z"] {
+    top:1px; left:79%; width:21%; min-height:72px;
+  }
+  .universe[data-view=map] .worldBranch[data-world-key="A"] {
+    top:320px; left:0%; width:30%; min-height:96px;
+  }
+  .universe[data-view=map] .worldBranch[data-world-key="P"] {
+    top:320px; left:32%; width:36%; min-height:96px;
+  }
+  .universe[data-view=map] .worldBranch[data-world-key="W"] {
+    top:320px; left:70%; width:30%; min-height:96px;
+  }
+  .universe[data-view=map] .worldBranch .worldName {
+    max-width:100%;
+    font-size:clamp(16px, 4.8vw, 20px);
+    line-height:1.14;
+    margin-top:0;
+  }
+  .universe[data-view=map] .worldBranch[data-world-key="Z"] .worldName {
+    font-size:clamp(20px,6vw,24px);
+  }
+  .universe[data-view=map] .worldBranch[data-world-key="S"] .worldName,
+  .universe[data-view=map] .worldBranch[data-world-key="P"] .worldName,
+  .universe[data-view=map] .worldBranch[data-world-key="W"] .worldName {
+    font-size:clamp(16px,4.5vw,19px);
+  }
+  .universe[data-view=map] .worldBranch .worldCount {
+    font-size:7px;
+    letter-spacing:.08em;
+    line-height:1.45;
+    margin-top:9px;
+    padding-top:8px;
+    max-width:100%;
+  }
+  .universe[data-view=map] .worldBranch[data-world-key="Z"] .worldCount {
+    font-size:6px;
+    letter-spacing:.02em;
+  }
+  .universe[data-view=map] .mapHint { margin-top:0; }
+}
+@media (max-width:380px) {
+  .universe[data-view=map] .worldBranch[data-world-key="S"] .worldName,
+  .universe[data-view=map] .worldBranch[data-world-key="P"] .worldName,
+  .universe[data-view=map] .worldBranch[data-world-key="W"] .worldName {
+    font-size:16px;
   }
 }
