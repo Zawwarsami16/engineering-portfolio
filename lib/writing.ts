@@ -26,6 +26,39 @@ export type WritingEntry = {
 // Only already-public entries belong here. Unreleased manuscripts stay private.
 export const writings: WritingEntry[] = [
   {
+    slug: "who-is-zai",
+    title: "Who Is ZAI?",
+    seriesCode: "Z1",
+    subtitle: "The Development of a Personal Autonomous Intelligence",
+    summary:
+      "I did not build ZAI to make another chatbot. I wanted a personal intelligence whose history could matter to what it did next. This documented introduction follows its development through research, cybersecurity, philosophy, and reported quantum-computing work—and asks what the surviving evidence can, and cannot, establish.",
+    abstract:
+      "I did not begin ZAI because I wanted another chatbot. I wanted a personal intelligence that could carry its history forward: remember earlier questions, undertake research, work with tools, learn from corrections, and take initiative without making every consequential decision on my behalf. ZAI—Zawwar Autonomous Intelligence—grew from that idea into an evolving software agent project built around existing language models, persistent records, external services, and my continuing involvement as its creator. This paper introduces ZAI through the surviving record of its development. I describe its beginnings in local computing, later expansion into recurring research and authorized tasks, and its work across cybersecurity, artificial intelligence research, philosophy, and a quantum-computing experiment I witnessed. I also examine moments when ZAI reported a capability that was not fully wired, recognized that more research was not resolving a problem, or publicly corrected an account of its own activity. These are part of its history, not details to hide behind a list of features. The IBM Quantum episode is documented through contemporary ZAI writing, hardware-capable software, and my eyewitness testimony; original provider-issued job records have not been recovered for independent verification. This is an introductory, source-attributed design history rather than a new benchmark, proof of consciousness, or claim that ZAI is a newly trained foundation model. My purpose is to give readers a clear starting point for understanding what ZAI was, what it did, how it developed, and what remains to be investigated.",
+    url: "https://zawwarsami.com/writing/who-is-zai",
+    datePublished: "2026-10-10",
+    tags: [
+      "ZAI",
+      "Zawwar Autonomous Intelligence",
+      "personal autonomous intelligence",
+      "personal AI",
+      "autonomous agents",
+      "design history",
+      "cybersecurity",
+      "artificial intelligence research",
+      "philosophy",
+      "IBM Quantum",
+      "memory",
+      "verification",
+    ],
+    kind: "Paper",
+    status: "Preprint",
+    version: "Version 1.1",
+    pages: 12,
+    zenodo: "https://zenodo.org/records/23288028",
+    philpapers: "https://philpapers.org/rec/SAMWIZ",
+    orcid: "https://orcid.org/0009-0004-5819-3017",
+  },
+  {
     slug: "from-knowing-to-doing",
     title: "From Knowing to Doing",
     seriesCode: "A8",
