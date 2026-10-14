@@ -1,4 +1,5 @@
 name: Import verified W1 manuscript
+# Retry verified author PDF import (SHA-256 checked against final 18-page edition, 2026-10-14).
 on:
   push:
     paths:
