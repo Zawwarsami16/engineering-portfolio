@@ -7,6 +7,7 @@ const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://zawwarsami.com").
 // Update this only when main site copy or navigation changes materially.
 // Avoid reporting every unchanged route as freshly modified on every build.
 const SITE_REFRESH = new Date("2026-10-10T00:00:00Z");
+const RESEARCH_REFRESH = new Date("2026-10-14T00:00:00Z");
 
 // Keep this route static, cacheable, and reliable for Googlebot.
 export const dynamic = "force-static";
@@ -16,8 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes: MetadataRoute.Sitemap = [
     { url: SITE_URL + "/", lastModified: SITE_REFRESH, changeFrequency: "monthly", priority: 1 },
     { url: SITE_URL + "/about", lastModified: SITE_REFRESH, changeFrequency: "monthly", priority: 0.9 },
-    { url: SITE_URL + "/writing", lastModified: SITE_REFRESH, changeFrequency: "weekly", priority: 0.9 },
-    { url: SITE_URL + "/research", lastModified: SITE_REFRESH, changeFrequency: "monthly", priority: 0.85 },
+    { url: SITE_URL + "/writing", lastModified: RESEARCH_REFRESH, changeFrequency: "weekly", priority: 0.9 },
+    { url: SITE_URL + "/research", lastModified: RESEARCH_REFRESH, changeFrequency: "monthly", priority: 0.85 },
     { url: SITE_URL + "/work", lastModified: SITE_REFRESH, changeFrequency: "monthly", priority: 0.8 },
     { url: SITE_URL + "/stack", lastModified: SITE_REFRESH, changeFrequency: "monthly", priority: 0.7 },
     { url: SITE_URL + "/contact", lastModified: SITE_REFRESH, changeFrequency: "yearly", priority: 0.6 },
