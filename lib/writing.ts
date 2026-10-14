@@ -26,6 +26,31 @@ export type WritingEntry = {
 // Only already-public entries belong here. Unreleased manuscripts stay private.
 export const writings: WritingEntry[] = [
   {
+    slug: "weapons-as-systems",
+    title: "Weapons as Systems",
+    seriesCode: "W1",
+    subtitle: "Components, Infrastructure and Human Organisation",
+    summary:
+      "A weapon's technical performance is not the same as a military capability. Even when equipment, personnel and infrastructure each have 75 percent availability, usable joint service can range from 25 to 75 percent. I examine what this difference means for assessing sustained capability, using a reproducible construction, public F-35 and Patriot evidence, and the Berlin Airlift.",
+    abstract:
+      "A military capability cannot be inferred from the performance of its visible equipment alone. I develop this argument through a specific problem: identical individual availability figures can conceal different amounts of usable system service. A finite construction holds three required functions at 75 percent availability each while their joint availability varies from 25 to 75 percent. The result uses elementary intersection bounds; its significance here is that component-level summaries leave the service claim underdetermined when their temporal relationship is unreported. I distinguish component performance, integrated performance, availability, sustained service, and demonstrated outcome, then develop a claim-level boundary and evidence profile to connect each statement with appropriate support. A filled F-35 assessment separates measured readiness, programme objectives, and service requirements. Two Patriot investigations distinguish an identified failure from uncertainty about wider outcomes, while the Berlin Airlift illustrates successful sustained provision. Together, the analytical construction and documentary cases locate the central assessment problem in the relationships that convert resources into service over time. The contribution is an argument about what capability evidence must preserve and a practical format for doing so, not a new probability theorem or an empirically validated forecasting model. Physical effectiveness and ethical permission remain separate judgments.",
+    url: "https://zawwarsami.com/writing/weapons-as-systems",
+    datePublished: "2026-10-14",
+    tags: [
+      "W Series", "Weapons Science & Technology", "military capability",
+      "systems engineering", "sustainment", "infrastructure",
+      "human organisation", "evidence", "technological change",
+    ],
+    kind: "Paper",
+    status: "Preprint",
+    version: "Version 1.0",
+    pages: 18,
+    pdf: "/papers/Zawwar-Sami-W1-Weapons-as-Systems-v1.0.pdf",
+    zenodo: "https://zenodo.org/records/23359788",
+    philpapers: "https://philpapers.org/rec/SAMWAS-4",
+    orcid: "https://orcid.org/0009-0004-5819-3017",
+  },
+  {
     slug: "who-is-zai",
     title: "Who Is ZAI?",
     seriesCode: "Z1",
