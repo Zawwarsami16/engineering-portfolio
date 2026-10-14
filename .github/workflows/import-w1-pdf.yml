@@ -1,0 +1,57 @@
+name: Import verified W1 manuscript
+on:
+  push:
+    paths:
+      - ".github/workflows/import-w1-pdf.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import-w1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download the author's publicly deposited W1 PDF and check exact bytes
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, pathlib, urllib.request
+          api = "https://zenodo.org/api/records/23359788"
+          def get(url):
+              req = urllib.request.Request(url, headers={"User-Agent":"W1-manuscript-archive/1.0 (research portfolio)", "Accept":"application/json" if url == api else "application/pdf"})
+              with urllib.request.urlopen(req, timeout=90) as response:
+                  return response.read()
+          record = json.loads(get(api))
+          files = record.get("files", [])
+          candidates = [f for f in files if f.get("key","").lower().endswith(".pdf")]
+          if not candidates: raise RuntimeError("No PDF found in Zenodo record 23359788")
+          found = None
+          expected = "cadd4f05d3217ae032f0f0baa6aae6beae491237b2b5f39edb74e5f66d4a18a0"
+          for f in candidates:
+              link = f.get("links", {}).get("content") or f.get("links", {}).get("self")
+              if not link:
+                  continue
+              data = get(link)
+              digest = hashlib.sha256(data).hexdigest()
+              print(f.get("key"), len(data), digest)
+              if digest == expected:
+                  found = data
+                  break
+          if found is None:
+              raise RuntimeError("Public archive PDF differs from author-supplied file; refusing to deploy an unverified substitute.")
+          target = pathlib.Path("public/papers/Zawwar-Sami-W1-Weapons-as-Systems-v1.0.pdf")
+          target.parent.mkdir(parents=True, exist_ok=True)
+          target.write_bytes(found)
+          print("Verified W1 PDF:", target, len(found))
+          PY
+      - name: Commit only the verified PDF
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/papers/Zawwar-Sami-W1-Weapons-as-Systems-v1.0.pdf
+          if git diff --cached --quiet; then echo "PDF already present"; exit 0; fi
+          git commit -m "Add verified published W1 PDF (unchanged author edition)"
+          git push
