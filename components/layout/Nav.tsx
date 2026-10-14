@@ -22,13 +22,16 @@ export function Nav() {
       <header className={`site-nav${universe ? " universe-nav" : ""}`}>
         <div className="nav-inner">
           {universe ? (
-            <Link href="/" className="universe-wordmark" aria-label="Zawwar Sami — home">
-              <span className="universe-star" aria-hidden="true">✦</span>
-              <span>Zawwar Sami<small>Research · Systems · Ideas · Humanity</small></span>
-            </Link>
+            <>
+              <span className="universe-desktop-brand"><Logo /></span>
+              <Link href="/" className="universe-wordmark universe-mobile-brand" aria-label="Zawwar Sami — home">
+                <span className="universe-star" aria-hidden="true">✦</span>
+                <span>Zawwar Sami<small>Research · Systems · Ideas · Humanity</small></span>
+              </Link>
+            </>
           ) : <Logo />}
           <nav aria-label="Main navigation" className="desktop-nav">
-            {(universe ? [{ href: "/", label: "Home" }, { href: "/research", label: "Long-Term Vision" }, { href: "/writing", label: "Writing" }, { href: "/about", label: "About" }] : site.nav).map((item) => (
+            {site.nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -39,16 +42,16 @@ export function Nav() {
                     : undefined
                 }
               >
-                {!universe && item.label === "Writing" ? "Research" : item.label}
+                {item.label === "Writing" ? "Research" : item.label}
               </Link>
             ))}
           </nav>
           <div className="nav-actions">
-            {!universe && <button className="nav-icon" onClick={openSearch} aria-label="Search the website">
+            <button className={`nav-icon${universe ? " universe-search" : ""}`} onClick={openSearch} aria-label="Search the website">
               <Search size={18} />
-            </button>}
-            <Link href={universe ? "/" : "/contact"} className="nav-contact">
-              {universe ? "zawwarsami.com" : "Let’s talk"} {universe ? <span aria-hidden="true">•</span> : <ArrowUpRight size={15} />}
+            </button>
+            <Link href="/contact" className="nav-contact">
+              Let’s talk <ArrowUpRight size={15} />
             </Link>
             <button
               ref={triggerRef}
