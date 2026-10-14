@@ -2041,6 +2041,56 @@ body {
 .universe-nav .nav-contact span { color:#ff4853; text-shadow:0 0 9px #ff2139; }
 @media(max-width:700px) { .universe-nav .nav-actions > .menu-trigger { display:flex; } }
 
+/* Share the standard desktop masthead on the Research Universe page.
+   The cinematic wordmark and mobile navigation remain unchanged below 1024px. */
+.universe-desktop-brand { display: contents; }
+.universe-mobile-brand { display: none; }
+@media (max-width: 1023px) {
+  .universe-desktop-brand { display: none; }
+  .universe-mobile-brand { display: flex; }
+  .universe-nav .universe-search { display: none; }
+}
+@media (min-width: 1024px) {
+  .universe-nav .nav-inner {
+    max-width: 1352px;
+    min-height: 65px;
+    padding: 0 22px;
+    gap: 26px;
+    background: #0b0b0edb;
+    border: 1px solid #ffffff16;
+    border-radius: 12px;
+    backdrop-filter: blur(22px);
+    box-shadow: 0 12px 45px #00000024;
+  }
+  .universe-nav .desktop-nav {
+    margin: 0;
+    gap: clamp(16px, 2.4vw, 34px);
+  }
+  .universe-nav .desktop-nav a {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: #a8a3ab;
+  }
+  .universe-nav .desktop-nav a:hover,
+  .universe-nav .desktop-nav a[aria-current="page"] { color: #f3eee6; }
+  .universe-nav .desktop-nav a[aria-current="page"]::before {
+    background: #ec7769;
+    box-shadow: none;
+  }
+  .universe-nav .nav-contact {
+    gap: 18px;
+    border: 0;
+    border-left: 1px solid #ffffff20;
+    border-radius: 0;
+    padding: 0 0 0 22px;
+    font-family: var(--font-sans);
+    font-size: 11px;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1100px) {
+  .universe-nav .desktop-nav { gap: 19px; }
+}
+
 /* Writing shares the site's crimson atmosphere, with quiet reading surfaces. */
 .writing-page { background:radial-gradient(ellipse at 100% 35%,#630b201a,transparent 45%),#030306; --color-line:#ff2d4e29; }
 .writing-page .archive-hero { background:#030306; }
