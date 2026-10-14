@@ -925,3 +925,26 @@
     font-size:16px;
   }
 }
+
+
+/* W Book I uses the same A-style paper grid and synthesis orbit.
+   Only the currently authorized first-book pathway is displayed. */
+.wBookFocus {
+  grid-template-columns: minmax(0, 1fr);
+  width: min(100%, 1080px);
+  margin-inline: auto;
+}
+.wBookFocus .cyclesColumn { min-width: 0; }
+.wBookFocus .cycleHeading { width: 100%; }
+@media (max-width: 700px) {
+  .wBookFocus { display: block; width: 100%; }
+  .wBookFocus .cycle {
+    padding: 15px 12px 14px;
+  }
+  .wBookFocus .cycleHeading { width: 100%; }
+  .wBookFocus .synthesisBranch {
+    position: relative;
+    inset: auto;
+    width: auto;
+  }
+}
