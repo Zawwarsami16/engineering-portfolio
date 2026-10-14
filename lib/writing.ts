@@ -45,7 +45,7 @@ export const writings: WritingEntry[] = [
     status: "Preprint",
     version: "Version 1.0",
     pages: 18,
-    pdf: "/papers/Zawwar-Sami-W1-Weapons-as-Systems-v1.0.pdf",
+    pdf: "/api/papers/w1",
     zenodo: "https://zenodo.org/records/23359788",
     philpapers: "https://philpapers.org/rec/SAMWAS-4",
     orcid: "https://orcid.org/0009-0004-5819-3017",
