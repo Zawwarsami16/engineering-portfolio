@@ -76,12 +76,12 @@ export const researchWorlds: ResearchWorld[] = [
     letter: "W", title: "Weapons, Warfare & Defence",
     shortDescription: "Technology, strategy, protection, and the human consequences of conflict.",
     keywords: "Technology · Strategy · Humanity",
-    description: "A three-volume inquiry into military technology, intelligent systems, defence and the human consequences of conflict. All 36 papers and three books are planned, not published.",
+    description: "Book I begins with the systems behind military capability: physical foundations, platforms, people and their supporting infrastructure. One published paper opens the path toward twelve studies and a future standalone book.",
     cycles: [
       {
         id: "w-volume-1", label: "Weapons Science & Technology",
         description: "Physical foundations, military platforms and technological change.",
-        slots: { prefix: "W", start: 1, count: 12 }, works: [],
+        slots: { prefix: "W", start: 1, count: 12 }, works: publicWorks(["weapons-as-systems"]),
         plannedTitles: [
           "Weapons as Systems",
           "Scientific Limits and Military Possibility",
