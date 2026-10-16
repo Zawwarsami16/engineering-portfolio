@@ -9,6 +9,7 @@ import type { PublicWork, ResearchCycle, ResearchWorld, SynthesisMilestone } fro
 import s from "./universe.module.css";
 import { UniverseConnections, PaperConnections } from "./UniverseConnections";
 import { ZaiWorld } from "./ZaiWorld";
+import { researchProcess } from "@/lib/research-process";
 
 /** Deterministic root geometry: stable SSR, scalable SVG, no canvas render loop. */
 const Roots = memo(function Roots({ variant = 0, className = "" }: { variant?: number; className?: string }) {
@@ -262,6 +263,10 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
       </>}
       </div>
       {map && <div className={s.mapHint}><p>Select a glowing world to explore its work.</p></div>}
+      <aside className={s.processNote} aria-label="Research and release process">
+        <p>{researchProcess.vision}</p>
+        <Link href={researchProcess.href}>Research &amp; release <ArrowUpRight size={13} aria-hidden="true" /></Link>
+      </aside>
       <footer className={s.footer}><span>Zawwar Sami · A living archive</span><Link href="/writing">Browse all writing <ArrowRight size={14} aria-hidden="true" /></Link></footer>
     </div>
     <dialog ref={dialog} className={s.paperDialog} aria-labelledby="universe-paper-title" data-lenis-prevent onClick={(event) => { if (event.target === event.currentTarget) dialog.current?.close(); }} onClose={() => previousFocus.current?.focus()}>

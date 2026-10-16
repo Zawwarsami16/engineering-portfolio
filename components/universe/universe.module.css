@@ -984,3 +984,27 @@
   color: #fff1d9;
   text-decoration: underline;
 }
+
+/* Process context sits below the topology, outside its root/label coordinates. */
+.processNote {
+  max-width: 64ch;
+  margin: 28px auto 0;
+  padding-top: 18px;
+  border-top: 1px solid #642c39;
+  text-align: center;
+  font: 12px/1.7 var(--font-inter), sans-serif;
+  color: #bcb0a8;
+}
+.processNote a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 7px;
+  color: #f4b6a5;
+}
+.processNote a:hover { color: #fff1d9; text-decoration: underline; }
+.processNote + .footer,
+.universe[data-view=map] .processNote + .footer { padding-top: 36px; }
+@media (max-width: 700px) {
+  .processNote { max-width: 38ch; margin-top: 24px; font-size: 11px; }
+}

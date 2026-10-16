@@ -2092,6 +2092,35 @@ body {
 }
 
 /* Writing shares the site's crimson atmosphere, with quiet reading surfaces. */
+.research-process {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  gap: 32px 64px;
+  padding-block: 36px;
+  border-block: 1px solid #ff2d4e29;
+  scroll-margin-top: 110px;
+}
+.research-process h2 {
+  margin-top: 12px;
+  font: 400 clamp(28px, 3vw, 42px)/1.15 var(--font-cormorant), Georgia, serif;
+  letter-spacing: -.025em;
+}
+.research-process h2 em { color: #ff5571; }
+.research-process-author {
+  display: block;
+  margin-top: 14px;
+  font: 10px/1.6 var(--font-inter), sans-serif;
+  color: #b0a2ab;
+}
+.research-process-copy { min-width: 0; max-width: 70ch; }
+.research-process-copy p { font-size: 14px; line-height: 1.85; color: #c2b7bf; }
+.research-process-copy p + p { margin-top: 14px; }
+.research-process-links { display: flex; flex-wrap: wrap; gap: 4px 26px; margin-top: 12px; }
+.research-process-links a { min-height: 44px; font-size: 12px; }
+@media (max-width: 700px) {
+  .research-process { grid-template-columns: minmax(0, 1fr); gap: 22px; padding-block: 28px; }
+  .research-process-copy p { font-size: 13px; line-height: 1.8; }
+}
 .writing-page { background:radial-gradient(ellipse at 100% 35%,#630b201a,transparent 45%),#030306; --color-line:#ff2d4e29; }
 .writing-page .archive-hero { background:#030306; }
 .writing-page .archive-hero-art img { opacity:.85; object-position:65% 35%; }

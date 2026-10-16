@@ -5,8 +5,9 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { writings } from "@/lib/writing";
 import { Archive } from "@/components/writing/Archive";
 import { site } from "@/lib/site";
+import { researchProcess } from "@/lib/research-process";
 const description =
-  "Independent research by Zawwar Sami in philosophy and artificial intelligence. Explore preprints, abstracts, PDFs and links to Zenodo, PhilPapers and ORCID.";
+  "Research by Zawwar Sami across AI, philosophy, systems engineering and cybersecurity. Read papers, explore the research process and examine sources and revisions.";
 export const metadata: Metadata = {
   title: "Writing & Research",
   description,
@@ -15,6 +16,8 @@ export const metadata: Metadata = {
     "independent research",
     "philosophy",
     "artificial intelligence",
+    "systems engineering",
+    "cybersecurity",
     "AI agents",
     "personhood",
     "consciousness",
@@ -48,6 +51,13 @@ export default function WritingPage() {
     url: "https://zawwarsami.com/writing",
     description,
     author: { "@id": "https://zawwarsami.com/#person" },
+    hasPart: {
+      "@type": "WebPageElement",
+      "@id": "https://zawwarsami.com/writing#research-process",
+      name: researchProcess.title,
+      url: "https://zawwarsami.com/writing#research-process",
+      text: researchProcess.paragraphs.join(" "),
+    },
     mainEntity: {
       "@type": "ItemList",
       itemListElement: writings.map((entry, index) => ({
@@ -78,8 +88,8 @@ export default function WritingPage() {
             of <em>inquiry.</em>
           </h1>
           <p>
-            Notes from the anteroom. On autonomous intelligence, the nature of consciousness, and
-            the older traditions that ask what it means to be.
+            Connected questions across artificial intelligence, philosophy, systems engineering,
+            and cybersecurity. Papers, working ideas, and the evidence behind them.
           </p>
           <a href="#archive" className="text-link">
             Explore the writing <ArrowDown size={16} />
@@ -88,6 +98,24 @@ export default function WritingPage() {
             <span>By Zawwar Sami</span>
             <span>Independent inquiry · Open reading</span>
           </div>
+        </div>
+      </section>
+      <section id="research-process" className="research-process shell" aria-labelledby="research-process-heading">
+        <div>
+          <span className="eyebrow">How I work</span>
+          <h2 id="research-process-heading">Research <em>&amp; release.</em></h2>
+          <span className="research-process-author">Zawwar Sami · A note on my process</span>
+        </div>
+        <div className="research-process-copy">
+          {researchProcess.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          <nav className="research-process-links" aria-label="Public research archive">
+            <a href={researchProcess.archive} target="_blank" rel="noreferrer" className="text-link">
+              Research archive <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+            <a href={researchProcess.discussions} target="_blank" rel="noreferrer" className="text-link">
+              Open discussions <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+          </nav>
         </div>
       </section>
       <section className="featured-writing shell">
