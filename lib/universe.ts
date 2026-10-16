@@ -3,7 +3,7 @@ import { writings, type WritingEntry } from "./writing";
 /** Public records plus explicitly approved numbered roadmap slots. */
 export type PublicWork = Pick<WritingEntry,
   "slug" | "title" | "seriesCode" | "summary" | "kind" | "status" | "datePublished" |
-  "pdf" | "doi" | "zenodo" | "philpapers" | "version"
+  "pdf" | "doi" | "zenodo" | "philpapers" | "version" | "researchTree" | "discussion"
 >;
 export type SynthesisMilestone = {
   id: string;
@@ -35,8 +35,8 @@ function publicWorks(slugs: string[]): PublicWork[] {
   return slugs.map((slug) => {
     const entry = writings.find((item) => item.slug === slug && item.status !== "Draft");
     if (!entry) throw new Error(`Missing public Universe record: ${slug}`);
-    const { title, seriesCode, summary, kind, status, datePublished, pdf, doi, zenodo, philpapers, version } = entry;
-    return { slug, title, seriesCode, summary, kind, status, datePublished, pdf, doi, zenodo, philpapers, version };
+    const { title, seriesCode, summary, kind, status, datePublished, pdf, doi, zenodo, philpapers, version, researchTree, discussion } = entry;
+    return { slug, title, seriesCode, summary, kind, status, datePublished, pdf, doi, zenodo, philpapers, version, researchTree, discussion };
   });
 }
 

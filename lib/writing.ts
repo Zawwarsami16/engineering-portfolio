@@ -10,6 +10,8 @@ export type WritingEntry = {
   philpapers?: string;
   zenodo?: string;
   orcid?: string;
+  researchTree?: string;
+  discussion?: string;
   substack?: string;
   pages?: number;
   url: string;
@@ -46,6 +48,8 @@ export const writings: WritingEntry[] = [
     version: "Version 1.9",
     pages: 10,
     pdf: "/papers/Zawwar-Sami-The-Body-of-Software-A9.pdf",
+    researchTree: "https://github.com/Zawwarsami16/Public-Research-Tree/tree/main/A/A9",
+    discussion: "https://github.com/Zawwarsami16/Public-Research-Tree/issues/17",
     zenodo: "https://zenodo.org/records/23398609",
     philpapers: "https://philpapers.org/rec/SAMTBO-3",
     orcid: "https://orcid.org/0009-0004-5819-3017",

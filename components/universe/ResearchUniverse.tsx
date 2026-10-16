@@ -275,6 +275,8 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
           {paper.pdf && <a href={paper.pdf} target="_blank" rel="noopener noreferrer">PDF <ArrowUpRight size={15} /></a>}
           {paper.zenodo && <a href={paper.zenodo} target="_blank" rel="noopener noreferrer">Zenodo <ArrowUpRight size={15} /></a>}
           {paper.philpapers && <a href={paper.philpapers} target="_blank" rel="noopener noreferrer">PhilPapers <ArrowUpRight size={15} /></a>}
+          {paper.researchTree && <a href={paper.researchTree} target="_blank" rel="noopener noreferrer">GitHub folder <ArrowUpRight size={15} /></a>}
+          {paper.discussion && <a href={paper.discussion} target="_blank" rel="noopener noreferrer">Discuss A9 <ArrowUpRight size={15} /></a>}
         </div>
         {paper.doi && <p className={s.doi}>DOI: {paper.doi}</p>}
       </article>}
