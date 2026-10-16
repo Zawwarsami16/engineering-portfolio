@@ -45,7 +45,7 @@ export const writings: WritingEntry[] = [
     status: "Preprint",
     version: "Version 1.9",
     pages: 10,
-    pdf: "/api/papers/a9",
+    pdf: "/papers/Zawwar-Sami-The-Body-of-Software-A9.pdf",
     zenodo: "https://zenodo.org/records/23398609",
     philpapers: "https://philpapers.org/rec/SAMTBO-3",
     orcid: "https://orcid.org/0009-0004-5819-3017",
