@@ -26,6 +26,31 @@ export type WritingEntry = {
 // Only already-public entries belong here. Unreleased manuscripts stay private.
 export const writings: WritingEntry[] = [
   {
+    slug: "the-body-of-software",
+    title: "The Body of Software",
+    seriesCode: "A9",
+    subtitle: "A Model Can Be Replaced. The Interface That Lets It Act Should Not Disappear With It.",
+    summary:
+      "A model can be replaced while the device through which it observes and acts continues. Drawing on my Loki Android interface, I propose a Causal Embodiment Contract and a model-swap coverage-gap test to examine what the body preserves, what the controller changes, and whether a stronger controller exposes incomplete permission boundaries. This is a documented engineering proposal, not a controlled Android experiment.",
+    abstract:
+      "A model can produce a plan and even call a tool without having a dependable means of acting in its environment. I came to this question while developing Loki, an Android interface intended to be occupied by different AI backends while the device, its permissions, schedules and practical capabilities remain separate from them. This arrangement asks us to distinguish the intelligence selecting an action from the body through which that action becomes possible. Existing work on embodied cognition and computer-use agents explains much of the perception–action relationship, while security engineering already provides principles for mediation and accountability. I examine where these ideas meet, and propose a Causal Embodiment Contract for assessing an operational software body. Its central test is a model substitution: if the controller changes, which properties of the body remain stable, which useful abilities change, and can an improvement in the controller reveal a permission boundary that was never complete? The paper develops a comparative model, source-attributed evidence from Loki, non-empirical counterexamples and a protocol for future device tests. It does not report a controlled Android experiment. Its contribution is a way to investigate the body as a continuing unit of engineering, rather than judge agency solely by the model or the success of an individual tool call.",
+    url: "https://zawwarsami.com/writing/the-body-of-software",
+    datePublished: "2026-10-14",
+    tags: [
+      "artificial agency", "software embodiment", "model substitution",
+      "Causal Embodiment Contract", "Loki", "Android agents",
+      "capability boundaries", "action verification", "governed interfaces",
+    ],
+    kind: "Paper",
+    status: "Preprint",
+    version: "Version 1.9",
+    pages: 10,
+    pdf: "/api/papers/a9",
+    zenodo: "https://zenodo.org/records/23398609",
+    philpapers: "https://philpapers.org/rec/SAMTBO-3",
+    orcid: "https://orcid.org/0009-0004-5819-3017",
+  },
+  {
     slug: "weapons-as-systems",
     title: "Weapons as Systems",
     seriesCode: "W1",

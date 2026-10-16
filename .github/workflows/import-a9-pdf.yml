@@ -1,0 +1,58 @@
+name: Import verified A9 author PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/import-a9-pdf.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-a9:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Verify archive PDF against original author upload
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, pathlib, urllib.request
+          expected = "85de1a604a5964220da82bc97a72c47094e059a763198429703f6ee1902247d6"
+          request = urllib.request.Request("https://zenodo.org/api/records/23398609", headers={"User-Agent": "Zawwar-Sami-A9-Integrity-Importer/1.0"})
+          with urllib.request.urlopen(request, timeout=40) as response:
+              record = json.load(response)
+          candidates = [f for f in record.get("files", []) if f.get("key", "").lower().endswith(".pdf")]
+          found = None
+          for item in candidates:
+              uri = item.get("links", {}).get("content") or item.get("links", {}).get("self")
+              if not uri or not uri.startswith("https://zenodo.org/"):
+                  continue
+              with urllib.request.urlopen(urllib.request.Request(uri, headers={"User-Agent": "Zawwar-Sami-A9-Integrity-Importer/1.0"}), timeout=50) as response:
+                  data = response.read()
+              digest = hashlib.sha256(data).hexdigest()
+              print("Candidate", item.get("key"), "SHA256", digest)
+              if digest == expected:
+                  found = data
+                  break
+          if found is None:
+              raise SystemExit("FAILED: archived PDF is not identical to the supplied A9 v1.9 manuscript; nothing was imported.")
+          target = pathlib.Path("public/papers/Zawwar-Sami-The-Body-of-Software-A9.pdf")
+          target.parent.mkdir(parents=True, exist_ok=True)
+          target.write_bytes(found)
+          print("Verified A9 PDF:", len(found), "bytes")
+          PY
+      - name: Commit original PDF without touching other website files
+        run: |
+          git add public/papers/Zawwar-Sami-The-Body-of-Software-A9.pdf
+          if git diff --cached --quiet; then
+            echo "A9 original PDF already committed"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Archive original A9 v1.9 PDF (SHA256 verified)"
+          git push
