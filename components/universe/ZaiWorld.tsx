@@ -102,7 +102,17 @@ export function ZaiWorld() {
             {zenodo && <a href={zenodo} target="_blank" rel="noopener noreferrer">Zenodo <ArrowUpRight size={12} /></a>}
             {philpapers && <a href={philpapers} target="_blank" rel="noopener noreferrer">PhilPapers <ArrowUpRight size={12} /></a>}
             {manuscript.orcid && <a href={manuscript.orcid} target="_blank" rel="noopener noreferrer">ORCID <ArrowUpRight size={12} /></a>}
+            {manuscript.researchTree && <a href={manuscript.researchTree} target="_blank" rel="noopener noreferrer">GitHub research folder <ArrowUpRight size={12} /></a>}
           </div>
+          {manuscript.discussion && manuscript.discussionQuestion && (
+            <div className={z.discussion} aria-label="ZAI research discussion">
+              <span className={z.discussionKicker}>Open research question</span>
+              <p>{manuscript.discussionQuestion}</p>
+              <a href={manuscript.discussion} target="_blank" rel="noopener noreferrer">
+                Join research discussion <ArrowUpRight size={14} />
+              </a>
+            </div>
+          )}
         </div>
       </article>
     </section>
