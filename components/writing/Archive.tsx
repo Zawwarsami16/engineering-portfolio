@@ -119,6 +119,16 @@ export function Archive({ entries }: { entries: WritingEntry[] }) {
                       PhilPapers
                     </a>
                   )}
+                  {entry.researchTree && (
+                    <a className="text-link" href={entry.researchTree} target="_blank" rel="noreferrer">
+                      GitHub
+                    </a>
+                  )}
+                  {entry.discussion && (
+                    <a className="text-link" href={entry.discussion} target="_blank" rel="noreferrer">
+                      Discuss
+                    </a>
+                  )}
                   {entry.orcid && (
                     <a className="text-link" href={entry.orcid} target="_blank" rel="noreferrer">
                       ORCID
