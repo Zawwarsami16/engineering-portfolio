@@ -90,6 +90,11 @@ export function Archive({ entries }: { entries: WritingEntry[] }) {
                 <ArrowUpRight aria-hidden="true" />
               </Link>
               <p>{entry.summary}</p>
+              {entry.discussion && entry.discussionQuestion && (
+                <p className="archive-review-question">
+                  <strong>Open question:</strong> {entry.discussionQuestion}
+                </p>
+              )}
               <div className="topic-tags">
                 {entry.tags.map((tag) => (
                   <button key={tag} onClick={() => setTopic(tag)} aria-pressed={topic === tag}>

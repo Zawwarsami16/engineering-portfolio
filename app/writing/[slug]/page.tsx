@@ -279,6 +279,26 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
               </a>
             </div>
           )}
+          {entry.discussion && entry.discussionQuestion && (
+            <section className="discussion-invite" aria-label={`Research discussion for ${entry.title}`}>
+              <span className="eyebrow">Open research question</span>
+              <p className="discussion-invite-question">{entry.discussionQuestion}</p>
+              <p className="discussion-invite-note">
+                I welcome a competing interpretation, a specific counterexample or a test
+                that could change the argument. Agreement is not necessary.
+              </p>
+              <div className="discussion-invite-links">
+                <a className="text-link" href={entry.discussion} target="_blank" rel="noopener noreferrer">
+                  Join the research discussion <ArrowUpRight size={17} />
+                </a>
+                {entry.researchTree && (
+                  <a className="text-link" href={entry.researchTree} target="_blank" rel="noopener noreferrer">
+                    View research folder <ArrowUpRight size={17} />
+                  </a>
+                )}
+              </div>
+            </section>
+          )}
           {entry.doi && (
             <p>
               <a href={`https://doi.org/${entry.doi}`}>DOI: {entry.doi}</a>

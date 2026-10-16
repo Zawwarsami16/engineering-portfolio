@@ -2122,3 +2122,45 @@ body {
  .universe-wordmark small { font-size:5px; letter-spacing:.14em; }
  .universe-nav .nav-actions { flex-shrink:0; }
 }
+
+/* Paper-specific research questions: additive links without changing archive layout. */
+.archive-entry-body > .archive-review-question {
+  margin-top: 16px;
+  max-width: 68ch;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--color-fg-dim);
+}
+.archive-review-question strong {
+  font-weight: 600;
+  color: var(--color-fg);
+}
+.discussion-invite {
+  margin-block: 34px 40px;
+  padding-block: 23px 26px;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.discussion-invite-question {
+  max-width: 64ch;
+  margin-top: 14px;
+  color: var(--color-fg);
+  font: 400 clamp(21px, 2.9vw, 29px) / 1.45 var(--font-serif);
+  overflow-wrap: anywhere;
+}
+.discussion-invite-note {
+  max-width: 67ch;
+  margin: 15px 0 17px;
+  color: var(--color-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.discussion-invite-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+}
+.discussion-invite-links .text-link {
+  min-height: 36px;
+}

@@ -150,3 +150,35 @@
 @media (max-width:700px) {
   .sourceLinks { font-size: 8px; gap: 6px 10px; margin-top: 9px; }
 }
+
+/* Source-first research discussion for the distinct ZAI paper card. */
+.discussion {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #7b3041;
+  color: #e7c9b7;
+  overflow-wrap: anywhere;
+}
+.discussionKicker {
+  display: block;
+  color: #d8aa96;
+  font: 9px/1.6 var(--font-inter), sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.discussion p {
+  margin: 8px 0 9px;
+  font: 12px/1.6 var(--font-inter), sans-serif;
+}
+.discussion a {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  min-height: 34px;
+  font: 11px/1.4 var(--font-inter), sans-serif;
+  color: #ffbfaa;
+}
+.discussion a:hover, .discussion a:focus-visible {
+  text-decoration: underline;
+  color: #fff1d9;
+}
