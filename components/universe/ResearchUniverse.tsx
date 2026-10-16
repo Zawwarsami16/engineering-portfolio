@@ -265,7 +265,7 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
       {map && <div className={s.mapHint}><p>Select a glowing world to explore its work.</p></div>}
       <aside className={s.processNote} aria-label="Research and release process">
         <p>{researchProcess.vision}</p>
-        <Link href={researchProcess.href}>Research &amp; release <ArrowUpRight size={13} aria-hidden="true" /></Link>
+        <a href={researchProcess.href}>Research &amp; release <ArrowUpRight size={13} aria-hidden="true" /></a>
       </aside>
       <footer className={s.footer}><span>Zawwar Sami · A living archive</span><Link href="/writing">Browse all writing <ArrowRight size={14} aria-hidden="true" /></Link></footer>
     </div>

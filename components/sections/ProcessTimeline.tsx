@@ -5,7 +5,6 @@ import { useRef } from "react";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionTag } from "@/components/ui/Pill";
 import { fadeUp, stagger } from "@/lib/motion";
-import Link from "next/link";
 import { researchProcess } from "@/lib/research-process";
 
 const steps = [
@@ -41,9 +40,9 @@ export function ProcessTimeline() {
       <p className="mt-7 max-w-[68ch] text-base leading-relaxed text-[var(--color-fg-dim)]">
         {researchProcess.summary}
       </p>
-      <Link href={researchProcess.href} className="mt-3 inline-flex min-h-11 items-center text-sm text-[var(--color-accent)] underline-offset-4 hover:underline focus-visible:underline">
+      <a href={researchProcess.href} className="mt-3 inline-flex min-h-11 items-center text-sm text-[var(--color-accent)] underline-offset-4 hover:underline focus-visible:underline">
         Research &amp; release <span aria-hidden="true" className="ml-2">↗</span>
-      </Link>
+      </a>
 
       <div ref={ref} className="relative mt-20 lg:mt-28">
         {/* Background dotted line */}
