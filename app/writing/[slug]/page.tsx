@@ -159,6 +159,16 @@ export default async function WritingEntryPage({ params }: { params: Promise<{ s
                   PhilPapers <ArrowUpRight size={16} />
                 </a>
               )}
+              {entry.researchTree && (
+                <a className="text-link" href={entry.researchTree} target="_blank" rel="noreferrer">
+                  GitHub research folder <ArrowUpRight size={16} />
+                </a>
+              )}
+              {entry.discussion && (
+                <a className="text-link" href={entry.discussion} target="_blank" rel="noreferrer">
+                  Join research discussion <ArrowUpRight size={16} />
+                </a>
+              )}
               {entry.orcid && (
                 <a className="text-link" href={entry.orcid} target="_blank" rel="noreferrer">
                   ORCID <ArrowUpRight size={16} />
