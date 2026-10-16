@@ -959,3 +959,28 @@
   .worldDetail[data-world="S"] .worldBody { margin-top:6px; }
   .worldDetail[data-world="S"] .cycleHeading h3 { font-size:20px; }
 }
+
+/* A/P/W research question inside the existing accessible, scrollable paper dialog. */
+.paperDiscussion {
+  margin-top: 22px;
+  padding-top: 17px;
+  border-top: 1px solid #642c39;
+  color: #e1d2c4;
+  font: 13px/1.55 var(--font-inter), sans-serif;
+}
+.paperDiscussion p {
+  margin: 10px 0 12px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+.paperDiscussion a {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  min-height: 40px;
+  color: #f4b6a5;
+}
+.paperDiscussion a:hover, .paperDiscussion a:focus-visible {
+  color: #fff1d9;
+  text-decoration: underline;
+}
