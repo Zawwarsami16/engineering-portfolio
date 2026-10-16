@@ -70,7 +70,18 @@ export const researchWorlds: ResearchWorld[] = [
   },
   {
     letter: "S", title: "Security & Adversarial Systems", keywords: "Security · Trust · Adversarial Systems",
-    description: "The security of systems, the boundaries of trust, and the study of adversarial behavior.", cycles: [],
+    shortDescription: "Systems, trust, and security under adversarial conditions.",
+    description: "Research into the security of connected systems, the boundaries of trust, and the engineering of resilient architectures.",
+    cycles: [{
+      id: "s-cycle-1", label: "Book I pathway",
+      description: "Twelve studies in security and adversarial systems, leading toward a future standalone book.",
+      slots: { prefix: "S", count: 12 },
+      works: publicWorks(writings.filter(item => item.status !== "Draft" && /^S([1-9]|1[0-2])$/.test(item.seriesCode ?? "")).sort((a, b) => Number(a.seriesCode!.slice(1)) - Number(b.seriesCode!.slice(1))).map(item => item.slug)),
+      synthesis: {
+        id: "s-book-1", title: "Book I", status: "future",
+        description: "A future standalone synthesis of this body of research in security and adversarial systems.",
+      },
+    }],
   },
   {
     letter: "W", title: "Weapons, Warfare & Defence",

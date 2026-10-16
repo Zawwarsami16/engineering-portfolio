@@ -55,3 +55,7 @@ The author approved an exception to the historical public-catalogue rule for roa
 Click `W` on the A–Z map to enter the W overview with three volume cards. W1/W2/W3 navigate through `#W1`/`#W2`/`#W3`, using the same shared paper-grid and future-book components used in A; back navigation returns to `#W` or `#map`. The map uses a fifth SVG-linked label without altering the four established placements. Desktop keeps W near the right end of the alphabet; phone deliberately extends the world-map section to avoid squeezing all five labels into the existing four positions. Dedicated mobile card/typography styles are scoped to W.
 
 Always distinguish **planned** from **published**, and do not surface W books as published or claim expert review. Test deep links, popstate, 360px/390px readability, A/C/P/S regression, and production builds before considering the design complete.
+
+## S Book I public pathway — October 15, 2026
+
+The author authorized S1–S12 numbered placeholders and a single future Book I milestone. S reuses the A/W crimson theme, connected nodes, responsive layout and book orbit. The `#S` route has Book I path, Papers and Future Book I views; no later cycles are shown. All twelve slots remain locked until non-draft S1–S12 Writing entries are released. Public copy and locked labels are deliberately broad: no unpublished titles, case selections, research questions, internal methodology, working book title or dates belong in S metadata, tooltips or client bundles. The book is labelled simply “Book I”, with future status and no publication link.

@@ -122,7 +122,8 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
   const previousFocus = useRef<HTMLElement | null>(null);
   const reduceMotion = useReducedMotion();
   const world = worlds.find((item) => item.letter === letter) ?? worlds[0];
-  const visibleCycles = world.letter === "W" ? world.cycles.slice(0, 1) : world.cycles;
+  const isBookPath = world.letter === "W" || world.letter === "S";
+  const visibleCycles = isBookPath ? world.cycles.slice(0, 1) : world.cycles;
   const works = visibleCycles.flatMap((cycle) => cycle.works);
   const syntheses = visibleCycles.flatMap((cycle) => cycle.synthesis ? [cycle.synthesis] : []);
   const wVolume = world.letter === "W" && volume === 1 ? visibleCycles[0] : null;
@@ -178,7 +179,7 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
       <div className={`${s.worldMap} ${map ? s.mapExpanded : s.mapCompact}`} aria-label="Active worlds">
         {worlds.map((item) => <button key={item.letter} className={s.worldBranch} data-world-key={item.letter} aria-pressed={!map && letter === item.letter} onClick={() => selectWorld(item.letter)}>
           <span className={s.worldLetter}>{item.letter}</span><span className={s.worldName} data-world-label={item.letter}>{item.title}</span>
-          <span className={s.worldCount}>{item.letter === "W" ? `${item.cycles[0].works.length}/12 published · Book I pathway` : item.letter === "Z" ? "1 public preprint" : item.cycles.reduce((n, c) => n + c.works.length, 0) ? `${item.cycles.reduce((n, c) => n + c.works.length, 0)} public ${item.cycles.reduce((n, c) => n + c.works.length, 0) === 1 ? "paper" : "papers"}` : "Open inquiry"}</span>
+          <span className={s.worldCount}>{(item.letter === "W" || item.letter === "S") ? `${item.cycles[0].works.length}/12 published · Book I pathway` : item.letter === "Z" ? "1 public preprint" : item.cycles.reduce((n, c) => n + c.works.length, 0) ? `${item.cycles.reduce((n, c) => n + c.works.length, 0)} public ${item.cycles.reduce((n, c) => n + c.works.length, 0) === 1 ? "paper" : "papers"}` : "Open inquiry"}</span>
         </button>)}
       </div>
 
@@ -191,10 +192,10 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
               <span className={s.worldMedallion} aria-hidden="true">{world.letter}</span>
               <div><p className={s.kicker}>World {world.letter} <i className={s.tinySpark} /></p>
                 <h2><span>{wVolume ? `W${volume} — ` : `${world.letter} — `}</span>{wVolume ? wVolume.label : world.title}</h2>
-                <p className={s.keywords}>{world.letter === "W" ? "Book I · 12 studies · one future synthesis" : world.keywords}</p>
+                <p className={s.keywords}>{isBookPath ? "Book I · 12 studies · one future synthesis" : world.keywords}</p>
                 <p className={s.description}><span className={s.desktopDescription}>{wVolume?.description ?? world.description}</span><span className={s.mobileDescription}>{wVolume?.description ?? world.shortDescription ?? world.description}</span></p>
                 <div className={s.stats}>
-                  {world.letter === "W" ? <>
+                  {isBookPath ? <>
                     <div><strong>{works.length}/12</strong><span>Book I papers<small>{works.length} published · {12 - works.length} forthcoming</small></span></div>
                     <div><strong>1</strong><span>Future book<small>After the twelve studies</small></span></div>
                   </> : <>
@@ -205,9 +206,9 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
               </div>
             </div>
             <div className={s.worldBody}>
-              {view === "overview" && (visibleCycles.length ? <div className={`${s.overviewStage} ${world.letter === "W" ? s.wBookFocus : ""}`}>
+              {view === "overview" && (visibleCycles.length ? <div className={`${s.overviewStage} ${isBookPath ? s.wBookFocus : ""}`}>
                    <div className={s.cyclesColumn}>{visibleCycles.map((cycle) => <Cycle key={cycle.id} cycle={cycle} onOpen={openPaper} />)}</div>
-                   {world.letter !== "W" && <FutureHorizon letter={world.letter} />}
+                   {!isBookPath && <FutureHorizon letter={world.letter} />}
                  </div> : <div className={s.emptyWorld}><Current /><span className={s.emptyOrb}>{world.letter}</span><h3>An open field of inquiry.</h3><p>Public work will appear here as it is released.</p></div>)}
               {view === "papers" && world.letter === "W" && <div className={s.paperList}>
                 <h3>Book I · Weapons Science & Technology</h3>
@@ -225,13 +226,30 @@ export function ResearchUniverse({ worlds }: { worlds: ResearchWorld[] }) {
                   </div>;
                 })}
               </div>}
-              {view === "papers" && world.letter !== "W" && <div className={s.paperList}><h3>Published work</h3><p className={s.listNote}>Public papers and author manuscripts. Publication status is shown on each record.</p>{works.map((item) => <button key={item.slug} onClick={() => openPaper(item)}><span className={s.listCode}>{item.seriesCode ?? <FileText size={22} />}</span><span><strong>{item.title}</strong><small>{item.status} · {item.datePublished}</small></span><ArrowUpRight size={18} aria-hidden="true" /></button>)}</div>}
+              {view === "papers" && !isBookPath && <div className={s.paperList}><h3>Published work</h3><p className={s.listNote}>Public papers and author manuscripts. Publication status is shown on each record.</p>{works.map((item) => <button key={item.slug} onClick={() => openPaper(item)}><span className={s.listCode}>{item.seriesCode ?? <FileText size={22} />}</span><span><strong>{item.title}</strong><small>{item.status} · {item.datePublished}</small></span><ArrowUpRight size={18} aria-hidden="true" /></button>)}</div>}
+              {view === "papers" && world.letter === "S" && <div className={s.paperList}>
+                <h3>Book I · Research papers</h3>
+                <p className={s.listNote}>S1–S12 form the first research pathway. Paper details appear here as work is released.</p>
+                {Array.from({ length: 12 }, (_, index) => {
+                  const code = `S${index + 1}`;
+                  const released = works.find(item => item.seriesCode === code);
+                  return released ? <button key={code} onClick={() => openPaper(released)}>
+                    <span className={s.listCode}>{code}</span>
+                    <span><strong>{released.title}</strong><small>{released.status} · {released.datePublished}</small></span>
+                    <ArrowUpRight size={18} aria-hidden="true" />
+                  </button> : <div className={s.wPlannedRow} key={code}>
+                    <span className={s.listCode}>{code}</span>
+                    <span><strong>Forthcoming study</strong><small>Planned · not yet released</small></span>
+                    <LockKeyhole size={14} aria-hidden="true" />
+                  </div>;
+                })}
+              </div>}
               {view === "future" && <FutureHorizon letter={world.letter} />}
               {view === "synthesis" && <div className={s.synthesisView}>{(wVolume && wVolume.synthesis ? [wVolume.synthesis] : syntheses).map((item) => <Milestone key={item.id} item={item} full />)}</div>}
             </div>
           </section>}
 
-        {world.letter === "W" ? <nav className={s.viewTabs} aria-label="Book I research views">
+        {isBookPath ? <nav className={s.viewTabs} aria-label="Book I research views">
           <button aria-pressed={view === "overview"} onClick={() => setView("overview")}>Book I path</button>
           <button aria-pressed={view === "papers"} onClick={() => setView("papers")}>Papers ({works.length}/12)</button>
           <button aria-pressed={view === "synthesis"} onClick={() => setView("synthesis")}>Future Book I</button>

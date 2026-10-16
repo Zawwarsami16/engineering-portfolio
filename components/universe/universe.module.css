@@ -948,3 +948,14 @@
     width: auto;
   }
 }
+
+/* S shares the existing Book I presentation; unpublished details stay private. */
+@media (max-width: 700px) {
+  .worldDetail[data-world="S"] .worldIntro { display:block; text-align:center; padding-bottom:10px; }
+  .worldDetail[data-world="S"] .worldIntro .kicker { justify-content:center; }
+  .worldDetail[data-world="S"] .worldMedallion { display:none; }
+  .worldDetail[data-world="S"] .worldIntro h2 { font-size:clamp(27px,6.8vw,35px); }
+  .worldDetail[data-world="S"] .description { margin-inline:auto; }
+  .worldDetail[data-world="S"] .worldBody { margin-top:6px; }
+  .worldDetail[data-world="S"] .cycleHeading h3 { font-size:20px; }
+}
