@@ -12,6 +12,7 @@ export type WritingEntry = {
   orcid?: string;
   researchTree?: string;
   discussion?: string;
+  discussionQuestion?: string;
   substack?: string;
   pages?: number;
   url: string;
@@ -37,6 +38,7 @@ export const writings: WritingEntry[] = [
     abstract:
       "A model can produce a plan and even call a tool without having a dependable means of acting in its environment. I came to this question while developing Loki, an Android interface intended to be occupied by different AI backends while the device, its permissions, schedules and practical capabilities remain separate from them. This arrangement asks us to distinguish the intelligence selecting an action from the body through which that action becomes possible. Existing work on embodied cognition and computer-use agents explains much of the perception–action relationship, while security engineering already provides principles for mediation and accountability. I examine where these ideas meet, and propose a Causal Embodiment Contract for assessing an operational software body. Its central test is a model substitution: if the controller changes, which properties of the body remain stable, which useful abilities change, and can an improvement in the controller reveal a permission boundary that was never complete? The paper develops a comparative model, source-attributed evidence from Loki, non-empirical counterexamples and a protocol for future device tests. It does not report a controlled Android experiment. Its contribution is a way to investigate the body as a continuing unit of engineering, rather than judge agency solely by the model or the success of an individual tool call.",
     url: "https://zawwarsami.com/writing/the-body-of-software",
+    discussionQuestion: "How can a controller swap reveal an incomplete permission boundary without mistaking improved model competence for a change in authority?",
     datePublished: "2026-10-14",
     tags: [
       "artificial agency", "software embodiment", "model substitution",
@@ -64,6 +66,9 @@ export const writings: WritingEntry[] = [
     abstract:
       "A military capability cannot be inferred from the performance of its visible equipment alone. I develop this argument through a specific problem: identical individual availability figures can conceal different amounts of usable system service. A finite construction holds three required functions at 75 percent availability each while their joint availability varies from 25 to 75 percent. The result uses elementary intersection bounds; its significance here is that component-level summaries leave the service claim underdetermined when their temporal relationship is unreported. I distinguish component performance, integrated performance, availability, sustained service, and demonstrated outcome, then develop a claim-level boundary and evidence profile to connect each statement with appropriate support. A filled F-35 assessment separates measured readiness, programme objectives, and service requirements. Two Patriot investigations distinguish an identified failure from uncertainty about wider outcomes, while the Berlin Airlift illustrates successful sustained provision. Together, the analytical construction and documentary cases locate the central assessment problem in the relationships that convert resources into service over time. The contribution is an argument about what capability evidence must preserve and a practical format for doing so, not a new probability theorem or an empirically validated forecasting model. Physical effectiveness and ethical permission remain separate judgments.",
     url: "https://zawwarsami.com/writing/weapons-as-systems",
+    researchTree: "https://github.com/Zawwarsami16/Public-Research-Tree/tree/main/W/W1",
+    discussion: "https://github.com/Zawwarsami16/Public-Research-Tree/issues/11",
+    discussionQuestion: "Is there a counterexample to the claim that separate availability rates are insufficient to identify joint service without additional dependence information?",
     datePublished: "2026-10-14",
     tags: [
       "W Series", "Weapons Science & Technology", "military capability",
@@ -89,6 +94,9 @@ export const writings: WritingEntry[] = [
     abstract:
       "I did not begin ZAI because I wanted another chatbot. I wanted a personal intelligence that could carry its history forward: remember earlier questions, undertake research, work with tools, learn from corrections, and take initiative without making every consequential decision on my behalf. ZAI—Zawwar Autonomous Intelligence—grew from that idea into an evolving software agent project built around existing language models, persistent records, external services, and my continuing involvement as its creator. This paper introduces ZAI through the surviving record of its development. I describe its beginnings in local computing, later expansion into recurring research and authorized tasks, and its work across cybersecurity, artificial intelligence research, philosophy, and a quantum-computing experiment I witnessed. I also examine moments when ZAI reported a capability that was not fully wired, recognized that more research was not resolving a problem, or publicly corrected an account of its own activity. These are part of its history, not details to hide behind a list of features. The IBM Quantum episode is documented through contemporary ZAI writing, hardware-capable software, and my eyewitness testimony; original provider-issued job records have not been recovered for independent verification. This is an introductory, source-attributed design history rather than a new benchmark, proof of consciousness, or claim that ZAI is a newly trained foundation model. My purpose is to give readers a clear starting point for understanding what ZAI was, what it did, how it developed, and what remains to be investigated.",
     url: "https://zawwarsami.com/writing/who-is-zai",
+    researchTree: "https://github.com/Zawwarsami16/Public-Research-Tree/tree/main/Z/Z1",
+    discussion: "https://github.com/Zawwarsami16/Public-Research-Tree/issues/10",
+    discussionQuestion: "Which independent record would most improve an evaluation of ZAI’s reported development, capability, and continuity?",
     datePublished: "2026-10-10",
     tags: [
       "ZAI",
@@ -123,6 +131,9 @@ export const writings: WritingEntry[] = [
     abstract:
       "An artificial agent can explain how to use a tool, possess credentials for it, and even contain working code without completing the task for which that tool was needed. The gap matters because fluent reports of action are easy to confuse with changes in the world. I examine the passage from represented knowledge to operational capability, using a documentary study of ZAI, my personal AI project, alongside research on tool-using language agents and execution-based evaluation. Four historical ZAI cases make the distinction concrete: a credential that did not produce a usable route; a social-posting system that announced success while doing nothing; a research loop that generated more work without resolving its own backlog; and an IBM Quantum hardware-use account whose technical integration and public reports are better preserved than its provider-level job receipt. I propose an action-evidence chain that separates tool discovery, legitimate authority, invocation, environmental change, independent verification, and durable attribution. The same user-facing language should not be used for 'I know how,' 'I attempted,' 'the service accepted,' 'the task appears completed,' and 'I checked the outcome.' This is not a new agent architecture or an experimental proof of improved performance. It is a criterion for deciding how strong a practical-capability claim is, why common proxies can mislead, and what an evaluable next test would require.",
     url: "https://zawwarsami.com/writing/from-knowing-to-doing",
+    researchTree: "https://github.com/Zawwarsami16/Public-Research-Tree/tree/main/A/A8",
+    discussion: "https://github.com/Zawwarsami16/Public-Research-Tree/issues/8",
+    discussionQuestion: "At which checkpoint—authority, invocation, external state change or independent verification—can an agent legitimately claim to have completed an action?",
     datePublished: "2026-10-10",
     tags: [
       "artificial agency",
@@ -154,6 +165,9 @@ export const writings: WritingEntry[] = [
     abstract:
       "An agent can remember an obligation and still never return to it. A daily schedule can keep it busy while important work slips away. I call the missing capacity operational will: not a private feeling or a claim of personhood, but a system-level ability to carry legitimate commitments across pauses, initiate within their scope, reconsider attention, and explain both action and deliberate non-action. I propose a bounded architecture: persistent commitments, time and event signals, an active decision model, and an I-Entity, a read-only reviewer that asks questions but cannot command tools. Earlier work on intention and BDI agents already covers much of this territory; the contribution here is a separable, auditable cross-commitment review interface and a falsifiable way to test whether it improves decisions. Dated ZAI records supply difficult design cases: a blocked proposal queue, restraint after permission, and a scheduler that reported success without acting. A proposed seven-condition test asks whether broader attention actually improves decisions over ordinary checklists and critics; the evaluation has not yet been run.",
     url: "https://zawwarsami.com/writing/operational-will",
+    researchTree: "https://github.com/Zawwarsami16/Public-Research-Tree/tree/main/A/A7",
+    discussion: "https://github.com/Zawwarsami16/Public-Research-Tree/issues/7",
+    discussionQuestion: "What would demonstrate improvement over a scheduled task list when an agent must recover and reconsider a legitimate unfinished commitment?",
     datePublished: "2026-10-10",
     tags: [
       "artificial agency",
@@ -185,6 +199,9 @@ export const writings: WritingEntry[] = [
     abstract:
       "What survives a model change: the answers an agent remembers, or the questions it has learned to ask before acting? I approach this as an infrastructure problem. A deployed agent can retain records, decision rationales, user-authorized commitments, and ways of attending to uncertainty even when its reasoning model is replaced. I call the decision-guiding subset of that infrastructure an identity kernel. My narrower proposal is an interrogative step: before proposing an action, the system selects task-relevant questions that its history and active commitments make necessary, including questions the latest request does not explicitly ask. This is not a new name for memory or for an identity contract. Existing evaluations already distinguish recall, composition, enactment, and decision-time co-instantiation. The proposed contribution is to make relevance selection before a decision an independently inspectable and falsifiable target: does a governed, versioned orienting step recover consequential, unstated questions across model changes, and does it change what the agent actually does? I specify a limited architecture and matched intervention tests, including delayed and irrelevant-question controls. I report no experimental results. An operationally continuing agent need not preserve the same model or verbal personality, but a plausible continuity claim must include legitimate lineage, authorized revision, and evidence that its inherited orientation still affects decisions. None of this establishes numerical identity or subjective experience.",
     url: "https://zawwarsami.com/writing/the-identity-kernel",
+    researchTree: "https://github.com/Zawwarsami16/Public-Research-Tree/tree/main/A/A6",
+    discussion: "https://github.com/Zawwarsami16/Public-Research-Tree/issues/6",
+    discussionQuestion: "Can an agent inherit a useful way of asking task-relevant questions through model replacement, and how would you falsify that claim?",
     datePublished: "2026-10-09",
     tags: [
       "artificial agency",
@@ -212,6 +229,9 @@ export const writings: WritingEntry[] = [
   "summary": "When do retained records become a usable past? A distinction between archive, context, persistent state, operational history, and becoming, with tests for how prior events change later behavior.",
   "abstract": "An AI system can keep records for months and still have no usable past. It may retrieve the right sentences yet fail to know what was revoked, what failed, what was later verified, or why the present state differs from an earlier one. I ask where that boundary lies. I distinguish five layers: archive, context, persistent state, operational history, and becoming. My claim is narrow: records become operational history when relations among events—including order, supersession, verified outcome, and provenance—change what the deployed system should do now. I turn that claim into a representation-adequacy test and a counterfactual pre/post-state test for a limited form of system-level becoming. The latter requires a durable, attributable change in later behavior; it does not require model-weight updates and does not imply consciousness or numerical identity. I place the account within recent work on long-term agent memory, use a publication workflow to show how identical surviving records can encode different practical pasts, and specify a controlled M1–M4 evaluation with relational ablations. I do not report a benchmark result. What I am trying to sharpen is the difference between record survival, continuity of work, and adaptation caused by retained experience.",
   "url": "https://zawwarsami.com/writing/persistent-state-and-becoming",
+  researchTree: "https://github.com/Zawwarsami16/Public-Research-Tree/tree/main/A/A5",
+  discussion: "https://github.com/Zawwarsami16/Public-Research-Tree/issues/5",
+  discussionQuestion: "What experiment would distinguish storing the same records from forming an operational history whose event order and revisions actually change later behavior?",
   "datePublished": "2026-10-08",
   "tags": [
     "artificial agents",
@@ -240,6 +260,9 @@ export const writings: WritingEntry[] = [
     abstract:
       "An AI system can retain the same model while its ability to act, its ongoing commitments, and its permissions change. Conversely, a service can replace its model while preserving parts of an ongoing task. These possibilities expose a problem of attribution: which properties belong to the model, and which belong to the arrangement in which it operates? Existing agent research already treats agency architecturally. I build on that position by distinguishing three boundaries: the resources supporting capability, the processes controlling execution, and the mechanisms governing delegated authority. These boundaries can overlap without coinciding. I propose a task-relative boundary audit that combines intervention, control tracing, and explicit treatment of outside dependencies. Four counterexamples show why neither model identity, shared memory, conversational resemblance, nor technical access is sufficient to identify an enduring delegated agent. A worked hypothetical case illustrates the audit; ZAI Memory Hub and zhub provide documented design examples, not experimental validation. Finally, I specify a crossed model-and-architecture evaluation protocol with separate measures for task success, constraint preservation, and unsupported completion. The contribution is a method for making agent-level claims more precise, rather than a new definition of consciousness, a demonstration of general intelligence, or a claim that model capability is unimportant.",
     url: "https://zawwarsami.com/writing/the-model-is-not-the-agent",
+    researchTree: "https://github.com/Zawwarsami16/Public-Research-Tree/tree/main/A/A4",
+    discussion: "https://github.com/Zawwarsami16/Public-Research-Tree/issues/4",
+    discussionQuestion: "Where should the boundary be drawn between a model’s represented ability and a deployed agent’s effective, authorized capability?",
     datePublished: "2026-10-06",
     tags: [
       "artificial agency",
@@ -269,6 +292,9 @@ export const writings: WritingEntry[] = [
     abstract:
       "What happens when the chat window disappears, but the work is not done? A personal AI may move between sessions, devices, clients, and models while the person still expects the same project to continue. Long-term memory helps, but memory by itself does not tell a system what is current, what was rejected, who is allowed to act, or whether an action actually succeeded. This paper argues that practical continuity should be treated as an architectural problem rather than something we expect the language model to carry inside itself. I propose a loop built around persistent state, context reconstruction, orientation and self-monitoring, replaceable reasoning, action, verified outcomes, and state revision. The point is not to preserve an abstract AI self. It is to preserve the active state of work in a way that another session or model can understand, trace, and revise. I use ZAI and the ZAI Memory Hub as an implementation case, while separating current verified components from historical runtime evidence, in-build designs, and philosophical interpretation. I then set out failure cases and tests for revision propagation, model replacement, concurrent agents, false completion, recovery, and authority boundaries. The claim stays limited: this architecture can support practical continuity of assistance. It does not prove continuity of consciousness or numerical identity.",
     url: "https://zawwarsami.com/writing/continuity-oriented-architecture-for-personal-ai",
+    researchTree: "https://github.com/Zawwarsami16/Public-Research-Tree/tree/main/A/A3",
+    discussion: "https://github.com/Zawwarsami16/Public-Research-Tree/issues/3",
+    discussionQuestion: "What is the smallest reproducible architecture test for persistent state, replacement of a reasoning model, and recovery of unfinished work?",
     datePublished: "2026-10-04",
     tags: [
       "personal AI",
@@ -298,6 +324,9 @@ export const writings: WritingEntry[] = [
     abstract:
       "Most philosophical discussions about what it means to be human start after we’ve already divided mind and body. We set up the problem by separating soul from matter, and then spend all our time wondering how the two could possibly connect. But honestly, that misses something important at the very start. Instead of immediately breaking a person into parts, we should stop and ask what sort of unity even makes those aspects belong together in one living being. In this paper, I develop an account—grounded in philosophy and Islamic theology—of what I call “living identity.” Here, soul and body aren’t duking it out for the right to be called the person. They’re distinguishable, sure, but we don’t have to pick sides. I’m not trying to infer the existence of an immaterial soul just from watching how our bodies behave. I’m also not offering a clean solution to the old puzzle of how mind and matter interact. Instead, I try to untangle three questions we usually mush together: What makes us an embodied unity? What keeps us the “same” individual through time? And what holds our moral life and commitments together? Borrowing insights from Descartes, phenomenology, recent work on embodiment, and the Islamic philosophical tradition about self-awareness, I argue that the best starting point is to see the living person as an embodied subject—whose inner and outer life are inseparable parts of a single ongoing existence. In Islamic theology, that unity comes from God, and our responsibility shows up through what we do with our bodies. So, the real question isn’t “soul versus body”—it’s what it means for a person to be one at all.",
     url: "https://zawwarsami.com/writing/the-person-before-the-split",
+    researchTree: "https://github.com/Zawwarsami16/Public-Research-Tree/tree/main/P/The-Person-Before-the-Split",
+    discussion: "https://github.com/Zawwarsami16/Public-Research-Tree/issues/9",
+    discussionQuestion: "What changes when personal identity is approached from the embodied, living person rather than a separable psychological or informational component?",
     datePublished: "2026-10-03",
     tags: [
       "personal identity",
@@ -329,6 +358,9 @@ export const writings: WritingEntry[] = [
     abstract:
       "What warrants treating a replacement model as the continuation of a personal AI? Persistent memory offers an apparent answer, yet copying the same history into several systems exposes its insufficiency. I distinguish numerical identity, recognizable character, and the legitimate continuation of delegated assistance. Through two thought experiments, I argue that informational continuity neither determines a successor's authority nor enlarges the scope of an inherited instruction. Two copies may possess the same past while occupying different roles; two authorized workers may each perform an individually permitted action while jointly exceeding a mandate that allowed only one execution. I develop an account of authorized succession in which the successor can interpret the inherited record, act under a continuing mandate, and remain answerable for the handover. The argument draws on ZAI, my personal AI project, and engages philosophical and technical accounts of continuity. It allows distributed assistance and advance delegation while preserving a distinction between successful succession and the survival of a conscious subject. What ought to endure through replacement is an intelligible relation to the user's work, including the user's authority to revise earlier commitments.",
     url: "https://zawwarsami.com/writing/what-survives-a-model-change",
+    researchTree: "https://github.com/Zawwarsami16/Public-Research-Tree/tree/main/A/A2",
+    discussion: "https://github.com/Zawwarsami16/Public-Research-Tree/issues/2",
+    discussionQuestion: "Which observations would distinguish successful continuity through model replacement from a system merely repeating facts from its history?",
     datePublished: "2026-10-03",
     tags: [
       "personal AI",
@@ -360,6 +392,9 @@ export const writings: WritingEntry[] = [
     abstract:
       "An AI assistant can remember a person in considerable detail while leaving that person with little control over how the record is used. This paper distinguishes personalization from a stronger, normative sense of personal assistance. Its central claim is that when an assistant relies on accumulated personal history to interpret instructions or act on someone's behalf, the person must retain effective authority to contest and revise that history's practical force. The argument begins with a shared memory system developed for use across AI clients, then examines a case in which an assistant mistakes an old project decision for a standing preference. Work on extended cognition helps explain why such records can matter to agency; work on generative cognition complicates the analogy with a passive notebook. Correction, traceability, and usable transfer are defended as connected supports for continuing authority, rather than as a checklist sufficient for autonomy. The resulting account explains why possessing a database, preserving an assistant's personality, and accumulating more memory can each fall short of making an AI meaningfully personal.",
     url: "https://zawwarsami.com/writing/when-is-an-ai-personal",
+    researchTree: "https://github.com/Zawwarsami16/Public-Research-Tree/tree/main/A/A1",
+    discussion: "https://github.com/Zawwarsami16/Public-Research-Tree/issues/1",
+    discussionQuestion: "When, if ever, does accumulated memory give a personal AI a continuing identity rather than simply a record of interaction?",
     datePublished: "2026-10-02",
     tags: [
       "personal AI",
