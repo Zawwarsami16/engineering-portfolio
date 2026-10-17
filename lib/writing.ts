@@ -29,6 +29,36 @@ export type WritingEntry = {
 // Only already-public entries belong here. Unreleased manuscripts stay private.
 export const writings: WritingEntry[] = [
 {
+  "slug": "when-revocation-does-not-end-access",
+  "title": "When Revocation Does Not End Access",
+  "seriesCode": "S1",
+  "subtitle": "Temporal Repair Dependencies in Application Compromise",
+  "summary": "The old credential fails. What can still replace it? I examine repair order, replacement credentials and pending issuance through controlled HTTP experiments, a conditional graph argument, and documented Equifax, Exchange and MOVEit cases.",
+  "abstract": "What happens when the old credentials stop working, but the application can still create new ones? I investigate this recovery failure through a small running system: an issuer, a protected resource and a separate observer. Across 48 distinct repair-and-renewal schedules, 20 retain access even though every original credential is rejected. Each schedule is repeated three times. The failure depends on the order in which authority is removed and its source is stopped. I express that dependency as a renewal graph and prove a conditional repair-order rule, checked against 98,697 graph-order pairs. A second failure survives an otherwise effective provisioning barrier: work accepted before containment creates new credentials after revocation. An executed walkthrough compares leaving that work pending, cancelling it and rejecting it at commit using an issuance epoch. The last two prevent reopening in the tested sequence; a positive control confirms that new work can succeed after service resumes. Equifax, Exchange and MOVEit establish the need to examine application, identity and data boundaries separately. The contribution is a reproducible recovery test that follows replacement credentials and pending issuance through to the protected operation, with explicit conditions for what its result establishes.",
+  "url": "https://zawwarsami.com/writing/when-revocation-does-not-end-access",
+  "datePublished": "2026-10-17",
+  "tags": [
+    "S Series",
+    "cybersecurity",
+    "incident recovery",
+    "credential revocation",
+    "temporal repair dependencies",
+    "application security"
+  ],
+  "kind": "Paper",
+  "status": "Preprint",
+  "version": "Version 1",
+  "pages": 17,
+  "pdf": "/papers/Zawwar-Sami-S1-Temporal-Repair-Dependencies-v1.pdf",
+  "doi": "10.5281/zenodo.23435843",
+  "zenodo": "https://zenodo.org/records/23435843",
+  "philpapers": "https://philpapers.org/rec/SAMWRD",
+  "orcid": "https://orcid.org/0009-0004-5819-3017",
+  "researchTree": "https://github.com/Zawwarsami16/Public-Research-Tree/tree/main/S/S1",
+  "discussion": "https://github.com/Zawwarsami16/Public-Research-Tree/discussions/22",
+  "discussionQuestion": "What is the smallest additional observation that distinguishes a successful revocation from durable loss of access when replacement credentials or accepted work remain possible?"
+},
+{
   "slug": "what-development-evidence-can-and-cannot-show",
   "title": "What Development Evidence Can and Cannot Show",
   "seriesCode": "W2",
