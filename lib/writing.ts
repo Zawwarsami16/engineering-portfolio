@@ -28,6 +28,38 @@ export type WritingEntry = {
 };
 // Only already-public entries belong here. Unreleased manuscripts stay private.
 export const writings: WritingEntry[] = [
+{
+  "slug": "what-development-evidence-can-and-cannot-show",
+  "title": "What Development Evidence Can and Cannot Show",
+  "seriesCode": "W2",
+  "subtitle": "AAG, EMALS and model-dependent engineering tests",
+  "summary": "A successful demonstration does not establish dependable service. Through AAG and EMALS development records and four worked analyses, I examine what evidence can establish about peak loads, reliability, failure mechanisms and configuration changes—and how to choose the next useful measurement or test.",
+  "abstract": "A successful demonstration does not establish dependable service. A failed test does not establish a limit of physics. I examine this distinction through documented AAG aircraft-recovery and EMALS launch-system milestones. Four worked analyses show why operation counts alone cannot establish peak loads, reliability confidence, failure mechanisms or performance after configuration changes. The most instructive example concerns test design: a contrast that separates two explanations can leave others indistinguishable when interactions are allowed. Exact calculations also show how assumed count variability changes the repetitions needed for a specified decision. These are case-based analytical results and synthetic computations, not carrier measurements. The practical contribution is a traceable assessment sequence for choosing the next useful record, measurement or test.",
+  "url": "https://zawwarsami.com/writing/what-development-evidence-can-and-cannot-show",
+  "datePublished": "2026-10-17",
+  "tags": [
+    "W Series",
+    "systems engineering",
+    "aircraft recovery",
+    "AAG",
+    "EMALS",
+    "reliability",
+    "experimental design",
+    "engineering evidence"
+  ],
+  "kind": "Paper",
+  "status": "Preprint",
+  "version": "Version 1.2",
+  "pages": 19,
+  "pdf": "/papers/Zawwar-Sami-W2-What-Development-Evidence-Can-and-Cannot-Show-v1.2.pdf",
+  "doi": "10.5281/zenodo.23435836",
+  "zenodo": "https://zenodo.org/records/23435836",
+  "philpapers": "https://philpapers.org/rec/SAMWDE",
+  "orcid": "https://orcid.org/0009-0004-5819-3017",
+  "researchTree": "https://github.com/Zawwarsami16/Public-Research-Tree/tree/main/W/W2",
+  "discussion": "https://github.com/Zawwarsami16/Public-Research-Tree/discussions/20",
+  "discussionQuestion": "When a test separates explanations in one model but leaves credible interaction models indistinguishable, what is the smallest additional observation needed?"
+},
   {
     slug: "the-body-of-software",
     title: "The Body of Software",
