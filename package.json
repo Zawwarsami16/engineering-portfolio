@@ -24,7 +24,7 @@
     "resend": "^4.0.1",
     "tailwind-merge": "^2.5.5",
     "three": "^0.184.0",
-    "zod": "^3.23.8"
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "16.2.7",
