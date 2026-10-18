@@ -14,11 +14,20 @@ export const dynamic = "force-static";
 export const revalidate = 86400;
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // A public author manuscript (A1) remains discoverable without relabelling it.
+  const publicEntries = writings.filter((entry) =>
+    entry.status !== "Draft" &&
+    (entry.status !== "Manuscript" || Boolean(entry.philpapers || entry.zenodo || entry.substack))
+  );
+  const archiveRefresh = new Date(Math.max(
+    PROCESS_REFRESH.getTime(),
+    ...publicEntries.map((entry) => new Date(entry.datePublished + "T00:00:00Z").getTime()),
+  ));
   const routes: MetadataRoute.Sitemap = [
-    { url: SITE_URL + "/", lastModified: PROCESS_REFRESH, changeFrequency: "monthly", priority: 1 },
+    { url: SITE_URL + "/", lastModified: archiveRefresh, changeFrequency: "monthly", priority: 1 },
     { url: SITE_URL + "/about", lastModified: SITE_REFRESH, changeFrequency: "monthly", priority: 0.9 },
-    { url: SITE_URL + "/writing", lastModified: PROCESS_REFRESH, changeFrequency: "weekly", priority: 0.9 },
-    { url: SITE_URL + "/research", lastModified: PROCESS_REFRESH, changeFrequency: "monthly", priority: 0.85 },
+    { url: SITE_URL + "/writing", lastModified: archiveRefresh, changeFrequency: "weekly", priority: 0.9 },
+    { url: SITE_URL + "/research", lastModified: archiveRefresh, changeFrequency: "monthly", priority: 0.85 },
     { url: SITE_URL + "/work", lastModified: SITE_REFRESH, changeFrequency: "monthly", priority: 0.8 },
     { url: SITE_URL + "/stack", lastModified: SITE_REFRESH, changeFrequency: "monthly", priority: 0.7 },
     { url: SITE_URL + "/contact", lastModified: SITE_REFRESH, changeFrequency: "yearly", priority: 0.6 },
@@ -34,8 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // The public registry is the sole source of published paper URLs.
   // A5 and later additions automatically enter the sitemap when released.
-  const papers = writings
-    .filter((entry) => entry.status !== "Draft" && entry.status !== "Manuscript")
+  const papers = publicEntries
     .map((entry) => ({
       url: SITE_URL + "/writing/" + entry.slug,
       lastModified: new Date(entry.datePublished + "T00:00:00Z"),
