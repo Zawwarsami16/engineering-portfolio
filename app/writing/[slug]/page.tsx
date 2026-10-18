@@ -16,13 +16,13 @@ export async function generateMetadata({
   const { slug } = await params;
   const entry = writings.find((e) => e.slug === slug);
   if (!entry) return {};
-  // Keep the manuscript title unchanged; use a concise, descriptive SEO snippet for ZAI.
+  // Search snippets are separate from the full manuscript title and abstract.
   const searchTitle = slug === "who-is-zai"
     ? "Who Is ZAI? — Zawwar Autonomous Intelligence"
-    : `${entry.title}${entry.subtitle ? ` ${entry.subtitle}` : ""}`;
+    : entry.title;
   const searchDescription = slug === "who-is-zai"
     ? "I developed ZAI (Zawwar Autonomous Intelligence) through cybersecurity, philosophy and questions about memory, agency, and what an AI can actually do."
-    : entry.summary;
+    : entry.seoDescription ?? entry.summary;
   return {
     title: searchTitle,
     description: searchDescription,
