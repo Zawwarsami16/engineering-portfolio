@@ -5,6 +5,7 @@ export type WritingEntry = {
   title: string;
   seriesCode?: string;
   summary: string;
+  seoDescription?: string;
   subtitle?: string;
   abstract?: string;
   philpapers?: string;
@@ -30,6 +31,7 @@ export type WritingEntry = {
 export const writings: WritingEntry[] = [
 {
   "slug": "when-revocation-does-not-end-access",
+    seoDescription: "Why credential revocation can leave access open: repair order, replacement credentials and pending issuance, examined through reproducible recovery tests.",
   "title": "When Revocation Does Not End Access",
   "seriesCode": "S1",
   "subtitle": "Temporal Repair Dependencies in Application Compromise",
@@ -60,6 +62,7 @@ export const writings: WritingEntry[] = [
 },
 {
   "slug": "what-development-evidence-can-and-cannot-show",
+    seoDescription: "What AAG and EMALS development tests establish about reliability, loads and failure mechanisms, and how to choose the next useful measurement.",
   "title": "What Development Evidence Can and Cannot Show",
   "seriesCode": "W2",
   "subtitle": "AAG, EMALS and model-dependent engineering tests",
@@ -92,6 +95,7 @@ export const writings: WritingEntry[] = [
 },
   {
     slug: "the-body-of-software",
+    seoDescription: "How model replacement tests software embodiment, permission boundaries and action verification. A proposal informed by the Loki Android interface.",
     title: "The Body of Software",
     seriesCode: "A9",
     subtitle: "A Model Can Be Replaced. The Interface That Lets It Act Should Not Disappear With It.",
@@ -120,6 +124,7 @@ export const writings: WritingEntry[] = [
   },
   {
     slug: "weapons-as-systems",
+    seoDescription: "Why component availability alone cannot establish military capability. Systems engineering, joint service and public F-35, Patriot and Berlin Airlift evidence.",
     title: "Weapons as Systems",
     seriesCode: "W1",
     subtitle: "Components, Infrastructure and Human Organisation",
@@ -185,6 +190,7 @@ export const writings: WritingEntry[] = [
   },
   {
     slug: "from-knowing-to-doing",
+    seoDescription: "How to verify an AI agent’s actions: a six-checkpoint chain connecting tool access, authority, execution and independently observable outcomes.",
     title: "From Knowing to Doing",
     seriesCode: "A8",
     subtitle: "Tool Access, Execution, and Evidence in Artificial Agency",
@@ -219,6 +225,7 @@ export const writings: WritingEntry[] = [
   },
   {
     slug: "operational-will",
+    seoDescription: "How artificial agents might recover unfinished commitments, reconsider priorities and justify action or waiting. An architecture and proposed evaluation.",
     title: "Operational Will",
     seriesCode: "A7",
     subtitle: "Commitment, Initiative, and the Question of What an Agent Does Next",
@@ -253,6 +260,7 @@ export const writings: WritingEntry[] = [
   },
   {
     slug: "the-identity-kernel",
+    seoDescription: "An identity-kernel proposal for personal AI: decision-time questions, governed revision and continuity when the underlying model changes.",
     title: "The Identity Kernel",
     seriesCode: "A6",
     subtitle: "Infrastructure, Inner Orientation, and Continuity Across Model Change",
@@ -285,6 +293,7 @@ export const writings: WritingEntry[] = [
   },
 {
   "slug": "persistent-state-and-becoming",
+    seoDescription: "When AI memory becomes operational history: event order, revisions and verified outcomes that change what a deployed agent should do next.",
   "title": "Persistent State and Becoming",
   "seriesCode": "A5",
   "subtitle": "When Memory Becomes Operational History",
@@ -346,6 +355,7 @@ export const writings: WritingEntry[] = [
   },
   {
     slug: "continuity-oriented-architecture-for-personal-ai",
+    seoDescription: "An architecture for personal AI continuity through durable state, self-monitoring, replaceable models and recovery of unfinished work.",
     title: "A Continuity-Oriented Architecture for Personal AI",
     seriesCode: "A3",
     subtitle: "Persistent State, Self-Monitoring, and Replaceable Models",
@@ -379,6 +389,7 @@ export const writings: WritingEntry[] = [
   },
   {
     slug: "the-person-before-the-split",
+    seoDescription: "A philosophical account of soul-body unity and living identity, beginning with the embodied person before separating questions of persistence.",
     title: "The Person Before the Split",
     subtitle: "Soul-Body Unity and Living Identity",
     summary:
